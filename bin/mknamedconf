@@ -1,0 +1,131 @@
+#!/usr/bin/perl -w
+
+# http://freepages.pets.rootsweb.com/~phelps/cats2.htm#The%20Naming%20of%20Cats
+
+use strict;
+
+if ( $#ARGV != 0) {
+	print "Usage: mkdnsconf INTERNAL <zoneconf.txt\n";
+	print "\tor\n";
+	print "Usage: mkdnsconf EXTERNAL <zoneconf.txt\n";
+	print "\tor\n";
+	print "Usage: mkdnsconf SLAVE <zoneconf.txt\n";
+	exit 1;
+}
+
+my $MODE = shift @ARGV;
+
+my ($cmd, @opt);
+my (%zoneservers, %defmx);
+my (%allowupdate, %allowtransfer);
+my ($class, $startip, $field, $key, $value, $dom);
+my %info;
+
+while (<>) {
+	%info = ();
+	chomp;
+	s/^\s+//g;
+	s/\s+$//g;
+
+	next if /^#/;
+	next if /^$/;
+
+	($cmd, @opt) = split;
+	if ($cmd eq "TEMPLATEDIR") {
+	} elsif ($cmd eq "OBSCUREZONE") {
+	} elsif ($cmd eq "ZONESERVERS") {
+		my $scope = shift @opt;
+		$zoneservers{ $scope } = join(" ", @opt);
+	} elsif ($cmd eq "ALLOW-UPDATE") {
+		my $scope = shift @opt;
+		$allowupdate{ $scope } = join(" ", @opt);
+	} elsif ($cmd eq "ALLOW-TRANSFER") {
+		my $scope = shift @opt;
+		$allowtransfer{ $scope } = join(" ", @opt);
+	} elsif ($cmd eq "MX") {
+		my $scope = shift @opt;
+		$defmx{ $scope } = join(" ", @opt);
+	} elsif ($cmd eq "SOA") {
+	} elsif ($cmd eq "REVDOMAIN") {
+		$class   = shift @opt;
+		$startip = shift @opt;
+		# Store the operands stuff:
+		foreach $field ( @opt ) {
+			($key, $value) = split /=/, $field;
+			$info{$key} = ( $value ? $value : 1 );
+		}
+		$dom = inaddr( $class, $startip );
+		zone( $MODE, $dom );
+	} elsif ($cmd eq "DOMAIN" or $cmd eq "CUSTDOMAIN") {
+		my ($key, $value);
+		$dom = shift @opt;
+		# Store the operands stuff:
+		foreach $field ( @opt ) {
+			($key, $value) = split /=/, $field;
+			$info{$key} = ( $value ? $value : 1 );
+		}
+		zone( $MODE, $dom ) if $cmd eq "DOMAIN";
+	}
+}
+
+
+sub zone {
+	my ($MODE, $dom) = @_;
+
+	if ($MODE eq 'SLAVE') {
+		slavezone('SLAVE', "bak/", $dom) if $info{'INTERNAL'};
+	} else {
+		masterzone($MODE, "", $dom) if $info{$MODE};
+	}
+}
+
+sub masterzone {
+	my ($mode, $dir, $dom) = @_;
+	my $au = "none";    $au = join("; ", $allowupdate{ $mode })   if $allowupdate{ $mode };
+	my $at = "none";    $at = join("; ", $allowtransfer{ $mode }) if $allowtransfer{ $mode };
+
+print qq#
+zone "$dom" {
+	type master;
+	file "$dir$mode.$dom";
+	check-names fail;
+	allow-update { $au; };
+	allow-transfer { $at; };
+};
+#;
+}
+
+sub slavezone {
+	my ($mode, $dir, $dom) = @_;
+	my $au = "none";    $au = join("; ", $allowupdate{ $mode })   if $allowupdate{ $mode };
+	my $at = "none";    $at = join("; ", $allowtransfer{ $mode }) if $allowtransfer{ $mode };
+
+print qq#
+zone "$dom" {
+	type slave;
+	file "${dir}bak.$dom";
+	masters { 65.246.245.10; };
+	allow-update { $au; };
+	allow-transfer { $at; };
+};
+#;
+}
+
+
+
+sub inaddr {
+	my ($class, $startip) = @_;
+	my @part = split('\.', $startip);
+	if ($class eq 'CLASSA') {
+		die "$startip is not a $class!" if $part[1] + $part[2] + $part[3];
+		return "$part[0].in-addr.arpa";
+	} elsif ($class eq 'CLASSB') {
+		die "$startip is not a $class!" if $part[2] + $part[3];
+		return "$part[1].$part[0].in-addr.arpa";
+	} elsif ($class eq 'CLASSC') {
+		die "$startip is not a $class!" if $part[3];
+		return "$part[2].$part[1].$part[0].in-addr.arpa";
+	} else {
+		die "Unknown class: $class";
+	}
+}

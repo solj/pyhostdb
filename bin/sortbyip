@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Sort by IP address.  Assume IP address is at front of line.
+# Options:
+# -u  remove duplicates (its fairly random which line is kept if text follows IP)
+
+otheroptions=""
+uniqcmd="cat"
+while [ -n "$1" ]
+do
+    if [ "$1" = "-u" ]
+    then
+        uniqcmd="uniq"
+    else
+        otheroptions="$otheroptions $1"
+    fi
+    shift
+done
+            
+sort -t. -k1,1n -k2,2n -k3,3n -k4,4n $otheroptions | $uniqcmd
+

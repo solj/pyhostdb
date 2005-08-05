@@ -1,0 +1,74 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my ($name, $junk, $type, @opt);
+my $ip;
+my %ip2host; my %ip2anames; my %ipISMAILSERVER; my %cnamesOf;
+
+while (<>) {
+	chomp;
+	($name, $junk, $type, @opt) = split;
+	$name =~ s/\.$//g;
+
+	if (/\tIN SOA\t/) {
+		; # SOA: do nothing
+	} elsif (/\tIN NS\t/) {
+		; # do nothing
+	} elsif (/\tIN A\t/) {
+		# A: Record for later. If it is the second time we've seen
+		# this IP, store it as an ANAME.
+		my $ip = $opt[0];
+		if ($ip2host{$ip}) {
+			if ($ip2anames{$ip}) {
+				$ip2anames{$ip} .= ":" . $name;
+			} else {
+				$ip2anames{$ip} = $name;
+			}
+		} else {
+			$ip2host{$ip} = $name;
+		}
+		#print "DEBUG: $ip = $name\n";
+	} elsif (/\tIN CNAME\t/) {
+		# CNAME: Accumulate for later.
+		my $dst = $opt[0];
+		$dst =~ s/\.$//g;
+		#print "CNAME=$name to $dst\n";
+		if ($cnamesOf{$dst}) {
+			$cnamesOf{$dst} .= ":" . $name;
+		} else {
+			$cnamesOf{$dst} = $name;
+		}
+	} elsif (/\tIN MX\t/) {
+		# If the MX points at itself, mark this as ISMAILSERVER.
+		# Otherwise, do nothing.
+		my ($pri, $dst) = @opt;
+		$dst =~ s/\.$//g;
+		#print "ISMAIL compare ", lc $dst, " AND ", lc $name, "\n";
+		if ( (lc $dst) eq (lc $name) ) {
+			$ipISMAILSERVER{ $name } = 1;
+			#print "ISMAILSERVER=$name\n";
+		}
+	} else {
+		print "OTHER: $_\n";
+	}
+}
+
+foreach $ip ( keys %ip2host ) {
+	$name = $ip2host{$ip};
+
+	print $ip, "\t", $name;
+
+	print " ISMAILSERVER" if $ipISMAILSERVER{ $name };
+
+	if ($ip2anames{$ip}) {
+		print " ANAMES=", $ip2anames{$ip};
+	}
+
+	if ($cnamesOf{$name}) {
+		my @cnames = split(':', $cnamesOf{$name});
+		print " CNAMES=", @cnames;
+	}
+
+	print "\n";
+}

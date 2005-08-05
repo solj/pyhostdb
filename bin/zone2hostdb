@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Takes a zonefile and converts it to a rough estimate
+# of what hostdb.txt should be.
+
+# Note: It strips out all MX records... They should be manually
+# by hand with a few MX commands in zoneconf.txt
+
+cat $* | cannonzone -n  | zone2hostdbhelper | sortbyip
+

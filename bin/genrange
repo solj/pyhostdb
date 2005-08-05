@@ -1,0 +1,42 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+if ($#ARGV != 2) {
+	print "Usage: genrange domain IPADDR count
+For example:
+	genrange example.com 10.1.10.0 128
+";
+	exit 1;
+}
+
+my $DOMAIN=shift @ARGV; #print "IP=$DOMAIN\n";
+my $STARTIP=shift @ARGV; #print "IP=$STARTIP\n";
+my $COUNT=shift @ARGV; #print "COUNT=$COUNT\n";
+
+my @parts = split(/\./, $STARTIP);
+#print "PARTS=", join(":", @parts), "\n";
+
+# I'm sure there's a better way to convert an IP address into an integer but...
+my $startnum =	($parts[0] << 24) +
+		($parts[1] << 16) +
+		($parts[2] << 8 ) +
+		$parts[3];
+
+my ($ip0, $ip1, $ip2, $ip3);
+my $endnum = $startnum + $COUNT - 1;
+$endnum = 0xffffffff if $endnum > 0xffffffff;
+my $ip;
+for (my $i = $startnum; $i <= $endnum; $i++ ) {
+#  + $COUNT); for my $ip ( $startnum .. ($startnum + $COUNT - 1 ) ) {
+# I'm sure there's a better way to print an integer as an IP address but...
+	$ip = $i;
+	$ip0 = $ip % 256; $ip >>= 8;
+	$ip1 = $ip % 256; $ip >>= 8;
+	$ip2 = $ip % 256; $ip >>= 8;
+	$ip3 = $ip % 256;
+	print "#", $ip3, ".", $ip2, ".", $ip1, ".", $ip0, "\tUNUSED$ip3$ip2$ip1$ip0.$DOMAIN\n";
+
+}
+
+

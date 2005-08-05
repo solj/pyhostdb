@@ -1,0 +1,791 @@
+
+;
+
+$TTL 60M
+
+@	IN SOA	juice.cibernet.com. hostmaster.cibernet.com (
+			:serial:	;serial (version)
+			1H	;refresh period
+			15M	;retry refresh this often
+			30D	;expiration period
+			60M	;minimum TTL
+		)
+
+                   IN NS      juice
+                   IN NS      adam
+auto               IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+bugzilla           IN A       10.1.240.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+careof             IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cibernet.com.      IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+demoreports        IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dev                IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gb                 IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gbc                IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+inside             IN A       10.1.240.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+labs               IN A       10.1.240.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mail               IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mail.gb            IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mail.us            IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mtm-failover       IN A       66.80.151.141
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mtm-test           IN A       212.113.16.122
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mtm                IN A       212.113.16.123
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+newjuice           IN A       66.80.151.139
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+nj                 IN A       66.155.166.180
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ns                 IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ns1                IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ns2                IN A       193.195.87.250
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ocdemo             IN A       212.113.16.126
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oldstuff           IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+one1clear-beta     IN CNAME   tart
+oneclear-dev       IN A       10.1.201.13
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oneclear-test      IN A       10.1.201.11
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oneclear-uat       IN A       212.113.16.124
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixmd-lan          IN A       10.1.240.2
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+support            IN A       66.134.100.74
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+svnweb             IN A       10.1.201.9
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+us                 IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpn                IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpngb              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpnnj              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+www-test           IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+www                IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+xserve             IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+njlan-net          IN A       10.1.201.0
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pie-1              IN A       10.1.201.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-1.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       10.1.201.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+pixnj-lan          IN A       10.1.201.2
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixnj-lan.cibernet.com is part of multihomed host pixnj.cibernet.com
+pixnj              IN A       10.1.201.2
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+hp7100nj           IN A       10.1.201.3
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pie-4              IN A       10.1.201.4
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-4.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       10.1.201.4
+
+pie-5              IN A       10.1.201.5
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-5.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       10.1.201.5
+
+pie-6              IN A       10.1.201.6
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-6.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       10.1.201.6
+
+seed               IN A       10.1.201.7
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+wrt54Gnj           IN A       10.1.201.8
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+sauce              IN A       10.1.201.9
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+hp2300nj           IN A       10.1.201.10
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+candy              IN A       10.1.201.11
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+skin               IN A       10.1.201.12
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+core               IN A       10.1.201.13
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+as_Vonage          IN A       10.1.201.16
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhp_Vonage         IN A       10.1.201.17
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ck_Vonage          IN A       10.1.201.18
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+jmh_Vonage         IN A       10.1.201.19
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+odnj01             IN A       10.1.201.20
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+shawnmac           IN A       10.1.201.21
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+criley             IN A       10.1.201.22
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+kumquat            IN A       10.1.201.23
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+asphalt            IN A       10.1.201.24
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+tarmac             IN A       10.1.201.25
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+macadam            IN A       10.1.201.26
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-66   IN A       10.1.201.66
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-67   IN A       10.1.201.67
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-68   IN A       10.1.201.68
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-69   IN A       10.1.201.69
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-70   IN A       10.1.201.70
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-71   IN A       10.1.201.71
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-72   IN A       10.1.201.72
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-73   IN A       10.1.201.73
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-74   IN A       10.1.201.74
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-75   IN A       10.1.201.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-76   IN A       10.1.201.76
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-77   IN A       10.1.201.77
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-78   IN A       10.1.201.78
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-79   IN A       10.1.201.79
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-80   IN A       10.1.201.80
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-81   IN A       10.1.201.81
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-82   IN A       10.1.201.82
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-83   IN A       10.1.201.83
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-84   IN A       10.1.201.84
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-85   IN A       10.1.201.85
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-86   IN A       10.1.201.86
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-87   IN A       10.1.201.87
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-88   IN A       10.1.201.88
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-89   IN A       10.1.201.89
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-90   IN A       10.1.201.90
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-91   IN A       10.1.201.91
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-92   IN A       10.1.201.92
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-93   IN A       10.1.201.93
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-94   IN A       10.1.201.94
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-95   IN A       10.1.201.95
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-96   IN A       10.1.201.96
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-97   IN A       10.1.201.97
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+linksys-wap54g-1-njlan IN A       10.1.201.99
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; linksys-wap54g-1-njlan.cibernet.com is part of multihomed host linksys-wap54g-1.cibernet.com
+linksys-wap54g-1   IN A       10.1.201.99
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+dhcp-10-1-201-100  IN A       10.1.201.100
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-101  IN A       10.1.201.101
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-102  IN A       10.1.201.102
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-103  IN A       10.1.201.103
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-104  IN A       10.1.201.104
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-105  IN A       10.1.201.105
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-106  IN A       10.1.201.106
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-107  IN A       10.1.201.107
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-108  IN A       10.1.201.108
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-109  IN A       10.1.201.109
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-110  IN A       10.1.201.110
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-111  IN A       10.1.201.111
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-112  IN A       10.1.201.112
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-113  IN A       10.1.201.113
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-114  IN A       10.1.201.114
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-115  IN A       10.1.201.115
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-116  IN A       10.1.201.116
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-117  IN A       10.1.201.117
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-118  IN A       10.1.201.118
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-119  IN A       10.1.201.119
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-120  IN A       10.1.201.120
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-121  IN A       10.1.201.121
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-122  IN A       10.1.201.122
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-123  IN A       10.1.201.123
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-124  IN A       10.1.201.124
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-125  IN A       10.1.201.125
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-126  IN A       10.1.201.126
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-127  IN A       10.1.201.127
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-128  IN A       10.1.201.128
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-129  IN A       10.1.201.129
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-130  IN A       10.1.201.130
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-131  IN A       10.1.201.131
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-132  IN A       10.1.201.132
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-133  IN A       10.1.201.133
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-134  IN A       10.1.201.134
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-135  IN A       10.1.201.135
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-136  IN A       10.1.201.136
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-137  IN A       10.1.201.137
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-138  IN A       10.1.201.138
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-139  IN A       10.1.201.139
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-140  IN A       10.1.201.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-141  IN A       10.1.201.141
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-142  IN A       10.1.201.142
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-143  IN A       10.1.201.143
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-144  IN A       10.1.201.144
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-145  IN A       10.1.201.145
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-146  IN A       10.1.201.146
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-147  IN A       10.1.201.147
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-148  IN A       10.1.201.148
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-149  IN A       10.1.201.149
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-10-1-201-150  IN A       10.1.201.150
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+juice-mdlan        IN A       10.1.240.1
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixmd-mdlan        IN A       10.1.240.2
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixmd-mdlan.cibernet.com is part of multihomed host pixmd.cibernet.com
+pixmd              IN A       10.1.240.2
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+cycmd              IN A       10.1.240.3
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpnmd-in           IN A       10.1.240.4
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+green              IN A       10.1.240.5
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+adam               IN A       10.1.240.6
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+jumbotron          IN A       10.1.240.10
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+brumd              IN A       10.1.240.20
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+exabytemd          IN A       10.1.240.21
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+robotron-inside    IN A       10.1.240.22
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; robotron-inside.cibernet.com is part of multihomed host robotron.cibernet.com
+robotron           IN A       10.1.240.22
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+                   IN MX 0    robotron
+
+pie-84             IN A       65.126.153.84
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-84.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       65.126.153.84
+
+mdmega-net         IN A       66.80.151.136
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdmegartr-mdmega   IN A       66.80.151.137
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; mdmegartr-mdmega.cibernet.com is part of multihomed host mdmegartr.cibernet.com
+mdmegartr          IN A       66.80.151.137
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+pixmd-megapath     IN A       66.80.151.138
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixmd-megapath.cibernet.com is part of multihomed host pixmd.cibernet.com
+pixmd              IN A       66.80.151.138
+
+juice-139          IN A       66.80.151.139
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpnmd              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+granny-X           IN A       66.80.151.141
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; granny-X.cibernet.com is part of multihomed host granny.cibernet.com
+granny             IN A       66.80.151.141
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+mdmega-bcast       IN A       66.80.151.143
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdcov-net          IN A       66.134.100.72
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gw-mdcov           IN A       66.134.100.73
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; gw-mdcov.cibernet.com is part of multihomed host gw.cibernet.com
+gw                 IN A       66.134.100.73
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+robotron           IN A       66.134.100.74
+juice              IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+paetecrtr-ceo      IN A       66.155.166.177
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; paetecrtr-ceo.cibernet.com is part of multihomed host paetecrtr.cibernet.com
+paetecrtr          IN A       66.155.166.177
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+sonicwall          IN A       66.155.166.178
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixnj-paetec       IN A       66.155.166.179
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
+pixnj              IN A       66.155.166.179
+
+pie                IN A       66.155.166.180
+mtm-dev            IN A       66.155.166.181
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; mtm-dev.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       66.155.166.181
+
+devcvs             IN A       66.155.166.182
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; devcvs.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       66.155.166.182
+
+uklan-net          IN A       192.168.1.0
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cbnts04            IN A       192.168.1.15
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oduk01             IN A       192.168.1.20
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oduk02             IN A       192.168.1.21
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mail01             IN A       192.168.1.71
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+                   IN MX 0    mail01
+hp8550             IN A       192.168.1.103
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+tweek              IN A       192.168.1.150
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+hp4000n            IN A       192.168.1.155
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+CBNTS01            IN A       192.168.1.230
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cbnts02            IN A       192.168.1.231
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+crumb              IN A       192.168.1.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixuk-lan          IN A       192.168.1.254
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+uklan-bcast        IN A       192.168.1.255
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukdser-net         IN A       193.195.87.240
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+uknok-gw           IN A       193.195.87.241
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; uknok-gw.cibernet.com is part of multihomed host uknokgw.cibernet.com
+uknokgw            IN A       193.195.87.241
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+ukdser-bcast       IN A       193.195.87.247
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixuk-ukext1       IN A       193.195.87.250
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixuk-ukext1.cibernet.com is part of multihomed host pixuk.cibernet.com
+pixuk              IN A       193.195.87.250
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+crumbx             IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cbnts03-X          IN A       193.195.87.253
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; cbnts03-X.cibernet.com is part of multihomed host cbnts03.cibernet.com
+cbnts03            IN A       193.195.87.253
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+ukext1-bcast       IN A       193.195.87.255
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukclan2-net        IN A       212.113.6.64
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pixukc-ukclan2     IN A       212.113.6.65
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixukc-ukclan2.cibernet.com is part of multihomed host pixukc.cibernet.com
+pixukc             IN A       212.113.6.65
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+jack               IN A       212.113.6.66
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-70  IN A       212.113.6.70
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-71  IN A       212.113.6.71
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-72  IN A       212.113.6.72
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-73  IN A       212.113.6.73
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-74  IN A       212.113.6.74
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-75  IN A       212.113.6.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-76  IN A       212.113.6.76
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-77  IN A       212.113.6.77
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-78  IN A       212.113.6.78
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-6-79  IN A       212.113.6.79
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukclan2-bcast      IN A       212.113.6.127
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukcext-net         IN A       212.113.16.112
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+l3rtr-ukcext       IN A       212.113.16.113
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; l3rtr-ukcext.cibernet.com is part of multihomed host l3rtr.cibernet.com
+l3rtr              IN A       212.113.16.113
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+pixukc-ukcext      IN A       212.113.16.114
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixukc-ukcext.cibernet.com is part of multihomed host pixukc.cibernet.com
+pixukc             IN A       212.113.16.114
+
+cycukc             IN A       212.113.16.115
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-16-116 IN A       212.113.16.116
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-16-117 IN A       212.113.16.117
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+dhcp-212-113-16-118 IN A       212.113.16.118
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukcext-bcast       IN A       212.113.16.119
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukclan-net         IN A       212.113.16.120
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+pix-ukclan         IN A       212.113.16.121
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pix-ukclan.cibernet.com is part of multihomed host pixukc.cibernet.com
+pixukc             IN A       212.113.16.121
+
+tart               IN A       212.113.16.122
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+baked              IN A       212.113.16.123
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+tree               IN A       212.113.16.124
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+juke               IN A       212.113.16.125
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cider              IN A       212.113.16.126
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukclan-bcast       IN A       212.113.16.127
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+
+
+
+
+
+
+

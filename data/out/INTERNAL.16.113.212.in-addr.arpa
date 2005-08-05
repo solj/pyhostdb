@@ -1,0 +1,31 @@
+
+;
+
+$TTL 60M
+
+@	IN SOA	juice.cibernet.com. hostmaster.cibernet.com (
+			:serial:	;serial (version)
+			1H	;refresh period
+			15M	;retry refresh this often
+			30D	;expiration period
+			60M	;minimum TTL
+		)
+
+                   IN NS      juice.cibernet.com.
+                   IN NS      adam.cibernet.com.
+112                IN PTR     ukcext-net.cibernet.com.
+113                IN PTR     l3rtr-ukcext.cibernet.com.
+114                IN PTR     pixukc-ukcext.cibernet.com.
+115                IN PTR     cycukc.cibernet.com.
+116                IN PTR     dhcp-212-113-16-116.cibernet.com.
+117                IN PTR     dhcp-212-113-16-117.cibernet.com.
+118                IN PTR     dhcp-212-113-16-118.cibernet.com.
+119                IN PTR     ukcext-bcast.cibernet.com.
+120                IN PTR     ukclan-net.cibernet.com.
+121                IN PTR     pix-ukclan.cibernet.com.
+122                IN PTR     tart.cibernet.com.
+123                IN PTR     baked.cibernet.com.
+124                IN PTR     tree.cibernet.com.
+125                IN PTR     juke.cibernet.com.
+126                IN PTR     cider.cibernet.com.
+127                IN PTR     ukclan-bcast.cibernet.com.

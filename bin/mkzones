@@ -1,0 +1,709 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+use Getopt::Std;
+my %opts;
+getopts("z:d", \%opts);
+
+$| = 1;
+
+# Todo:
+# do something useful with NETWORK commands.
+
+# Notes:
+# $db is a Hash of Hashes:
+# http://www.perldoc.com/perl5.6/pod/perldsc.html#HASHES-OF-HASHES
+
+if ( $#ARGV >= 1) {
+	usage();
+}
+
+
+my ($name, $num, %db, %dhcp, %num2name, %soa, %ttl, %zoneseen, %rangeseen, %isobscured);
+my $TEMPLATEDIR=".";
+my $OBSCUREZONE;
+my $DHCP_POOL_TEMPLATE;
+my $prevname = '-1';
+my $didsomething = 0;
+my $CONTROLFILE;
+my $rrblank;
+my (%zoneservers, %defmx, %name2num);
+my (%allowupdate, %allowtransfer);
+my ($mac, $type, $rootpath, $server, $filename, $ntname, @junk);
+my %hostmx;
+
+usage() unless $opts{'z'} or $opts{'d'};
+
+parsehostlist();
+
+if ($opts{'z'}) {
+	$CONTROLFILE=$opts{'z'};
+	#print "# Control file: $CONTROLFILE\n";
+	do_dns();
+}
+if ($opts{'d'}) {
+	do_dhcp();
+}
+
+
+exit 0;
+
+sub usage {
+	die "Usage: mkzones [-z zoneconf.txt] [-d] <hostlist.txt
+		-z zoneconf.txt  -- output zones based on zoneconf.txt
+		-d                 -- output DHCP stuff to dhcpinc.txt\n";
+}
+
+sub ip2num {
+	my ($ip) = @_;
+	my @part;
+	#print "IP=$ip\n";
+	@part = split('\.', $ip);
+	return (($part[0] << 24) + ($part[1] << 16) + ($part[2] << 8) + $part[3]);
+}
+
+sub num2ip {
+	my ($num) = @_;
+#print "DEBUG num2ip($num)\n";
+	my $a = ($num >> 24);
+	my $b = ($num >> 16) % 256;
+	my $c = ($num >>  8) % 256;
+	my $d = ($num      ) % 256;
+	return "$a.$b.$c.$d";
+}
+
+sub obscure {
+	my ($num) = @_;
+	my $a = ($num >> 24);
+	my $b = ($num >> 16) % 256;
+	my $c = ($num >>  8) % 256;
+	my $d = ($num      ) % 256;
+	return "h$a-$b-$c-$d";
+}
+
+sub dhcptemplate {
+	my ($num) = @_;
+	my $a = ($num >> 24);
+	my $b = ($num >> 16) % 256;
+	my $c = ($num >>  8) % 256;
+	my $d = ($num      ) % 256;
+	my $str;
+#print "TEMPLATE=$DHCP_POOL_TEMPLATE\n";
+	eval qq#\$str = "$DHCP_POOL_TEMPLATE"#; warn $@ if $@;
+#print "STR=$str\n";
+	return $str;
+}
+
+sub num2inaddr {
+	my ($num) = @_;
+	my $a = ($num >> 24);
+	my $b = ($num >> 16) % 256;
+	my $c = ($num >>  8) % 256;
+	my $d = ($num      ) % 256;
+	return "$d.$c.$b.$a.in-addr.arpa";
+}
+
+sub shortname {
+	my ($zone, $name) = @_;
+	my ($shortname, $zonere);
+	$zonere = $zone;
+	$zonere =~ s/\./\\./g;
+	$shortname = $name . ".";
+	$shortname =~ s/\.$zonere\.$//;
+#	print "# SHORTNAME $zone $name $shortname\n";
+	return $shortname;
+}
+
+sub inaddr {
+	my ($class, $startip) = @_;
+	my @part = split('\.', $startip);
+	if ($class eq 'CLASSA') {
+		die "$startip is not a $class!" if $part[1] + $part[2] + $part[3];
+		return "$part[0].in-addr.arpa";
+	} elsif ($class eq 'CLASSB') {
+		die "$startip is not a $class!" if $part[2] + $part[3];
+		return "$part[1].$part[0].in-addr.arpa";
+	} elsif ($class eq 'CLASSC') {
+		die "$startip is not a $class!" if $part[3];
+		return "$part[2].$part[1].$part[0].in-addr.arpa";
+	} else {
+		die "Unknown class: $class";
+	}
+}
+
+sub endnum {
+	my ($class, $startnum) = @_;
+	if ($class eq 'CLASSA') {
+		return $startnum + (256 * 256 * 256) - 1;
+	} elsif ($class eq 'CLASSB') {
+		return $startnum + (256 * 256) - 1;
+	} elsif ($class eq 'CLASSC') {
+		return $startnum +  255;
+	} else {
+		die "Unknown class: $class";
+	}
+}
+
+sub rr {
+	my ($zone, $name, $type, $data) = @_;
+
+	if ($name eq $prevname) {
+		$name = '';
+	} else {
+		$prevname = $name;
+		$name = shortname($zone, $name);
+	}
+	printf ZF "%-18s %-10s %s\n", $name, "IN ". $type, $data;
+	$rrblank = 0;
+}
+
+sub rrcomment {
+	print ZF "; ", join(" ", @_), "\n";
+	$prevname = '-1';
+}
+
+sub rrblank {
+	print ZF "\n" unless $rrblank;
+	$rrblank = 1;
+}
+
+sub rrns {
+	my ($scope, $curzone, $destzone) = @_;
+	#print "rrns( $scope, $curzone, $destzone)\n";
+	#print "\t", $zoneservers{"$scope"}, "\n";
+	#print "\t", $zoneservers{"$scope:$destzone"}, "\n";
+	foreach my $ns ( split(' ', $zoneservers{"$scope:$destzone"}) ) {
+		rr( $curzone, $destzone, "NS", shortname($curzone, $ns) );
+	}
+}
+
+sub rrmx {
+	my ($zone, $scope, $name) = @_;
+	#print "DEFMX $scope = ", $defmx{ $scope }, "\n";
+	if ( defined( $defmx{ $scope } )) {
+		foreach my $i ( split(';', $defmx{ $scope }) ) {
+			my ($pri, $host) = split(' ', $i);
+			next if $hostmx{"$name:$host"}++;
+			rr( $zone, $name, "MX $pri", shortname($zone, $host));
+		}
+	}
+	if ($db{$name}{'ISMAILSERVER'}) {
+		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
+		$hostmx{"$name:$name"}++;
+	}
+}
+
+# --
+
+sub setzone {
+	my ($scope, $zone) = @_;
+	close ZF;
+	$prevname = $zone;
+	my $headerfn = "$TEMPLATEDIR/$scope.$zone.header";
+	my $incfn =    "$TEMPLATEDIR/$scope.$zone.inc";
+	my $outputfn = "$scope.$zone";
+	# If this is the first use of the filename, make sure it is zapped
+	unlink $outputfn unless $zoneseen{$outputfn}++;
+	# If the output file doesn't exist, copy the header to start it out:
+	if ( ! -f $outputfn ) {
+
+		#print "# Creating $outputfn\n";
+		open(ZF, ">$outputfn") || die "Can't create $outputfn: $!";
+
+		if ( -f $headerfn ) {
+#			print "# Appending $headerfn\n";
+			open(IN, "<$headerfn") || die "Can't read $headerfn: $!";
+			while (<IN>) { print ZF; };
+			close IN;
+		} else {
+			#print "\tNo header file $headerfn exists\n";
+		}
+
+		#print "# Writing SOA and TTL\n";
+		my ($admin, $refresh, $retry, $expire, $ttl) = split(' ', $soa{$scope});
+		my ($master, @junk) = split(' ', $zoneservers{$scope});
+		print ZF "\n;\n\n";
+		print ZF "\$TTL $ttl{$scope}\n\n";
+		print ZF "@\tIN SOA\t$master. $admin (\n";
+		print ZF "\t\t\t:serial:\t;serial (version)\n";
+		print ZF "\t\t\t$refresh\t;refresh period\n";
+		print ZF "\t\t\t$retry\t;retry refresh this often\n";
+		print ZF "\t\t\t$expire\t;expiration period\n";
+		print ZF "\t\t\t$ttl\t;minimum TTL\n";
+		print ZF "\t\t)\n\n";
+
+		#print "STORE \$zoneservers{ $scope:$zone } = $zoneservers{$scope}\n";
+		$zoneservers{"$scope:$zone"} = $zoneservers{$scope};
+# [RAM] Manually patched zone file header 5/15/2003
+#		print ZF "\t\tIN NS\t$master.\n\n";
+		rrns($scope, $zone, $zone);
+#		print ZF "\t\tIN MX\t10\t$master.\n";
+#		print ZF "\t\tIN MX\t20\tingw1.lumeta.com.\n";
+#		print ZF "\t\tIN MX\t20\tingw2.lumeta.com.\n";
+#		print ZF "\t\tIN A\t65.198.68.68\n\n";
+	
+		if ( -f $incfn ) {
+			print "# Including $incfn\n";
+			open(IN, "<$incfn") || die "Can't read $incfn: $!";
+			while (<IN>) { print ZF; };
+			close IN;
+		} else {
+			#print "\tNo include file $headerfn exists\n";
+		}
+
+	} else {
+#		print "# Appending to $outputfn\n";
+		open(ZF, ">>$outputfn") || die "Can't append to $outputfn: $!";
+	}
+
+	$rrblank=0;
+}
+
+sub extractrev {
+	my ($scope, $zone, $class, $startip) = @_;
+
+	my $startnum = ip2num($startip);
+	my $endnum = endnum($class, $startnum);
+
+	for ($num = $startnum; $num <= $endnum; $num++) {
+		# If we've done these already, skip the entire range:
+		if ($rangeseen{$num}{$scope}) {
+			$num = $rangeseen{$num}{$scope};
+		} elsif ($scope eq 'EXTERNAL') {
+			$name = $num2name{$num};
+			unless ($name and $db{$name}{'AX'}) {	# obscure it if there is no name, or if it is not ext
+				$name = obscure($num) . "." . $OBSCUREZONE;
+				$isobscured{$num} = 1;
+			}
+			rr( $zone, num2inaddr($num), "PTR", $name . "." );
+			$rangeseen{$num}{$scope} = $num+1;
+		} elsif ($num2name{$num}) {
+			# Otherwise, generate the rr:
+			rr( $zone, num2inaddr($num), "PTR", $num2name{$num} . ".");
+			$rangeseen{$num}{$scope} = $num+1;
+		}
+	}
+
+	# Mark as "done" so we don't repeat it for parent zones:
+	$db{num2inaddr($startnum)}{$scope} = $endnum;
+}
+
+# Output the A records that match the "obscured" PTR records that we generated.
+sub extractobscure {
+	my ($scope, $zone, $class, $startip) = @_;
+
+	my $ipaddr;
+
+	my $startnum = ip2num($startip);
+	my $endnum = endnum($class, $startnum);
+	for ($num = $startnum; $num <= $endnum; $num++) {
+		if ($isobscured{$num}) {
+			$name = obscure($num) . "." . $OBSCUREZONE;
+			$ipaddr = num2ip($num);
+#print "OBSCURED=$ipaddr\t$name\n";
+			rr( $zone, $name, "A", $ipaddr );
+		}
+	}
+}
+
+sub byip {
+	# If either is undefined, alphasort, otherwise sortbyip
+	return ($name2num{$a} <=> $name2num{$b}) if (defined $name2num{$a} and defined $name2num{$b});
+	return  1 if defined $name2num{$a};
+	return -1 if defined $name2num{$b};
+	return ($a cmp $b);
+}
+
+sub extractzone {
+	my ($scope, $zone) = @_;
+	my $zonere = $zone;
+	my $sn;
+	$zonere =~ s/\./\\./g;
+	my $zonere2 = "$zonere|\.$zonere";
+	foreach my $name ( sort byip keys %db ) {
+		# Skip if it isn't in this zone.
+		#print "NAME: ", $name, "\n";
+		next unless $name =~ m/$zonere2/;
+		#print "NAME: ", $name, "\n";
+
+		# If this is a subzone, generate NS records:
+		if ($db{$name}{"$scope DELEGATION"}) {
+			rrblank();
+			#print "SUBZONE: $zone $name\n";
+			rrns($scope, $zone, $name);
+			rrblank();
+			delete $db{$name}{"$scope DELEGATION"};
+		}
+
+		# Skip if we've done this already (presumably in a subzone);
+		next if $db{$name}{$scope};
+		# Mark as "done" so we don't repeat it for parent zones:
+		$db{$name}{$scope} = 1;
+
+		# Is this a CNAME?
+		if ($scope eq 'INTERNAL' and $db{$name}{'CNAMEI'}) {
+#			print "DEBUG calling shortname with ", $zone, $db{$name}{'CNAMEI'}, "\n";
+		
+			$sn= shortname($zone, $db{$name}{'CNAMEI'});
+#print "DEBUG: outputting internal CNAME: $zone, $name, CNAME, $sn\n";
+			rr( $zone, $name, "CNAME", $sn);
+		}
+		if ($scope eq 'EXTERNAL' and $db{$name}{'CNAMEX'}) {
+			$sn= shortname($zone, $db{$name}{'CNAMEX'});
+#print "DEBUG: outputting external CNAME: $zone, $name, CNAME, $sn\n";
+			rr( $zone, $name, "CNAME", $sn);
+		}
+
+		# Aliases?
+		if ($scope eq 'INTERNAL' and $db{$name}{'ANAMEI'}) {
+			rr( $zone, $name, "A", num2ip($db{$name}{'ANAMEI'}) );
+			rrmx( $zone, $scope, $name );
+		}
+		if ($scope eq 'EXTERNAL' and $db{$name}{'ANAMEX'}) {
+			rr( $zone, $name, "A", num2ip($db{$name}{'ANAMEX'}) );
+			rrmx( $zone, $scope, $name );
+		}
+
+		# A Records:
+		if ($scope eq 'INTERNAL' and $db{$name}{'AI'}) {
+			my $ipaddr;
+			$num = $db{$name}{'AI'};
+			$ipaddr = num2ip($num);
+
+			rr( $zone, $name, "A", $ipaddr );
+			rrmx( $zone, $scope, $name );
+
+			# Is this multihomed?
+			if ($db{$name}{'MULTIHOMED'}) {
+				# Multihomed hosts also get an A record under its real name
+				my $multi = $db{$name}{'MULTIHOMED'};
+				rrcomment("$name is part of multihomed host $multi");
+				rr( $zone, $multi, "A", $ipaddr );
+				rrmx( $zone, $scope, $multi );
+				rrblank();
+			}
+		}
+		if ($scope eq 'EXTERNAL' and $db{$name}{'AX'}) {
+			my $ipaddr;
+			$num = $db{$name}{'AX'};
+			$ipaddr = num2ip($num);
+
+			rr( $zone, $name, "A", $ipaddr );
+			rrmx( $zone, $scope, $name );
+
+			# Is this multihomed?
+			if ($db{$name}{'MULTIHOMED'}) {
+				# Multihomed hosts also get an A record under its real name
+				my $multi = $db{$name}{'MULTIHOMED'};
+				rrcomment("$name is part of multihomed host $multi");
+				rr( $zone, $multi, "A", $ipaddr );
+				rrmx( $zone, $scope, $multi );
+				rrblank();
+			}
+		}
+	}
+}
+
+# The forward lookup:
+sub forward {
+	my ($name, $num, $int, $ext) = @_;
+#	print "DEBUG CALLS: forward(", $name, ", ", $num, ")\n";
+	warn "$name is a duplicate host" if $name2num{$name};
+	$name2num{$name} = $num;
+	$db{$name}{'AI'} = $num if $int;
+	$db{$name}{'AX'} = $num if $ext;
+		# Needs an "A" record: (makes sure there is a $db{} key for this host)
+}
+
+sub multihome {
+	my ($base, $nic, $num) = @_;	# base name for device, nic's name, ipaddr
+	# Set the forward direction:
+	# Record that it is multihomed:
+	if (!defined($db{$nic}{'MULTIHOMED'})) {	# first time through?
+		$db{$nic}{'MULTIHOMED'} = $base;
+	} elsif ($db{$nic}{'MULTIHOMED'} ne $base) {	# cross-homed?
+		warn "$nic can't be a part of multihome $base, it is already a part of " . $db{$nic}{'MULTIHOMED'};
+	} else {
+		$db{$nic}{'MULTIHOMED'} = $base;
+	}
+}
+
+sub processname {
+	my ($item) = @_;
+	return (1, 0, $item) unless $item =~ /@/;
+	my ($name, $scope) = split('@', $item);
+#	print "DEBUG: processname $name $scope\n";
+	if ($scope eq 'EXTERNALONLY') {
+		return (0, 1, $name);
+	} elsif ($scope eq 'EXTERNAL') {
+		return (1, 1, $name);
+	} else {
+		die "I don't understand \@$scope: $!";
+	}
+	print "HUH???\n";
+}
+
+sub parsehostlist {
+	# Parse the hostlist.txt
+	my ($cmd, @opt);
+	my ($name, $num, $isint, $isext);
+	while (<>) {
+		chomp;
+		s/^\s+//g;
+		s/\s+$//g;
+	
+		next if /^#/;
+		next if /^$/;
+
+		($cmd, @opt) = split;
+		if ($cmd eq "NETWORK") {
+			#($name, $base, @opt) = @_;
+			#print "# $_\n";
+		} elsif ($cmd eq "DHCP_POOL_TEMPLATE") {
+			$DHCP_POOL_TEMPLATE = $opt[0];
+#print "SETTING DHCP_POOL_TEMPLATE=$DHCP_POOL_TEMPLATE\n";
+		} elsif ($cmd =~ /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) {
+			$num = ip2num( $cmd );
+			$opt[0] = dhcptemplate( $num ) if $opt[0] and $opt[0] eq "DHCP_POOL";
+			($isint, $isext, $name) = processname( shift @opt );
+#print "DEBUG: $isint $isext $name\n";
+			# Check for duplicates:
+			warn "duplicate entry for $cmd" if defined( $num2name{$num} );
+			# Store the reverse-lookup stuff:
+			$num2name{$num} = $name;
+			# Store the forward-lookup stuff:
+#print "DEBUG forward: $name  $num  $isint  $isext\n";
+			forward($name, $num, $isint, $isext);
+			# Store the DHCP stuff:
+			my ($key, $value, $pn, $isinta, $isexta, $isintc, $isextc);
+			foreach my $field ( @opt ) {
+				($key, $value) = split /=/, $field;
+				if ($key eq   'ANAMES') {
+					foreach my $h ( split(':', $value)) {
+						($isinta, $isexta, $pn) = processname($h);
+						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEI'});
+						$db{ $pn }{'ANAMEI'} = $num if $isinta;
+						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEX'});
+						$db{ $pn }{'ANAMEX'} = $num if $isexta;
+					}
+				} elsif ($key eq   'CNAMES') {
+					#$db{$name}{'CNAMES'} = $value;
+					foreach my $h ( split(':', $value)) {
+						($isintc, $isextc, $pn) = processname($h);
+#print "DEBUG: CNAMES processname returned $isintc, $isextc, $pn\n";
+						warn "$h is a duplicate (CNAME)" if defined($db{$pn}{'CNAMEI'});
+						$db{ $pn }{'CNAMEI'} = $name if $isintc;
+						warn "$h is a duplicate (CNAME)" if defined($db{$pn}{'CNAMEX'});
+						$db{ $pn }{'CNAMEX'} = $name if $isextc;
+					}
+				} elsif ($key eq   'ISROUTER' or $key eq 'ISMULTIHOMED') {
+					foreach my $h ( split(':', $value) ) {
+						die "ERROR: @" . "scope not permitted for ISROUTER or ISMULTIHOMED: $h: $!" if $h =~ /@/;
+						multihome($h, $name, $num);
+					}
+				} elsif ($key eq   'ISMAILSERVER') {
+					$db{$name}{'ISMAILSERVER'} = 1;
+				} else {
+					$dhcp{$num}{$key} = ( $value ? $value : 1 );
+				}
+			}
+		} else {
+			die "I don't understand: $_\n";
+		}
+	}
+}
+
+sub do_dns {
+	my ($cmd, @opt);
+	open(CF, $CONTROLFILE) || die "Can't open $CONTROLFILE for reading: $!";
+	while (<CF>) {
+		chomp;
+		s/^\s+//g;
+		s/\s+$//g;
+	
+		next if /^#/;
+		next if /^$/;
+	
+	#	print "DEBUG: $_\n";
+	
+		($cmd, @opt) = split;
+		if ($cmd eq "TEMPLATEDIR") {
+			$TEMPLATEDIR=$opt[0];
+		} elsif ($cmd eq "OBSCUREZONE") {
+			$OBSCUREZONE = shift @opt;
+		} elsif ($cmd eq "ZONESERVERS") {
+			my $scope = shift @opt;
+			$zoneservers{ $scope } = join(" ", @opt);
+		} elsif ($cmd eq "ALLOW-UPDATE") {
+			my $scope = shift @opt;
+			$allowupdate{ $scope } = join(" ", @opt);
+		} elsif ($cmd eq "ALLOW-TRANSFER") {
+			my $scope = shift @opt;
+			$allowtransfer{ $scope } = join(" ", @opt);
+		} elsif ($cmd eq "MX") {
+			my $scope = shift @opt;
+			$defmx{ $scope } = join(" ", @opt);
+		} elsif ($cmd eq "SOA") {
+			my $scope = shift @opt;
+			$soa{ $scope } = join(" ", @opt);
+			$ttl{ $scope } = $opt[4];
+		} elsif ($cmd eq "REVDOMAIN") {
+			my %info = ();
+			my ($class, $startip, $key, $value, $dom);
+			$class   = shift @opt;
+			$startip = shift @opt;
+			# Store the operands stuff:
+			foreach my $field ( @opt ) {
+				($key, $value) = split /=/, $field;
+				$info{$key} = ( $value ? $value : 1 );
+			}
+			$dom = inaddr( $class, $startip );
+			foreach my $scope ( 'INTERNAL', 'EXTERNAL' ) {
+				if ($info{$scope}) {
+					# start writing the zone:
+					setzone($scope, $dom);
+					# Extract out data for this zone: (should only be NS's)
+					extractzone($scope, $dom);
+					# Extract out the reverse DNS data for this zone:
+					extractrev($scope, $dom, $class, $startip);
+					# Leave behind the delegation stuff
+					$db{$dom}{"$scope DELEGATION"} = $zoneservers{$scope};
+
+					# Append to the obscuredzone:
+					setzone($scope, $OBSCUREZONE);
+					rrblank();
+					# Write out the obscured data:
+					extractobscure($scope, $OBSCUREZONE, $class, $startip);
+
+				}
+			}
+		} elsif ($cmd eq "DOMAIN" or $cmd eq "CUSTOMDOMAIN") {
+			my %info = ();
+			my ($key, $value);
+			my $dom = shift @opt;
+			# Store the operands stuff:
+			foreach my $field ( @opt ) {
+				($key, $value) = split /=/, $field;
+				$info{$key} = ( $value ? $value : 1 );
+			}
+			#
+			foreach my $scope ( 'INTERNAL', 'EXTERNAL' ) {
+				if ($info{$scope}) {
+					# start writing the zone:
+					setzone($scope, $dom);
+					# Extract out data for this zone:
+					extractzone($scope, $dom);
+					# Leave behind the delegation stuff
+					$db{$dom}{"$scope DELEGATION"} = $zoneservers{$scope};
+				}
+			}
+		}
+	}
+	close CF;
+}
+
+# --
+
+#  Write mac address in standard form
+sub normalize {
+        my ($inmac) = @_;
+        $inmac = uc $inmac; 
+        $inmac =~ s/:(.){1,1}:/:0$1:/g;
+        $inmac =~ s/^(.){1,1}:/0$1:/;  
+        $inmac =~ s/:(.){1,1}$/:0$1/;  
+        return $inmac;               
+}
+
+# Convert a hostname or IP address to a hex string representing the IP addr
+# (for TFTP booting)
+sub num2hex {
+        return sprintf "\U08x", $_[0];
+}
+
+
+# --
+
+sub do_dhcp {
+	foreach my $num ( sort keys %dhcp ) {
+
+       	$mac = $dhcp{$num}{'MAC'};
+		next unless $mac;
+       	warn "WARNING: line $.: ${mac} is not a valid MAC address\n" unless
+               	$mac =~ /^.+:.+:.+:.+:.+:.+/;
+       	$mac = &normalize($mac);
+
+       	$name = $num2name{$num};
+       	warn "WARNING: line $.: $name is not a valid hostname\n" if $name =~ /=|_/;
+
+		# If not set, the type is "pc":
+		$type = $dhcp{$num}{'TYPE'} ?  $dhcp{$num}{'TYPE'} : "pc";
+
+
+#print "DEBUG: $num\n";
+       	if ($type eq 'netboot') {
+			do_netboot($num, $name, $mac, '65.198.68.144', "/usr/local/export/pxe", "pxeboot");
+		} elsif ($type eq 'goldnetboot' or $type eq 'prodnetboot') {
+			do_netboot($num, $name, $mac, '65.246.244.228', "/usr/local/export/pxe", "pxeboot");
+		} elsif ($type eq 'devnetboot') {
+			do_netboot($num, $name, $mac, '65.246.244.3', "/usr/local/export/pxe", "pxeboot");
+		} elsif ($type eq 'lfanetboot') {
+			do_netboot($num, $name, $mac, '65.246.244.3', "/usr/local/export/lfaboot", "pxeboot");
+		} elsif ($type eq 'ris') {
+			do_netboot($num, $name, $mac, '65.246.245.13', '', "startrom.com");
+		} else {
+			&do_pc($num, $name, $mac);
+		}
+	}
+	print "\n";
+};
+
+#  NOTE: Does not print closing "}"
+sub do_generic {
+	my ($num, $name, $mac) = @_;
+	my $ipaddr = num2ip($num);
+	($ntname, @junk) = split(/\./, $name);
+        print qq#
+	host $name {
+		hardware ethernet $mac;
+		fixed-address $ipaddr;
+		option host-name "$name";
+#;
+#  NOTE: Does not print closing } bracket
+};
+
+##############################################################
+#  TEMPLATE FOR: any / Windows
+##############################################################
+sub do_pc {
+	my ($num, $name, $mac) = @_;
+	do_generic($num, $name, $mac);
+	my ($ntname, @junk) = split(/\./, $name);
+#	print "DEBUG: ntname= ",  $ntname, "\n";
+	print qq#\t\tddns-hostname "#, "\U$ntname", qq#";\n#;
+	print qq#\t}\n#;
+};
+
+
+##############################################################
+#  TEMPLATE FOR: NETBOOT
+##############################################################
+sub do_netboot {
+	my ($num, $name, $mac, $defserver, $defrootpath, $deffilename) = @_;
+#	print "DEBUG: $num, $name, $mac, $defserver, $defrootpath, $deffilename\n";
+
+	# Print the generic start for a host:
+	do_generic($num, $name, $mac);
+
+	my ($server, $rootpath, $filename);
+	# Permit overrides:
+	$server   = ( $dhcp{$num}{'SERVER'} ?  $dhcp{$num}{'SERVER'} : $defserver );
+	$rootpath = ( $dhcp{$num}{'PATH'}   ?  $dhcp{$num}{'PATH'} : $defrootpath );
+	$filename = ( $dhcp{$num}{'FILE'}   ?  $dhcp{$num}{'FILE'} : $deffilename );
+
+	print qq#		next-server $server;\n#;
+	print qq#		option root-path "$rootpath"; filename "$filename";\n# if $rootpath;
+	print qq#		filename "$filename";\n# if ($filename and not $rootpath);
+	print qq#	}\n#;
+};
+
