@@ -4,7 +4,7 @@
 $TTL 60M
 
 @	IN SOA	juice.cibernet.com. hostmaster.cibernet.com (
-			:serial:	;serial (version)
+			298	;serial (version)
 			1H	;refresh period
 			15M	;retry refresh this often
 			30D	;expiration period

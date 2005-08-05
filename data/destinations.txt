@@ -1,0 +1,29 @@
+
+
+#
+# cibernet.com destinations
+#
+
+EXTERNAL.16.113.212.in-addr.arpa -> /tmp/var/named/112-127.16.113.212.in-addr.arpa.zone
+
+EXTERNAL.6.113.212.in-addr.arpa -> /tmp/var/named/64-127.6.113.212.in-addr.arpa.zone
+
+EXTERNAL.100.134.66.in-addr.arpa -> /tmp/var/named/100.134.66.in-addr.arpa.zone
+
+EXTERNAL.cibernet.com -> whatexit.org:/var/named/. shell.whatexit.org:/tmp/.
+# EXTERNAL.named.conf -> whatexit.org:/var/named/???
+# EXTERNAL.named.root
+
+#  NATed networks:
+INTERNAL.cibernet.com -> /tmp/var/named/cibernet.com..zone
+
+INTERNAL.cibernet.com -> /tmp/var/named/cibernet.net..zone
+INTERNAL.cibernet.com -> /tmp/var/named/cibernet.biz..zone
+
+INTERNAL.240.1.10.in-addr.arpa -> /tmp/var/named/240.1.10.in-addr.arpa.zone
+INTERNAL.201.1.10.in-addr.arpa -> /tmp/var/named/201.1.10.in-addr.arpa.zone
+INTERNAL.1.168.192.in-addr.arpa -> /tmp/var/named/1.168.192.in-addr.arpa.zone
+
+# INTERNAL.named.conf
+# SLAVE.named.conf
+

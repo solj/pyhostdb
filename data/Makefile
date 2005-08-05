@@ -16,19 +16,28 @@ gennamedconf-clean:
 	rm -f INTERNAL.named.conf EXTERNAL.named.conf SLAVE.named.conf
 
 INTERNAL.named.conf: ../zoneconf.txt
-	mkdnsconf INTERNAL <../zoneconf.txt >$@
+	mknamedconf INTERNAL <../zoneconf.txt >$@
 
 EXTERNAL.named.conf: ../zoneconf.txt 
-	mkdnsconf EXTERNAL <../zoneconf.txt >$@
+	mknamedconf EXTERNAL <../zoneconf.txt >$@
 
 SLAVE.named.conf: ../zoneconf.txt 
-	mkdnsconf SLAVE    <../zoneconf.txt >$@
+	mknamedconf SLAVE    <../zoneconf.txt >$@
 
 #
 # Generate zones
 #
-genzones: ../zoneconf.txt ../hostdb.txt
+genzones: newserial ../zoneconf.txt ../hostdb.txt
 	mkzones -z ../zoneconf.txt <../hostdb.txt 
+
+
+newserial:
+	echo `date +%Y%m%d%H%M` - 200508051414 | bc >serial
+
+# Note: We subtract a constant from the above date string to
+# bring it down to something that will fit in a 32-bit int.
+# I don't go for the yyymmddc serial number format that a lot of
+# people use.  Why clue people in to when things changed last?
 
 
 # ROOTCACHE STUFF:
@@ -43,4 +52,18 @@ rootcache-clean:
 
 EXTERNAL.named.root:
 	checkrootcache
+
+#
+# Push
+push: push-local push-remote
+
+push-local: destinations.mk
+	make -f destinations.mk push-local
+
+push-remote: destinations.mk
+	make -f destinations.mk push-remote
+
+destinations.mk: ../destinations.txt
+	mkdir -p Done PrevPlainVersion SerialsAdded
+	mkdestinations <../destinations.txt >destinations.mk
 
