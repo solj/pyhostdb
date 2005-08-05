@@ -4,7 +4,7 @@
 $TTL 60M
 
 @	IN SOA	juice.cibernet.com. hostmaster.cibernet.com (
-			332	;serial (version)
+			403	;serial (version)
 			1H	;refresh period
 			15M	;retry refresh this often
 			30D	;expiration period
@@ -521,9 +521,6 @@ test556            IN A       10.1.240.24
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 test557            IN A       10.1.240.25
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-test558            IN A       10.1.240.26
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 pie-84             IN A       65.126.153.84

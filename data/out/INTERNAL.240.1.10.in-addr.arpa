@@ -26,4 +26,3 @@ $TTL 60M
 23                 IN PTR     test555.cibernet.com.
 24                 IN PTR     test556.cibernet.com.
 25                 IN PTR     test557.cibernet.com.
-26                 IN PTR     test558.cibernet.com.

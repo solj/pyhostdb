@@ -2,6 +2,8 @@
 
 all: EXTERNAL.named.root gennamedconf genzones
 
+reload-all: reload-local reload-remote
+
 clean: rootcache-clean gennamedconf-clean
 
 monthly: rootcache
@@ -55,7 +57,7 @@ EXTERNAL.named.root:
 
 #
 # Push
-push: push-local push-remote
+push: push-local push-remote reload-all
 
 push-local: destinations.mk
 	make -f destinations.mk push-local
@@ -66,4 +68,13 @@ push-remote: destinations.mk
 destinations.mk: ../destinations.txt
 	mkdir -p Done PrevPlainVersion SerialsAdded
 	mkdestinations <../destinations.txt >destinations.mk
+
+#
+# Reload named
+reload-local:
+	ndc reload
+
+reload-remote:
+	ssh gsp.whatexit.org cd /etc && make named-reload
+	ssh joisey.whatexit.org cd /etc && make named-reload
 

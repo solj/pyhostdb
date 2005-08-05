@@ -4,7 +4,7 @@
 $TTL 60M
 
 @	IN SOA	ny2.streambolt.com. hostmaster.cibernet.com (
-			332	;serial (version)
+			403	;serial (version)
 			1H	;refresh period
 			15M	;retry refresh this often
 			30D	;expiration period

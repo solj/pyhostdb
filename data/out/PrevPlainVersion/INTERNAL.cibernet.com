@@ -523,9 +523,6 @@ test556            IN A       10.1.240.24
 test557            IN A       10.1.240.25
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-test558            IN A       10.1.240.26
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
 pie-84             IN A       65.126.153.84
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.

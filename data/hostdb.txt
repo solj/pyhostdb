@@ -1,4 +1,6 @@
 
+#10.1.240.26	test558.cibernet.com
+
 
 # Networks in use by Cibernet
 #212.113.16.112/28  Allocated to us by Level3
@@ -296,7 +298,6 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 10.1.240.23	test555.cibernet.com
 10.1.240.24	test556.cibernet.com
 10.1.240.25	test557.cibernet.com
-10.1.240.26	test558.cibernet.com
 
 
 65.126.153.84 pie-84.cibernet.com ISMULTIHOMED=pie.cibernet.com
