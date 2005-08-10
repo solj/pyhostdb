@@ -1,0 +1,110 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my ($left, $right, @sources, @dests);
+my ($safe);
+my (@remoteitems, @localitems);
+my $cmd;
+my %seen;
+
+# Turn a filepath into something that is safe to use as a filename.
+# (A perl guru might be able to do this in one line.)
+sub safename {
+	my ($name) = @_;
+	$_ = $name;
+
+	# the ones that we're really worred about
+    s/_/__/g;
+    s/:/_C/g;
+    s[/][_L]g;
+    s/\\/_B/g;
+
+	# 0 thru 9 (shifted)
+    s/!/_1/g;
+    s/\@/_2/g;
+    s/#/_3/g;
+    s/\$/_4/g;
+    s/%/_5/g;
+    s/\^/_6/g;
+    s/&/_7/g;
+    s/\*/_8/g;
+    s/\(/_9/g;
+    s/\)/_0/g;
+
+	# Others:
+    s/\+/_a/g;
+    s/`/_b/g;
+    s/\]/_c/g;
+    s/=/_e/g;
+    s/>/_G/g;
+    s/</_L/g;
+    s/\[/_o/g;
+    s/\|/_p/g;
+    s/"/_Q/g;
+    s/\?/_q/g;
+    s/ /_s/g;
+    s/;/_S/g;
+    s/'/_T/g;
+    s/~/_t/g;
+
+	return $_;
+}
+
+print "\nall: push-local\n";
+
+my $copycmd;
+
+while (<>) {
+	# process whitespace, comments, and continuations:
+	chomp;
+	# the order of the next three lines is very important
+	s/#.*//;        # toss comments
+	next if /^\s*$/;        # skip blank lines
+	redo if (/\\\s*$/) && ($_ .= <>);     # handle continuations
+
+	# Parse the line:
+	($left, $right) = split( /\s+->\s*/, $_, 2 );
+	#print "LEFT=$left\n";
+	#print "RIGHT=$right\n";
+
+	foreach my $src ( split( " ", $left) ) {
+		foreach my $dst ( split( " ", $right) ) {
+			$safe = safename($dst);
+
+			#print "#Copy $src to $dst\n";
+			die "Can't copy from $src!  Must stay within the directory!" if $src  =~ /\//;
+			die "Can't copy from $src!  No colons allowed!" if $src  =~ /:/;
+
+			if ($dst =~ /:/) {
+				$copycmd = "scp";
+				push @remoteitems, "Done/$safe";
+			} else {
+				$copycmd = "cp";
+				push @localitems, "Done/$safe";
+			}
+
+$cmd = <<HERE
+Done/$safe: SerialsAdded/$src
+\t\@updatezone $copycmd $src $dst
+\t\@date >Done/$safe
+HERE
+;			print "\n", $cmd unless $seen{"Done/$safe"}++;
+
+$cmd = <<HERE
+SerialsAdded/$src: $src
+\t\@sed 's/:serial:/'\`cat serial\`'/g' <$src >SerialsAdded/$src
+HERE
+;			print "\n", $cmd unless $seen{"SerialsAdded/$src"}++;
+
+
+		}
+	}
+
+}
+
+print "\n";
+print "push-all: @localitems @remoteitems\n\n";
+print "push-local: @localitems\n\n";
+print "push-remote: @remoteitems\n\n";
+

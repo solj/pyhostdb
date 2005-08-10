@@ -358,7 +358,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #192.168.1.16	UNUSED192168116.cibernet.com
 #192.168.1.17	UNUSED192168117.cibernet.com
 #192.168.1.18	UNUSED192168118.cibernet.com
-#192.168.1.19	UNUSED192168119.cibernet.com
+192.168.1.19	babel.cibernet.com
 192.168.1.20	oduk01.cibernet.com
 192.168.1.21	oduk02.cibernet.com
 #192.168.1.22	UNUSED192168122.cibernet.com

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cmd="$1" ; shift
+src="$1" ; shift
+dst="$1" ; shift
+
+#echo CMD=$cmd
+#echo SRC=$src
+#echo DST=$dst
+
+prevdir=PrevPlainVersion
+donedir=Done
+serialdir=SerialsAdded
+
+touch $prevdir/$src
+if ! cmp -s $src $prevdir/$src ;
+then
+	echo UPDATING $cmd $src $dst
+	copy-if-change $src $prevdir/$src
+	#sed 's/:serial:/'`cat serial`'/g' <$src >$serialdir/$src
+	$cmd $serialdir/$src $dst
+fi
