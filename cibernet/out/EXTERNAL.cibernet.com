@@ -1,128 +1,139 @@
 
 ;
 
-$TTL 60M
+$TTL 1h
 
-@	IN SOA	ny2.streambolt.com. hostmaster.cibernet.com (
+@	IN SOA	shell.cibernet.com. hostmaster.cibernet.com (
 			:serial:	;serial (version)
-			1H	;refresh period
-			15M	;retry refresh this often
-			30D	;expiration period
-			60M	;minimum TTL
+			3h	;refresh period
+			1h	;retry refresh this often
+			1w	;expiration period
+			1h	;minimum TTL
 		)
 
-                   IN NS      ny2.streambolt.com.
-                   IN NS      ns5.whatexit.org.
+                   IN NS      shell
+gbc                IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 mtm-test           IN A       212.113.16.122
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 mtm                IN A       212.113.16.123
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ocdemo             IN A       212.113.16.126
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+oldstuff           IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 one1clear-beta     IN CNAME   tart
 oneclear-uat       IN A       212.113.16.124
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+support            IN A       66.134.100.74
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 mdcov-net          IN A       66.134.100.72
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 gw-mdcov           IN A       66.134.100.73
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; gw-mdcov.cibernet.com is part of multihomed host gw.cibernet.com
 gw                 IN A       66.134.100.73
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
 robotron           IN A       66.134.100.74
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 juice              IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 pixnj-paetec       IN A       66.155.166.179
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       66.155.166.179
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
 pixuk-ukext1       IN A       193.195.87.250
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; pixuk-ukext1.cibernet.com is part of multihomed host pixuk.cibernet.com
 pixuk              IN A       193.195.87.250
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
+crumb              IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-net        IN A       212.113.6.64
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 pixukc-ukclan2     IN A       212.113.6.65
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; pixukc-ukclan2.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.6.65
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
 jack               IN A       212.113.6.66
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-bcast      IN A       212.113.6.127
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukcext-net         IN A       212.113.16.112
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 l3rtr-ukcext       IN A       212.113.16.113
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; l3rtr-ukcext.cibernet.com is part of multihomed host l3rtr.cibernet.com
 l3rtr              IN A       212.113.16.113
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
 pixukc-ukcext      IN A       212.113.16.114
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; pixukc-ukcext.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.16.114
 
 cycukc             IN A       212.113.16.115
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukcext-bcast       IN A       212.113.16.119
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukclan-net         IN A       212.113.16.120
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 pix-ukclan         IN A       212.113.16.121
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ; pix-ukclan.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.16.121
 
 tart               IN A       212.113.16.122
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 baked              IN A       212.113.16.123
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 tree               IN A       212.113.16.124
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 juke               IN A       212.113.16.125
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukclan-bcast       IN A       212.113.16.127
-                   IN MX 10   juice
-                   IN MX 20   crumb
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 
 h66-80-151-0       IN A       66.80.151.0
 h66-80-151-1       IN A       66.80.151.1
@@ -1140,7 +1151,6 @@ h193-195-87-246    IN A       193.195.87.246
 h193-195-87-247    IN A       193.195.87.247
 h193-195-87-248    IN A       193.195.87.248
 h193-195-87-249    IN A       193.195.87.249
-h193-195-87-251    IN A       193.195.87.251
 h193-195-87-252    IN A       193.195.87.252
 h193-195-87-253    IN A       193.195.87.253
 h193-195-87-254    IN A       193.195.87.254

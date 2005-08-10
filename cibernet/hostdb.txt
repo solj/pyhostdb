@@ -1,5 +1,5 @@
 
-#10.1.240.26	test558.cibernet.com
+10.1.240.26	test558.cibernet.com
 
 
 # Networks in use by Cibernet
@@ -294,7 +294,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 10.1.240.10	jumbotron.cibernet.com
 10.1.240.20	brumd.cibernet.com
 10.1.240.21	exabytemd.cibernet.com
-10.1.240.22	robotron-inside.cibernet.com ISMULTIHOMED=robotron.cibernet.com
+10.1.240.22	robotron-inside.cibernet.com ISMULTIHOMED=robotron.cibernet.com ANAMES=support.cibernet.com
 10.1.240.23	test555.cibernet.com
 10.1.240.24	test556.cibernet.com
 10.1.240.25	test557.cibernet.com
@@ -320,7 +320,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # dns: 64.105.199.74 64.105.159.250
 66.134.100.72	mdcov-net.cibernet.com@EXTERNAL
 66.134.100.73	gw-mdcov.cibernet.com@EXTERNAL ISROUTER=gw.cibernet.com
-66.134.100.74	robotron.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=support.cibernet.com
+66.134.100.74	robotron.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=support.cibernet.com@EXTERNALONLY
 66.134.100.75	juice.cibernet.com@EXTERNAL ANAMES=ns.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:xserve.cibernet.com:ns1.cibernet.com:careof.cibernet.com:auto.cibernet.com:dev.cibernet.com:gb.cibernet.com:us.cibernet.com:mail.gb.cibernet.com:mail.us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com
 
 # 66.155.166.176/28 paetec
@@ -618,7 +618,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #193.195.87.248	ukext1-net.cibernet.com
 #193.195.87.249	UNUSED19319587249.cibernet.com
 193.195.87.250	pixuk-ukext1.cibernet.com@EXTERNAL ISROUTER=pixuk.cibernet.com ANAMES=ns2.cibernet.com
-193.195.87.251	crumbx.cibernet.com ANAMES=oldstuff.cibernet.com:oldstuff.cibernet.com:gbc.cibernet.com # PIX -> crumb
+193.195.87.251	crumb.cibernet.com@EXTERNALONLY ANAMES=oldstuff.cibernet.com@EXTERNAL:oldstuff.cibernet.com@EXTERNAL:gbc.cibernet.com@EXTERNAL # PIX -> crumb
 #193.195.87.252	UNUSED19319587252.cibernet.com  NOKIA IP330 outside connection
 193.195.87.253 cbnts03-X.cibernet.com ISMULTIHOMED=cbnts03.cibernet.com ISNAT
 #193.195.87.254	UNUSED19319587254.cibernet.com  NOKIA IP330 NAT'ed to CBNTS03

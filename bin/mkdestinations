@@ -19,6 +19,7 @@ sub safename {
     s/:/_C/g;
     s[/][_L]g;
     s/\\/_B/g;
+    s/\./_P/g;
 
 	# 0 thru 9 (shifted)
     s/!/_1/g;
@@ -54,25 +55,30 @@ sub safename {
 print "\nall: push-local\n";
 
 my $copycmd;
+my $line;
 
-while (<>) {
-	# process whitespace, comments, and continuations:
-	chomp;
-	# the order of the next three lines is very important
-	s/#.*//;        # toss comments
-	next if /^\s*$/;        # skip blank lines
-	redo if (/\\\s*$/) && ($_ .= <>);     # handle continuations
+while (defined($line = <>) ) {
+	$line =~ s/#.*//;		# toss comments
+	chomp $line;
+	if ($line =~ s/\\\s*$//) {
+		$line .= <>;
+        	redo unless eof;
+    	}
+
+	$_ = $line;
+	next if /^\s*$/;	# skip blank lines
 
 	# Parse the line:
+	s/\s+/ /;		# unify whitespace
 	($left, $right) = split( /\s+->\s*/, $_, 2 );
-	#print "LEFT=$left\n";
-	#print "RIGHT=$right\n";
+	#print "#LEFT=$left\n";
+	#print "#RIGHT=$right\n";
 
 	foreach my $src ( split( " ", $left) ) {
 		foreach my $dst ( split( " ", $right) ) {
-			$safe = safename($dst);
+			$safe = safename($src . ";" . $dst);
 
-			#print "#Copy $src to $dst\n";
+			print "\n#Copy $src to $dst (Done/$safe)\n";
 			die "Can't copy from $src!  Must stay within the directory!" if $src  =~ /\//;
 			die "Can't copy from $src!  No colons allowed!" if $src  =~ /:/;
 
@@ -86,7 +92,7 @@ while (<>) {
 
 $cmd = <<HERE
 Done/$safe: SerialsAdded/$src
-\t\@updatezone $copycmd $src $dst
+\t\@updatezone $copycmd $src $dst $safe
 \t\@date >Done/$safe
 HERE
 ;			print "\n", $cmd unless $seen{"Done/$safe"}++;

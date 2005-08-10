@@ -1,18 +1,17 @@
 
 ;
 
-$TTL 60M
+$TTL 1h
 
-@	IN SOA	ny2.streambolt.com. hostmaster.cibernet.com (
+@	IN SOA	shell.cibernet.com. hostmaster.cibernet.com (
 			:serial:	;serial (version)
-			1H	;refresh period
-			15M	;retry refresh this often
-			30D	;expiration period
-			60M	;minimum TTL
+			3h	;refresh period
+			1h	;retry refresh this often
+			1w	;expiration period
+			1h	;minimum TTL
 		)
 
-                   IN NS      ny2.streambolt.com.
-                   IN NS      ns5.whatexit.org.
+                   IN NS      shell.cibernet.com.
 0                  IN PTR     h212-113-6-0.cibernet.com.
 1                  IN PTR     h212-113-6-1.cibernet.com.
 2                  IN PTR     h212-113-6-2.cibernet.com.

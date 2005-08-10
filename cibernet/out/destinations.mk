@@ -1,77 +1,78 @@
 
 all: push-local
 
-Done/_Ltmp_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone: SerialsAdded/EXTERNAL.16.113.212.in-addr.arpa
-	@updatezone cp EXTERNAL.16.113.212.in-addr.arpa /tmp/var/named/112-127.16.113.212.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone
+#Copy INTERNAL.cibernet.com to odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com (Done/INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom)
 
-SerialsAdded/EXTERNAL.16.113.212.in-addr.arpa: EXTERNAL.16.113.212.in-addr.arpa
-	@sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.16.113.212.in-addr.arpa >SerialsAdded/EXTERNAL.16.113.212.in-addr.arpa
-
-Done/_Ltmp_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone: SerialsAdded/EXTERNAL.6.113.212.in-addr.arpa
-	@updatezone cp EXTERNAL.6.113.212.in-addr.arpa /tmp/var/named/64-127.6.113.212.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone
-
-SerialsAdded/EXTERNAL.6.113.212.in-addr.arpa: EXTERNAL.6.113.212.in-addr.arpa
-	@sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.6.113.212.in-addr.arpa >SerialsAdded/EXTERNAL.6.113.212.in-addr.arpa
-
-Done/_Ltmp_Lvar_Lnamed_L100.134.66.in-addr.arpa.zone: SerialsAdded/EXTERNAL.100.134.66.in-addr.arpa
-	@updatezone cp EXTERNAL.100.134.66.in-addr.arpa /tmp/var/named/100.134.66.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L100.134.66.in-addr.arpa.zone
-
-SerialsAdded/EXTERNAL.100.134.66.in-addr.arpa: EXTERNAL.100.134.66.in-addr.arpa
-	@sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.100.134.66.in-addr.arpa >SerialsAdded/EXTERNAL.100.134.66.in-addr.arpa
-
-Done/whatexit.org_C_Lvar_Lnamed_L.: SerialsAdded/EXTERNAL.cibernet.com
-	@updatezone scp EXTERNAL.cibernet.com whatexit.org:/var/named/.
-	@date >Done/whatexit.org_C_Lvar_Lnamed_L.
-
-SerialsAdded/EXTERNAL.cibernet.com: EXTERNAL.cibernet.com
-	@sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.cibernet.com >SerialsAdded/EXTERNAL.cibernet.com
-
-Done/shell.whatexit.org_C_Ltmp_L.: SerialsAdded/EXTERNAL.cibernet.com
-	@updatezone scp EXTERNAL.cibernet.com shell.whatexit.org:/tmp/.
-	@date >Done/shell.whatexit.org_C_Ltmp_L.
-
-Done/_Ltmp_Lvar_Lnamed_Lcibernet.com..zone: SerialsAdded/INTERNAL.cibernet.com
-	@updatezone cp INTERNAL.cibernet.com /tmp/var/named/cibernet.com..zone
-	@date >Done/_Ltmp_Lvar_Lnamed_Lcibernet.com..zone
+Done/INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom: SerialsAdded/INTERNAL.cibernet.com
+	@updatezone scp INTERNAL.cibernet.com odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom
+	@date >Done/INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom
 
 SerialsAdded/INTERNAL.cibernet.com: INTERNAL.cibernet.com
 	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.cibernet.com >SerialsAdded/INTERNAL.cibernet.com
 
-Done/_Ltmp_Lvar_Lnamed_Lcibernet.net..zone: SerialsAdded/INTERNAL.cibernet.com
-	@updatezone cp INTERNAL.cibernet.com /tmp/var/named/cibernet.net..zone
-	@date >Done/_Ltmp_Lvar_Lnamed_Lcibernet.net..zone
+#Copy INTERNAL.cibernet.com to adam.cibernet.com:/var/named/INTERNAL.cibernet.com (Done/INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom)
 
-Done/_Ltmp_Lvar_Lnamed_Lcibernet.biz..zone: SerialsAdded/INTERNAL.cibernet.com
-	@updatezone cp INTERNAL.cibernet.com /tmp/var/named/cibernet.biz..zone
-	@date >Done/_Ltmp_Lvar_Lnamed_Lcibernet.biz..zone
+Done/INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom: SerialsAdded/INTERNAL.cibernet.com
+	@updatezone scp INTERNAL.cibernet.com adam.cibernet.com:/var/named/INTERNAL.cibernet.com INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom
+	@date >Done/INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom
 
-Done/_Ltmp_Lvar_Lnamed_L240.1.10.in-addr.arpa.zone: SerialsAdded/INTERNAL.240.1.10.in-addr.arpa
-	@updatezone cp INTERNAL.240.1.10.in-addr.arpa /tmp/var/named/240.1.10.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L240.1.10.in-addr.arpa.zone
+#Copy INTERNAL.1.168.192.in-addr.arpa to odnj01.cibernet.com:/var/named/. (Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
 
-SerialsAdded/INTERNAL.240.1.10.in-addr.arpa: INTERNAL.240.1.10.in-addr.arpa
-	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.240.1.10.in-addr.arpa >SerialsAdded/INTERNAL.240.1.10.in-addr.arpa
-
-Done/_Ltmp_Lvar_Lnamed_L201.1.10.in-addr.arpa.zone: SerialsAdded/INTERNAL.201.1.10.in-addr.arpa
-	@updatezone cp INTERNAL.201.1.10.in-addr.arpa /tmp/var/named/201.1.10.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L201.1.10.in-addr.arpa.zone
-
-SerialsAdded/INTERNAL.201.1.10.in-addr.arpa: INTERNAL.201.1.10.in-addr.arpa
-	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.201.1.10.in-addr.arpa >SerialsAdded/INTERNAL.201.1.10.in-addr.arpa
-
-Done/_Ltmp_Lvar_Lnamed_L1.168.192.in-addr.arpa.zone: SerialsAdded/INTERNAL.1.168.192.in-addr.arpa
-	@updatezone cp INTERNAL.1.168.192.in-addr.arpa /tmp/var/named/1.168.192.in-addr.arpa.zone
-	@date >Done/_Ltmp_Lvar_Lnamed_L1.168.192.in-addr.arpa.zone
+Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.1.168.192.in-addr.arpa
+	@updatezone scp INTERNAL.1.168.192.in-addr.arpa odnj01.cibernet.com:/var/named/. INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
 
 SerialsAdded/INTERNAL.1.168.192.in-addr.arpa: INTERNAL.1.168.192.in-addr.arpa
 	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.1.168.192.in-addr.arpa >SerialsAdded/INTERNAL.1.168.192.in-addr.arpa
 
-push-all: Done/_Ltmp_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L100.134.66.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.com..zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.net..zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.biz..zone Done/_Ltmp_Lvar_Lnamed_L240.1.10.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L201.1.10.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L1.168.192.in-addr.arpa.zone Done/whatexit.org_C_Lvar_Lnamed_L. Done/shell.whatexit.org_C_Ltmp_L.
+#Copy INTERNAL.1.168.192.in-addr.arpa to adam.cibernet.com:/var/named/. (Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
 
-push-local: Done/_Ltmp_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L100.134.66.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.com..zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.net..zone Done/_Ltmp_Lvar_Lnamed_Lcibernet.biz..zone Done/_Ltmp_Lvar_Lnamed_L240.1.10.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L201.1.10.in-addr.arpa.zone Done/_Ltmp_Lvar_Lnamed_L1.168.192.in-addr.arpa.zone
+Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.1.168.192.in-addr.arpa
+	@updatezone scp INTERNAL.1.168.192.in-addr.arpa adam.cibernet.com:/var/named/. INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
 
-push-remote: Done/whatexit.org_C_Lvar_Lnamed_L. Done/shell.whatexit.org_C_Ltmp_L.
+#Copy INTERNAL.201.1.10.in-addr.arpa to odnj01.cibernet.com:/var/named/. (Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
+
+Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.201.1.10.in-addr.arpa
+	@updatezone scp INTERNAL.201.1.10.in-addr.arpa odnj01.cibernet.com:/var/named/. INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+
+SerialsAdded/INTERNAL.201.1.10.in-addr.arpa: INTERNAL.201.1.10.in-addr.arpa
+	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.201.1.10.in-addr.arpa >SerialsAdded/INTERNAL.201.1.10.in-addr.arpa
+
+#Copy INTERNAL.201.1.10.in-addr.arpa to adam.cibernet.com:/var/named/. (Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
+
+Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.201.1.10.in-addr.arpa
+	@updatezone scp INTERNAL.201.1.10.in-addr.arpa adam.cibernet.com:/var/named/. INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+
+#Copy INTERNAL.240.1.10.in-addr.arpa to odnj01.cibernet.com:/var/named/. (Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
+
+Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.240.1.10.in-addr.arpa
+	@updatezone scp INTERNAL.240.1.10.in-addr.arpa odnj01.cibernet.com:/var/named/. INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+
+SerialsAdded/INTERNAL.240.1.10.in-addr.arpa: INTERNAL.240.1.10.in-addr.arpa
+	@sed 's/:serial:/'`cat serial`'/g' <INTERNAL.240.1.10.in-addr.arpa >SerialsAdded/INTERNAL.240.1.10.in-addr.arpa
+
+#Copy INTERNAL.240.1.10.in-addr.arpa to adam.cibernet.com:/var/named/. (Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P)
+
+Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P: SerialsAdded/INTERNAL.240.1.10.in-addr.arpa
+	@updatezone scp INTERNAL.240.1.10.in-addr.arpa adam.cibernet.com:/var/named/. INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+	@date >Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P
+
+#Copy EXTERNAL.cibernet.com to shell.whatexit.org:/var/named/cibernet.com.zone (Done/EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone)
+
+Done/EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone: SerialsAdded/EXTERNAL.cibernet.com
+	@updatezone scp EXTERNAL.cibernet.com shell.whatexit.org:/var/named/cibernet.com.zone EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone
+	@date >Done/EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone
+
+SerialsAdded/EXTERNAL.cibernet.com: EXTERNAL.cibernet.com
+	@sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.cibernet.com >SerialsAdded/EXTERNAL.cibernet.com
+
+push-all:  Done/INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom Done/INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone
+
+push-local: 
+
+push-remote: Done/INTERNAL_Pcibernet_Pcom_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom Done/INTERNAL_Pcibernet_Pcom_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_LINTERNAL_Pcibernet_Pcom Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P1_P168_P192_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P201_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sodnj01_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/INTERNAL_P240_P1_P10_Pin-addr_Parpa_Sadam_Pcibernet_Pcom_C_Lvar_Lnamed_L_P Done/EXTERNAL_Pcibernet_Pcom_Sshell_Pwhatexit_Porg_C_Lvar_Lnamed_Lcibernet_Pcom_Pzone
 

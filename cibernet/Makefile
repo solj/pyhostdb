@@ -4,7 +4,7 @@ all: EXTERNAL.named.root gennamedconf genzones
 
 reload-all: reload-local reload-remote
 
-clean: rootcache-clean gennamedconf-clean
+clean: rootcache-clean gennamedconf-clean  push-clean
 
 monthly: rootcache
 
@@ -34,7 +34,7 @@ genzones: newserial ../zoneconf.txt ../hostdb.txt
 
 
 newserial:
-	echo `date +%Y%m%d%H%M` - 200508051414 | bc >serial
+	echo `date +%Y%m%d%H%M` - 198503989334 | bc >serial
 
 # Note: We subtract a constant from the above date string to
 # bring it down to something that will fit in a 32-bit int.
@@ -57,24 +57,30 @@ EXTERNAL.named.root:
 
 #
 # Push
-push: push-local push-remote reload-all
+push: all push-local push-remote reload-all
+
+push-clean:
+	rm -f destinations.mk Done/* PrevPlainVersion/* SerialsAdded/*
 
 push-local: destinations.mk
+	mkdir -p Done PrevPlainVersion SerialsAdded
 	make -f destinations.mk push-local
 
 push-remote: destinations.mk
+	mkdir -p Done PrevPlainVersion SerialsAdded
 	make -f destinations.mk push-remote
 
-destinations.mk: ../destinations.txt
-	mkdir -p Done PrevPlainVersion SerialsAdded
+destinations.mk: ../destinations.txt ../hostdb.txt
 	mkdestinations <../destinations.txt >destinations.mk
 
 #
 # Reload named
 reload-local:
-	ndc reload
+	kill -1 `cat /var/run/named.pid`
 
 reload-remote:
-	ssh gsp.whatexit.org cd /etc && make named-reload
-	ssh joisey.whatexit.org cd /etc && make named-reload
+	ssh adam.cibernet.com 'kill -1 `cat /var/run/named.pid`'
+	ssh shell.whatexit.org 'kill -1 `cat /var/run/named.pid`'
+	#ssh gsp.whatexit.org cd /etc && make named-reload
+	#ssh joisey.whatexit.org cd /etc && make named-reload
 

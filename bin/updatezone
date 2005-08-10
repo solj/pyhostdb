@@ -3,20 +3,24 @@
 cmd="$1" ; shift
 src="$1" ; shift
 dst="$1" ; shift
+safe="$1" ; shift
 
 #echo CMD=$cmd
 #echo SRC=$src
 #echo DST=$dst
+#echo SAFE=$safe
 
 prevdir=PrevPlainVersion
-donedir=Done
 serialdir=SerialsAdded
+donedir=Done
 
 touch $prevdir/$src
-if ! cmp -s $src $prevdir/$src ;
+if ! cmp -s $src $prevdir/$safe ;
 then
 	echo UPDATING $cmd $src $dst
-	copy-if-change $src $prevdir/$src
+	copy-if-change $src $prevdir/$safe
 	#sed 's/:serial:/'`cat serial`'/g' <$src >$serialdir/$src
 	$cmd $serialdir/$src $dst
+else
+	echo SAME $src $prevdir/$safe
 fi

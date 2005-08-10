@@ -1,22 +1,22 @@
 
 ;
 
-$TTL 60M
+$TTL 1h
 
-@	IN SOA	juice.cibernet.com. hostmaster.cibernet.com (
+@	IN SOA	odnj01.cibernet.com. hostmaster.cibernet.com (
 			:serial:	;serial (version)
-			1H	;refresh period
-			15M	;retry refresh this often
-			30D	;expiration period
-			60M	;minimum TTL
+			3h	;refresh period
+			1h	;retry refresh this often
+			1w	;expiration period
+			1h	;minimum TTL
 		)
 
-                   IN NS      juice.cibernet.com.
+                   IN NS      odnj01.cibernet.com.
                    IN NS      adam.cibernet.com.
 240                IN PTR     ukdser-net.cibernet.com.
 241                IN PTR     uknok-gw.cibernet.com.
 247                IN PTR     ukdser-bcast.cibernet.com.
 250                IN PTR     pixuk-ukext1.cibernet.com.
-251                IN PTR     crumbx.cibernet.com.
+251                IN PTR     crumb.cibernet.com.
 253                IN PTR     cbnts03-X.cibernet.com.
 255                IN PTR     ukext1-bcast.cibernet.com.
