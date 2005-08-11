@@ -63,11 +63,11 @@ push-clean:
 	rm -f destinations.mk Done/* PrevPlainVersion/* SerialsAdded/*
 
 push-local: destinations.mk
-	mkdir -p Done PrevPlainVersion SerialsAdded
+	mkdir -p MS MP DS
 	make -f destinations.mk push-local
 
 push-remote: destinations.mk
-	mkdir -p Done PrevPlainVersion SerialsAdded
+	mkdir -p MS MP DS
 	make -f destinations.mk push-remote
 
 destinations.mk: ../destinations.txt ../hostdb.txt

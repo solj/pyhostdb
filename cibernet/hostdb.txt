@@ -633,7 +633,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # dns: 209.244.0.3 209.244.0.4
 212.113.6.64	ukclan2-net.cibernet.com@EXTERNAL
 212.113.6.65	pixukc-ukclan2.cibernet.com@EXTERNAL ISROUTER=pixukc.cibernet.com
-212.113.6.66	jack.cibernet.com@EXTERNAL
+212.113.6.66	jack.cibernet.com@EXTERNAL ANAME=one1clear.cibernet.com@EXTERNAL
 #212.113.6.67	.cibernet.com@EXTERNAL
 #212.113.6.68	.cibernet.com@EXTERNAL
 #212.113.6.69	.cibernet.com@EXTERNAL

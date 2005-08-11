@@ -4,8 +4,9 @@ use strict;
 
 my ($left, $right, @sources, @dests);
 my ($safe);
-my (@remoteitems, @localitems);
+my (@srcitems, @remoteitems, @localitems);
 my $cmd;
+my $locale;
 my %seen;
 
 # Turn a filepath into something that is safe to use as a filename.
@@ -75,33 +76,59 @@ while (defined($line = <>) ) {
 	#print "#RIGHT=$right\n";
 
 	foreach my $src ( split( " ", $left) ) {
+
+		print "\n#Copy SOURCE=$src\n";
+
+		do {
+			push @srcitems, "MP/$src";
+
+			print "\n";
+			print "MP/$src:\n";
+			print "\ttouch MP/$src\n";
+
+			print "\n";
+			print "MS/$src: MP/$src\n";
+			print "\tif ! cmp $src MP/$src ; then echo UPDATING MP/$src ; cp $src MP/$src ; sed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; fi\n";
+		} unless $seen{"MP/$src"}++;
+
 		foreach my $dst ( split( " ", $right) ) {
 			$safe = safename($src . ";" . $dst);
 
-			print "\n#Copy $src to $dst (Done/$safe)\n";
-			die "Can't copy from $src!  Must stay within the directory!" if $src  =~ /\//;
-			die "Can't copy from $src!  No colons allowed!" if $src  =~ /:/;
+			print "\n#Copy ...DEST=$dst ($safe)\n";
+
+			do {
 
 			if ($dst =~ /:/) {
 				$copycmd = "scp";
-				push @remoteitems, "Done/$safe";
+				push @remoteitems, "DS/$safe";
 			} else {
 				$copycmd = "cp";
-				push @localitems, "Done/$safe";
+				push @localitems, "DS/$safe";
 			}
 
-$cmd = <<HERE
-Done/$safe: SerialsAdded/$src
-\t\@updatezone $copycmd $src $dst $safe
-\t\@date >Done/$safe
-HERE
-;			print "\n", $cmd unless $seen{"Done/$safe"}++;
+				print "\n";
+				print "DS/$safe: MS/$src\n";
+				print "\t$copycmd MS/$src $dst\n";
+				print "\tcp MS/$src DS/$safe\n";
+			} unless $seen{"DS/$safe"}++;
 
-$cmd = <<HERE
-SerialsAdded/$src: $src
-\t\@sed 's/:serial:/'\`cat serial\`'/g' <$src >SerialsAdded/$src
-HERE
-;			print "\n", $cmd unless $seen{"SerialsAdded/$src"}++;
+
+#			#print "\n#Copy $src to $dst (Done/$safe)\n";
+#			die "Can't copy from $src!  Must stay within the directory!" if $src  =~ /\//;
+#			die "Can't copy from $src!  No colons allowed!" if $src  =~ /:/;
+
+#$cmd = <<HERE
+#Done/$safe: SerialsAdded/$src
+#\t\@updatezone $copycmd $src $dst $safe
+#\t\@date >Done/$safe
+#HERE
+#;			print "\n", $cmd unless $seen{"Done/$safe"}++;
+#
+#$cmd = <<HERE
+#SerialsAdded/$src: $src
+#\t\@sed 's/:serial:/'\`cat serial\`'/g' <$src >SerialsAdded/$src
+#HERE
+#;			print "\n", $cmd unless $seen{"SerialsAdded/$src"}++;
 
 
 		}
@@ -110,7 +137,7 @@ HERE
 }
 
 print "\n";
-print "push-all: @localitems @remoteitems\n\n";
-print "push-local: @localitems\n\n";
-print "push-remote: @remoteitems\n\n";
+print "push-all: @srcitems @localitems @remoteitems\n\n";
+print "push-local: @srcitems @localitems\n\n";
+print "push-remote: @srcitems @remoteitems\n\n";
 
