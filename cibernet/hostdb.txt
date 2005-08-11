@@ -1,5 +1,5 @@
 
-10.1.240.26	test558.cibernet.com
+#10.1.240.26	test558.cibernet.com
 
 
 # Networks in use by Cibernet

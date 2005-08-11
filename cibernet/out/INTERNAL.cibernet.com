@@ -523,9 +523,6 @@ test556            IN A       10.1.240.24
 test557            IN A       10.1.240.25
                    IN MX 10   juice
                    IN MX 20   crumb
-test558            IN A       10.1.240.26
-                   IN MX 10   juice
-                   IN MX 20   crumb
 pie-84             IN A       65.126.153.84
                    IN MX 10   juice
                    IN MX 20   crumb
