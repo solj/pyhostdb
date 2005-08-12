@@ -27,10 +27,6 @@ $TTL 1h
 11                 IN PTR     candy.cibernet.com.
 12                 IN PTR     skin.cibernet.com.
 13                 IN PTR     core.cibernet.com.
-16                 IN PTR     as_Vonage.cibernet.com.
-17                 IN PTR     dhp_Vonage.cibernet.com.
-18                 IN PTR     ck_Vonage.cibernet.com.
-19                 IN PTR     jmh_Vonage.cibernet.com.
 20                 IN PTR     odnj01.cibernet.com.
 21                 IN PTR     shawnmac.cibernet.com.
 22                 IN PTR     criley.cibernet.com.

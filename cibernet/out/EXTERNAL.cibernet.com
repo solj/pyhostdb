@@ -12,7 +12,10 @@ $TTL 1h
 		)
 
                    IN NS      shell
-gbc                IN A       193.195.87.251
+bruukc             IN A       212.113.6.67
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mtm-failover       IN A       66.80.151.141
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm-test           IN A       212.113.16.122
@@ -24,17 +27,20 @@ mtm                IN A       212.113.16.123
 ocdemo             IN A       212.113.16.126
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-oldstuff           IN A       193.195.87.251
+one1clear-beta     IN CNAME   tart
+one1clear          IN A       212.113.6.66
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-one1clear-beta     IN CNAME   tart
 oneclear-uat       IN A       212.113.16.124
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 support            IN A       66.134.100.74
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-pie-84             IN A       65.126.153.84
+granny             IN A       66.80.151.141
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+candy              IN A       66.80.151.142
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mdcov-net          IN A       66.134.100.72
@@ -54,11 +60,25 @@ robotron           IN A       66.134.100.74
 juice              IN A       66.134.100.75
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+mdcov-bcast        IN A       66.134.100.79
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+sonicwall-ceo      IN A       66.155.166.178
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 pixnj-paetec       IN A       66.155.166.179
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       66.155.166.179
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+pie-paetec         IN A       66.155.166.180
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pie-paetec.cibernet.com is part of multihomed host pie.cibernet.com
+pie                IN A       66.155.166.180
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 
@@ -71,6 +91,9 @@ pixuk              IN A       193.195.87.250
                    IN MX 20   cluster5a.us.messagelabs.com.
 
 crumb              IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cbnts03            IN A       193.195.87.253
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-net        IN A       212.113.6.64
@@ -288,8 +311,6 @@ h66-80-151-137     IN A       66.80.151.137
 h66-80-151-138     IN A       66.80.151.138
 h66-80-151-139     IN A       66.80.151.139
 h66-80-151-140     IN A       66.80.151.140
-h66-80-151-141     IN A       66.80.151.141
-h66-80-151-142     IN A       66.80.151.142
 h66-80-151-143     IN A       66.80.151.143
 h66-80-151-144     IN A       66.80.151.144
 h66-80-151-145     IN A       66.80.151.145
@@ -479,7 +500,6 @@ h66-134-100-71     IN A       66.134.100.71
 h66-134-100-76     IN A       66.134.100.76
 h66-134-100-77     IN A       66.134.100.77
 h66-134-100-78     IN A       66.134.100.78
-h66-134-100-79     IN A       66.134.100.79
 h66-134-100-80     IN A       66.134.100.80
 h66-134-100-81     IN A       66.134.100.81
 h66-134-100-82     IN A       66.134.100.82
@@ -835,8 +855,6 @@ h66-155-166-174    IN A       66.155.166.174
 h66-155-166-175    IN A       66.155.166.175
 h66-155-166-176    IN A       66.155.166.176
 h66-155-166-177    IN A       66.155.166.177
-h66-155-166-178    IN A       66.155.166.178
-h66-155-166-180    IN A       66.155.166.180
 h66-155-166-181    IN A       66.155.166.181
 h66-155-166-182    IN A       66.155.166.182
 h66-155-166-183    IN A       66.155.166.183
@@ -1164,7 +1182,6 @@ h193-195-87-247    IN A       193.195.87.247
 h193-195-87-248    IN A       193.195.87.248
 h193-195-87-249    IN A       193.195.87.249
 h193-195-87-252    IN A       193.195.87.252
-h193-195-87-253    IN A       193.195.87.253
 h193-195-87-254    IN A       193.195.87.254
 h193-195-87-255    IN A       193.195.87.255
 

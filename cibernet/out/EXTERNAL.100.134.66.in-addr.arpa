@@ -91,7 +91,7 @@ $TTL 1h
 76                 IN PTR     h66-134-100-76.cibernet.com.
 77                 IN PTR     h66-134-100-77.cibernet.com.
 78                 IN PTR     h66-134-100-78.cibernet.com.
-79                 IN PTR     h66-134-100-79.cibernet.com.
+79                 IN PTR     mdcov-bcast.cibernet.com.
 80                 IN PTR     h66-134-100-80.cibernet.com.
 81                 IN PTR     h66-134-100-81.cibernet.com.
 82                 IN PTR     h66-134-100-82.cibernet.com.

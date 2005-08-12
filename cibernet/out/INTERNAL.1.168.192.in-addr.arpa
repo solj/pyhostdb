@@ -14,6 +14,8 @@ $TTL 1h
                    IN NS      odnj01.cibernet.com.
                    IN NS      adam.cibernet.com.
 0                  IN PTR     uklan-net.cibernet.com.
+1                  IN PTR     gw-uklan.cibernet.com.
+2                  IN PTR     indianokia-uklan.cibernet.com.
 15                 IN PTR     cbnts04.cibernet.com.
 19                 IN PTR     babel.cibernet.com.
 20                 IN PTR     oduk01.cibernet.com.
@@ -21,7 +23,7 @@ $TTL 1h
 71                 IN PTR     mail01.cibernet.com.
 103                IN PTR     hp8550.cibernet.com.
 155                IN PTR     hp4000n.cibernet.com.
-230                IN PTR     CBNTS01.cibernet.com.
+230                IN PTR     cbnts01.cibernet.com.
 231                IN PTR     cbnts02.cibernet.com.
 251                IN PTR     crumb.cibernet.com.
 254                IN PTR     pixuk-lan.cibernet.com.
