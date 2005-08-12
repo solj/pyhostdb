@@ -407,9 +407,11 @@ sub extractzone {
 
 # The forward lookup:
 sub forward {
-	my ($name, $num, $int, $ext) = @_;
+	my ($name, $num, $int, $ext, $dupok) = @_;
 #	print "DEBUG CALLS: forward(", $name, ", ", $num, ")\n";
-	warn "$name is a duplicate host" if $name2num{$name};
+	if ($name2num{$name} and ! $dupok) {
+		warn "$name is a duplicate host"
+	}
 	$name2num{$name} = $num;
 	$db{$name}{'AI'} = $num if $int;
 	$db{$name}{'AX'} = $num if $ext;
@@ -431,13 +433,15 @@ sub multihome {
 
 sub processname {
 	my ($item) = @_;
-	return (1, 0, $item) unless $item =~ /@/;
+	return (1, 0, 0, $item) unless $item =~ /@/;
 	my ($name, $scope) = split('@', $item);
 #	print "DEBUG: processname $name $scope\n";
-	if ($scope eq 'EXTERNALONLY') {
-		return (0, 1, $name);
+	if ($scope eq 'INBOUNDNAT') {
+		return (0, 1, 1, $name);
+	} elsif ($scope eq 'EXTERNALONLY') {
+		return (0, 1, 0, $name);
 	} elsif ($scope eq 'EXTERNAL') {
-		return (1, 1, $name);
+		return (1, 1, 0, $name);
 	} else {
 		die "I don't understand \@$scope: $!";
 	}
@@ -447,7 +451,7 @@ sub processname {
 sub parsehostlist {
 	# Parse the hostlist.txt
 	my ($cmd, @opt);
-	my ($name, $num, $isint, $isext);
+	my ($name, $num, $isint, $isext, $dupok);
 	while (<>) {
 		chomp;
 		s/^\s+//g;
@@ -466,7 +470,7 @@ sub parsehostlist {
 		} elsif ($cmd =~ /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) {
 			$num = ip2num( $cmd );
 			$opt[0] = dhcptemplate( $num ) if $opt[0] and $opt[0] eq "DHCP_POOL";
-			($isint, $isext, $name) = processname( shift @opt );
+			($isint, $isext, $dupok, $name) = processname( shift @opt );
 #print "DEBUG: $isint $isext $name\n";
 			# Check for duplicates:
 			warn "duplicate entry for $cmd" if defined( $num2name{$num} );
@@ -474,14 +478,14 @@ sub parsehostlist {
 			$num2name{$num} = $name;
 			# Store the forward-lookup stuff:
 #print "DEBUG forward: $name  $num  $isint  $isext\n";
-			forward($name, $num, $isint, $isext);
+			forward($name, $num, $isint, $isext, $dupok);
 			# Store the DHCP stuff:
-			my ($key, $value, $pn, $isinta, $isexta, $isintc, $isextc);
+			my ($key, $value, $pn, $isinta, $isexta, $dupoka, $isintc, $isextc, $dupokc);
 			foreach my $field ( @opt ) {
 				($key, $value) = split /=/, $field;
 				if ($key eq   'ANAMES') {
 					foreach my $h ( split(':', $value)) {
-						($isinta, $isexta, $pn) = processname($h);
+						($isinta, $isexta, $dupoka, $pn) = processname($h);
 						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEI'});
 						$db{ $pn }{'ANAMEI'} = $num if $isinta;
 						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEX'});
@@ -490,7 +494,7 @@ sub parsehostlist {
 				} elsif ($key eq   'CNAMES') {
 					#$db{$name}{'CNAMES'} = $value;
 					foreach my $h ( split(':', $value)) {
-						($isintc, $isextc, $pn) = processname($h);
+						($isintc, $isextc, $dupokc, $pn) = processname($h);
 #print "DEBUG: CNAMES processname returned $isintc, $isextc, $pn\n";
 						warn "$h is a duplicate (CNAME)" if defined($db{$pn}{'CNAMEI'});
 						$db{ $pn }{'CNAMEI'} = $name if $isintc;
