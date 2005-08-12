@@ -17,7 +17,7 @@ while (<>) {
 		; # do nothing
 	} elsif (/\tIN A\t/) {
 		# A: Record for later. If it is the second time we've seen
-		# this IP, store it as an ANAME.
+		# this IP, store it as an ANAMES.
 		my $ip = $opt[0];
 		if ($ip2host{$ip}) {
 			if ($ip2anames{$ip}) {
