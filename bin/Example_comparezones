@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Example program to show how one might compare a legacy, hand-crafted, zone
+# with a newly generated zone.
+
+OLD=/var/named/cibernet.com..zone
+NEW=INTERNAL.cibernet.com
+DOMAIN=cibernet.com.
+
+cannonzone $DOMAIN		<$OLD	|
+	egrep "IN A"			|
+	awk '{ print $4 " " $0 }'	|
+	sortbyip |cut -d" " -f2-	> old.txt
+
+cannonzone $DOMAIN		<$NEW	|
+	egrep "IN A"			|
+	awk '{ print $4 " " $0 }'	|
+	sortbyip |cut -d" " -f2-	> new.txt
+
+echo Lines only in $OLD:
+echo "     " comm -23 old.txt new.txt
+echo Lines only in $NEW:
+echo "     " comm -13 old.txt new.txt
+echo Lines different in each:
+echo "     " comm -3 old.txt new.txt
