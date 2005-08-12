@@ -34,6 +34,9 @@ oneclear-uat       IN A       212.113.16.124
 support            IN A       66.134.100.74
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+pie-84             IN A       65.126.153.84
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 mdcov-net          IN A       66.134.100.72
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -82,6 +85,15 @@ pixukc             IN A       212.113.6.65
                    IN MX 20   cluster5a.us.messagelabs.com.
 
 jack               IN A       212.113.6.66
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+alexandria         IN A       212.113.6.67
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+jukeukc            IN A       212.113.6.68
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+tweek              IN A       212.113.6.69
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-bcast      IN A       212.113.6.127
@@ -1220,9 +1232,6 @@ h212-113-6-60      IN A       212.113.6.60
 h212-113-6-61      IN A       212.113.6.61
 h212-113-6-62      IN A       212.113.6.62
 h212-113-6-63      IN A       212.113.6.63
-h212-113-6-67      IN A       212.113.6.67
-h212-113-6-68      IN A       212.113.6.68
-h212-113-6-69      IN A       212.113.6.69
 h212-113-6-70      IN A       212.113.6.70
 h212-113-6-71      IN A       212.113.6.71
 h212-113-6-72      IN A       212.113.6.72

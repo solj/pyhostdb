@@ -79,9 +79,9 @@ $TTL 1h
 64                 IN PTR     ukclan2-net.cibernet.com.
 65                 IN PTR     pixukc-ukclan2.cibernet.com.
 66                 IN PTR     jack.cibernet.com.
-67                 IN PTR     h212-113-6-67.cibernet.com.
-68                 IN PTR     h212-113-6-68.cibernet.com.
-69                 IN PTR     h212-113-6-69.cibernet.com.
+67                 IN PTR     alexandria.cibernet.com.
+68                 IN PTR     jukeukc.cibernet.com.
+69                 IN PTR     tweek.cibernet.com.
 70                 IN PTR     h212-113-6-70.cibernet.com.
 71                 IN PTR     h212-113-6-71.cibernet.com.
 72                 IN PTR     h212-113-6-72.cibernet.com.

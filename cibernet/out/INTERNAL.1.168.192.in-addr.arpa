@@ -20,7 +20,6 @@ $TTL 1h
 21                 IN PTR     oduk02.cibernet.com.
 71                 IN PTR     mail01.cibernet.com.
 103                IN PTR     hp8550.cibernet.com.
-150                IN PTR     tweek.cibernet.com.
 155                IN PTR     hp4000n.cibernet.com.
 230                IN PTR     CBNTS01.cibernet.com.
 231                IN PTR     cbnts02.cibernet.com.

@@ -64,9 +64,6 @@ mtm                IN A       212.113.16.123
 newjuice           IN A       66.80.151.139
                    IN MX 10   juice
                    IN MX 20   crumb
-nj                 IN A       66.155.166.180
-                   IN MX 10   juice
-                   IN MX 20   crumb
 ns                 IN A       66.134.100.75
                    IN MX 10   juice
                    IN MX 20   crumb
@@ -523,12 +520,6 @@ test556            IN A       10.1.240.24
 test557            IN A       10.1.240.25
                    IN MX 10   juice
                    IN MX 20   crumb
-pie-84             IN A       65.126.153.84
-                   IN MX 10   juice
-                   IN MX 20   crumb
-; pie-84.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       65.126.153.84
-
 mdmega-net         IN A       66.80.151.136
                    IN MX 10   juice
                    IN MX 20   crumb
@@ -595,19 +586,18 @@ pixnj-paetec       IN A       66.155.166.179
 ; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       66.155.166.179
 
+pie-paetec         IN A       66.155.166.180
+                   IN MX 10   juice
+                   IN MX 20   crumb
+; pie-paetec.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       66.155.166.180
+
 mtm-dev            IN A       66.155.166.181
                    IN MX 10   juice
                    IN MX 20   crumb
-; mtm-dev.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       66.155.166.181
-
 devcvs             IN A       66.155.166.182
                    IN MX 10   juice
                    IN MX 20   crumb
-; devcvs.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       66.155.166.182
-
 uklan-net          IN A       192.168.1.0
                    IN MX 10   juice
                    IN MX 20   crumb
@@ -628,9 +618,6 @@ mail01             IN A       192.168.1.71
                    IN MX 20   crumb
                    IN MX 0    mail01
 hp8550             IN A       192.168.1.103
-                   IN MX 10   juice
-                   IN MX 20   crumb
-tweek              IN A       192.168.1.150
                    IN MX 10   juice
                    IN MX 20   crumb
 hp4000n            IN A       192.168.1.155
@@ -696,6 +683,15 @@ pixukc             IN A       212.113.6.65
                    IN MX 20   crumb
 
 jack               IN A       212.113.6.66
+                   IN MX 10   juice
+                   IN MX 20   crumb
+alexandria         IN A       212.113.6.67
+                   IN MX 10   juice
+                   IN MX 20   crumb
+jukeukc            IN A       212.113.6.68
+                   IN MX 10   juice
+                   IN MX 20   crumb
+tweek              IN A       212.113.6.69
                    IN MX 10   juice
                    IN MX 20   crumb
 dhcp-212-113-6-70  IN A       212.113.6.70

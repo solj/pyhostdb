@@ -60,7 +60,7 @@ EXTERNAL.named.root:
 push: all push-local push-remote reload-all
 
 push-clean:
-	rm -f destinations.mk Done/* PrevPlainVersion/* SerialsAdded/*
+	rm -f destinations.mk MP/* MS/* DS/*
 
 push-local: destinations.mk
 	mkdir -p MS MP DS

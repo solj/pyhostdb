@@ -11,11 +11,12 @@ INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
 	->							\
-		odnj01.cibernet.com:/var/named/.		\
-		adam.cibernet.com:/var/named/.			
+		adam.cibernet.com:/var/named/.			\
+		odnj01.cibernet.com:/var/named/.		
 
 EXTERNAL.cibernet.com -> shell.whatexit.org:/var/named/cibernet.com.zone
 
+# --- the rest is experimental
 
 #EXTERNAL.16.113.212.in-addr.arpa -> /tmp/var/named/112-127.16.113.212.in-addr.arpa.zone
 #
