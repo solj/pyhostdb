@@ -181,16 +181,21 @@ sub rrns {
 sub rrmx {
 	my ($zone, $scope, $name) = @_;
 	#print "DEFMX $scope = ", $defmx{ $scope }, "\n";
+	if ($db{$name}{'ISMAILSERVER'}) {
+		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
+		$hostmx{"$name:$name"}++;
+	}
+	if (($db{$name}{'ISMAILSERVERI'}) and ($scope eq 'INTERNAL')) {
+print "DEBUG: $name $zone $scope\n";
+		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
+		$hostmx{"$name:$name"}++;
+	}
 	if ( defined( $defmx{ $scope } )) {
 		foreach my $i ( split(';', $defmx{ $scope }) ) {
 			my ($pri, $host) = split(' ', $i);
 			next if $hostmx{"$name:$host"}++;
 			rr( $zone, $name, "MX $pri", shortname($zone, $host));
 		}
-	}
-	if ($db{$name}{'ISMAILSERVER'}) {
-		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
-		$hostmx{"$name:$name"}++;
 	}
 }
 
@@ -504,6 +509,8 @@ sub parsehostlist {
 					}
 				} elsif ($key eq   'ISMAILSERVER') {
 					$db{$name}{'ISMAILSERVER'} = 1;
+				} elsif ($key eq   'ISMAILSERVERI') {
+					$db{$name}{'ISMAILSERVERI'} = 1;
 				} else {
 					$dhcp{$num}{$key} = ( $value ? $value : 1 );
 				}
