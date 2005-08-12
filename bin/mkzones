@@ -181,12 +181,7 @@ sub rrns {
 sub rrmx {
 	my ($zone, $scope, $name) = @_;
 	#print "DEFMX $scope = ", $defmx{ $scope }, "\n";
-	if ($db{$name}{'ISMAILSERVER'}) {
-		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
-		$hostmx{"$name:$name"}++;
-	}
-	if (($db{$name}{'ISMAILSERVERI'}) and ($scope eq 'INTERNAL')) {
-print "DEBUG: $name $zone $scope\n";
+	if (($db{$name}{'ISMAILSERVER'}) or ($db{$name}{'ISMAILSERVERI'} and $scope eq 'INTERNAL')) {
 		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
 		$hostmx{"$name:$name"}++;
 	}
