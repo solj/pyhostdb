@@ -1,14 +1,12 @@
 
-#10.1.240.26	test558.cibernet.com
-
-
 # Networks in use by Cibernet
-#212.113.16.112/28  Allocated to us by Level3
-
-
+# 212.113.16.112/28	Allocated to us by Level3
+# 10.1.240.0/24		Maryland
+# 10.1.201.0/24		NJ
+# 192.168.1.0/24	UK Office
 
 # Note:
-# Each site will have the following IP layout:
+# Each office will have the following IP layout:
 #	
 #   .1            old router
 #   .2            PIX
@@ -19,7 +17,7 @@
 # .196 thru .255  reserved for future
 #	
 # DHCP in London Office:	
-#         .100 thru .200 -- crumb's DHCP server
+#         .100 thru .200 -- UK mac xserve's DHCP server
 #
 
 DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
@@ -28,7 +26,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 10.1.201.1	pie-1.cibernet.com  ISMULTIHOMED=pie.cibernet.com
 10.1.201.2	pixnj-lan.cibernet.com ISROUTER=pixnj.cibernet.com
 10.1.201.3	hp7100nj.cibernet.com
-10.1.201.4	pie-4.cibernet.com ISMULTIHOMED=pie.cibernet.com ANAME=nj.cibernet.com@EXTERNAL
+10.1.201.4	pie-4.cibernet.com ISMULTIHOMED=pie.cibernet.com
 10.1.201.5	pie-5.cibernet.com ISMULTIHOMED=pie.cibernet.com
 10.1.201.6	pie-6.cibernet.com ISMULTIHOMED=pie.cibernet.com
 10.1.201.7	seed.cibernet.com
@@ -40,10 +38,10 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 10.1.201.13	core.cibernet.com ANAMES=oneclear-dev.cibernet.com
 #10.1.201.14	UNUSED10120114.cibernet.com
 #10.1.201.15	UNUSED10120115.cibernet.com
-10.1.201.16	as_Vonage.cibernet.com CNAME=tel19085175116.cibernet.com
-10.1.201.17	dhp_Vonage.cibernet.com CNAME=tel19085175117.cibernet.com
-10.1.201.18	ck_Vonage.cibernet.com CNAME=tel19085175118.cibernet.com
-10.1.201.19	jmh_Vonage.cibernet.com CNAME=tel19085175159.cibernet.com
+#10.1.201.16	as_Vonage.cibernet.com CNAMES=tel19085175116.cibernet.com
+#10.1.201.17	dhp_Vonage.cibernet.com CNAMES=tel19085175117.cibernet.com
+#10.1.201.18	ck_Vonage.cibernet.com CNAMES=tel19085175118.cibernet.com
+#10.1.201.19	jmh_Vonage.cibernet.com CNAMES=tel19085175159.cibernet.com
 10.1.201.20	odnj01.cibernet.com
 10.1.201.21	shawnmac.cibernet.com
 10.1.201.22	criley.cibernet.com
@@ -285,22 +283,263 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # 10.1.240.1/24 mdlan
 # netmask: 255.255.255.0
 # dns: 10.1.240.1
-10.1.240.1	juice-mdlan.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com CNAME=cal.cibernet.com
+10.1.240.0	mdlan-net.cibernet.com
+10.1.240.1	juice-mdlan.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com CNAMES=cal.cibernet.com
 10.1.240.2	pixmd-mdlan.cibernet.com ISROUTER=pixmd.cibernet.com ANAMES=pixmd-lan.cibernet.com
 10.1.240.3	cycmd.cibernet.com
 10.1.240.4	vpnmd-in.cibernet.com
 10.1.240.5	green.cibernet.com
 10.1.240.6	adam.cibernet.com
+#10.1.240.7	UNUSED1012407.cibernet.com
+#10.1.240.8	UNUSED1012408.cibernet.com
+#10.1.240.9	UNUSED1012409.cibernet.com
 10.1.240.10	jumbotron.cibernet.com
+10.1.240.11	granny.cibernet.com ANAMES=mtm-failover.cibernet.com
+#10.1.240.12	UNUSED10124012.cibernet.com
+#10.1.240.13	UNUSED10124013.cibernet.com
+#10.1.240.14	UNUSED10124014.cibernet.com
+#10.1.240.15	UNUSED10124015.cibernet.com
+#10.1.240.16	UNUSED10124016.cibernet.com
+#10.1.240.17	UNUSED10124017.cibernet.com
+#10.1.240.18	UNUSED10124018.cibernet.com
+#10.1.240.19	UNUSED10124019.cibernet.com
 10.1.240.20	brumd.cibernet.com
 10.1.240.21	exabytemd.cibernet.com
 10.1.240.22	robotron-inside.cibernet.com ISMULTIHOMED=robotron.cibernet.com ANAMES=support.cibernet.com
 10.1.240.23	test555.cibernet.com
 10.1.240.24	test556.cibernet.com
 10.1.240.25	test557.cibernet.com
+#10.1.240.26	UNUSED10124026.cibernet.com
+#10.1.240.27	UNUSED10124027.cibernet.com
+#10.1.240.28	UNUSED10124028.cibernet.com
+#10.1.240.29	UNUSED10124029.cibernet.com
+#10.1.240.30	UNUSED10124030.cibernet.com
+#10.1.240.31	UNUSED10124031.cibernet.com
+#10.1.240.32	UNUSED10124032.cibernet.com
+#10.1.240.33	UNUSED10124033.cibernet.com
+#10.1.240.34	UNUSED10124034.cibernet.com
+#10.1.240.35	UNUSED10124035.cibernet.com
+#10.1.240.36	UNUSED10124036.cibernet.com
+#10.1.240.37	UNUSED10124037.cibernet.com
+#10.1.240.38	UNUSED10124038.cibernet.com
+#10.1.240.39	UNUSED10124039.cibernet.com
+#10.1.240.40	UNUSED10124040.cibernet.com
+#10.1.240.41	UNUSED10124041.cibernet.com
+#10.1.240.42	UNUSED10124042.cibernet.com
+#10.1.240.43	UNUSED10124043.cibernet.com
+#10.1.240.44	UNUSED10124044.cibernet.com
+#10.1.240.45	UNUSED10124045.cibernet.com
+#10.1.240.46	UNUSED10124046.cibernet.com
+#10.1.240.47	UNUSED10124047.cibernet.com
+#10.1.240.48	UNUSED10124048.cibernet.com
+#10.1.240.49	UNUSED10124049.cibernet.com
+#10.1.240.50	UNUSED10124050.cibernet.com
+#10.1.240.51	UNUSED10124051.cibernet.com
+#10.1.240.52	UNUSED10124052.cibernet.com
+#10.1.240.53	UNUSED10124053.cibernet.com
+#10.1.240.54	UNUSED10124054.cibernet.com
+#10.1.240.55	UNUSED10124055.cibernet.com
+#10.1.240.56	UNUSED10124056.cibernet.com
+#10.1.240.57	UNUSED10124057.cibernet.com
+#10.1.240.58	UNUSED10124058.cibernet.com
+#10.1.240.59	UNUSED10124059.cibernet.com
+#10.1.240.60	UNUSED10124060.cibernet.com
+#10.1.240.61	UNUSED10124061.cibernet.com
+#10.1.240.62	UNUSED10124062.cibernet.com
+#10.1.240.63	UNUSED10124063.cibernet.com
+#10.1.240.64	UNUSED10124064.cibernet.com
+#10.1.240.65	UNUSED10124065.cibernet.com
+10.1.240.66	DHCP_POOL
+10.1.240.67	DHCP_POOL
+10.1.240.68	DHCP_POOL
+10.1.240.69	DHCP_POOL
+10.1.240.70	DHCP_POOL
+10.1.240.71	DHCP_POOL
+10.1.240.72	DHCP_POOL
+10.1.240.73	DHCP_POOL
+10.1.240.74	DHCP_POOL
+10.1.240.75	DHCP_POOL
+10.1.240.76	DHCP_POOL
+10.1.240.77	DHCP_POOL
+10.1.240.78	DHCP_POOL
+10.1.240.79	DHCP_POOL
+10.1.240.80	DHCP_POOL
+10.1.240.81	DHCP_POOL
+10.1.240.82	DHCP_POOL
+10.1.240.83	DHCP_POOL
+10.1.240.84	DHCP_POOL
+10.1.240.85	DHCP_POOL
+10.1.240.86	DHCP_POOL
+10.1.240.87	DHCP_POOL
+10.1.240.88	DHCP_POOL
+10.1.240.89	DHCP_POOL
+10.1.240.90	DHCP_POOL
+10.1.240.91	DHCP_POOL
+10.1.240.92	DHCP_POOL
+10.1.240.93	DHCP_POOL
+10.1.240.94	DHCP_POOL
+10.1.240.95	DHCP_POOL
+10.1.240.96	DHCP_POOL
+10.1.240.97	DHCP_POOL
+10.1.240.98	DHCP_POOL
+10.1.240.99	DHCP_POOL
+10.1.240.100	DHCP_POOL
+10.1.240.101	DHCP_POOL
+10.1.240.102	DHCP_POOL
+10.1.240.103	DHCP_POOL
+10.1.240.104	DHCP_POOL
+10.1.240.105	DHCP_POOL
+10.1.240.106	DHCP_POOL
+10.1.240.107	DHCP_POOL
+10.1.240.108	DHCP_POOL
+10.1.240.109	DHCP_POOL
+10.1.240.110	DHCP_POOL
+10.1.240.111	DHCP_POOL
+10.1.240.112	DHCP_POOL
+10.1.240.113	DHCP_POOL
+10.1.240.114	DHCP_POOL
+10.1.240.115	DHCP_POOL
+10.1.240.116	DHCP_POOL
+10.1.240.117	DHCP_POOL
+10.1.240.118	DHCP_POOL
+10.1.240.119	DHCP_POOL
+10.1.240.120	DHCP_POOL
+10.1.240.121	DHCP_POOL
+10.1.240.122	DHCP_POOL
+10.1.240.123	DHCP_POOL
+10.1.240.124	DHCP_POOL
+10.1.240.125	DHCP_POOL
+10.1.240.126	DHCP_POOL
+#10.1.240.127	UNUSED101240127.cibernet.com
+#10.1.240.128	UNUSED101240128.cibernet.com
+#10.1.240.129	UNUSED101240129.cibernet.com
+#10.1.240.130	UNUSED101240130.cibernet.com
+#10.1.240.131	UNUSED101240131.cibernet.com
+#10.1.240.132	UNUSED101240132.cibernet.com
+#10.1.240.133	UNUSED101240133.cibernet.com
+#10.1.240.134	UNUSED101240134.cibernet.com
+#10.1.240.135	UNUSED101240135.cibernet.com
+#10.1.240.136	UNUSED101240136.cibernet.com
+#10.1.240.137	UNUSED101240137.cibernet.com
+#10.1.240.138	UNUSED101240138.cibernet.com
+#10.1.240.139	UNUSED101240139.cibernet.com
+#10.1.240.140	UNUSED101240140.cibernet.com
+#10.1.240.141	UNUSED101240141.cibernet.com
+#10.1.240.142	UNUSED101240142.cibernet.com
+#10.1.240.143	UNUSED101240143.cibernet.com
+#10.1.240.144	UNUSED101240144.cibernet.com
+#10.1.240.145	UNUSED101240145.cibernet.com
+#10.1.240.146	UNUSED101240146.cibernet.com
+#10.1.240.147	UNUSED101240147.cibernet.com
+#10.1.240.148	UNUSED101240148.cibernet.com
+#10.1.240.149	UNUSED101240149.cibernet.com
+#10.1.240.150	UNUSED101240150.cibernet.com
+#10.1.240.151	UNUSED101240151.cibernet.com
+#10.1.240.152	UNUSED101240152.cibernet.com
+#10.1.240.153	UNUSED101240153.cibernet.com
+#10.1.240.154	UNUSED101240154.cibernet.com
+#10.1.240.155	UNUSED101240155.cibernet.com
+#10.1.240.156	UNUSED101240156.cibernet.com
+#10.1.240.157	UNUSED101240157.cibernet.com
+#10.1.240.158	UNUSED101240158.cibernet.com
+#10.1.240.159	UNUSED101240159.cibernet.com
+#10.1.240.160	UNUSED101240160.cibernet.com
+#10.1.240.161	UNUSED101240161.cibernet.com
+#10.1.240.162	UNUSED101240162.cibernet.com
+#10.1.240.163	UNUSED101240163.cibernet.com
+#10.1.240.164	UNUSED101240164.cibernet.com
+#10.1.240.165	UNUSED101240165.cibernet.com
+#10.1.240.166	UNUSED101240166.cibernet.com
+#10.1.240.167	UNUSED101240167.cibernet.com
+#10.1.240.168	UNUSED101240168.cibernet.com
+#10.1.240.169	UNUSED101240169.cibernet.com
+#10.1.240.170	UNUSED101240170.cibernet.com
+#10.1.240.171	UNUSED101240171.cibernet.com
+#10.1.240.172	UNUSED101240172.cibernet.com
+#10.1.240.173	UNUSED101240173.cibernet.com
+#10.1.240.174	UNUSED101240174.cibernet.com
+#10.1.240.175	UNUSED101240175.cibernet.com
+#10.1.240.176	UNUSED101240176.cibernet.com
+#10.1.240.177	UNUSED101240177.cibernet.com
+#10.1.240.178	UNUSED101240178.cibernet.com
+#10.1.240.179	UNUSED101240179.cibernet.com
+#10.1.240.180	UNUSED101240180.cibernet.com
+#10.1.240.181	UNUSED101240181.cibernet.com
+#10.1.240.182	UNUSED101240182.cibernet.com
+#10.1.240.183	UNUSED101240183.cibernet.com
+#10.1.240.184	UNUSED101240184.cibernet.com
+#10.1.240.185	UNUSED101240185.cibernet.com
+#10.1.240.186	UNUSED101240186.cibernet.com
+#10.1.240.187	UNUSED101240187.cibernet.com
+#10.1.240.188	UNUSED101240188.cibernet.com
+#10.1.240.189	UNUSED101240189.cibernet.com
+#10.1.240.190	UNUSED101240190.cibernet.com
+#10.1.240.191	UNUSED101240191.cibernet.com
+#10.1.240.192	UNUSED101240192.cibernet.com
+#10.1.240.193	UNUSED101240193.cibernet.com
+#10.1.240.194	UNUSED101240194.cibernet.com
+#10.1.240.195	UNUSED101240195.cibernet.com
+#10.1.240.196	UNUSED101240196.cibernet.com
+#10.1.240.197	UNUSED101240197.cibernet.com
+#10.1.240.198	UNUSED101240198.cibernet.com
+#10.1.240.199	UNUSED101240199.cibernet.com
+#10.1.240.200	UNUSED101240200.cibernet.com
+#10.1.240.201	UNUSED101240201.cibernet.com
+#10.1.240.202	UNUSED101240202.cibernet.com
+#10.1.240.203	UNUSED101240203.cibernet.com
+#10.1.240.204	UNUSED101240204.cibernet.com
+#10.1.240.205	UNUSED101240205.cibernet.com
+#10.1.240.206	UNUSED101240206.cibernet.com
+#10.1.240.207	UNUSED101240207.cibernet.com
+#10.1.240.208	UNUSED101240208.cibernet.com
+#10.1.240.209	UNUSED101240209.cibernet.com
+#10.1.240.210	UNUSED101240210.cibernet.com
+#10.1.240.211	UNUSED101240211.cibernet.com
+#10.1.240.212	UNUSED101240212.cibernet.com
+#10.1.240.213	UNUSED101240213.cibernet.com
+#10.1.240.214	UNUSED101240214.cibernet.com
+#10.1.240.215	UNUSED101240215.cibernet.com
+#10.1.240.216	UNUSED101240216.cibernet.com
+#10.1.240.217	UNUSED101240217.cibernet.com
+#10.1.240.218	UNUSED101240218.cibernet.com
+#10.1.240.219	UNUSED101240219.cibernet.com
+#10.1.240.220	UNUSED101240220.cibernet.com
+#10.1.240.221	UNUSED101240221.cibernet.com
+#10.1.240.222	UNUSED101240222.cibernet.com
+#10.1.240.223	UNUSED101240223.cibernet.com
+#10.1.240.224	UNUSED101240224.cibernet.com
+#10.1.240.225	UNUSED101240225.cibernet.com
+#10.1.240.226	UNUSED101240226.cibernet.com
+#10.1.240.227	UNUSED101240227.cibernet.com
+#10.1.240.228	UNUSED101240228.cibernet.com
+#10.1.240.229	UNUSED101240229.cibernet.com
+#10.1.240.230	UNUSED101240230.cibernet.com
+#10.1.240.231	UNUSED101240231.cibernet.com
+#10.1.240.232	UNUSED101240232.cibernet.com
+#10.1.240.233	UNUSED101240233.cibernet.com
+#10.1.240.234	UNUSED101240234.cibernet.com
+#10.1.240.235	UNUSED101240235.cibernet.com
+#10.1.240.236	UNUSED101240236.cibernet.com
+#10.1.240.237	UNUSED101240237.cibernet.com
+#10.1.240.238	UNUSED101240238.cibernet.com
+#10.1.240.239	UNUSED101240239.cibernet.com
+#10.1.240.240	UNUSED101240240.cibernet.com
+#10.1.240.241	UNUSED101240241.cibernet.com
+#10.1.240.242	UNUSED101240242.cibernet.com
+#10.1.240.243	UNUSED101240243.cibernet.com
+#10.1.240.244	UNUSED101240244.cibernet.com
+#10.1.240.245	UNUSED101240245.cibernet.com
+#10.1.240.246	UNUSED101240246.cibernet.com
+#10.1.240.247	UNUSED101240247.cibernet.com
+#10.1.240.248	UNUSED101240248.cibernet.com
+#10.1.240.249	UNUSED101240249.cibernet.com
+#10.1.240.250	UNUSED101240250.cibernet.com
+#10.1.240.251	UNUSED101240251.cibernet.com
+#10.1.240.252	UNUSED101240252.cibernet.com
+#10.1.240.253	UNUSED101240253.cibernet.com
+10.1.240.254	mdlan-bcast.cibernet.com
 
 
-65.126.153.84 pie-84.cibernet.com@EXTERNALONLY #ISMULTIHOMED=pie.cibernet.com
 
 # 66.80.151.136/29 mdmega
 # netmask 255.255.255.248
@@ -308,10 +547,10 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 66.80.151.136	mdmega-net.cibernet.com
 66.80.151.137	mdmegartr-mdmega.cibernet.com ISROUTER=mdmegartr.cibernet.com
 66.80.151.138	pixmd-megapath.cibernet.com ISROUTER=pixmd.cibernet.com
-66.80.151.139	juice-139.cibernet.com ANAMES=xserve.cibernet.com:newjuice.cibernet.com
+#66.80.151.139	juice-139.cibernet.com ANAMES=xserve.cibernet.com:newjuice.cibernet.com
 66.80.151.140	vpnmd.cibernet.com ANAMES=vpngb.cibernet.com:vpnnj.cibernet.com:vpn.cibernet.com
-66.80.151.141	granny-X.cibernet.com ISMULTIHOMED=granny.cibernet.com ANAMES=mtm-failover.cibernet.com
-#66.80.151.142	candy-X.cibernet.com ISMULTIHOMED=candy.cibernet.com
+66.80.151.141	granny.cibernet.com@INBOUNDNAT ANAMES=mtm-failover.cibernet.com@INBOUNDNAT
+66.80.151.142	candy.cibernet.com@INBOUNDNAT
 66.80.151.143	mdmega-bcast.cibernet.com
 
 
@@ -321,18 +560,22 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 66.134.100.72	mdcov-net.cibernet.com@EXTERNAL
 66.134.100.73	gw-mdcov.cibernet.com@EXTERNAL ISROUTER=gw.cibernet.com
 66.134.100.74	robotron.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=support.cibernet.com@EXTERNALONLY
-66.134.100.75	juice.cibernet.com@EXTERNAL ANAMES=ns.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:xserve.cibernet.com:ns1.cibernet.com:careof.cibernet.com:auto.cibernet.com:dev.cibernet.com:gb.cibernet.com:us.cibernet.com:mail.gb.cibernet.com:mail.us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com
+66.134.100.75	juice.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=ns.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:xserve.cibernet.com:ns1.cibernet.com:careof.cibernet.com:auto.cibernet.com:dev.cibernet.com:gb.cibernet.com:us.cibernet.com:mail.gb.cibernet.com:mail.us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com
+#66.134.100.76	UNUSED6613410076.cibernet.com
+#66.134.100.77	UNUSED6613410077.cibernet.com
+#66.134.100.78	UNUSED6613410078.cibernet.com
+#66.134.100.79	UNUSED6613410079.cibernet.com
+66.134.100.79	mdcov-bcast.cibernet.com@EXTERNAL
 
 # 66.155.166.176/28 paetec
 # netmask: 
 # dns: 64.80.0.162 64.80.233.226
 66.155.166.177	paetecrtr-ceo.cibernet.com ISROUTER=paetecrtr.cibernet.com
-66.155.166.178	sonicwall.cibernet.com
+66.155.166.178	sonicwall-ceo.cibernet.com@EXTERNAL
 66.155.166.179	pixnj-paetec.cibernet.com@EXTERNAL ISROUTER=pixnj.cibernet.com
-#66.155.166.180	pie-paetec.cibernet.com@EXTERNALONLY ISMULTIHOMED=pie.cibernet.com
-66.155.166.180	pie-paetec.cibernet.com ISMULTIHOMED=pie.cibernet.com
-66.155.166.181	mtm-dev.cibernet.com #ISMULTIHOMED=pie.cibernet.com
-66.155.166.182	devcvs.cibernet.com #ISMULTIHOMED=pie.cibernet.com
+66.155.166.180	pie-paetec.cibernet.com@EXTERNAL ISMULTIHOMED=pie.cibernet.com
+66.155.166.181	UNUSED66155166181.cibernet.com	# was mtm-dev.cibernet.com
+66.155.166.182	UNUSED66155166182.cibernet.com	# was devcvs.cibernet.com
 
 # Comcast-NJ
 # 69.142.194.38  we appear as this address to outsiders
@@ -341,8 +584,8 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # netmask: 255.255.255.0
 # dns: 158.152.1.58 158.152.1.43
 192.168.1.0	uklan-net.cibernet.com
-#192.168.1.1	UNUSED19216811.cibernet.com  ???AIRPORT???
-#192.168.1.2	UNUSED19216812.cibernet.com   ???NOKIDA INSIDE???
+192.168.1.1	gw-uklan.cibernet.com ISROUTER=gw.cibernet.com
+192.168.1.2	indianokia-uklan.cibernet.com ISROUTER=indianokia.cibernet.com
 #192.168.1.3	UNUSED19216813.cibernet.com
 #192.168.1.4	UNUSED19216814.cibernet.com
 #192.168.1.5	UNUSED19216815.cibernet.com
@@ -570,7 +813,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #192.168.1.227	UNUSED1921681227.cibernet.com
 #192.168.1.228	UNUSED1921681228.cibernet.com
 #192.168.1.229	UNUSED1921681229.cibernet.com
-192.168.1.230	CBNTS01.cibernet.com
+192.168.1.230	cbnts01.cibernet.com
 192.168.1.231	cbnts02.cibernet.com
 #192.168.1.232	UNUSED1921681232.cibernet.com
 #192.168.1.233	UNUSED1921681233.cibernet.com
@@ -591,7 +834,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #192.168.1.248	UNUSED1921681248.cibernet.com
 #192.168.1.249	UNUSED1921681249.cibernet.com
 #192.168.1.250	UNUSED1921681250.cibernet.com  ???Was cider???
-192.168.1.251	crumb.cibernet.com
+192.168.1.251	crumb.cibernet.com ISMAILSERVER
 #192.168.1.252	UNUSED1921681252.cibernet.com
 #192.168.1.253	UNUSED1921681253.cibernet.com
 192.168.1.254	pixuk-lan.cibernet.com
@@ -619,9 +862,9 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #193.195.87.248	ukext1-net.cibernet.com
 #193.195.87.249	UNUSED19319587249.cibernet.com
 193.195.87.250	pixuk-ukext1.cibernet.com@EXTERNAL ISROUTER=pixuk.cibernet.com ANAMES=ns2.cibernet.com
-193.195.87.251	crumb.cibernet.com@EXTERNALONLY ANAMES=oldstuff.cibernet.com@EXTERNAL:oldstuff.cibernet.com@EXTERNAL:gbc.cibernet.com@EXTERNAL # PIX -> crumb
+193.195.87.251	crumb.cibernet.com@INBOUNDNAT
 #193.195.87.252	UNUSED19319587252.cibernet.com  NOKIA IP330 outside connection
-193.195.87.253 cbnts03-X.cibernet.com ISMULTIHOMED=cbnts03.cibernet.com ISNAT
+193.195.87.253 cbnts03.cibernet.com@INBOUNDNAT ANAMES=cbnts03x.cibernet.com
 #193.195.87.254	UNUSED19319587254.cibernet.com  NOKIA IP330 NAT'ed to CBNTS03
 193.195.87.255	ukext1-bcast.cibernet.com
 
@@ -634,10 +877,10 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # dns: 209.244.0.3 209.244.0.4
 212.113.6.64	ukclan2-net.cibernet.com@EXTERNAL
 212.113.6.65	pixukc-ukclan2.cibernet.com@EXTERNAL ISROUTER=pixukc.cibernet.com
-212.113.6.66	jack.cibernet.com@EXTERNAL ANAME=one1clear.cibernet.com@EXTERNAL
-212.113.6.67	alexandria.cibernet.com@EXTERNAL ANAME=bruukc.cibernet.com@EXTERNAL
+212.113.6.66	jack.cibernet.com@EXTERNAL ANAMES=one1clear.cibernet.com@EXTERNAL
+212.113.6.67	alexandria.cibernet.com@EXTERNAL ANAMES=bruukc.cibernet.com@EXTERNAL
 212.113.6.68	jukeukc.cibernet.com@EXTERNAL
-212.113.6.69	tweek.cibernet.com@EXTERNAL
+212.113.6.69	tweek.cibernet.com@EXTERNAL ISMAILSERVERI
 212.113.6.70	DHCP_POOL
 212.113.6.71	DHCP_POOL
 212.113.6.72	DHCP_POOL
@@ -718,3 +961,5 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 212.113.16.125	juke.cibernet.com@EXTERNAL
 212.113.16.126	cider.cibernet.com ANAMES=ocdemo.cibernet.com@EXTERNAL
 212.113.16.127	ukclan-bcast.cibernet.com@EXTERNAL
+
+#OBSOLETE 65.126.153.84 pie-84.cibernet.com@EXTERNALONLY #ISMULTIHOMED=pie.cibernet.com
