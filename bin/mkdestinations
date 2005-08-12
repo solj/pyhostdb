@@ -90,7 +90,7 @@ while (defined($line = <>) ) {
 			print "MS/$src: $src\n";
 			print "\t\@if [ ! -r MP/$src ] ; \\\n\tthen \\\n\t\techo CREATING MP/$src ; \\\n\t\tcp $src MP/$src ; \\\n\tfi\n";
 			print "\t\@if [ ! -r MS/$src ] ; \\\n\tthen \\\n\t\techo CREATING MS/$src ; \\\n\t\tsed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; \\\n\tfi\n";
-			print "\t\@if ! cmp $src MP/$src ; \\\n\tthen \\\n\t\techo UPDATING MP/$src ; \\\n\t\tcp $src MP/$src ; \\\n\t\tsed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; \\\n\tfi\n";
+			print "\t\@if ! cmp $src MP/$src  > /dev/null ; \\\n\tthen \\\n\t\techo UPDATING MP/$src ; \\\n\t\tcp $src MP/$src ; \\\n\t\tsed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; \\\n\tfi\n";
 		} unless $seen{"MP/$src"}++;
 
 		foreach my $dst ( split( " ", $right) ) {
