@@ -260,11 +260,25 @@ sub setzone {
 	$rrblank=0;
 }
 
+# Process REVDOMAIN command
 sub extractrev {
 	my ($scope, $zone, $class, $startip) = @_;
-
 	my $startnum = ip2num($startip);
 	my $endnum = endnum($class, $startnum);
+	extractrevdata($scope, $zone, $class, $startnum, $endnum);
+}
+
+# Process REVCLASSLESS command
+sub extractrevclassless {
+	my ($scope, $zone, $class, $startip, $endip) = @_;
+	my $startnum = ip2num($startip);
+	my $endnum = ip2num($endip);
+	extractrevdata($scope, $zone, $class, $startnum, $endnum);
+}
+
+# Extract reverse data
+sub extractrevdata {
+	my ($scope, $zone, $class, $startnum, $endnum) = @_;
 
 	for ($num = $startnum; $num <= $endnum; $num++) {
 		# If we've done these already, skip the entire range:

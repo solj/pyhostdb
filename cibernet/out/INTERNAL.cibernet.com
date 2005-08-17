@@ -13,7 +13,7 @@ $TTL 1h
 
                    IN NS      odnj01
                    IN NS      adam
-auto               IN A       66.134.100.75
+auto               IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 bruukc             IN A       212.113.6.67
@@ -23,22 +23,22 @@ bugzilla           IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 cal                IN CNAME   juice-mdlan
-careof             IN A       66.134.100.75
+careof             IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 cbnts03x           IN A       193.195.87.253
                    IN MX 10   juice
                    IN MX 20   crumb
-cibernet.com.      IN A       66.134.100.75
+cibernet.com.      IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
-demoreports        IN A       66.134.100.75
+demoreports        IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
-dev                IN A       66.134.100.75
+gb                 IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
-gb                 IN A       66.134.100.75
+gbc                IN A       192.168.1.251
                    IN MX 10   juice
                    IN MX 20   crumb
 inside             IN A       10.1.240.1
@@ -47,13 +47,7 @@ inside             IN A       10.1.240.1
 labs               IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
-mail               IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
-mail.gb            IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
-mail.us            IN A       66.134.100.75
+mail               IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 mtm-failover       IN A       10.1.240.11
@@ -66,12 +60,6 @@ mtm                IN A       212.113.16.123
                    IN MX 10   juice
                    IN MX 20   crumb
 ns                 IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
-ns1                IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
-ns2                IN A       193.195.87.250
                    IN MX 10   juice
                    IN MX 20   crumb
 ocdemo             IN A       212.113.16.126
@@ -99,7 +87,7 @@ support            IN A       10.1.240.22
 svnweb             IN A       10.1.201.9
                    IN MX 10   juice
                    IN MX 20   crumb
-us                 IN A       66.134.100.75
+us                 IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 vpn                IN A       66.80.151.140
@@ -111,13 +99,10 @@ vpngb              IN A       66.80.151.140
 vpnnj              IN A       66.80.151.140
                    IN MX 10   juice
                    IN MX 20   crumb
-www-test           IN A       66.134.100.75
+www-test           IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
-www                IN A       66.134.100.75
-                   IN MX 10   juice
-                   IN MX 20   crumb
-xserve             IN A       66.134.100.75
+www                IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
 njlan-net          IN A       10.1.201.0
@@ -509,6 +494,9 @@ test556            IN A       10.1.240.24
 test557            IN A       10.1.240.25
                    IN MX 10   juice
                    IN MX 20   crumb
+test26             IN A       10.1.240.26
+                   IN MX 10   juice
+                   IN MX 20   crumb
 dhcp-10-1-240-66   IN A       10.1.240.66
                    IN MX 10   juice
                    IN MX 20   crumb
@@ -819,6 +807,11 @@ cbnts02            IN A       192.168.1.231
 pixuk-lan          IN A       192.168.1.254
                    IN MX 10   juice
                    IN MX 20   crumb
+; pixuk-lan.cibernet.com is part of multihomed host pixuk.cibernet.com
+pixuk              IN A       192.168.1.254
+                   IN MX 10   juice
+                   IN MX 20   crumb
+
 uklan-bcast        IN A       192.168.1.255
                    IN MX 10   juice
                    IN MX 20   crumb
@@ -841,12 +834,13 @@ pixuk-ukext1       IN A       193.195.87.250
                    IN MX 20   crumb
 ; pixuk-ukext1.cibernet.com is part of multihomed host pixuk.cibernet.com
 pixuk              IN A       193.195.87.250
-                   IN MX 10   juice
-                   IN MX 20   crumb
 
 crumb              IN A       192.168.1.251
                    IN MX 0    crumb
                    IN MX 10   juice
+cbnts03            IN A       192.168.1.56
+                   IN MX 10   juice
+                   IN MX 20   crumb
 ukext1-bcast       IN A       193.195.87.255
                    IN MX 10   juice
                    IN MX 20   crumb

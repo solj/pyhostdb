@@ -12,7 +12,28 @@ $TTL 1h
 		)
 
                    IN NS      shell
+auto               IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 bruukc             IN A       212.113.6.67
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+careof             IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cibernet.com.      IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+demoreports        IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gb                 IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gbc                IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mail               IN A       66.134.100.75
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm-failover       IN A       66.80.151.141
@@ -22,6 +43,9 @@ mtm-test           IN A       212.113.16.122
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm                IN A       212.113.16.123
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ns                 IN A       66.134.100.75
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ocdemo             IN A       212.113.16.126
@@ -37,10 +61,53 @@ oneclear-uat       IN A       212.113.16.124
 support            IN A       66.134.100.74
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+us                 IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpn                IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpngb              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+vpnnj              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+www-test           IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+www                IN A       66.134.100.75
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdmega-net         IN A       66.80.151.136
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdmegartr-mdmega   IN A       66.80.151.137
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; mdmegartr-mdmega.cibernet.com is part of multihomed host mdmegartr.cibernet.com
+mdmegartr          IN A       66.80.151.137
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+pixmd-megapath     IN A       66.80.151.138
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixmd-megapath.cibernet.com is part of multihomed host pixmd.cibernet.com
+pixmd              IN A       66.80.151.138
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+vpnmd              IN A       66.80.151.140
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 granny             IN A       66.80.151.141
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 candy              IN A       66.80.151.142
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdmega-bcast       IN A       66.80.151.143
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mdcov-net          IN A       66.134.100.72
@@ -306,12 +373,7 @@ h66-80-151-132     IN A       66.80.151.132
 h66-80-151-133     IN A       66.80.151.133
 h66-80-151-134     IN A       66.80.151.134
 h66-80-151-135     IN A       66.80.151.135
-h66-80-151-136     IN A       66.80.151.136
-h66-80-151-137     IN A       66.80.151.137
-h66-80-151-138     IN A       66.80.151.138
 h66-80-151-139     IN A       66.80.151.139
-h66-80-151-140     IN A       66.80.151.140
-h66-80-151-143     IN A       66.80.151.143
 h66-80-151-144     IN A       66.80.151.144
 h66-80-151-145     IN A       66.80.151.145
 h66-80-151-146     IN A       66.80.151.146

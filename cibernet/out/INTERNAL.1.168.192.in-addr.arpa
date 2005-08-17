@@ -20,6 +20,7 @@ $TTL 1h
 19                 IN PTR     babel.cibernet.com.
 20                 IN PTR     oduk01.cibernet.com.
 21                 IN PTR     oduk02.cibernet.com.
+56                 IN PTR     cbnts03.cibernet.com.
 71                 IN PTR     mail01.cibernet.com.
 103                IN PTR     hp8550.cibernet.com.
 155                IN PTR     hp4000n.cibernet.com.
