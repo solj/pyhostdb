@@ -8,12 +8,12 @@ NEW=INTERNAL.cibernet.com
 DOMAIN=cibernet.com.
 
 cannonzone $DOMAIN		<$OLD	|
-	egrep "IN A"			|
+	grep "IN A"			|
 	awk '{ print $4 " " $0 }'	|
 	sortbyip |cut -d" " -f2-	> old.txt
 
 cannonzone $DOMAIN		<$NEW	|
-	egrep "IN A"			|
+	grep "IN A"			|
 	awk '{ print $4 " " $0 }'	|
 	sortbyip |cut -d" " -f2-	> new.txt
 

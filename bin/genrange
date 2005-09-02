@@ -2,41 +2,115 @@
 
 use strict;
 
-if ($#ARGV != 2) {
-	print "Usage: genrange domain IPADDR count
-For example:
-	genrange example.com 10.1.10.0 128
-";
-	exit 1;
+# Defaults and formats:
+my @FORMATS = (
+		'#$ip\tUNUSED$hex.$DOMAIN',
+		'$ip\tUNUSED$hex.$DOMAIN',
+		'$ip\tUNUSED-$hex.$DOMAIN',
+		);
+my $DOMAIN  = 'cibernet.com';
+
+# Process command line info::
+use Getopt::Std;
+my %opts;
+getopts("hd:12", \%opts);
+sub usage {
+        print <<HERE
+
+$0 [-h] [-d domain] startip count [format]
+   or
+$0 [-h] [-d domain] startip endip [format]
+
+Prints a range of IP addresses in a specifed format.
+
+The default format looks like:
+	#10.1.100.4     UNUSEDA016404.cibernet.com
+	#10.1.100.5     UNUSEDA016405.cibernet.com
+	#10.1.100.6     UNUSEDA016406.cibernet.com
+
+which is expressed by the format string: $FORMATS[0]
+
+    -h           This help menu.
+    -d domain    The domain to use. Default is $DOMAIN
+    -1           Set format to $FORMATS[1]
+    -2           Set format to $FORMATS[2]
+
+    startip      The starting IP address.
+    count        How many IP following to print.
+    endip        Last IP address to list.
+    format       The format to use (defaults to $FORMATS[0])
+
+Format string:
+	\$ip	include the ip address in 1.2.3.4 format
+	\$hex	include the ip address as a hex string: A016406
+
+HERE
+;
+        exit 1;
 }
 
-my $DOMAIN=shift @ARGV; #print "IP=$DOMAIN\n";
+# Process the options:
+
+# Help
+&usage if $#ARGV < 1 or $opts{'h'};
+
+# Parameters:
 my $STARTIP=shift @ARGV; #print "IP=$STARTIP\n";
 my $COUNT=shift @ARGV; #print "COUNT=$COUNT\n";
 
-my @parts = split(/\./, $STARTIP);
-#print "PARTS=", join(":", @parts), "\n";
+# Domain:
+$DOMAIN = $opts{'d'} if $opts{'d'};
 
-# I'm sure there's a better way to convert an IP address into an integer but...
-my $startnum =	($parts[0] << 24) +
+# Select the format string:
+my $FORMAT = $FORMATS[0];		# default
+$FORMAT = $FORMATS[1] if $opts{'1'};	# preset #1
+$FORMAT = $FORMATS[2] if $opts{'2'};	# preset #2
+$FORMAT=shift @ARGV if $#ARGV > -1;	# on the command line
+#print "FORMAT=$FORMAT\n";
+
+# Calculate the start and end IP address and numeric equiv:
+my $startnum = ip2num($STARTIP);
+
+my $endnum;
+if ($COUNT =~ /\./) {		# does value include a "."?
+	# it's an IP addr:
+	$endnum = ip2num($COUNT);
+} else {
+	# it's a count:
+	$endnum = $startnum + $COUNT - 1;
+	$endnum = 0xffffffff if $endnum > 0xffffffff;
+}
+
+my $ip;
+my $hex;
+for (my $i = $startnum; $i <= $endnum; $i++ ) {
+	$ip = num2ip($i);
+	$hex = num2hex($i);
+	#print "#", $ip, "\tUNUSED", $hex, ".", $DOMAIN, "\n";
+	eval print eval qq{"$FORMAT\n";};
+}
+
+# --------------
+
+sub ip2num {
+	my ($ip) = @_;
+	# I'm sure there's a better way to convert an IP address into an integer but...
+	my @parts = split(/\./, $ip);
+	return	($parts[0] << 24) +
 		($parts[1] << 16) +
 		($parts[2] << 8 ) +
 		$parts[3];
-
-my ($ip0, $ip1, $ip2, $ip3);
-my $endnum = $startnum + $COUNT - 1;
-$endnum = 0xffffffff if $endnum > 0xffffffff;
-my $ip;
-for (my $i = $startnum; $i <= $endnum; $i++ ) {
-#  + $COUNT); for my $ip ( $startnum .. ($startnum + $COUNT - 1 ) ) {
-# I'm sure there's a better way to print an integer as an IP address but...
-	$ip = $i;
-	$ip0 = $ip % 256; $ip >>= 8;
-	$ip1 = $ip % 256; $ip >>= 8;
-	$ip2 = $ip % 256; $ip >>= 8;
-	$ip3 = $ip % 256;
-	print "#", $ip3, ".", $ip2, ".", $ip1, ".", $ip0, "\tUNUSED$ip3$ip2$ip1$ip0.$DOMAIN\n";
-
 }
 
+sub num2ip {
+	my ($num) = @_;
+	return	         ($num >> 24)
+		. "." . (($num >> 16) % 256)
+		. "." . (($num >>  8) % 256)
+		. "." .  ($num % 256);
+}
 
+sub num2hex {
+	my ($num) = @_;
+	return sprintf("%08X", $num);
+}
