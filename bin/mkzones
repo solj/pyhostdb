@@ -90,6 +90,10 @@ sub dhcptemplate {
 	my $d = ($num      ) % 256;
 	my $str;
 #print "TEMPLATE=$DHCP_POOL_TEMPLATE\n";
+	unless ($DHCP_POOL_TEMPLATE) {
+		print "ERROR: no DHCP_POOL_TEMPLATE set!\n";
+		$DHCP_POOL_TEMPLATE='dhcp-$a-$b-$c-$d.example.com';
+	}
 	eval qq#\$str = "$DHCP_POOL_TEMPLATE"#; warn $@ if $@;
 #print "STR=$str\n";
 	return $str;
