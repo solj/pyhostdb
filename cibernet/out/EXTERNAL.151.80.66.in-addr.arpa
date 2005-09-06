@@ -3,7 +3,7 @@
 
 $TTL 1h
 
-@	IN SOA	shell.cibernet.com. hostmaster.cibernet.com (
+@	IN SOA	ny2.streambolt.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
 			3h	;refresh period
 			1h	;retry refresh this often
@@ -11,7 +11,8 @@ $TTL 1h
 			1h	;minimum TTL
 		)
 
-                   IN NS      shell.cibernet.com.
+                   IN NS      ny2.streambolt.com.
+                   IN NS      exns01.cibernet.com.
 0                  IN PTR     h66-80-151-0.cibernet.com.
 1                  IN PTR     h66-80-151-1.cibernet.com.
 2                  IN PTR     h66-80-151-2.cibernet.com.
@@ -154,7 +155,7 @@ $TTL 1h
 139                IN PTR     h66-80-151-139.cibernet.com.
 140                IN PTR     vpnmd.cibernet.com.
 141                IN PTR     granny.cibernet.com.
-142                IN PTR     candy.cibernet.com.
+142                IN PTR     robotron.cibernet.com.
 143                IN PTR     mdmega-bcast.cibernet.com.
 144                IN PTR     h66-80-151-144.cibernet.com.
 145                IN PTR     h66-80-151-145.cibernet.com.

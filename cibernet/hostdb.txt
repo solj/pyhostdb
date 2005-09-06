@@ -21,7 +21,7 @@
 #         .100 thru .200 -- UK mac xserve's DHCP server
 #
 
-DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
+DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 
 10.1.201.0	njlan-net.cibernet.com
 10.1.201.1	pie-1.cibernet.com  ISMULTIHOMED=pie.cibernet.com
@@ -288,7 +288,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 10.1.240.1	juice-mdlan.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:careof.cibernet.com:auto.cibernet.com:gb.cibernet.com:us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com CNAMES=cal.cibernet.com
 10.1.240.2	pixmd-mdlan.cibernet.com ISROUTER=pixmd.cibernet.com ANAMES=pixmd-lan.cibernet.com
 10.1.240.3	cycmd.cibernet.com
-10.1.240.4	vpnmd-in.cibernet.com
+10.1.240.4	vpnmd-in.cibernet.com CNAME=vpn-in.cibernet.com
 10.1.240.5	green.cibernet.com
 10.1.240.6	adam.cibernet.com
 #10.1.240.7	UNUSED1012407.cibernet.com
@@ -306,7 +306,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 #10.1.240.19	UNUSED10124019.cibernet.com
 10.1.240.20	brumd.cibernet.com
 10.1.240.21	exabytemd.cibernet.com
-10.1.240.22	robotron-inside.cibernet.com ISMULTIHOMED=robotron.cibernet.com ANAMES=support.cibernet.com
+10.1.240.22	robotron.cibernet.com ANAMES=support.cibernet.com
 10.1.240.23	test555.cibernet.com
 10.1.240.24	test556.cibernet.com
 10.1.240.25	test557.cibernet.com
@@ -548,10 +548,10 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 66.80.151.136	mdmega-net.cibernet.com@EXTERNAL
 66.80.151.137	mdmegartr-mdmega.cibernet.com@EXTERNAL ISROUTER=mdmegartr.cibernet.com
 66.80.151.138	pixmd-megapath.cibernet.com@EXTERNAL ISROUTER=pixmd.cibernet.com
-#66.80.151.139	juice-139.cibernet.com ANAMES=xserve.cibernet.com:newjuice.cibernet.com
+66.80.151.139	juice-139.cibernet.com ANAMES=ns2.cibernet.com@EXTERNAL:us.cibernet.com@INBOUNDNAT:cibernet.com@INBOUNDNAT:www.cibernet.com@INBOUNDNAT:mail.cibernet.com@INBOUNDNAT:careof.cibernet.com@INBOUNDNAT:auto.cibernet.com@INBOUNDNAT:gb.cibernet.com@INBOUNDNAT:us.cibernet.com@INBOUNDNAT:demoreports.cibernet.com@INBOUNDNAT
 66.80.151.140	vpnmd.cibernet.com@EXTERNAL ANAMES=vpngb.cibernet.com@EXTERNAL:vpnnj.cibernet.com@EXTERNAL:vpn.cibernet.com@EXTERNAL
 66.80.151.141	granny.cibernet.com@INBOUNDNAT ANAMES=mtm-failover.cibernet.com@INBOUNDNAT
-66.80.151.142	candy.cibernet.com@INBOUNDNAT
+66.80.151.142	robotron.cibernet.com@INBOUNDNAT ANAMES=support.cibernet.com@INBOUNDNAT
 66.80.151.143	mdmega-bcast.cibernet.com@EXTERNAL
 
 
@@ -560,8 +560,8 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.cibernet.com
 # dns: 64.105.199.74 64.105.159.250
 66.134.100.72	mdcov-net.cibernet.com@EXTERNAL
 66.134.100.73	gw-mdcov.cibernet.com@EXTERNAL ISROUTER=gw.cibernet.com
-66.134.100.74	robotron.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=support.cibernet.com@EXTERNALONLY
-66.134.100.75	juice.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=ns.cibernet.com@EXTERNAL:cibernet.com@INBOUNDNAT:www.cibernet.com@INBOUNDNAT:mail.cibernet.com@INBOUNDNAT:careof.cibernet.com@INBOUNDNAT:auto.cibernet.com@INBOUNDNAT:gb.cibernet.com@INBOUNDNAT:us.cibernet.com@INBOUNDNAT:www-test.cibernet.com@INBOUNDNAT:demoreports.cibernet.com@INBOUNDNAT
+66.134.100.74	robotron-mdcovad.cibernet.com
+66.134.100.75	juice.cibernet.com@EXTERNAL ISMAILSERVER ANAMES=www-test.cibernet.com
 #66.134.100.76	UNUSED6613410076.cibernet.com
 #66.134.100.77	UNUSED6613410077.cibernet.com
 #66.134.100.78	UNUSED6613410078.cibernet.com

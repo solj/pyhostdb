@@ -4,17 +4,29 @@
 # cibernet.com destinations
 #
 
-INTERNAL.cibernet.com  -> odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com
 INTERNAL.cibernet.com  -> adam.cibernet.com:/var/named/INTERNAL.cibernet.com
+INTERNAL.cibernet.com  -> odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com
+INTERNAL.cibernet.com  -> oduk01.cibernet.com:/var/named/INTERNAL.cibernet.com
+INTERNAL.cibernet.com  -> oduk02.cibernet.com:/var/named/INTERNAL.cibernet.com
 
 INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
 	->							\
 		adam.cibernet.com:/var/named/.			\
+		oduk01.cibernet.com:/var/named/.		\
+		oduk02.cibernet.com:/var/named/.		\
 		odnj01.cibernet.com:/var/named/.		
 
-EXTERNAL.cibernet.com -> shell.whatexit.org:/var/named/cibernet.com.zone
+We do not do a "split DNS design" therefore the EXTERNAL.named.root should
+# be used for /var/named/named.ca on all machines:
+EXTERNAL.named.root -> 						\
+		adam.cibernet.com:/var/named/named.ca		\
+		odnj01.cibernet.com:/var/named/named.ca		\
+		oduk01.cibernet.com:/var/named/named.ca		\
+		oduk02.cibernet.com:/var/named/named.ca
+
+EXTERNAL.cibernet.com -> shell.whatexit.org:/var/named/cibernet.com.zone cibernetcorp@cronus.duchscher.com:~cibernetcorp/zones/.
 
 # --- the rest is experimental
 

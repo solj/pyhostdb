@@ -3,7 +3,7 @@
 
 $TTL 1h
 
-@	IN SOA	odnj01.cibernet.com. hostmaster.cibernet.com (
+@	IN SOA	odnj01.cibernet.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
 			3h	;refresh period
 			1h	;retry refresh this often
@@ -13,6 +13,8 @@ $TTL 1h
 
                    IN NS      odnj01.cibernet.com.
                    IN NS      adam.cibernet.com.
+                   IN NS      oduk01.cibernet.com.
+                   IN NS      oduk02.cibernet.com.
 0                  IN PTR     uklan-net.cibernet.com.
 1                  IN PTR     gw-uklan.cibernet.com.
 2                  IN PTR     indianokia-uklan.cibernet.com.

@@ -13,6 +13,8 @@ $TTL 1h
 
                    IN NS      odnj01.cibernet.com.
                    IN NS      adam.cibernet.com.
+                   IN NS      oduk01.cibernet.com.
+                   IN NS      oduk02.cibernet.com.
 240                IN PTR     ukdser-net.cibernet.com.
 241                IN PTR     uknok-gw.cibernet.com.
 247                IN PTR     ukdser-bcast.cibernet.com.
