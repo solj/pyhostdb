@@ -85,14 +85,14 @@ gendhcpdconf-clean:
 
 # Generate the new DHCPd configurtion:
 dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
-	catif ../dhcpd.conf-head		>$@
-	mkzones -d <hostdb.txt			>>$@
-	catif ../INTERNAL.named.conf-tail	>>$@
+	catif        ../dhcpd.conf-head			>$@
+	mkzones -d < ../hostdb.txt			>>$@
+	catif        ../INTERNAL.named.conf-tail	>>$@
 
 #
 # Push
 #
-push: all push-local push-remote reload-all
+push: all push-local push-remote reload
 
 push-clean:
 	rm -f destinations.mk MP/* MS/* DS/*
@@ -114,8 +114,11 @@ reload-local:
 	kill -1 `cat /var/run/named.pid`
 
 reload-remote:
-	ssh adam.cibernet.com 'kill -1 `cat /var/run/named.pid`'
-	ssh shell.whatexit.org 'kill -1 `cat /var/run/named.pid`'
+	ssh adam.cibernet.com	'kill -1 `cat /var/run/named.pid`'
+	ssh odnj01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
+	ssh oduk01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
+	ssh oduk02.cibernet.com	'kill -1 `cat /var/run/named.pid`'
+	ssh shell.whatexit.org	'kill -1 `cat /var/run/named.pid`'
 	#ssh gsp.whatexit.org cd /etc && make named-reload
 	#ssh joisey.whatexit.org cd /etc && make named-reload
 

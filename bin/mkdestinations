@@ -9,6 +9,11 @@ my $cmd;
 my $locale;
 my %seen;
 
+#
+# Todo:
+#	Add some way to specify what command to run to reload the BIND server.
+#
+
 # Turn a filepath into something that is safe to use as a filename.
 # (A perl guru might be able to do this in one line.)
 sub safename {
