@@ -1,10 +1,10 @@
 
 
-all: EXTERNAL.named.root gennamedconf genzones gendhcpdconf
+all: EXTERNAL.named.root gennamedconf genzones
 
-reload: reload-local reload-remote
+reload-all: reload-local reload-remote
 
-clean: rootcache-clean gennamedconf-clean gendhcpdconf-clean push-clean 
+clean: rootcache-clean gennamedconf-clean  push-clean
 
 monthly: rootcache
 
@@ -18,19 +18,13 @@ gennamedconf-clean:
 	rm -f INTERNAL.named.conf EXTERNAL.named.conf SLAVE.named.conf
 
 INTERNAL.named.conf: ../zoneconf.txt
-	catif ../INTERNAL.named.conf-head	>$@
-	mknamedconf INTERNAL <../zoneconf.txt	>>$@
-	catif ../INTERNAL.named.conf-tail	>>$@
+	mknamedconf INTERNAL <../zoneconf.txt >$@
 
 EXTERNAL.named.conf: ../zoneconf.txt 
-	catif ../EXTERNAL.named.conf-head	>$@
-	mknamedconf EXTERNAL <../zoneconf.txt	>>$@
-	catif ../EXTERNAL.named.conf-tail	>>$@
+	mknamedconf EXTERNAL <../zoneconf.txt >$@
 
 SLAVE.named.conf: ../zoneconf.txt 
-	catif ../SLAVE.named.conf-head		>$@
-	mknamedconf SLAVE <../zoneconf.txt	>>$@
-	catif ../SLAVE.named.conf-tail		>>$@
+	mknamedconf SLAVE    <../zoneconf.txt >$@
 
 #
 # Generate zones
@@ -46,8 +40,6 @@ newserial:
 # bring it down to something that will fit in a 32-bit int.
 # I don't go for the yyymmddc serial number format that a lot of
 # people use.  Why clue people in to when things changed last?
-# For a lot of fun, subtract a constant that makes it look
-# like the last update was in 1988.
 
 
 # ROOTCACHE STUFF:
@@ -63,35 +55,8 @@ rootcache-clean:
 EXTERNAL.named.root:
 	checkrootcache
 
-# Use this if you use the same named.root inside and out:
-INTERNAL.named.root: EXTERNAL.named.root
-	cp EXTERNAL.named.root $@
-
-## Use this if you use a different named.root on the inside.
-# 1. Create the named.root that you want in ../INTERNAL.named.root.
-# 2. This recipe will copy it from there.
-#INTERNAL.named.root:
-#	cp ../INTERNAL.named.root $@
-
-
-#
-# DHCP-related stuff
-#
-
-gendhcpdconf: dhcpd.conf
-
-gendhcpdconf-clean:
-	rm -f dhcpd.conf
-
-# Generate the new DHCPd configurtion:
-dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
-	catif ../dhcpd.conf-head		>$@
-	mkzones -d <hostdb.txt			>>$@
-	catif ../INTERNAL.named.conf-tail	>>$@
-
 #
 # Push
-#
 push: all push-local push-remote reload-all
 
 push-clean:

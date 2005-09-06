@@ -1,0 +1,22 @@
+
+;
+
+$TTL 1h
+
+@	IN SOA	fileserver.example.com. hostmaster.example.com (
+			:serial:	;serial (version)
+			3h	;refresh period
+			1h	;retry refresh this often
+			1w	;expiration period
+			1h	;minimum TTL
+		)
+
+                   IN NS      fileserver.example.com.
+                   IN NS      mailserver.example.com.
+0                  IN PTR     ext-net.example.com.
+1                  IN PTR     isp-router.example.com.
+2                  IN PTR     zathras-ext.example.com.
+3                  IN PTR     mailqueue.example.com.
+4                  IN PTR     vector.example.com.
+5                  IN PTR     exweb.example.com.
+255                IN PTR     ext-bcast.example.com.

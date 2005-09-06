@@ -1,0 +1,8 @@
+EXTERNAL.named.conf -> mailqueue:/etc/namedb/named.conf exweb:/etc/namedb/named.conf
+
+EXTERNAL.example.com EXTERNAL.179.32.64.in-addr.arpa EXTERNAL.named.root -> mailqueue:/var/named/. exweb:/var/named/.
+
+INTERNAL.named.conf -> fileserver:/etc/namedb/named.conf exweb:/etc/namedb/named.conf
+
+INTERNAL.example.com INTERNAL.1.1.10.in-addr.arpa INTERNAL.179.32.64.in-addr.arpa -> fileserver:/var/named/. mailserver:/var/named/.
+

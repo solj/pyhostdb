@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# cat if the file exists
+# If no files are listed, cat the empty file.
+
+NONE=true
+
+for i in $* ;
+do
+	if [ -f "$i" ];
+	then
+		cat "$i"
+		NONE=false
+	fi
+done
+
+if $NONE ;
+then
+	cat /dev/null
+fi

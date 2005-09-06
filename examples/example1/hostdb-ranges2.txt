@@ -1,0 +1,20 @@
+10.1.1.0	main-net.example.com
+10.1.1.1	zathras-main.example.com ISROUTER=zathras.example.com
+10.1.1.2	fileserver.example.com
+10.1.1.3	mailserver.example.com   ISMAILSERVER
+10.1.1.4	vector.example.com
+10.1.1.10	staffpc1.example.com MAC=00:b0:d0:a6:cf:f1
+10.1.1.11	staffpc2.example.com MAC=00:b0:d1:a7:c0:d1
+10.1.1.11	staffpc2.example.com MAC=00:b0:c2:b3:c3:d3 TYPE=freebsd
+10.1.1.140	DHCP_POOL
+10.1.1.141	DHCP_POOL
+10.1.1.249	DHCP_POOL
+10.1.1.250	DHCP_POOL
+10.1.1.255	main-bcast.example.com@EXTERNAL
+64.32.179.0	ext-net.example.com@EXTERNAL
+64.32.179.1	isp-router.example.com@EXTERNAL 
+64.32.179.2	zathras-ext.example.com@EXTERNAL  ISROUTER=zathras.example.com@EXTERNAL
+64.32.179.3	mailqueue.example.com@EXTERNAL ISMAILSERVER
+64.32.179.4	vector.example.com@INBOUNDNAT
+64.32.179.5	exweb.example.com ANAME=www.example.com@EXTERNAL
+64.32.179.255	ext-bcast.example.com@EXTERNAL

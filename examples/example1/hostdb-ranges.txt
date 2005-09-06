@@ -1,0 +1,20 @@
+#10.1.1.0	UNUSED0A010100.example.com
+#10.1.1.1	UNUSED0A010101.example.com
+...deleted for space...
+#10.1.1.138	UNUSED0A01018A.example.com
+#10.1.1.139	UNUSED0A01018B.example.com
+10.1.1.140	DHCP_POOL
+10.1.1.141	DHCP_POOL
+...deleted for space...
+10.1.1.249	DHCP_POOL
+10.1.1.250	DHCP_POOL
+#10.1.1.251	UNUSED0A0101FB.example.com
+#10.1.1.252	UNUSED0A0101FC.example.com
+#10.1.1.253	UNUSED0A0101FD.example.com
+#10.1.1.254	UNUSED0A0101FE.example.com
+#10.1.1.255	UNUSED0A0101FF.example.com
+64.32.179.0	ex4020B300.example.com@EXTERNAL
+64.32.179.1	ex4020B301.example.com@EXTERNAL
+...deleted for space...
+64.32.179.254	ex4020B3FE.example.com@EXTERNAL
+64.32.179.255	ex4020B3FF.example.com@EXTERNAL
