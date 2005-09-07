@@ -11,7 +11,8 @@ my %seen;
 
 #
 # Todo:
-#	Add some way to specify what command to run to reload the BIND server.
+#	o  Add some way to specify what command to run to reload the BIND server.
+#	o  Add a destination "diff" which runs "diff $DIFFOPS" for any changed file.
 #
 
 # Turn a filepath into something that is safe to use as a filename.

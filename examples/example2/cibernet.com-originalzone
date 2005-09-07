@@ -1,0 +1,251 @@
+$TTL 86400
+cibernet.com.						SOA	ns.cibernet.com.	admin.cibernet.com.	(
+							2004112123
+							3h	;                           refresh
+							1h	;                           retry
+							1w	;                           expiry
+							5m	 ) ;                           minimum
+
+cibernet.com.					IN	NS	ns2.cibernet.com.
+cibernet.com.					IN	NS	ny2.streambolt.com.
+;cibernet.com.					IN	MX	101	mail.cibernet.com.
+cibernet.com.					IN	MX	10	cluster5.us.messagelabs.com.
+cibernet.com.					IN	MX	20	cluster5a.us.messagelabs.com.
+cibernet.com.					IN	A	66.80.151.139
+ns2.cibernet.com.				IN	A	66.80.151.139
+ns.cibernet.com.				IN	A	66.80.151.139
+gw					IN	A	66.134.100.73
+gw					IN	MX	100	mail.cibernet.com.
+;gw					IN	MX	10	cluster5.us.messagelabs.com.
+;gw					IN	MX	20	cluster5a.us.messagelabs.com.
+ns					IN	A	66.80.151.139
+ns					IN	MX	100	mail.cibernet.com.
+;ns					IN	MX	10	cluster5.us.messagelabs.com.
+;ns					IN	MX	20	cluster5a.us.messagelabs.com.
+juice					IN	A	66.134.100.75
+;juice					IN	MX	100	mail.cibernet.com.
+juice					IN	MX	10	cluster5.us.messagelabs.com.
+juice					IN	MX	20	cluster5a.us.messagelabs.com.
+www					IN	A	66.80.151.139
+www					IN	MX	100	mail.cibernet.com.
+mail					IN	A	66.80.151.139
+mail					IN	MX	1	mail.cibernet.com.
+mail					IN	MX	10	cluster5.us.messagelabs.com.
+mail					IN	MX	20	cluster5a.us.messagelabs.com.
+xserve					IN	A	66.134.100.75
+;xserve					IN	MX	100	mail.cibernet.com.
+xserve					IN	MX	10	cluster5.us.messagelabs.com.
+xserve					IN	MX	20	cluster5a.us.messagelabs.com.
+ns1					IN	A	66.80.151.139
+careof					IN	A	66.134.100.75
+;careof					IN	MX	100	mail.cibernet.com.
+careof					IN	MX	10	cluster5.us.messagelabs.com.
+careof					IN	MX	20	cluster5a.us.messagelabs.com.
+auto					IN	A	66.134.100.75
+;auto					IN	MX	100	mail.cibernet.com.
+auto					IN	MX	10	cluster5.us.messagelabs.com.
+auto					IN	MX	20	cluster5a.us.messagelabs.com.
+dev					IN	A	66.134.100.75
+gb					IN	A	66.80.151.139
+;gb					IN	MX	100	gbc.cibernet.com.
+;gb					IN	MX	101	mail.cibernet.com.
+gb					IN	MX	10	cluster5.us.messagelabs.com.
+gb					IN	MX	20	cluster5a.us.messagelabs.com.
+us					IN	A	66.80.151.139
+;us					IN	MX	101	mail.cibernet.com.
+;us					IN	MX	102	gbc.cibernet.com.
+us					IN	MX	10	cluster5.us.messagelabs.com.
+us					IN	MX	20	cluster5a.us.messagelabs.com.
+mail.gb					IN	A	66.80.151.139
+;mail.gb					IN	MX	10	mail.gb.cibernet.com.
+mail.gb					IN	MX	10	cluster5.us.messagelabs.com.
+mail.gb					IN	MX	20	cluster5a.us.messagelabs.com.
+mail.us					IN	A	66.80.151.139	
+;mail.us					IN	MX	10	mail.gb.cibernet.com.	
+mail.us					IN	MX	10	cluster5.us.messagelabs.com.
+mail.us					IN	MX	20	cluster5a.us.messagelabs.com.
+uknok-gw					IN	A	193.195.87.241	
+uk-gw					IN	A	193.195.87.249	
+pixuk					IN	A	193.195.87.250	
+crumbx					IN	A	193.195.87.251	
+;crumbx					IN	MX	1	crumbx.cibernet.com.	
+;crumbx					IN	MX	10	mail.gb.cibernet.com.	
+crumbx					IN	MX	10	cluster5.us.messagelabs.com.
+crumbx					IN	MX	20	cluster5a.us.messagelabs.com.
+oldstuff					IN	A	193.195.87.251	
+oldstuff					IN	A	193.195.87.251	
+CBNTS03					IN	A	193.195.87.253	
+pixnj					IN	A	66.155.166.179	
+nj					IN	A	66.155.166.180	
+pie					IN	A	66.155.166.180	
+pie					IN	MX	10	mail.cibernet.com.
+cal					IN	A	10.1.240.1
+mtm-dev					IN	A	66.155.166.181	
+devcvs					IN	A	66.155.166.182	
+cbnts04					IN	A	192.168.1.15
+cbnts04					IN	MX	1	mail.gb.cibernet.com.
+oduk01					IN	A	192.168.1.20
+oduk01					IN	MX	1	mail.cibernet.com.
+oduk02					IN	A	192.168.1.21
+oduk02					IN	MX	1	mail.cibernet.com.
+mail01					IN	A	192.168.1.71
+mail01					IN	MX	1	mail01.cibernet.com.
+crumb					IN	A	192.168.1.251	
+crumb					IN	MX	1	crumbx.cibernet.com.	
+crumb					IN	MX	10	mail.gb.cibernet.com.	
+CBNTS01					IN	A	192.168.1.230	
+pixuk-lan					IN	A	192.168.1.254	
+www-test					IN	A	66.80.151.139	
+bugzilla					IN	A	10.1.240.1
+bugzilla					IN	MX	100	mail.cibernet.com.	
+ukcext-net					IN	A	212.113.16.112	
+ukcext-net					IN	MX	100	mail.cibernet.com.	
+l3rtr-ukcext					IN	A	212.113.16.113	
+l3rtr-ukcext					IN	MX	100	mail.cibernet.com.	
+pixukc					IN	A	212.113.16.114	
+pixukc-ukcext					IN	A	212.113.16.114	
+pixukc-ukcext					IN	MX	100	mail.cibernet.com.	
+cycukc					IN	A	212.113.16.115	
+cycukc					IN	MX	100	mail.cibernet.com.	
+un21211316116					IN	A	212.113.16.116	
+un21211316116					IN	MX	100	mail.cibernet.com.	
+un21211316117					IN	A	212.113.16.117	
+un21211316117					IN	MX	100	mail.cibernet.com.	
+un21211316118					IN	A	212.113.16.118	
+un21211316118					IN	MX	100	mail.cibernet.com.	
+ukcext-bcast					IN	A	212.113.16.119	
+ukcext-bcast					IN	MX	100	mail.cibernet.com.	
+ukclan-net					IN	A	212.113.16.120	
+ukclan-net					IN	MX	100	mail.cibernet.com.	
+ukcpix-ukclan					IN	A	212.113.16.121	
+ukcpix-ukclan					IN	MX	100	mail.cibernet.com.	
+one1clear-beta				IN	CNAME	tart.cibernet.com.
+tart					IN	A	212.113.16.122	
+tart					IN	MX	10	mail.cibernet.com.	
+tart					IN	MX	11	cluster5.us.messagelabs.com.
+tart					IN	MX	20	cluster5a.us.messagelabs.com.
+mtm-test					IN	A	212.113.16.122	
+mtm-test					IN	MX	100	mail.cibernet.com.	
+mtm					IN	A	212.113.16.123	
+mtm					IN	MX	10	cluster5.us.messagelabs.com.
+mtm					IN	MX	20	cluster5a.us.messagelabs.com.
+baked					IN	A	212.113.16.123	
+baked					IN	MX	10	cluster5.us.messagelabs.com.
+baked					IN	MX	20	cluster5a.us.messagelabs.com.
+tree					IN	A	212.113.16.124	
+tree					IN	MX	10	mail.cibernet.com.	
+oneclear-uat				IN	A	212.113.16.124
+oneclear-uat				IN	MX	100	mail.cibernet.com.	
+juke					IN	A	212.113.16.125	
+juke					IN	MX	100	mail.cibernet.com.	
+cider					IN	A	212.113.16.126	
+cider					IN	MX	10	mail.cibernet.com.	
+ocdemo					IN	A	212.113.16.126	
+ocdemo					IN	MX	100	mail.cibernet.com.	
+;gbc					IN	A	212.113.16.126	
+gbc					IN	A	193.195.87.251
+;gbc					IN	MX	100	gbc.cibernet.com.	
+;gbc					IN	MX	100	mail.cibernet.com.	
+gbc					IN	MX	10	cluster5.us.messagelabs.com.
+gbc					IN	MX	20	cluster5a.us.messagelabs.com.
+support					IN	A	66.80.151.142
+support					IN	MX	1	support.cibernet.com.	
+;support					IN	MX	100	mail.cibernet.com.	
+support					IN	MX	10	cluster5.us.messagelabs.com.
+support					IN	MX	20	cluster5a.us.messagelabs.com.
+ukclan-bcast					IN	A	212.113.16.127	
+ukclan-bcast					IN	MX	100	mail.cibernet.com.	
+pixmd					IN	A	66.80.151.138	
+pixmd					IN	MX	100	mail.cibernet.com.	
+xserve					IN	A	66.80.151.139	
+newjuice					IN	A	66.80.151.139	
+;newjuice					IN	MX	100	mail.cibernet.com.	
+newjuice					IN	MX	10	cluster5.us.messagelabs.com.
+newjuice					IN	MX	20	cluster5a.us.messagelabs.com.
+vpnmd					IN	A	66.80.151.140	
+vpnmd					IN	MX	100	mail.cibernet.com.	
+vpngb					IN	A	66.80.151.140	
+vpngb					IN	MX	100	mail.cibernet.com.	
+vpnnj					IN	A	66.80.151.140	
+vpnnj					IN	MX	100	mail.cibernet.com.	
+vpn					IN	A	66.80.151.140	
+vpn					IN	MX	100	mail.cibernet.com.	
+granny					IN	A	66.80.151.141	
+granny					IN	MX	10	mail.cibernet.com.	
+mtm-failover				IN	A	66.80.151.141	
+mtm-failover				IN	MX	100	mail.cibernet.com.	
+pixnj-lan					IN	A	10.1.201.2	
+hp7100nj					IN	A	10.1.201.3	
+seed					IN	A	10.1.201.7	
+seed					IN	MX	10	mail.cibernet.com.
+wrt54Gnj					IN	A	10.1.201.8	
+svnweb					IN	A	10.1.201.9	
+sauce					IN	A	10.1.201.9	
+hp2300nj					IN	A	10.1.201.10	
+candy					IN	A	10.1.201.11
+candy					IN	MX	10	mail.cibernet.com.
+oneclear-test				IN	A	10.1.201.11
+skin					IN	A	10.1.201.12
+skin					IN	MX	10	mail.cibernet.com.
+core					IN	A	10.1.201.13
+core					IN	MX	10	mail.cibernet.com.
+oneclear-dev				IN	A	10.1.201.13
+odnj01					IN	A	10.1.201.20
+shawnmac				IN	A	10.1.201.21
+criley					IN	A	10.1.201.22
+kumquat					IN	A	10.1.201.23
+asphalt					IN	A	10.1.201.24
+tarmac					IN	A	10.1.201.25
+macadam					IN	A	10.1.201.26
+linksys-wap54g-1-nj			IN	A	10.1.201.27
+inside					IN	A	10.1.240.1	
+labs					IN	A	10.1.240.1	
+demoreports					IN	A	66.80.151.139	
+demoreports					IN	MX	10	cluster5.us.messagelabs.com.
+demoreports					IN	MX	20	cluster5a.us.messagelabs.com.
+pixmd-lan					IN	A	10.1.240.2	
+cycmd					IN	A	10.1.240.3	
+cycmd					IN	MX	100	mail.cibernet.com.	
+vpn-in					IN	CNAME	vpnmd-in	
+vpnmd-in					IN	A	10.1.240.4	
+vpnmd-in					IN	MX	100	mail.cibernet.com.	
+green						IN	A	10.1.240.5	
+green						IN	MX	100	mail.cibernet.com.	
+adam						IN	A	10.1.240.6	
+adam						IN	MX	100	mail.cibernet.com.	
+brumd						IN	A	10.1.240.20	
+brumd						IN	MX	100	mail.cibernet.com.	
+exabytemd						IN	A	10.1.240.21
+exabytemd						IN	MX	100	mail.cibernet.com.	
+support-inside						IN	A	10.1.240.22
+support-inside						IN	MX	100	mail.cibernet.com.	
+robotron-inside						IN	A	10.1.240.22
+robotron-inside						IN	MX	100	mail.cibernet.com.	
+jumbotron					IN	A	10.1.240.10	
+;jumbotron					IN	MX	100	mail.cibernet.com.	
+jumbotron					IN	MX	10	cluster5.us.messagelabs.com.
+jumbotron					IN	MX	20	cluster5a.us.messagelabs.com.
+robotron					IN	A	66.80.151.142
+robotron					IN	MX	1	robotron.cibernet.com.
+;robotron					IN	MX	100	mail.cibernet.com.
+robotron					IN	MX	10	cluster5.us.messagelabs.com.
+robotron					IN	MX	20	cluster5a.us.messagelabs.com.
+test2					IN	MX	10	cluster5.us.messagelabs.com.
+test2					IN	MX	20	cluster5a.us.messagelabs.com.
+ukclan2-net				IN	A	212.113.6.64
+ukclan2-net				IN	MX	10	cluster5.us.messagelabs.com.
+ukclan2-net				IN	MX	20	cluster5a.us.messagelabs.com.
+pixukc2					IN	A	212.113.6.65
+pixukc2					IN	MX	10	cluster5.us.messagelabs.com.
+pixukc2					IN	MX	20	cluster5a.us.messagelabs.com.
+one1clear					IN	A	212.113.6.66
+one1clear					IN	MX	10	cluster5.us.messagelabs.com.
+one1clear					IN	MX	20	cluster5a.us.messagelabs.com.
+jack					IN	A	212.113.6.66
+jack					IN	MX	10	cluster5.us.messagelabs.com.
+jack					IN	MX	20	cluster5a.us.messagelabs.com.
+tweek				IN	A	192.168.1.150
+babel				IN	A	192.168.1.19
+alexandria			IN	A	212.113.6.67
+jukeukc				IN	A	212.113.6.68
+tweek				IN	A	212.113.6.69

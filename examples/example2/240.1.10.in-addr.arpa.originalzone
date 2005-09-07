@@ -1,0 +1,13 @@
+$TTL 86400
+240.1.10.in-addr.arpa.						SOA	ns.cibernet.com.	admin.cibernet.com.	( 
+							2004052511	;    serial
+							3h	;    refresh
+							1h	;    retry
+							1w	;    expiry
+							1h	 ) ;    minimum
+240.1.10.in-addr.arpa.					IN	NS	ns.cibernet.com.	
+10					IN	PTR	jumbotron.cibernet.com.
+1					IN	PTR	juice.cibernet.com.
+2					IN	PTR	pix-md.cibernet.com.
+5					IN	PTR	green.cibernet.com.
+6					IN	PTR	adam.cibernet.com.

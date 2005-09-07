@@ -1,0 +1,74 @@
+10.1.201.2	pixnj-lan.cibernet.com
+10.1.201.3	hp7100nj.cibernet.com
+10.1.201.7	seed.cibernet.com
+10.1.201.8	wrt54Gnj.cibernet.com
+10.1.201.9	svnweb.cibernet.com ANAMES=sauce.cibernet.com
+10.1.201.10	hp2300nj.cibernet.com
+10.1.201.11	candy.cibernet.com ANAMES=oneclear-test.cibernet.com
+10.1.201.12	skin.cibernet.com
+10.1.201.13	core.cibernet.com ANAMES=oneclear-dev.cibernet.com
+10.1.201.20	odnj01.cibernet.com
+10.1.201.21	shawnmac.cibernet.com
+10.1.201.22	criley.cibernet.com
+10.1.201.23	kumquat.cibernet.com
+10.1.201.24	asphalt.cibernet.com
+10.1.201.25	tarmac.cibernet.com
+10.1.201.26	macadam.cibernet.com
+10.1.201.27	linksys-wap54g-1-nj.cibernet.com
+10.1.240.1	cal.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com
+10.1.240.2	pixmd-lan.cibernet.com
+10.1.240.3	cycmd.cibernet.com
+10.1.240.4	vpnmd-in.cibernet.com
+10.1.240.5	green.cibernet.com
+10.1.240.6	adam.cibernet.com
+10.1.240.10	jumbotron.cibernet.com
+10.1.240.20	brumd.cibernet.com
+10.1.240.21	exabytemd.cibernet.com
+10.1.240.22	support-inside.cibernet.com ANAMES=robotron-inside.cibernet.com
+66.80.151.138	pixmd.cibernet.com
+66.80.151.139	cibernet.com ANAMES=ns2.cibernet.com:ns.cibernet.com:ns.cibernet.com:www.cibernet.com:mail.cibernet.com:ns1.cibernet.com:gb.cibernet.com:us.cibernet.com:mail.gb.cibernet.com:mail.us.cibernet.com:www-test.cibernet.com:xserve.cibernet.com:newjuice.cibernet.com:demoreports.cibernet.com
+66.80.151.140	vpnmd.cibernet.com ANAMES=vpngb.cibernet.com:vpnnj.cibernet.com:vpn.cibernet.com
+66.80.151.141	granny.cibernet.com ANAMES=mtm-failover.cibernet.com
+66.80.151.142	support.cibernet.com ISMAILSERVER ANAMES=robotron.cibernet.com
+66.134.100.73	gw.cibernet.com
+66.134.100.75	juice.cibernet.com ANAMES=xserve.cibernet.com:careof.cibernet.com:auto.cibernet.com:dev.cibernet.com
+66.155.166.179	pixnj.cibernet.com
+66.155.166.180	nj.cibernet.com ANAMES=pie.cibernet.com
+66.155.166.181	mtm-dev.cibernet.com
+66.155.166.182	devcvs.cibernet.com
+192.168.1.15	cbnts04.cibernet.com
+192.168.1.19	babel.cibernet.com
+192.168.1.20	oduk01.cibernet.com
+192.168.1.21	oduk02.cibernet.com
+192.168.1.71	mail01.cibernet.com ISMAILSERVER
+192.168.1.150	tweek.cibernet.com
+192.168.1.230	CBNTS01.cibernet.com
+192.168.1.251	crumb.cibernet.com
+192.168.1.254	pixuk-lan.cibernet.com
+193.195.87.241	uknok-gw.cibernet.com
+193.195.87.249	uk-gw.cibernet.com
+193.195.87.250	pixuk.cibernet.com
+193.195.87.251	crumbx.cibernet.com ANAMES=oldstuff.cibernet.com:oldstuff.cibernet.com:gbc.cibernet.com
+193.195.87.253	CBNTS03.cibernet.com
+212.113.6.64	ukclan2-net.cibernet.com
+212.113.6.65	pixukc2.cibernet.com
+212.113.6.66	one1clear.cibernet.com ANAMES=jack.cibernet.com
+212.113.6.67	alexandria.cibernet.com
+212.113.6.68	jukeukc.cibernet.com
+212.113.6.69	tweek.cibernet.com
+212.113.16.112	ukcext-net.cibernet.com
+212.113.16.113	l3rtr-ukcext.cibernet.com
+212.113.16.114	pixukc.cibernet.com ANAMES=pixukc-ukcext.cibernet.com
+212.113.16.115	cycukc.cibernet.com
+212.113.16.116	un21211316116.cibernet.com
+212.113.16.117	un21211316117.cibernet.com
+212.113.16.118	un21211316118.cibernet.com
+212.113.16.119	ukcext-bcast.cibernet.com
+212.113.16.120	ukclan-net.cibernet.com
+212.113.16.121	ukcpix-ukclan.cibernet.com
+212.113.16.122	tart.cibernet.com ANAMES=mtm-test.cibernet.com CNAMES=one1clear-beta.cibernet.com
+212.113.16.123	mtm.cibernet.com ANAMES=baked.cibernet.com
+212.113.16.124	tree.cibernet.com ANAMES=oneclear-uat.cibernet.com
+212.113.16.125	juke.cibernet.com
+212.113.16.126	cider.cibernet.com ANAMES=ocdemo.cibernet.com
+212.113.16.127	ukclan-bcast.cibernet.com

@@ -1,0 +1,65 @@
+#!/bin/sh
+
+#
+# mergeiplist -- Print the first line to mention an IP
+# address when fed a /etc/hosts-style list.
+# The output is sorted by IP address.
+
+
+cat $* | perl -ne '
+	chomp;
+	if ( /^#*\s*([\d\.]+)/ ) {
+		print $1, "\t", $_, "\n";
+	} else { print $_, "\t", $_, "\n"};
+	' | sort -t"	" -u -k1,1 | sortbyip | cut -f2-
+
+# ----------------------------------------
+
+# How does this work?
+
+# In general, we prepend each line with the IP address, tell sort to
+# remove any duplicates (but only have sort look at the prepended
+# text), then we remove the prepended text.  Cute, eh?
+
+# In specific:
+
+# cat $*   --- cat all the files given as input.  If none, stdin is assumed.
+
+# perl -ne '...' --- Pass the input through this perl program.  Yes,
+# you can include an entire perl program right on the command line.
+# In shell, a ' or " can start a string that continues for multiple
+# lines.
+# The problem is that since we use a single quote, the entire program
+# can't use the single quote... unless we escape it with a backlash.
+# This makes it difficult to read, which limits this to only be usable
+# for short perl programs.
+# This is a better technique for awk programs, since awk rarely
+# uses the single quote.  (Most likely to make this technique work
+# so well.)
+
+# The perl code ---  This files the first IP address on a line, and
+# appends it to the start of the line followed by a "tab" then the
+# original line.
+# If there is no IP address on the line, it prepends the entire line.
+# We aren't really finding the "first IP address".  We're a bit
+# sloppy and just skipping over any comments, then if the next chars
+# are a sequence of digits and periods we assume that's an IP address
+# (no matter how long the sequence is.)
+
+# sort -t"\t" -u -k1,1   --- This sets the separator to TAB, uniques
+# the input (removes any duplicate lines), and sets the key to be
+# the first field only ("1,1" means "from the first to the first
+# field").
+# Note that "-u" defines "unique" as a comparison of fields being
+# compared for the rest of the sort.  Thus is doesn't matter if the
+# rest of the line is different, only the first field is looked at
+# for determining uniqueness.  Many software systems have had major
+# bugs because someone didn't know this.  (Imagine sorting a list
+# based on the third field and being surprised when half of your
+# lines disappeared!)
+
+# sortbyip  --- now sort the list by IP address.
+
+# cut -f2-  --- removes the bit of info we attached to the
+# front of each line.
+
