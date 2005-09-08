@@ -285,7 +285,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 # netmask: 255.255.255.0
 # dns: 10.1.240.1
 10.1.240.0	mdlan-net.cibernet.com
-10.1.240.1	juice-mdlan.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:careof.cibernet.com:auto.cibernet.com:gb.cibernet.com:us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com CNAMES=cal.cibernet.com
+10.1.240.1	juice-mdlan.cibernet.com ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:careof.cibernet.com:auto.cibernet.com:gb.cibernet.com:us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com:xserve.cibernet.com CNAMES=cal.cibernet.com
 10.1.240.2	pixmd-mdlan.cibernet.com ISROUTER=pixmd.cibernet.com ANAMES=pixmd-lan.cibernet.com
 10.1.240.3	cycmd.cibernet.com
 10.1.240.4	vpnmd-in.cibernet.com CNAME=vpn-in.cibernet.com

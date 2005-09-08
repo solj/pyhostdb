@@ -107,6 +107,9 @@ www-test           IN A       66.134.100.75
 www                IN A       10.1.240.1
                    IN MX 10   juice
                    IN MX 20   crumb
+xserve             IN A       10.1.240.1
+                   IN MX 10   juice
+                   IN MX 20   crumb
 njlan-net          IN A       10.1.201.0
                    IN MX 10   juice
                    IN MX 20   crumb

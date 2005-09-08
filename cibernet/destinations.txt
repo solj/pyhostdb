@@ -18,7 +18,7 @@ INTERNAL.240.1.10.in-addr.arpa					\
 		oduk02.cibernet.com:/var/named/.		\
 		odnj01.cibernet.com:/var/named/.		
 
-We do not do a "split DNS design" therefore the EXTERNAL.named.root should
+# We do not do a "split DNS design" therefore the EXTERNAL.named.root should
 # be used for /var/named/named.ca on all machines:
 EXTERNAL.named.root -> 						\
 		adam.cibernet.com:/var/named/named.ca		\
