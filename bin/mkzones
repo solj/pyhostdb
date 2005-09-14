@@ -501,7 +501,7 @@ sub parsehostlist {
 			my ($key, $value, $pn, $isinta, $isexta, $dupoka, $isintc, $isextc, $dupokc);
 			foreach my $field ( @opt ) {
 				($key, $value) = split /=/, $field;
-				if ($key eq   'ANAMES') {
+				if ($key eq 'ANAME' or $key eq 'ANAMES') {
 					foreach my $h ( split(':', $value)) {
 						($isinta, $isexta, $dupoka, $pn) = processname($h);
 						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEI'});
@@ -509,7 +509,7 @@ sub parsehostlist {
 						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEX'});
 						$db{ $pn }{'ANAMEX'} = $num if $isexta;
 					}
-				} elsif ($key eq   'CNAMES') {
+				} elsif ($key eq 'CNAME' or $key eq 'CNAMES') {
 					#$db{$name}{'CNAMES'} = $value;
 					foreach my $h ( split(':', $value)) {
 						($isintc, $isextc, $dupokc, $pn) = processname($h);
