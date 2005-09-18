@@ -1,0 +1,84 @@
+
+Title: Hostdb: The Best Damn Host2DNS/DHCP Script Ever Written
+Tom Limoncelli
+tal@cibernet.com
+Cibernet Corp
+
+INTRODUCTION
+
+
+
+--------------------------------
+
+The Competition
+
+h2n -- O'Reilly's "DNS and BIND" by Paul Albitz and Cricket Liu
+comes with h2n (and an enhanced version is called h2n-hp).  These are
+fine DNS generator scripts.  While it can be used for one-time conversion,
+there are features that let you maintain the host list as a
+
+Deployment automated: No, must build yourself
+Re-generate time and time again: yes
+Source: www.oreilly.com/catalog/dns3
+Requires SQL database: no
+Requires web interface: yes
+Complicated for junior sysadmins to add a host: no
+
+DNSDusty -- 
+Deployment automated: yes
+Re-generate time and time again: yes
+Source: www.poochiereds.net/dnsdusty
+Requires SQL database: no
+Requires web interface: yes
+Complicated for junior sysadmins to add a host: no
+
+dnscvsutil -- Maintains your DNS zone files under CVS control and automatically updates reverse zones.
+Hand edit raw zone files?  No way.
+Reverse DNS zone generation can be done in a 15-line awk script.
+
+Sauron -- Sauran is a free DNS/DHCP management system with Web and command line interfaces. It can manage multiple servers and generates complete dhcpd and named configurations from the database.
+Deployment automated: mostly
+Re-generate time and time again: yes
+Source: http://sauron.jyu.fi/
+Requires SQL database: yes
+Requires web interface: yes
+Complicated for junior sysadmins to add a host: no
+
+Updatehosts -- A very comprehensive system for managing DNS information.  This is popular
+at many large commercial sites. However, the learning curve seems overly steep as it
+requires understanding of database relations.  This is not for the neophyte or someone
+trying to set up a new site quickly.
+Deployment automated: yes
+DNS Zones: yes
+DHCP: no
+Re-generate time and time again: yes
+Source: ftp://ftp.tic.com/pub/updatehosts
+Requires SQL database: yes
+Requires web interface: no
+Complicated for junior sysadmins to add a host: unsure
+
+dns -- Builds DNS zones from /etc/hosts file. Similar to h2n, but more comprehensive.
+It does not do anything for DHCP users, and generates files directly to their final
+destination, which seems dangerous to me.  It seems fine for very small sites with one
+domain, which is what it was created for.
+Deployment automated: mostly
+DNS Zones: yes
+DHCP: no
+Re-generate time and time again: yes
+Source: http://www.pell.portland.or.us/~orc/Code/odds-and-ends/dns/
+Requires SQL database: no
+Requires web interface: no
+Complicated for junior sysadmins to add a host: no
+
+mkrdns -- An automatic revers DNS zone generator.
+If you are manually editing zone files, this will generate the reverse lookup zones for you.
+
+Deployment automated: no
+DNS: half
+DHCP: no
+Re-generate time and time again: yes
+Source: http://www.pell.portland.or.us/~orc/Code/odds-and-ends/dns/
+Requires SQL database: no
+Requires web interface: no
+Complicated for junior sysadmins to add a host: no
+

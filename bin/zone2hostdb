@@ -5,5 +5,5 @@
 
 # Look at zone2hostdbhelper for more info
 
-cat $* | cannonzone -n  | zone2hostdbhelper | sortbyip
+cat $* | canonzone -n  | zone2hostdbhelper | sortbyip
 

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# cannonzone [domain]
+# canonzone [domain]
 #   Purpose: Cannonicalize a zone file so that dumber scripts can have
 #				an easier time parsing it.
 #	Input: A real zone file with many formatting nasties.

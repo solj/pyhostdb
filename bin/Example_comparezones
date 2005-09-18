@@ -7,12 +7,12 @@ OLD=/var/named/cibernet.com..zone
 NEW=INTERNAL.cibernet.com
 DOMAIN=cibernet.com.
 
-cannonzone $DOMAIN		<$OLD	|
+canonzone $DOMAIN		<$OLD	|
 	grep "IN A"			|
 	awk '{ print $4 " " $0 }'	|
 	sortbyip |cut -d" " -f2-	> old.txt
 
-cannonzone $DOMAIN		<$NEW	|
+canonzone $DOMAIN		<$NEW	|
 	grep "IN A"			|
 	awk '{ print $4 " " $0 }'	|
 	sortbyip |cut -d" " -f2-	> new.txt
