@@ -55,9 +55,9 @@ $TTL 1h
 87                 IN PTR     d10-1-240-87.cibernet.com.
 88                 IN PTR     d10-1-240-88.cibernet.com.
 89                 IN PTR     d10-1-240-89.cibernet.com.
-90                 IN PTR     d10-1-240-90.cibernet.com.
-91                 IN PTR     d10-1-240-91.cibernet.com.
-92                 IN PTR     d10-1-240-92.cibernet.com.
+90                 IN PTR     konica.cibernet.com.
+91                 IN PTR     north.cibernet.com.
+92                 IN PTR     south.cibernet.com.
 93                 IN PTR     d10-1-240-93.cibernet.com.
 94                 IN PTR     d10-1-240-94.cibernet.com.
 95                 IN PTR     d10-1-240-95.cibernet.com.

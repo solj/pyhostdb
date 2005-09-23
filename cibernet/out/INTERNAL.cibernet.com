@@ -16,953 +16,1268 @@ $TTL 1h
                    IN NS      oduk01
                    IN NS      oduk02
 auto               IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 bruukc             IN A       212.113.6.67
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 bugzilla           IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 cal                IN CNAME   juice-mdlan
 careof             IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 cbnts03x           IN A       193.195.87.253
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
+change             IN CNAME   adam
 cibernet.com.      IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+clientftp          IN A       212.113.16.126
+                   IN MX 10   us
+                   IN MX 20   crumb
+crumbx             IN A       193.195.87.251
+                   IN MX 10   us
                    IN MX 20   crumb
 demoreports        IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
+
+foo                IN NS      odnj01
+                   IN NS      adam
+                   IN NS      oduk01
+                   IN NS      oduk02
+
 gb                 IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 gbc                IN A       192.168.1.251
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 inside             IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 labs               IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mail               IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mtm-failover       IN A       10.1.240.11
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mtm-test           IN A       212.113.16.122
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mtm                IN A       212.113.16.123
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+ns                 IN A       66.80.151.139
+                   IN MX 10   us
                    IN MX 20   crumb
 ns2                IN A       66.80.151.139
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ocdemo             IN A       212.113.16.126
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 one1clear-beta     IN CNAME   tart
 one1clear          IN A       212.113.6.66
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 oneclear-dev       IN A       10.1.201.13
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 oneclear-test      IN A       10.1.201.11
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 oneclear-uat       IN A       212.113.16.124
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixmd-lan          IN A       10.1.240.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 support            IN A       10.1.240.22
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 svnweb             IN A       10.1.201.9
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 us                 IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
+vpn-in             IN CNAME   vpnmd-in
 vpn                IN A       66.80.151.140
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 vpngb              IN A       66.80.151.140
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 vpnnj              IN A       66.80.151.140
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 www-test           IN A       66.134.100.75
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 www                IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 xserve             IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 njlan-net          IN A       10.1.201.0
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pie-1              IN A       10.1.201.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pie-1.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       10.1.201.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 pixnj-lan          IN A       10.1.201.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixnj-lan.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       10.1.201.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 hp7100nj           IN A       10.1.201.3
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pie-4              IN A       10.1.201.4
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pie-4.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       10.1.201.4
 
 pie-5              IN A       10.1.201.5
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pie-5.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       10.1.201.5
 
 pie-6              IN A       10.1.201.6
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pie-6.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       10.1.201.6
 
 seed               IN A       10.1.201.7
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 wrt54Gnj           IN A       10.1.201.8
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 sauce              IN A       10.1.201.9
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 hp2300nj           IN A       10.1.201.10
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 candy              IN A       10.1.201.11
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 skin               IN A       10.1.201.12
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 core               IN A       10.1.201.13
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 odnj01             IN A       10.1.201.20
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 shawnmac           IN A       10.1.201.21
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 criley             IN A       10.1.201.22
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 kumquat            IN A       10.1.201.23
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 asphalt            IN A       10.1.201.24
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 tarmac             IN A       10.1.201.25
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 macadam            IN A       10.1.201.26
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+solar              IN A       10.1.201.40
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-66       IN A       10.1.201.66
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-67       IN A       10.1.201.67
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-68       IN A       10.1.201.68
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-69       IN A       10.1.201.69
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-70       IN A       10.1.201.70
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-71       IN A       10.1.201.71
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-72       IN A       10.1.201.72
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-73       IN A       10.1.201.73
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-74       IN A       10.1.201.74
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-75       IN A       10.1.201.75
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-76       IN A       10.1.201.76
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-77       IN A       10.1.201.77
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-78       IN A       10.1.201.78
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-79       IN A       10.1.201.79
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-80       IN A       10.1.201.80
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-81       IN A       10.1.201.81
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-82       IN A       10.1.201.82
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-83       IN A       10.1.201.83
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-84       IN A       10.1.201.84
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-85       IN A       10.1.201.85
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-86       IN A       10.1.201.86
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-87       IN A       10.1.201.87
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-88       IN A       10.1.201.88
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-89       IN A       10.1.201.89
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-90       IN A       10.1.201.90
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-91       IN A       10.1.201.91
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-92       IN A       10.1.201.92
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-93       IN A       10.1.201.93
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-94       IN A       10.1.201.94
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-95       IN A       10.1.201.95
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-96       IN A       10.1.201.96
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-97       IN A       10.1.201.97
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 linksys-wap54g-1-njlan IN A       10.1.201.99
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; linksys-wap54g-1-njlan.cibernet.com is part of multihomed host linksys-wap54g-1.cibernet.com
 linksys-wap54g-1   IN A       10.1.201.99
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 d10-1-201-100      IN A       10.1.201.100
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-101      IN A       10.1.201.101
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-102      IN A       10.1.201.102
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-103      IN A       10.1.201.103
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-104      IN A       10.1.201.104
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-105      IN A       10.1.201.105
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-106      IN A       10.1.201.106
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-107      IN A       10.1.201.107
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-108      IN A       10.1.201.108
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-109      IN A       10.1.201.109
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-110      IN A       10.1.201.110
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-111      IN A       10.1.201.111
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-112      IN A       10.1.201.112
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-113      IN A       10.1.201.113
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-114      IN A       10.1.201.114
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-115      IN A       10.1.201.115
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-116      IN A       10.1.201.116
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-117      IN A       10.1.201.117
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-118      IN A       10.1.201.118
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-119      IN A       10.1.201.119
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-120      IN A       10.1.201.120
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-121      IN A       10.1.201.121
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-122      IN A       10.1.201.122
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-123      IN A       10.1.201.123
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-124      IN A       10.1.201.124
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-125      IN A       10.1.201.125
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-126      IN A       10.1.201.126
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-127      IN A       10.1.201.127
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-128      IN A       10.1.201.128
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-129      IN A       10.1.201.129
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-130      IN A       10.1.201.130
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-131      IN A       10.1.201.131
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-132      IN A       10.1.201.132
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-133      IN A       10.1.201.133
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-134      IN A       10.1.201.134
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-135      IN A       10.1.201.135
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-136      IN A       10.1.201.136
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-137      IN A       10.1.201.137
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-138      IN A       10.1.201.138
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-139      IN A       10.1.201.139
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-140      IN A       10.1.201.140
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-141      IN A       10.1.201.141
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-142      IN A       10.1.201.142
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-143      IN A       10.1.201.143
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-144      IN A       10.1.201.144
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-145      IN A       10.1.201.145
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-146      IN A       10.1.201.146
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-147      IN A       10.1.201.147
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-148      IN A       10.1.201.148
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-149      IN A       10.1.201.149
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-201-150      IN A       10.1.201.150
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdlan-net          IN A       10.1.240.0
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 juice-mdlan        IN A       10.1.240.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixmd-mdlan        IN A       10.1.240.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixmd-mdlan.cibernet.com is part of multihomed host pixmd.cibernet.com
 pixmd              IN A       10.1.240.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 cycmd              IN A       10.1.240.3
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 vpnmd-in           IN A       10.1.240.4
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 green              IN A       10.1.240.5
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 adam               IN A       10.1.240.6
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 jumbotron          IN A       10.1.240.10
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 brumd              IN A       10.1.240.20
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 exabytemd          IN A       10.1.240.21
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 test555            IN A       10.1.240.23
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 test556            IN A       10.1.240.24
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 test557            IN A       10.1.240.25
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 test26             IN A       10.1.240.26
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-66       IN A       10.1.240.66
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-67       IN A       10.1.240.67
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-68       IN A       10.1.240.68
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-69       IN A       10.1.240.69
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-70       IN A       10.1.240.70
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-71       IN A       10.1.240.71
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-72       IN A       10.1.240.72
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-73       IN A       10.1.240.73
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-74       IN A       10.1.240.74
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-75       IN A       10.1.240.75
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-76       IN A       10.1.240.76
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-77       IN A       10.1.240.77
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-78       IN A       10.1.240.78
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-79       IN A       10.1.240.79
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-80       IN A       10.1.240.80
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-81       IN A       10.1.240.81
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-82       IN A       10.1.240.82
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-83       IN A       10.1.240.83
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-84       IN A       10.1.240.84
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-85       IN A       10.1.240.85
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-86       IN A       10.1.240.86
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-87       IN A       10.1.240.87
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-88       IN A       10.1.240.88
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-89       IN A       10.1.240.89
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
-d10-1-240-90       IN A       10.1.240.90
-                   IN MX 10   juice
+konica             IN A       10.1.240.90
+                   IN MX 10   us
                    IN MX 20   crumb
-d10-1-240-91       IN A       10.1.240.91
-                   IN MX 10   juice
+north              IN A       10.1.240.91
+                   IN MX 10   us
                    IN MX 20   crumb
-d10-1-240-92       IN A       10.1.240.92
-                   IN MX 10   juice
+south              IN A       10.1.240.92
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-93       IN A       10.1.240.93
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-94       IN A       10.1.240.94
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-95       IN A       10.1.240.95
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-96       IN A       10.1.240.96
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-97       IN A       10.1.240.97
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-98       IN A       10.1.240.98
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-99       IN A       10.1.240.99
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-100      IN A       10.1.240.100
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-101      IN A       10.1.240.101
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-102      IN A       10.1.240.102
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-103      IN A       10.1.240.103
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-104      IN A       10.1.240.104
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-105      IN A       10.1.240.105
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-106      IN A       10.1.240.106
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-107      IN A       10.1.240.107
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-108      IN A       10.1.240.108
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-109      IN A       10.1.240.109
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-110      IN A       10.1.240.110
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-111      IN A       10.1.240.111
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-112      IN A       10.1.240.112
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-113      IN A       10.1.240.113
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-114      IN A       10.1.240.114
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-115      IN A       10.1.240.115
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-116      IN A       10.1.240.116
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-117      IN A       10.1.240.117
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-118      IN A       10.1.240.118
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-119      IN A       10.1.240.119
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-120      IN A       10.1.240.120
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-121      IN A       10.1.240.121
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-122      IN A       10.1.240.122
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-123      IN A       10.1.240.123
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-124      IN A       10.1.240.124
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-125      IN A       10.1.240.125
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d10-1-240-126      IN A       10.1.240.126
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdlan-bcast        IN A       10.1.240.254
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdmega-net         IN A       66.80.151.136
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdmegartr-mdmega   IN A       66.80.151.137
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; mdmegartr-mdmega.cibernet.com is part of multihomed host mdmegartr.cibernet.com
 mdmegartr          IN A       66.80.151.137
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 pixmd-megapath     IN A       66.80.151.138
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixmd-megapath.cibernet.com is part of multihomed host pixmd.cibernet.com
 pixmd              IN A       66.80.151.138
 
 juice-139          IN A       66.80.151.139
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 vpnmd              IN A       66.80.151.140
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 granny             IN A       10.1.240.11
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 robotron           IN A       10.1.240.22
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdmega-bcast       IN A       66.80.151.143
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdcov-net          IN A       66.134.100.72
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 gw-mdcov           IN A       66.134.100.73
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; gw-mdcov.cibernet.com is part of multihomed host gw.cibernet.com
 gw                 IN A       66.134.100.73
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 robotron-mdcovad   IN A       66.134.100.74
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 juice              IN A       66.134.100.75
                    IN MX 0    juice
+                   IN MX 10   us
                    IN MX 20   crumb
 mdcov-bcast        IN A       66.134.100.79
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 paetecrtr-ceo      IN A       66.155.166.177
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; paetecrtr-ceo.cibernet.com is part of multihomed host paetecrtr.cibernet.com
 paetecrtr          IN A       66.155.166.177
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 sonicwall-ceo      IN A       66.155.166.178
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixnj-paetec       IN A       66.155.166.179
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       66.155.166.179
 
 pie-paetec         IN A       66.155.166.180
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pie-paetec.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       66.155.166.180
 
 UNUSED66155166181  IN A       66.155.166.181
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 UNUSED66155166182  IN A       66.155.166.182
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 uklan-net          IN A       192.168.1.0
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 gw-uklan           IN A       192.168.1.1
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; gw-uklan.cibernet.com is part of multihomed host gw.cibernet.com
 gw                 IN A       192.168.1.1
 
 indianokia-uklan   IN A       192.168.1.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; indianokia-uklan.cibernet.com is part of multihomed host indianokia.cibernet.com
 indianokia         IN A       192.168.1.2
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
+hp4300             IN A       192.168.1.10
+                   IN MX 10   us
+                   IN MX 20   crumb
+kairos             IN A       192.168.1.11
+                   IN MX 10   us
+                   IN MX 20   crumb
 cbnts04            IN A       192.168.1.15
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 babel              IN A       192.168.1.19
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 oduk01             IN A       192.168.1.20
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 oduk02             IN A       192.168.1.21
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-57      IN A       192.168.1.57
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-58      IN A       192.168.1.58
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-59      IN A       192.168.1.59
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-60      IN A       192.168.1.60
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-61      IN A       192.168.1.61
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-62      IN A       192.168.1.62
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-63      IN A       192.168.1.63
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-64      IN A       192.168.1.64
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-65      IN A       192.168.1.65
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-66      IN A       192.168.1.66
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-67      IN A       192.168.1.67
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-68      IN A       192.168.1.68
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-69      IN A       192.168.1.69
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-70      IN A       192.168.1.70
+                   IN MX 10   us
                    IN MX 20   crumb
 mail01             IN A       192.168.1.71
                    IN MX 0    mail01
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-72      IN A       192.168.1.72
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-73      IN A       192.168.1.73
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-74      IN A       192.168.1.74
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-75      IN A       192.168.1.75
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-76      IN A       192.168.1.76
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-77      IN A       192.168.1.77
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-78      IN A       192.168.1.78
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-79      IN A       192.168.1.79
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-80      IN A       192.168.1.80
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-81      IN A       192.168.1.81
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-82      IN A       192.168.1.82
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-83      IN A       192.168.1.83
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-84      IN A       192.168.1.84
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-85      IN A       192.168.1.85
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-86      IN A       192.168.1.86
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-87      IN A       192.168.1.87
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-88      IN A       192.168.1.88
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-89      IN A       192.168.1.89
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-90      IN A       192.168.1.90
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-91      IN A       192.168.1.91
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-92      IN A       192.168.1.92
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-93      IN A       192.168.1.93
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-94      IN A       192.168.1.94
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-95      IN A       192.168.1.95
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-96      IN A       192.168.1.96
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-97      IN A       192.168.1.97
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-98      IN A       192.168.1.98
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-99      IN A       192.168.1.99
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-100     IN A       192.168.1.100
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-101     IN A       192.168.1.101
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-102     IN A       192.168.1.102
+                   IN MX 10   us
                    IN MX 20   crumb
 hp8550             IN A       192.168.1.103
-                   IN MX 10   juice
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-104     IN A       192.168.1.104
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-105     IN A       192.168.1.105
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-106     IN A       192.168.1.106
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-107     IN A       192.168.1.107
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-108     IN A       192.168.1.108
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-109     IN A       192.168.1.109
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-110     IN A       192.168.1.110
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-111     IN A       192.168.1.111
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-112     IN A       192.168.1.112
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-113     IN A       192.168.1.113
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-114     IN A       192.168.1.114
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-115     IN A       192.168.1.115
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-116     IN A       192.168.1.116
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-117     IN A       192.168.1.117
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-118     IN A       192.168.1.118
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-119     IN A       192.168.1.119
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-120     IN A       192.168.1.120
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-121     IN A       192.168.1.121
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-122     IN A       192.168.1.122
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-123     IN A       192.168.1.123
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-124     IN A       192.168.1.124
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-125     IN A       192.168.1.125
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-126     IN A       192.168.1.126
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-127     IN A       192.168.1.127
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-128     IN A       192.168.1.128
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-129     IN A       192.168.1.129
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-130     IN A       192.168.1.130
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-131     IN A       192.168.1.131
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-132     IN A       192.168.1.132
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-133     IN A       192.168.1.133
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-134     IN A       192.168.1.134
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-135     IN A       192.168.1.135
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-136     IN A       192.168.1.136
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-137     IN A       192.168.1.137
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-138     IN A       192.168.1.138
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-139     IN A       192.168.1.139
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-140     IN A       192.168.1.140
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-141     IN A       192.168.1.141
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-142     IN A       192.168.1.142
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-143     IN A       192.168.1.143
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-144     IN A       192.168.1.144
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-145     IN A       192.168.1.145
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-146     IN A       192.168.1.146
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-147     IN A       192.168.1.147
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-148     IN A       192.168.1.148
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-149     IN A       192.168.1.149
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-150     IN A       192.168.1.150
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-151     IN A       192.168.1.151
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-152     IN A       192.168.1.152
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-153     IN A       192.168.1.153
+                   IN MX 10   us
+                   IN MX 20   crumb
+d192-168-1-154     IN A       192.168.1.154
+                   IN MX 10   us
                    IN MX 20   crumb
 hp4000n            IN A       192.168.1.155
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 cbnts01            IN A       192.168.1.230
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 cbnts02            IN A       192.168.1.231
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixuk-lan          IN A       192.168.1.254
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixuk-lan.cibernet.com is part of multihomed host pixuk.cibernet.com
 pixuk              IN A       192.168.1.254
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 uklan-bcast        IN A       192.168.1.255
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukdser-net         IN A       193.195.87.240
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 uknok-gw           IN A       193.195.87.241
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; uknok-gw.cibernet.com is part of multihomed host uknokgw.cibernet.com
 uknokgw            IN A       193.195.87.241
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 ukdser-bcast       IN A       193.195.87.247
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixuk-ukext1       IN A       193.195.87.250
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixuk-ukext1.cibernet.com is part of multihomed host pixuk.cibernet.com
 pixuk              IN A       193.195.87.250
 
 crumb              IN A       192.168.1.251
                    IN MX 0    crumb
-                   IN MX 10   juice
+                   IN MX 10   us
 cbnts03            IN A       192.168.1.56
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukext1-bcast       IN A       193.195.87.255
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukclan2-net        IN A       212.113.6.64
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pixukc-ukclan2     IN A       212.113.6.65
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixukc-ukclan2.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.6.65
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 jack               IN A       212.113.6.66
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 alexandria         IN A       212.113.6.67
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 jukeukc            IN A       212.113.6.68
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 tweek              IN A       212.113.6.69
                    IN MX 0    tweek
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-70      IN A       212.113.6.70
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-71      IN A       212.113.6.71
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-72      IN A       212.113.6.72
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-73      IN A       212.113.6.73
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-74      IN A       212.113.6.74
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-75      IN A       212.113.6.75
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-76      IN A       212.113.6.76
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-77      IN A       212.113.6.77
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-78      IN A       212.113.6.78
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-6-79      IN A       212.113.6.79
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukclan2-bcast      IN A       212.113.6.127
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukcext-net         IN A       212.113.16.112
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 l3rtr-ukcext       IN A       212.113.16.113
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; l3rtr-ukcext.cibernet.com is part of multihomed host l3rtr.cibernet.com
 l3rtr              IN A       212.113.16.113
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 pixukc-ukcext      IN A       212.113.16.114
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pixukc-ukcext.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.16.114
 
 cycukc             IN A       212.113.16.115
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-16-116    IN A       212.113.16.116
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-16-117    IN A       212.113.16.117
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 d212-113-16-118    IN A       212.113.16.118
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukcext-bcast       IN A       212.113.16.119
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukclan-net         IN A       212.113.16.120
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 pix-ukclan         IN A       212.113.16.121
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ; pix-ukclan.cibernet.com is part of multihomed host pixukc.cibernet.com
 pixukc             IN A       212.113.16.121
 
 tart               IN A       212.113.16.122
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 baked              IN A       212.113.16.123
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 tree               IN A       212.113.16.124
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 juke               IN A       212.113.16.125
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 cider              IN A       212.113.16.126
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 ukclan-bcast       IN A       212.113.16.127
-                   IN MX 10   juice
+                   IN MX 10   us
                    IN MX 20   crumb
 
 

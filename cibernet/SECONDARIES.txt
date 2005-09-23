@@ -1,0 +1,32 @@
+
+---------------------- ny2.streambolt.com
+
+Contact is ste@
+
+
+----------------------
+Ok, everything is setup. I have moved the zone file to
+/var/named/etc/namedb/master/EXTERNAL.cibernet.com as bind lives in a
+chroot environment. I have created a symbolic link in the your zones
+directory. Your password for the account is in the PASSWORD file and I
+given you access to run the 'rndc reload' command from sudo. Preferred
+DNS server name is ns0.lt.nostrum.com. Below is contact information.
+Philip Kizer also has root on the machine if I am unreachable.
+
+Me:
+
+  Phone: (979) 574-3779 (SMS messages are fine.)
+  Email: dave@duchscher.com
+  Jabber: daved@tamu.edu
+  AIM: duchscherd
+  MSN: dave@duchscher.com
+  Google Talk: kreios@gmail.com
+  IRC: irc.tamu.edu (daved)
+  I have a Yahoo account as well but don't know anybody on that network.
+
+Philip Kizer:
+  Phone: (979) 492-8813
+  Email: pckizer@nostrum.com
+  Jabber: pckizer@tamu.edu
+  IRC: irc.tamu.edu (pckizer)
+

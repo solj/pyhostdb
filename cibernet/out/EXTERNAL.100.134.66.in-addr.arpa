@@ -12,7 +12,8 @@ $TTL 1h
 		)
 
                    IN NS      ny2.streambolt.com.
-                   IN NS      exns01.cibernet.com.
+                   IN NS      NS2.CIBERNET.COM.
+                   IN NS      ns0.lt.nostrum.com.
 0                  IN PTR     h66-134-100-0.cibernet.com.
 1                  IN PTR     h66-134-100-1.cibernet.com.
 2                  IN PTR     h66-134-100-2.cibernet.com.

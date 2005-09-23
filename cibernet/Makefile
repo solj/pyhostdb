@@ -1,6 +1,6 @@
 
 
-all: EXTERNAL.named.root gennamedconf genzones gendhcpdconf
+all: named.local localhost.zone EXTERNAL.named.root gennamedconf genzones gendhcpdconf
 
 reload: reload-local reload-remote
 
@@ -48,6 +48,12 @@ newserial:
 # people use.  Why clue people in to when things changed last?
 # For a lot of fun, subtract a constant that makes it look
 # like the last update was in 1988.
+
+named.local: ../named.local
+	cp ../named.local named.local
+
+localhost.zone: ../localhost.zone
+	cp ../localhost.zone localhost.zone
 
 
 # ROOTCACHE STUFF:
@@ -114,11 +120,11 @@ reload-local:
 	kill -1 `cat /var/run/named.pid`
 
 reload-remote:
+	ssh cibernetcorp@ns0.lt.nostrum.com  'sudo rndc reload'
 	ssh adam.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh odnj01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh oduk01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh oduk02.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh shell.whatexit.org	'kill -1 `cat /var/run/named.pid`'
-	#ssh gsp.whatexit.org cd /etc && make named-reload
 	#ssh joisey.whatexit.org cd /etc && make named-reload
 

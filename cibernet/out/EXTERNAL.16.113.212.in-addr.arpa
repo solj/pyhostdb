@@ -12,7 +12,8 @@ $TTL 1h
 		)
 
                    IN NS      ny2.streambolt.com.
-                   IN NS      exns01.cibernet.com.
+                   IN NS      NS2.CIBERNET.COM.
+                   IN NS      ns0.lt.nostrum.com.
 0                  IN PTR     h212-113-16-0.cibernet.com.
 1                  IN PTR     h212-113-16-1.cibernet.com.
 2                  IN PTR     h212-113-16-2.cibernet.com.
@@ -139,7 +140,7 @@ $TTL 1h
 123                IN PTR     baked.cibernet.com.
 124                IN PTR     tree.cibernet.com.
 125                IN PTR     juke.cibernet.com.
-126                IN PTR     h212-113-16-126.cibernet.com.
+126                IN PTR     cider.cibernet.com.
 127                IN PTR     ukclan-bcast.cibernet.com.
 128                IN PTR     h212-113-16-128.cibernet.com.
 129                IN PTR     h212-113-16-129.cibernet.com.

@@ -36,6 +36,7 @@ $TTL 1h
 24                 IN PTR     asphalt.cibernet.com.
 25                 IN PTR     tarmac.cibernet.com.
 26                 IN PTR     macadam.cibernet.com.
+40                 IN PTR     solar.cibernet.com.
 66                 IN PTR     d10-1-201-66.cibernet.com.
 67                 IN PTR     d10-1-201-67.cibernet.com.
 68                 IN PTR     d10-1-201-68.cibernet.com.

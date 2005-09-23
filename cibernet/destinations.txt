@@ -4,11 +4,18 @@
 # cibernet.com destinations
 #
 
+EXTERNAL.cibernet.com -> 							\
+		shell.whatexit.org:/var/named/cibernet.com.zone			\
+		cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/. 		\
+		/var/named/cibernet.com..zone
+
+
 INTERNAL.cibernet.com  -> adam.cibernet.com:/var/named/INTERNAL.cibernet.com
 INTERNAL.cibernet.com  -> odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com
 INTERNAL.cibernet.com  -> oduk01.cibernet.com:/var/named/INTERNAL.cibernet.com
 INTERNAL.cibernet.com  -> oduk02.cibernet.com:/var/named/INTERNAL.cibernet.com
 
+localhost.zone named.local						\
 INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
@@ -26,7 +33,6 @@ EXTERNAL.named.root -> 						\
 		oduk01.cibernet.com:/var/named/named.ca		\
 		oduk02.cibernet.com:/var/named/named.ca
 
-EXTERNAL.cibernet.com -> shell.whatexit.org:/var/named/cibernet.com.zone cibernetcorp@cronus.duchscher.com:~cibernetcorp/zones/.
 
 # --- the rest is experimental
 

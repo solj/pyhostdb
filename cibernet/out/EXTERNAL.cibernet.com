@@ -12,7 +12,8 @@ $TTL 1h
 		)
 
                    IN NS      ny2.streambolt.com.
-                   IN NS      exns01
+                   IN NS      NS2.CIBERNET.COM.
+                   IN NS      ns0.lt.nostrum.com.
 auto               IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -25,9 +26,20 @@ careof             IN A       66.80.151.139
 cibernet.com.      IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+clientftp          IN A       212.113.16.126
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+crumbx             IN A       193.195.87.251
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 demoreports        IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+
+foo                IN NS      ny2.streambolt.com.
+                   IN NS      NS2.CIBERNET.COM.
+                   IN NS      ns0.lt.nostrum.com.
+
 gb                 IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -44,6 +56,9 @@ mtm-test           IN A       212.113.16.122
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm                IN A       212.113.16.123
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ns                 IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ns2                IN A       66.80.151.139
@@ -226,6 +241,9 @@ tree               IN A       212.113.16.124
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 juke               IN A       212.113.16.125
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+cider              IN A       212.113.16.126
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ukclan-bcast       IN A       212.113.16.127
@@ -1608,7 +1626,6 @@ h212-113-16-111    IN A       212.113.16.111
 h212-113-16-116    IN A       212.113.16.116
 h212-113-16-117    IN A       212.113.16.117
 h212-113-16-118    IN A       212.113.16.118
-h212-113-16-126    IN A       212.113.16.126
 h212-113-16-128    IN A       212.113.16.128
 h212-113-16-129    IN A       212.113.16.129
 h212-113-16-130    IN A       212.113.16.130
