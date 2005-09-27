@@ -4,15 +4,18 @@ use strict;
 
 my ($left, $right, @sources, @dests);
 my ($safe);
-my (@srcitems, @remoteitems, @localitems);
+my (@srcitems, @remoteitems, @localitems, @diffitems, @syncupitems);
+my (@reloadItemsLocal, @reloadItemsRemote);
 my $cmd;
 my $locale;
-my %seen;
+my (%seen, %reloads);
 
+# History:
+#  2005-09-26: Initial release
+#  2005-09-27: Added "make syncup" and "make diff"
 #
 # Todo:
 #	o  Add some way to specify what command to run to reload the BIND server.
-#	o  Add a destination "diff" which runs "diff $DIFFOPS" for any changed file.
 #
 
 # Turn a filepath into something that is safe to use as a filename.
@@ -63,6 +66,7 @@ print "\nall: push-local\n";
 
 my $copycmd;
 my $line;
+my $junk;
 
 while (defined($line = <>) ) {
 	$line =~ s/#.*//;		# toss comments
@@ -76,6 +80,12 @@ while (defined($line = <>) ) {
 	next if /^\s*$/;	# skip blank lines
 
 	# Parse the line:
+	if (/^\s*RELOAD/) {
+		my ($host, $cmd) = m/^RELOAD\s+(\S+)\s+(.*)$/;
+		($junk, $host) = split('@', $host) if m/@/; # user@host
+		$reloads{ $host } = $cmd;
+		next;
+	}
 	s/\s+/ /;		# unify whitespace
 	($left, $right) = split( /\s+->\s*/, $_, 2 );
 	#print "#LEFT=$left\n";
@@ -86,18 +96,18 @@ while (defined($line = <>) ) {
 		print "\n#Copy SOURCE=$src\n";
 
 		do {
-
-			#push @srcitems, "MP/$src";
-			#print "\n";
-			#print "MP/$src:\n";
-			#print "\tcat $src >\$@\n";
-
 			print "\n";
 			print "MS/$src: $src\n";
 			print "\t\@if [ ! -r MP/$src ] ; \\\n\tthen \\\n\t\techo CREATING MP/$src ; \\\n\t\tcp $src MP/$src ; \\\n\tfi\n";
 			print "\t\@if [ ! -r MS/$src ] ; \\\n\tthen \\\n\t\techo CREATING MS/$src ; \\\n\t\tsed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; \\\n\tfi\n";
 			print "\t\@if ! cmp $src MP/$src  > /dev/null ; \\\n\tthen \\\n\t\techo UPDATE MP/$src ; \\\n\t\tcp $src MP/$src ;\\\n\t\techo UPDATE MS/$src ;\\\n\t\tsed 's/:serial:/'\`cat serial\`'/g' <$src >MS/$src ; \\\n\tfi\n";
 		} unless $seen{"MP/$src"}++;
+
+		print "\n";
+		print "diff-$src:\n";
+		print "\tdiff \$(DIFFOPT) MP/$src $src\n";
+		push @diffitems, "diff-$src";
+		push @syncupitems, "MS/$src";
 
 		foreach my $dst ( split( " ", $right) ) {
 			$safe = safename($dst . "--" . $src);
@@ -119,33 +129,33 @@ while (defined($line = <>) ) {
 				print "\t$copycmd MS/$src $dst\n";
 				print "\t\@cp MS/$src DS/$safe\n";
 			} unless $seen{"DS/$safe"}++;
-
-
-#			#print "\n#Copy $src to $dst (Done/$safe)\n";
-#			die "Can't copy from $src!  Must stay within the directory!" if $src  =~ /\//;
-#			die "Can't copy from $src!  No colons allowed!" if $src  =~ /:/;
-
-#$cmd = <<HERE
-#Done/$safe: SerialsAdded/$src
-#\t\@updatezone $copycmd $src $dst $safe
-#\t\@date >Done/$safe
-#HERE
-#;			print "\n", $cmd unless $seen{"Done/$safe"}++;
-#
-#$cmd = <<HERE
-#SerialsAdded/$src: $src
-#\t\@sed 's/:serial:/'\`cat serial\`'/g' <$src >SerialsAdded/$src
-#HERE
-#;			print "\n", $cmd unless $seen{"SerialsAdded/$src"}++;
-
-
 		}
 	}
-
 }
 
 print "\n";
-print "push-all: @srcitems @localitems @remoteitems\n\n";
+print "syncup: @syncupitems\n\n";
+print "diff: @diffitems\n\n";
+print "push-all: push-local push-remote\n\n";
 print "push-local: @srcitems @localitems\n\n";
 print "push-remote: @srcitems @remoteitems\n\n";
+
+# Handle all the reloads
+foreach my $host ( keys %reloads ) {
+	#$safe = safename("reload-" . $host);
+	if ($host eq "local") {
+		print "reload-$host:\n\t", $reloads{$host}, "\n\n";
+		push @reloadItemsLocal, "reload-$host";
+		
+	} else {
+		my $cmd = $reloads{$host};
+		$cmd =~ s/'/\\'/g;
+		print "reload-$host:\n\tssh $host '$cmd'\n\n";
+		push @reloadItemsRemote, "reload-$host";
+	}
+}
+print "reload-all: ";
+	print "reload-local " if @reloadItemsLocal;
+	print "reload-remote\n\n";
+print "reload-remote: @reloadItemsRemote\n\n";
 

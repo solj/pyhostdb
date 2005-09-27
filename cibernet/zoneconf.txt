@@ -27,7 +27,7 @@ MX INTERNAL 10 us.cibernet.com ; 20 crumb.cibernet.com
 # Set a bunch of defaults for the zone (named.conf) definitions were
 # about to autogenerate:
 
-ZONESERVERS INTERNAL adam.cibernet.com oduk01.cibernet.com oduk02.cibernet.com odnj01.cibernet.com
+ZONESERVERS INTERNAL adam.cibernet.com odnj01.cibernet.com oduk01.cibernet.com oduk02.cibernet.com
 ZONESERVERS EXTERNAL NS2.CIBERNET.COM ny2.streambolt.com ns0.lt.nostrum.com
 
 #ALLOW-UPDATE   INTERNAL 	"domain-controllers"
@@ -62,7 +62,7 @@ ZONESERVERS EXTERNAL NS2.CIBERNET.COM ny2.streambolt.com ns0.lt.nostrum.com
 #####################################################################
 
 ZONESERVERS INTERNAL adam.cibernet.com odnj01.cibernet.com oduk01.cibernet.com oduk02.cibernet.com
-ZONESERVERS EXTERNAL ny2.streambolt.com NS2.CIBERNET.COM ns0.lt.nostrum.com
+ZONESERVERS EXTERNAL NS2.CIBERNET.COM ns0.lt.nostrum.com ny2.streambolt.com
 
 #ALLOW-TRANSFER	INTERNAL	"cbr_servers"
 #ALLOW-TRANSFER	SLAVE		"cbr_servers"
@@ -107,7 +107,7 @@ REVDOMAIN CLASSC 193.195.87.0	EXTERNAL
 # Colo:
 #REVCLASSLESS  212.113.6.64 212.113.6.127    64-127.6.113.212.in-addr.arpa.zone  EXTERNAL
 
-ZONESERVERS EXTERNAL ns2.cibernet.com ns0.lt.nostrum.com ns01.customer.eu.level3.net ns02.customer.eu.level3.net
+ZONESERVERS EXTERNAL ns2.cibernet.com ns0.lt.nostrum.com ns02.customer.eu.level3.net ns01.customer.eu.level3.net
 REVDOMAIN CLASSC 212.113.6.0	EXTERNAL
 REVDOMAIN CLASSC 212.113.16.0	EXTERNAL
 

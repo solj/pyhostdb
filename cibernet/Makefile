@@ -96,8 +96,18 @@ dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
 	catif        ../INTERNAL.named.conf-tail	>>$@
 
 #
-# Push
+# Things related to destinations.mk
 #
+# Update MS/MP (if needed) from the "out" files:
+syncup: destinations.mk
+	mkdir -p MS MP DS
+	make -f destinations.mk syncup
+
+# Diff the "out" files against the MS/MP files:
+diff: destinations.mk
+	mkdir -p MS MP DS
+	make -f destinations.mk diff
+
 push: all push-local push-remote reload
 
 push-clean:
@@ -116,15 +126,11 @@ destinations.mk: ../destinations.txt ../hostdb.txt
 
 #
 # Reload named
+reload: reload-local reload-remote
+
 reload-local:
-	kill -1 `cat /var/run/named.pid`
+	make -f destinations.mk reload-local
 
 reload-remote:
-	ssh cibernetcorp@ns0.lt.nostrum.com  'sudo rndc reload'
-	ssh adam.cibernet.com	'kill -1 `cat /var/run/named.pid`'
-	ssh odnj01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
-	ssh oduk01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
-	ssh oduk02.cibernet.com	'kill -1 `cat /var/run/named.pid`'
-	#ssh shell.whatexit.org	'kill -1 `cat /var/run/named.pid`'
-	#ssh joisey.whatexit.org cd /etc && make named-reload
+	make -f destinations.mk reload-remote
 

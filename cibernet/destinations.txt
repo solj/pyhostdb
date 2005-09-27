@@ -45,3 +45,10 @@ EXTERNAL.named.root -> 						\
 		odnj01.cibernet.com:/var/named/named.ca		\
 		oduk01.cibernet.com:/var/named/named.ca		\
 		oduk02.cibernet.com:/var/named/named.ca
+
+RELOAD local				kill -1 `cat /var/run/named.pid`
+RELOAD adam.cibernet.com		kill -1 `cat /var/run/named.pid`
+RELOAD odnj01.cibernet.com		kill -1 `cat /var/run/named.pid`
+RELOAD oduk01.cibernet.com		kill -1 `cat /var/run/named.pid`
+RELOAD oduk02.cibernet.com		kill -1 `cat /var/run/named.pid`
+RELOAD cibernetcorp@ns0.lt.nostrum.com	sudo rndc reload
