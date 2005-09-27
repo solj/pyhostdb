@@ -1,7 +1,8 @@
 
 
 #
-# cibernet.com destinations
+# External zones:
+#  These are fairly simple.  There are only 3 zones: cibernet.com and the 2 for London Colo
 #
 
 EXTERNAL.cibernet.com -> 							\
@@ -9,24 +10,33 @@ EXTERNAL.cibernet.com -> 							\
 		cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/. 		\
 		/var/named/cibernet.com..zone
 
+EXTERNAL.6.113.212.in-addr.arpa -> 						\
+	cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/EXTERNAL.64-127.6.113.212.in-addr.arpa	\
+	/var/named/64-127.6.113.212.in-addr.arpa.zone
 
-INTERNAL.cibernet.com  -> adam.cibernet.com:/var/named/INTERNAL.cibernet.com
-INTERNAL.cibernet.com  -> odnj01.cibernet.com:/var/named/INTERNAL.cibernet.com
-INTERNAL.cibernet.com  -> oduk01.cibernet.com:/var/named/INTERNAL.cibernet.com
-INTERNAL.cibernet.com  -> oduk02.cibernet.com:/var/named/INTERNAL.cibernet.com
+EXTERNAL.16.113.212.in-addr.arpa ->						\
+	cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/EXTERNAL.112-127.16.113.212.in-addr.arpa	\
+	/var/named/112-127.16.113.212.in-addr.arpa.zone
 
-localhost.zone named.local						\
+#
+# Internal zones:
+#
+
+INTERNAL.cibernet.com						\
+localhost.zone named.local					\
 INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
 	->							\
-		adam.cibernet.com:/var/named/.			\
-		oduk01.cibernet.com:/var/named/.		\
-		oduk02.cibernet.com:/var/named/.		\
-		odnj01.cibernet.com:/var/named/.		
+	adam.cibernet.com:/var/named/.				\
+	odnj01.cibernet.com:/var/named/.			\
+	oduk01.cibernet.com:/var/named/.			\
+	oduk02.cibernet.com:/var/named/.
 
-# We do not do a "split DNS design" therefore the EXTERNAL.named.root should
-# be used for /var/named/named.ca on all machines:
+# The EXTERNAL.named.root file is appropriate as the named.ca on all
+# of our internal DNS servers (don't let the "EXTERNAL." fool you).
+# (This might change if we were to do our own roots internally, which
+# is generally only done in extremly hih-security situations.)
 EXTERNAL.named.root -> 						\
 		adam.cibernet.com:/var/named/named.ca		\
 		odnj01.cibernet.com:/var/named/named.ca		\
