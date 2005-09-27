@@ -3,7 +3,7 @@
 
 $TTL 1h
 
-@	IN SOA	odnj01.cibernet.com. hostmaster.cibernet.com. (
+@	IN SOA	adam.cibernet.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
 			3h	;refresh period
 			1h	;retry refresh this often
@@ -11,8 +11,8 @@ $TTL 1h
 			1h	;minimum TTL
 		)
 
-                   IN NS      odnj01
                    IN NS      adam
+                   IN NS      odnj01
                    IN NS      oduk01
                    IN NS      oduk02
 auto               IN A       10.1.240.1
@@ -44,12 +44,6 @@ crumbx             IN A       193.195.87.251
 demoreports        IN A       10.1.240.1
                    IN MX 10   us
                    IN MX 20   crumb
-
-foo                IN NS      odnj01
-                   IN NS      adam
-                   IN NS      oduk01
-                   IN NS      oduk02
-
 gb                 IN A       10.1.240.1
                    IN MX 10   us
                    IN MX 20   crumb

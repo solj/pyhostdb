@@ -6,7 +6,6 @@
 #
 
 EXTERNAL.cibernet.com -> 							\
-		shell.whatexit.org:/var/named/cibernet.com.zone			\
 		cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/. 		\
 		/var/named/cibernet.com..zone
 
@@ -17,6 +16,10 @@ EXTERNAL.6.113.212.in-addr.arpa -> 						\
 EXTERNAL.16.113.212.in-addr.arpa ->						\
 	cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/EXTERNAL.112-127.16.113.212.in-addr.arpa	\
 	/var/named/112-127.16.113.212.in-addr.arpa.zone
+
+# WARNING!
+# juice.cibernet.com contains EXTERNAL zones.  Nobody on the inside should point to it.
+# In fact, its own /etc/resolv.conf doesn't point to it.  It gets its DNS data from adam.
 
 #
 # Internal zones:
@@ -42,30 +45,3 @@ EXTERNAL.named.root -> 						\
 		odnj01.cibernet.com:/var/named/named.ca		\
 		oduk01.cibernet.com:/var/named/named.ca		\
 		oduk02.cibernet.com:/var/named/named.ca
-
-
-# --- the rest is experimental
-
-#EXTERNAL.16.113.212.in-addr.arpa -> /tmp/var/named/112-127.16.113.212.in-addr.arpa.zone
-#
-#EXTERNAL.6.113.212.in-addr.arpa -> /tmp/var/named/64-127.6.113.212.in-addr.arpa.zone
-#
-#EXTERNAL.100.134.66.in-addr.arpa -> /tmp/var/named/100.134.66.in-addr.arpa.zone
-#
-#EXTERNAL.cibernet.com -> whatexit.org:/var/named/. shell.whatexit.org:/tmp/.
-# EXTERNAL.named.conf -> whatexit.org:/var/named/???
-# EXTERNAL.named.root
-
-#  NATed networks:
-#INTERNAL.cibernet.com -> /tmp/var/named/cibernet.com..zone
-
-#INTERNAL.cibernet.com -> /tmp/var/named/cibernet.net..zone
-#INTERNAL.cibernet.com -> /tmp/var/named/cibernet.biz..zone
-
-#INTERNAL.240.1.10.in-addr.arpa -> /tmp/var/named/240.1.10.in-addr.arpa.zone
-#INTERNAL.201.1.10.in-addr.arpa -> /tmp/var/named/201.1.10.in-addr.arpa.zone
-#INTERNAL.1.168.192.in-addr.arpa -> /tmp/var/named/1.168.192.in-addr.arpa.zone
-
-# INTERNAL.named.conf
-# SLAVE.named.conf
-

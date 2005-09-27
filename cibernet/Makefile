@@ -125,6 +125,6 @@ reload-remote:
 	ssh odnj01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh oduk01.cibernet.com	'kill -1 `cat /var/run/named.pid`'
 	ssh oduk02.cibernet.com	'kill -1 `cat /var/run/named.pid`'
-	ssh shell.whatexit.org	'kill -1 `cat /var/run/named.pid`'
+	#ssh shell.whatexit.org	'kill -1 `cat /var/run/named.pid`'
 	#ssh joisey.whatexit.org cd /etc && make named-reload
 

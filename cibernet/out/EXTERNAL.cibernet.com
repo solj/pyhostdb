@@ -35,11 +35,6 @@ crumbx             IN A       193.195.87.251
 demoreports        IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-
-foo                IN NS      ny2.streambolt.com.
-                   IN NS      NS2.CIBERNET.COM.
-                   IN NS      ns0.lt.nostrum.com.
-
 gb                 IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
