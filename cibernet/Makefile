@@ -1,6 +1,5 @@
 
-
-all: named.local localhost.zone EXTERNAL.named.root gennamedconf genzones gendhcpdconf
+all: named.local localhost.zone EXTERNAL.named.root INTERNAL.named.root gennamedconf genzones gendhcpdconf
 
 reload: reload-local reload-remote
 

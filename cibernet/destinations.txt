@@ -31,20 +31,21 @@ INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
 	->							\
-	adam.cibernet.com:/var/named/.				\
-	odnj01.cibernet.com:/var/named/.			\
-	oduk01.cibernet.com:/var/named/.			\
-	oduk02.cibernet.com:/var/named/.
+		adam.cibernet.com:/var/named/.			\
+		odnj01.cibernet.com:/var/named/.		\
+		oduk01.cibernet.com:/var/named/.		\
+		oduk02.cibernet.com:/var/named/.
 
-# The EXTERNAL.named.root file is appropriate as the named.ca on all
-# of our internal DNS servers (don't let the "EXTERNAL." fool you).
-# (This might change if we were to do our own roots internally, which
-# is generally only done in extremly hih-security situations.)
-EXTERNAL.named.root -> 						\
+INTERNAL.named.root -> 						\
 		adam.cibernet.com:/var/named/named.ca		\
 		odnj01.cibernet.com:/var/named/named.ca		\
 		oduk01.cibernet.com:/var/named/named.ca		\
 		oduk02.cibernet.com:/var/named/named.ca
+
+#
+# What command should be run if a file was pushed to this server?
+# (Note: Some effort was made to have them execute in this order.)
+#
 
 RELOAD local				kill -1 `cat /var/run/named.pid`
 RELOAD adam.cibernet.com		kill -1 `cat /var/run/named.pid`
@@ -52,3 +53,4 @@ RELOAD odnj01.cibernet.com		kill -1 `cat /var/run/named.pid`
 RELOAD oduk01.cibernet.com		kill -1 `cat /var/run/named.pid`
 RELOAD oduk02.cibernet.com		kill -1 `cat /var/run/named.pid`
 RELOAD cibernetcorp@ns0.lt.nostrum.com	sudo rndc reload
+
