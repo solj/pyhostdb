@@ -5,10 +5,11 @@ use strict;
 my ($left, $right, @sources, @dests);
 my ($safe);
 my (@srcitems, @remoteitems, @localitems, @diffitems, @syncupitems);
-my (@reloadItemsLocal, @reloadItemsRemote);
+my (@reloadItemsLocal, @reloadItemsRemote, @reloadhosts);
+my (@reloadifItemsLocal, @reloadifItemsRemote);
 my $cmd;
 my $locale;
-my (%seen, %reloads);
+my (%seen, %reloads, %reloadif);
 
 # History:
 #  2005-09-26: Initial release
@@ -29,7 +30,7 @@ sub safename {
     s/:/_C/g;
     s[/][_L]g;
     s/\\/_B/g;
-    s/\./_P/g;
+#    s/\./_P/g;
 
 	# 0 thru 9 (shifted)
     s/!/_1/g;
@@ -48,8 +49,8 @@ sub safename {
     s/`/_b/g;
     s/\]/_c/g;
     s/=/_e/g;
-    s/>/_G/g;
-    s/</_L/g;
+    s/>/_g/g;
+    s/</_l/g;
     s/\[/_o/g;
     s/\|/_p/g;
     s/"/_Q/g;
@@ -82,8 +83,8 @@ while (defined($line = <>) ) {
 	# Parse the line:
 	if (/^\s*RELOAD/) {
 		my ($host, $cmd) = m/^RELOAD\s+(\S+)\s+(.*)$/;
-		($junk, $host) = split('@', $host) if m/@/; # user@host
-		$reloads{ $host } = $cmd;
+		push @reloadhosts, $host;	# record the order they appear in destinations.txt
+		$reloads{ $host } = $cmd;	# record what command to run for that host
 		next;
 	}
 	s/\s+/ /;		# unify whitespace
@@ -93,7 +94,7 @@ while (defined($line = <>) ) {
 
 	foreach my $src ( split( " ", $left) ) {
 
-		print "\n#Copy SOURCE=$src\n";
+		print "\n# If $src is new, update the MS and MP version:";
 
 		do {
 			print "\n";
@@ -104,6 +105,7 @@ while (defined($line = <>) ) {
 		} unless $seen{"MP/$src"}++;
 
 		print "\n";
+		print "# Compare $src against the MS version:\n";
 		print "diff-$src:\n";
 		print "\tdiff \$(DIFFOPT) MP/$src $src\n";
 		push @diffitems, "diff-$src";
@@ -112,45 +114,61 @@ while (defined($line = <>) ) {
 		foreach my $dst ( split( " ", $right) ) {
 			$safe = safename($dst . "--" . $src);
 
-			print "\n#Copy ...DEST=$dst ($safe)\n";
+			print "\n# If file needs to be copied to $dst...";
 
 			do {
-
-			if ($dst =~ /:/) {
-				$copycmd = "scp";
-				push @remoteitems, "DS/$safe";
-			} else {
-				$copycmd = "cp";
-				push @localitems, "DS/$safe";
-			}
+				my $host;
+				if ($dst =~ /:/) {
+					$copycmd = "scp";
+					push @remoteitems, "DS/$safe";
+					($host, $junk) = split(':', $dst);
+				} else {
+					$copycmd = "cp";
+					push @localitems, "DS/$safe";
+					$host = 'local';
+				}
 
 				print "\n";
 				print "DS/$safe: MS/$src\n";
 				print "\t$copycmd MS/$src $dst\n";
 				print "\t\@cp MS/$src DS/$safe\n";
+
+				$reloadif{$host}{ "DS/$safe" } =  1;
 			} unless $seen{"DS/$safe"}++;
 		}
 	}
 }
-
 print "\n";
-print "syncup: @syncupitems\n\n";
-print "diff: @diffitems\n\n";
-print "push-all: push-local push-remote\n\n";
-print "push-local: @srcitems @localitems\n\n";
-print "push-remote: @srcitems @remoteitems\n\n";
 
-# Handle all the reloads
-foreach my $host ( keys %reloads ) {
-	#$safe = safename("reload-" . $host);
+print "\n# Sync up the MS/MP directories:\n\n";
+print "syncup:\\\n\t", join("\\\n\t", @syncupitems), "\n\n";
+
+print "\n# Do all diffs: (compare 'out' since last 'syncup'):\n\n";
+print "diff:\\\n\t", join("\\\n\t", @diffitems), "\n\n";
+
+print "\n# Recipes to push files to appropriate servers:\n\n";
+print "push-all: push-local push-remote\n\n";
+print "push-local:\\\n\t",  join(" \\\n\t", @srcitems, @localitems), "\n\n";
+print "push-remote:\\\n\t", join(" \\\n\t", @srcitems, @remoteitems), "\n\n";
+
+# Output the plain reloads
+print "\n# Recipes to force reloads:\n\n";
+foreach my $host ( @reloadhosts ) {
+	$safe = safename("reload-" . $host);
 	if ($host eq "local") {
-		print "reload-$host:\n\t", $reloads{$host}, "\n\n";
+		print "reload-$host:\n";
+		print "\t", $reloads{$host}, "\n";
+		print "\t\@touch DS/$safe\n";
+		print "\n";
 		push @reloadItemsLocal, "reload-$host";
 		
 	} else {
 		my $cmd = $reloads{$host};
-		$cmd =~ s/'/\\'/g;
-		print "reload-$host:\n\tssh $host '$cmd'\n\n";
+		$cmd =~ s/'/\\'/g;	# protect use of '
+		print "reload-$host:\n";
+		print "\tssh $host '$cmd'\n";
+		print "\t\@touch DS/$safe\n";
+		print "\n";
 		push @reloadItemsRemote, "reload-$host";
 	}
 }
@@ -158,4 +176,36 @@ print "reload-all: ";
 	print "reload-local " if @reloadItemsLocal;
 	print "reload-remote\n\n";
 print "reload-remote: @reloadItemsRemote\n\n";
+
+# "reloadif" receipes:
+print "\n# Recipes to reload 'named' only if it is needed:\n\n";
+foreach my $host ( sort keys %reloadif ) {
+	$safe = safename($host);
+		#print "reloadif-$host:";
+		print "DS/reload-$safe:";
+		for my $ds ( sort keys %{ $reloadif{$host} } ) {
+			print "\\\n\t\t$ds";
+		}
+		print "\n";
+
+	if ($host eq "local") {
+		print "\t", $reloads{$host}, "\n";
+		print "\t\@touch DS/reload-$safe\n";
+		print "\n";
+		push @reloadifItemsLocal, "DS/reload-$safe";
+	} else {
+		my $cmd = $reloads{$host};
+		$cmd =~ s/'/\\'/g;	# protect use of '
+		print "\tssh $host '$cmd'\n";
+		print "\t\@touch DS/reload-$safe\n";
+		print "\n";
+		push @reloadifItemsRemote, "DS/reload-$safe";
+	}
+}
+print "# Reload (only if needed) all servers:\n";
+print "reloadif-all: ";
+	print "reloadif-local " if @reloadifItemsLocal;
+	print "reloadif-remote\n\n";
+print "reloadif-local: DS/reload-local\n\n" if @reloadifItemsLocal;
+print "reloadif-remote:\\\n\t", join(" \\\n\t", @reloadifItemsRemote), "\n\n";
 

@@ -185,7 +185,7 @@ jack               IN A       212.113.6.66
 alexandria         IN A       212.113.6.67
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-jukeukc            IN A       212.113.6.68
+jukeboxukc         IN A       212.113.6.68
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 tweek              IN A       212.113.6.69

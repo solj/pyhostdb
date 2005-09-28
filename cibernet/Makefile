@@ -108,7 +108,7 @@ diff: destinations.mk
 	mkdir -p MS MP DS
 	make -f destinations.mk diff
 
-push: all push-local push-remote reload
+push: all push-local push-remote reloadif
 
 push-clean:
 	rm -f destinations.mk MP/* MS/* DS/*
@@ -126,6 +126,7 @@ destinations.mk: ../destinations.txt ../hostdb.txt
 
 #
 # Reload named
+#
 reload: reload-local reload-remote
 
 reload-local:
@@ -133,4 +134,13 @@ reload-local:
 
 reload-remote:
 	make -f destinations.mk reload-remote
+
+# Reload only IF needed:
+reloadif: reloadif-local reloadif-remote
+
+reloadif-local:
+	make -f destinations.mk reloadif-local
+
+reloadif-remote:
+	make -f destinations.mk reloadif-remote
 

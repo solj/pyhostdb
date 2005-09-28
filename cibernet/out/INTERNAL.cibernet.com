@@ -1174,7 +1174,7 @@ jack               IN A       212.113.6.66
 alexandria         IN A       212.113.6.67
                    IN MX 10   us
                    IN MX 20   crumb
-jukeukc            IN A       212.113.6.68
+jukeboxukc         IN A       212.113.6.68
                    IN MX 10   us
                    IN MX 20   crumb
 tweek              IN A       212.113.6.69

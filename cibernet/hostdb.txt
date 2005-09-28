@@ -884,7 +884,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 212.113.6.65	pixukc-ukclan2.cibernet.com@EXTERNAL ISROUTER=pixukc.cibernet.com
 212.113.6.66	jack.cibernet.com@EXTERNAL ANAMES=one1clear.cibernet.com@EXTERNAL
 212.113.6.67	alexandria.cibernet.com@EXTERNAL ANAMES=bruukc.cibernet.com@EXTERNAL
-212.113.6.68	jukeukc.cibernet.com@EXTERNAL
+212.113.6.68	jukeboxukc.cibernet.com@EXTERNAL
 212.113.6.69	tweek.cibernet.com@EXTERNAL ISMAILSERVERI
 212.113.6.70	DHCP_POOL
 212.113.6.71	DHCP_POOL
