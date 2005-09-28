@@ -367,49 +367,49 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa: MS/INTE
 	scp MS/INTERNAL.240.1.10.in-addr.arpa oduk02.cibernet.com:/var/named/.
 	@cp MS/INTERNAL.240.1.10.in-addr.arpa DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa
 
-# If EXTERNAL.named.root is new, update the MS and MP version:
-MS/EXTERNAL.named.root: EXTERNAL.named.root
-	@if [ ! -r MP/EXTERNAL.named.root ] ; \
+# If INTERNAL.named.root is new, update the MS and MP version:
+MS/INTERNAL.named.root: INTERNAL.named.root
+	@if [ ! -r MP/INTERNAL.named.root ] ; \
 	then \
-		echo CREATING MP/EXTERNAL.named.root ; \
-		cp EXTERNAL.named.root MP/EXTERNAL.named.root ; \
+		echo CREATING MP/INTERNAL.named.root ; \
+		cp INTERNAL.named.root MP/INTERNAL.named.root ; \
 	fi
-	@if [ ! -r MS/EXTERNAL.named.root ] ; \
+	@if [ ! -r MS/INTERNAL.named.root ] ; \
 	then \
-		echo CREATING MS/EXTERNAL.named.root ; \
-		sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.named.root >MS/EXTERNAL.named.root ; \
+		echo CREATING MS/INTERNAL.named.root ; \
+		sed 's/:serial:/'`cat serial`'/g' <INTERNAL.named.root >MS/INTERNAL.named.root ; \
 	fi
-	@if ! cmp EXTERNAL.named.root MP/EXTERNAL.named.root  > /dev/null ; \
+	@if ! cmp INTERNAL.named.root MP/INTERNAL.named.root  > /dev/null ; \
 	then \
-		echo UPDATE MP/EXTERNAL.named.root ; \
-		cp EXTERNAL.named.root MP/EXTERNAL.named.root ;\
-		echo UPDATE MS/EXTERNAL.named.root ;\
-		sed 's/:serial:/'`cat serial`'/g' <EXTERNAL.named.root >MS/EXTERNAL.named.root ; \
+		echo UPDATE MP/INTERNAL.named.root ; \
+		cp INTERNAL.named.root MP/INTERNAL.named.root ;\
+		echo UPDATE MS/INTERNAL.named.root ;\
+		sed 's/:serial:/'`cat serial`'/g' <INTERNAL.named.root >MS/INTERNAL.named.root ; \
 	fi
 
-# Compare EXTERNAL.named.root against the MS version:
-diff-EXTERNAL.named.root:
-	diff $(DIFFOPT) MP/EXTERNAL.named.root EXTERNAL.named.root
+# Compare INTERNAL.named.root against the MS version:
+diff-INTERNAL.named.root:
+	diff $(DIFFOPT) MP/INTERNAL.named.root INTERNAL.named.root
 
 # If file needs to be copied to adam.cibernet.com:/var/named/named.ca...
-DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root: MS/EXTERNAL.named.root
-	scp MS/EXTERNAL.named.root adam.cibernet.com:/var/named/named.ca
-	@cp MS/EXTERNAL.named.root DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
+	scp MS/INTERNAL.named.root adam.cibernet.com:/var/named/named.ca
+	@cp MS/INTERNAL.named.root DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 # If file needs to be copied to odnj01.cibernet.com:/var/named/named.ca...
-DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root: MS/EXTERNAL.named.root
-	scp MS/EXTERNAL.named.root odnj01.cibernet.com:/var/named/named.ca
-	@cp MS/EXTERNAL.named.root DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
+	scp MS/INTERNAL.named.root odnj01.cibernet.com:/var/named/named.ca
+	@cp MS/INTERNAL.named.root DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 # If file needs to be copied to oduk01.cibernet.com:/var/named/named.ca...
-DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root: MS/EXTERNAL.named.root
-	scp MS/EXTERNAL.named.root oduk01.cibernet.com:/var/named/named.ca
-	@cp MS/EXTERNAL.named.root DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
+	scp MS/INTERNAL.named.root oduk01.cibernet.com:/var/named/named.ca
+	@cp MS/INTERNAL.named.root DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 # If file needs to be copied to oduk02.cibernet.com:/var/named/named.ca...
-DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root: MS/EXTERNAL.named.root
-	scp MS/EXTERNAL.named.root oduk02.cibernet.com:/var/named/named.ca
-	@cp MS/EXTERNAL.named.root DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
+	scp MS/INTERNAL.named.root oduk02.cibernet.com:/var/named/named.ca
+	@cp MS/INTERNAL.named.root DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 
 # Sync up the MS/MP directories:
@@ -424,7 +424,7 @@ syncup:\
 	MS/INTERNAL.1.168.192.in-addr.arpa\
 	MS/INTERNAL.201.1.10.in-addr.arpa\
 	MS/INTERNAL.240.1.10.in-addr.arpa\
-	MS/EXTERNAL.named.root
+	MS/INTERNAL.named.root
 
 
 # Do all diffs: (compare 'out' since last 'syncup'):
@@ -439,7 +439,7 @@ diff:\
 	diff-INTERNAL.1.168.192.in-addr.arpa\
 	diff-INTERNAL.201.1.10.in-addr.arpa\
 	diff-INTERNAL.240.1.10.in-addr.arpa\
-	diff-EXTERNAL.named.root
+	diff-INTERNAL.named.root
 
 
 # Recipes to push files to appropriate servers:
@@ -479,10 +479,10 @@ push-remote:\
 	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
-	DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root \
-	DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root \
-	DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root \
-	DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+	DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
+	DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
+	DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 
 # Recipes to force reloads:
@@ -525,7 +525,7 @@ DS/reload-adam.cibernet.com:\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--named.local\
-		DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+		DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 	ssh adam.cibernet.com 'kill -1 `cat /var/run/named.pid`'
 	@touch DS/reload-adam.cibernet.com
 
@@ -550,7 +550,7 @@ DS/reload-odnj01.cibernet.com:\
 		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--named.local\
-		DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 	ssh odnj01.cibernet.com 'kill -1 `cat /var/run/named.pid`'
 	@touch DS/reload-odnj01.cibernet.com
 
@@ -561,7 +561,7 @@ DS/reload-oduk01.cibernet.com:\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--named.local\
-		DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+		DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 	ssh oduk01.cibernet.com 'kill -1 `cat /var/run/named.pid`'
 	@touch DS/reload-oduk01.cibernet.com
 
@@ -572,7 +572,7 @@ DS/reload-oduk02.cibernet.com:\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--named.local\
-		DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--EXTERNAL.named.root
+		DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 	ssh oduk02.cibernet.com 'kill -1 `cat /var/run/named.pid`'
 	@touch DS/reload-oduk02.cibernet.com
 

@@ -19,7 +19,7 @@ EXTERNAL.16.113.212.in-addr.arpa ->						\
 
 # WARNING!
 # juice.cibernet.com contains EXTERNAL zones.  Nobody on the inside should point to it.
-# In fact, its own /etc/resolv.conf doesn't point to it.  It gets its DNS data from adam.
+# In fact, its own /etc/resolv.conf doesn't point to it.  It gets its DNS data from adam.cibernet.com
 
 #
 # Internal zones:
