@@ -1,0 +1,124 @@
+#! /bin/bash
+
+function usage
+{
+        echo "
+Usage:
+        $0 [-d] [-v] [-r Host] [UpdateFile]
+
+        Updates DHCP config in NetInfo's
+	NOTE: You have to use Server Admin to enable DHCP and set up the subnet.
+
+	-d		debug, don't make actual changes
+	-v		verbose
+	-r Host		update a remote host (default: make changes locally)
+	-h		this help message
+
+	Host		Where to SSH to get the current info, and make updates
+	UpdateFile	The file of "whe way things should be"
+"
+	exit 1
+}
+
+#
+# Todo:
+#	If there is no work to do, don't do the NIUPDATECMD commands.
+#
+
+# Set defaults
+REMOTECMD=""
+NIUPDATECMD="nicl ."
+DEBUG=false
+
+args=`getopt hdr: $*`
+if [ $? != 0 ]
+then
+        usage
+fi
+set -- $args
+for i
+do
+        case "$i"
+        in
+
+                -h)
+                        usage
+                        shift
+                        ;;
+                -r)
+                        REMOTEHOST="$2"; shift
+			REMOTECMD="ssh $REMOTEHOST"
+			NIUPDATECMD="ssh $REMOTEHOST nicl ."
+                        shift
+                        ;;
+                -d)
+			DEBUG=true
+			shift
+                        ;;
+                --)
+                        shift; break;;
+        esac
+done
+
+# If we're in debug mode, disable the updates:
+if $DEBUG ; then
+	# note: we can't do this in the "getopt" case statement
+	# because -r may be parsed after -d.
+	NIUPDATECMD="cat"
+fi
+
+if $DEBUG ; then echo COUNT=$# ; fi
+
+#if [ $# -lt 1 ]; then
+#        usage
+#fi
+
+if $DEBUG ; then
+	echo REMOTEHOST=$REMOTEHOST
+	echo NIUPDATECMD=$NIUPDATECMD
+fi
+
+
+TEMP=/tmp
+NEWHOSTS=$TEMP/nidu.new.txt
+OLDHOSTS=$TEMP/nidu.cur.txt
+ADDLIST=$TEMP/nidu.add
+DELLIST=$TEMP/nidu.del
+
+# Gather whats in stdin
+cat $* | grep -v '127.0.0.1' | grep -v '255.255.255.255' | sort >$NEWHOSTS
+
+# Gather what's in netinfo now
+$REMOTECMD /usr/bin/nireport . /machines ip_address en_address name  | grep -v '127.0.0.1' | grep -v '255.255.255.255' | sed -e 's/	*$//g' | sort >$OLDHOSTS
+
+# What needs to be deleted:
+comm -23 $OLDHOSTS $NEWHOSTS >$DELLIST
+# What needs to be added:
+comm -13 $OLDHOSTS $NEWHOSTS >$ADDLIST
+
+if $DEBUG ; then
+	echo DELETE THESE:
+	cat $DELLIST
+	echo 
+	echo ADD THESE:
+	cat $ADDLIST
+fi
+
+# Delete items:
+awk -F'\t' <$DELLIST '
+	NF == 3  {
+		print "delete /machines/name=" $3 ;
+		}
+' | $NIUPDATECMD
+
+
+# Add items:
+awk -F'\t' <$ADDLIST '
+	NF == 3  {
+		print "create /machines/name=" $3 ;
+		print "merge /machines/name=" $3 " ip_address " $1 ;
+		print "merge /machines/name=" $3 " en_address " $2 ;
+		}
+' | $NIUPDATECMD
+
+
