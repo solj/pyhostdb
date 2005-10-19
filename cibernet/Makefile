@@ -83,7 +83,7 @@ INTERNAL.named.root: EXTERNAL.named.root
 # DHCP-related stuff
 #
 
-gendhcpdconf: dhcpd.conf
+gendhcpdconf: dhcpd.conf dhcpnetinfo.txt
 
 gendhcpdconf-clean:
 	rm -f dhcpd.conf
@@ -93,6 +93,10 @@ dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
 	catif        ../dhcpd.conf-head			>$@
 	mkzones -d < ../hostdb.txt			>>$@
 	catif        ../INTERNAL.named.conf-tail	>>$@
+
+dhcpnetinfo.txt: ../hostdb.txt
+	catif	../dhcpnetinfo.txt-head		>$@
+	mkzones -d -n < ../hostdb.txt		>>$@
 
 #
 # Things related to destinations.mk
