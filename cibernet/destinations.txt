@@ -43,11 +43,17 @@ INTERNAL.named.root -> 						\
 		oduk02.cibernet.com:/var/named/named.ca
 
 #
+# DHCP stuff for Mac OS X Server DHCP servers
+# This file isn't used in /var/named but by having this
+# rule it causes the "RELOAD local" command to run.
+dhcpnetinfo.txt -> /var/named/dhcpnetinfo.txt
+
+#
 # What command should be run if a file was pushed to this server?
 # (Note: Some effort was made to have them execute in this order.)
 #
 
-RELOAD local				kill -1 `cat /var/run/named.pid`
+RELOAD local				cd /etc && make hostdb
 RELOAD adam.cibernet.com		kill -1 `cat /var/run/named.pid`
 RELOAD odnj01.cibernet.com		kill -1 `cat /var/run/named.pid`
 RELOAD oduk01.cibernet.com		kill -1 `cat /var/run/named.pid`

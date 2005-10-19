@@ -18,9 +18,10 @@ $TTL 1h
 0                  IN PTR     uklan-net.cibernet.com.
 1                  IN PTR     gw-uklan.cibernet.com.
 2                  IN PTR     indianokia-uklan.cibernet.com.
-10                 IN PTR     hp4300.cibernet.com.
-11                 IN PTR     kairos.cibernet.com.
+10                 IN PTR     postroom-uk.cibernet.com.
+11                 IN PTR     hp4000uk.cibernet.com.
 15                 IN PTR     cbnts04.cibernet.com.
+17                 IN PTR     kairos.cibernet.com.
 19                 IN PTR     babel.cibernet.com.
 20                 IN PTR     oduk01.cibernet.com.
 21                 IN PTR     oduk02.cibernet.com.

@@ -63,6 +63,9 @@ ocdemo             IN A       212.113.16.126
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 one1clear-beta     IN CNAME   tart
+one1clear-uat      IN A       212.113.16.124
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 one1clear          IN A       212.113.6.66
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -85,6 +88,9 @@ vpnnj              IN A       66.80.151.140
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 www                IN A       66.80.151.139
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+tci                IN A       59.163.119.120
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mdmega-net         IN A       66.80.151.136

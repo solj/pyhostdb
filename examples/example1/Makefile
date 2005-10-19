@@ -1,6 +1,5 @@
 
-
-all: EXTERNAL.named.root gennamedconf genzones gendhcpdconf
+all: named.local localhost.zone EXTERNAL.named.root INTERNAL.named.root gennamedconf genzones gendhcpdconf
 
 reload: reload-local reload-remote
 
@@ -49,6 +48,12 @@ newserial:
 # For a lot of fun, subtract a constant that makes it look
 # like the last update was in 1988.
 
+named.local: ../named.local
+	cp ../named.local named.local
+
+localhost.zone: ../localhost.zone
+	cp ../localhost.zone localhost.zone
+
 
 # ROOTCACHE STUFF:
 #
@@ -78,21 +83,35 @@ INTERNAL.named.root: EXTERNAL.named.root
 # DHCP-related stuff
 #
 
-gendhcpdconf: dhcpd.conf
+gendhcpdconf: dhcpd.conf dhcpnetinfo.txt
 
 gendhcpdconf-clean:
 	rm -f dhcpd.conf
 
 # Generate the new DHCPd configurtion:
 dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
-	catif ../dhcpd.conf-head		>$@
-	mkzones -d <hostdb.txt			>>$@
-	catif ../INTERNAL.named.conf-tail	>>$@
+	catif        ../dhcpd.conf-head			>$@
+	mkzones -d < ../hostdb.txt			>>$@
+	catif        ../INTERNAL.named.conf-tail	>>$@
+
+dhcpnetinfo.txt: ../hostdb.txt
+	catif	../dhcpnetinfo.txt-head		>$@
+	mkzones -d -n < ../hostdb.txt		>>$@
 
 #
-# Push
+# Things related to destinations.mk
 #
-push: all push-local push-remote reload-all
+# Update MS/MP (if needed) from the "out" files:
+syncup: destinations.mk
+	mkdir -p MS MP DS
+	make -f destinations.mk syncup
+
+# Diff the "out" files against the MS/MP files:
+diff: destinations.mk
+	mkdir -p MS MP DS
+	make -f destinations.mk diff
+
+push: all push-local push-remote reloadif
 
 push-clean:
 	rm -f destinations.mk MP/* MS/* DS/*
@@ -110,12 +129,21 @@ destinations.mk: ../destinations.txt ../hostdb.txt
 
 #
 # Reload named
+#
+reload: reload-local reload-remote
+
 reload-local:
-	kill -1 `cat /var/run/named.pid`
+	make -f destinations.mk reload-local
 
 reload-remote:
-	ssh adam.cibernet.com 'kill -1 `cat /var/run/named.pid`'
-	ssh shell.whatexit.org 'kill -1 `cat /var/run/named.pid`'
-	#ssh gsp.whatexit.org cd /etc && make named-reload
-	#ssh joisey.whatexit.org cd /etc && make named-reload
+	make -f destinations.mk reload-remote
+
+# Reload only IF needed:
+reloadif: reloadif-local reloadif-remote
+
+reloadif-local:
+	make -f destinations.mk reloadif-local
+
+reloadif-remote:
+	make -f destinations.mk reloadif-remote
 

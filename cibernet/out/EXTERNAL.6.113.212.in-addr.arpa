@@ -13,8 +13,6 @@ $TTL 1h
 
                    IN NS      ns2.cibernet.com.
                    IN NS      ns0.lt.nostrum.com.
-                   IN NS      ns02.customer.eu.level3.net.
-                   IN NS      ns01.customer.eu.level3.net.
 0                  IN PTR     h212-113-6-0.cibernet.com.
 1                  IN PTR     h212-113-6-1.cibernet.com.
 2                  IN PTR     h212-113-6-2.cibernet.com.

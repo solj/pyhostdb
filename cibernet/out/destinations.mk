@@ -411,6 +411,35 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL
 	scp MS/INTERNAL.named.root oduk02.cibernet.com:/var/named/named.ca
 	@cp MS/INTERNAL.named.root DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
+# If dhcpnetinfo.txt is new, update the MS and MP version:
+MS/dhcpnetinfo.txt: dhcpnetinfo.txt
+	@if [ ! -r MP/dhcpnetinfo.txt ] ; \
+	then \
+		echo CREATING MP/dhcpnetinfo.txt ; \
+		cp dhcpnetinfo.txt MP/dhcpnetinfo.txt ; \
+	fi
+	@if [ ! -r MS/dhcpnetinfo.txt ] ; \
+	then \
+		echo CREATING MS/dhcpnetinfo.txt ; \
+		sed 's/:serial:/'`cat serial`'/g' <dhcpnetinfo.txt >MS/dhcpnetinfo.txt ; \
+	fi
+	@if ! cmp dhcpnetinfo.txt MP/dhcpnetinfo.txt  > /dev/null ; \
+	then \
+		echo UPDATE MP/dhcpnetinfo.txt ; \
+		cp dhcpnetinfo.txt MP/dhcpnetinfo.txt ;\
+		echo UPDATE MS/dhcpnetinfo.txt ;\
+		sed 's/:serial:/'`cat serial`'/g' <dhcpnetinfo.txt >MS/dhcpnetinfo.txt ; \
+	fi
+
+# Compare dhcpnetinfo.txt against the MS version:
+diff-dhcpnetinfo.txt:
+	diff $(DIFFOPT) MP/dhcpnetinfo.txt dhcpnetinfo.txt
+
+# If file needs to be copied to /var/named/dhcpnetinfo.txt...
+DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt: MS/dhcpnetinfo.txt
+	cp MS/dhcpnetinfo.txt /var/named/dhcpnetinfo.txt
+	@cp MS/dhcpnetinfo.txt DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt
+
 
 # Sync up the MS/MP directories:
 
@@ -424,7 +453,8 @@ syncup:\
 	MS/INTERNAL.1.168.192.in-addr.arpa\
 	MS/INTERNAL.201.1.10.in-addr.arpa\
 	MS/INTERNAL.240.1.10.in-addr.arpa\
-	MS/INTERNAL.named.root
+	MS/INTERNAL.named.root\
+	MS/dhcpnetinfo.txt
 
 
 # Do all diffs: (compare 'out' since last 'syncup'):
@@ -439,7 +469,8 @@ diff:\
 	diff-INTERNAL.1.168.192.in-addr.arpa\
 	diff-INTERNAL.201.1.10.in-addr.arpa\
 	diff-INTERNAL.240.1.10.in-addr.arpa\
-	diff-INTERNAL.named.root
+	diff-INTERNAL.named.root\
+	diff-dhcpnetinfo.txt
 
 
 # Recipes to push files to appropriate servers:
@@ -449,7 +480,8 @@ push-all: push-local push-remote
 push-local:\
 	DS/_Lvar_Lnamed_Lcibernet.com..zone--EXTERNAL.cibernet.com \
 	DS/_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone--EXTERNAL.6.113.212.in-addr.arpa \
-	DS/_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone--EXTERNAL.16.113.212.in-addr.arpa
+	DS/_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone--EXTERNAL.16.113.212.in-addr.arpa \
+	DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt
 
 push-remote:\
 	DS/cibernetcorp_2ns0.lt.nostrum.com_C_tcibernetcorp_Lzones_L.--EXTERNAL.cibernet.com \
@@ -488,7 +520,7 @@ push-remote:\
 # Recipes to force reloads:
 
 reload-local:
-	kill -1 `cat /var/run/named.pid`
+	cd /etc && make hostdb
 	@touch DS/reload-local
 
 reload-adam.cibernet.com:
@@ -539,8 +571,9 @@ DS/reload-cibernetcorp_2ns0.lt.nostrum.com:\
 DS/reload-local:\
 		DS/_Lvar_Lnamed_L112-127.16.113.212.in-addr.arpa.zone--EXTERNAL.16.113.212.in-addr.arpa\
 		DS/_Lvar_Lnamed_L64-127.6.113.212.in-addr.arpa.zone--EXTERNAL.6.113.212.in-addr.arpa\
-		DS/_Lvar_Lnamed_Lcibernet.com..zone--EXTERNAL.cibernet.com
-	kill -1 `cat /var/run/named.pid`
+		DS/_Lvar_Lnamed_Lcibernet.com..zone--EXTERNAL.cibernet.com\
+		DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt
+	cd /etc && make hostdb
 	@touch DS/reload-local
 
 DS/reload-odnj01.cibernet.com:\
