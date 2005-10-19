@@ -4,7 +4,7 @@ use strict;
 
 use Getopt::Std;
 my %opts;
-getopts("z:d", \%opts);
+getopts("z:dn", \%opts);
 
 $| = 1;
 
@@ -34,6 +34,9 @@ my ($mac, $type, $rootpath, $server, $filename, $ntname, @junk);
 my %hostmx;
 
 usage() unless $opts{'z'} or $opts{'d'};
+usage() if $opts{'n'} and ! $opts{'d'};
+
+my $opt_netinfo = 1 if $opts{'n'};	# output DHCP info as a table for the netinfo system
 
 parsehostlist();
 
@@ -42,17 +45,15 @@ if ($opts{'z'}) {
 	#print "# Control file: $CONTROLFILE\n";
 	do_dns();
 }
-if ($opts{'d'}) {
-	do_dhcp();
-}
-
+do_dhcp() if $opts{'d'};	# generate DHCP configuration
 
 exit 0;
 
 sub usage {
 	die "Usage: mkzones [-z zoneconf.txt] [-d] <hostlist.txt
 		-z zoneconf.txt  -- output zones based on zoneconf.txt
-		-d                 -- output DHCP stuff to dhcpinc.txt\n";
+		-d               -- output DHCP config to stdout.
+		-n               -- output DHCP info as a table\n";
 }
 
 sub ip2num {
@@ -184,15 +185,16 @@ sub rrns {
 
 sub rrmx {
 	my ($zone, $scope, $name) = @_;
+	my $dest;
 	#print "DEFMX $scope = ", $defmx{ $scope }, "\n";
 	if (($db{$name}{'ISMAILSERVER'}) or ($db{$name}{'ISMAILSERVERI'} and $scope eq 'INTERNAL')) {
-		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$name:$name"}++;
-		$hostmx{"$name:$name"}++;
+		rr( $zone, $name, "MX 0", shortname($zone, $name)) unless $hostmx{"$scope:$name:$name"}++;
+		$hostmx{"$scope:$name:$name"}++;
 	}
 	if ( defined( $defmx{ $scope } )) {
 		foreach my $i ( split(';', $defmx{ $scope }) ) {
 			my ($pri, $host) = split(' ', $i);
-			next if $hostmx{"$name:$host"}++;
+			next if $hostmx{"$scope:$name:$host"}++;
 			rr( $zone, $name, "MX $pri", shortname($zone, $host));
 		}
 	}
@@ -504,10 +506,15 @@ sub parsehostlist {
 				if ($key eq 'ANAME' or $key eq 'ANAMES') {
 					foreach my $h ( split(':', $value)) {
 						($isinta, $isexta, $dupoka, $pn) = processname($h);
-						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEI'});
 						$db{ $pn }{'ANAMEI'} = $num if $isinta;
-						#warn "$h is a duplicate (ANAME)" if defined($db{$pn}{'ANAMEX'});
 						$db{ $pn }{'ANAMEX'} = $num if $isexta;
+						if ($db{$name}{'ISMAILSERVER'}) {
+							$db{ $pn }{'ISMAILSERVER'} = $name;
+						}
+						if ($db{$name}{'ISMAILSERVERI'}) {
+							$db{ $pn }{'ISMAILSERVERI'} = $name;
+							$hostmx{"INTERNAL:$pn:$name"}++;
+						}
 					}
 				} elsif ($key eq 'CNAME' or $key eq 'CNAMES') {
 					#$db{$name}{'CNAMES'} = $value;
@@ -525,9 +532,9 @@ sub parsehostlist {
 						multihome($h, $name, $num);
 					}
 				} elsif ($key eq   'ISMAILSERVER') {
-					$db{$name}{'ISMAILSERVER'} = 1;
+					$db{$name}{'ISMAILSERVER'}  = ( $value ? $value : 1 );
 				} elsif ($key eq   'ISMAILSERVERI') {
-					$db{$name}{'ISMAILSERVERI'} = 1;
+					$db{$name}{'ISMAILSERVERI'} = ( $value ? $value : 1 );
 				} else {
 					$dhcp{$num}{$key} = ( $value ? $value : 1 );
 				}
@@ -646,26 +653,29 @@ sub num2hex {
 }
 
 
-# --
+# -- output an ISC DHCP configuration for hosts with a MAC= assignment.
+# -- (Or, if 
 
 sub do_dhcp {
 	foreach my $num ( sort keys %dhcp ) {
 
-       	$mac = $dhcp{$num}{'MAC'};
+       		$mac = $dhcp{$num}{'MAC'};
 		next unless $mac;
-       	warn "WARNING: line $.: ${mac} is not a valid MAC address\n" unless
+       		warn "WARNING: line $.: ${mac} is not a valid MAC address\n" unless
                	$mac =~ /^.+:.+:.+:.+:.+:.+/;
-       	$mac = &normalize($mac);
+       		$mac = &normalize($mac);
 
-       	$name = $num2name{$num};
-       	warn "WARNING: line $.: $name is not a valid hostname\n" if $name =~ /=|_/;
+       		$name = $num2name{$num};
+       		warn "WARNING: line $.: $name is not a valid hostname\n" if $name =~ /=|_/;
 
 		# If not set, the type is "pc":
 		$type = $dhcp{$num}{'TYPE'} ?  $dhcp{$num}{'TYPE'} : "pc";
 
 
-#print "DEBUG: $num\n";
-       	if ($type eq 'netboot') {
+		#print "DEBUG: $num\n";
+		if ($opt_netinfo) {
+			print num2ip($num), "\t\L$mac\t$name\n";
+		} elsif ($type eq 'netboot') {
 			do_netboot($num, $name, $mac, '65.198.68.144', "/usr/local/export/pxe", "pxeboot");
 		} elsif ($type eq 'goldnetboot' or $type eq 'prodnetboot') {
 			do_netboot($num, $name, $mac, '65.246.244.228', "/usr/local/export/pxe", "pxeboot");
