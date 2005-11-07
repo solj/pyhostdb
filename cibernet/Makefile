@@ -90,13 +90,14 @@ gendhcpdconf-clean:
 
 # Generate the new DHCPd configurtion:
 dhcpd.conf: ../dhcpd.conf-head ../hostdb.txt ../dhcpd.conf-tail
-	catif        ../dhcpd.conf-head			>$@
-	mkzones -d < ../hostdb.txt			>>$@
-	catif        ../INTERNAL.named.conf-tail	>>$@
+	catif        ../dhcpd.conf-head		>$@
+	mkzones -d < ../hostdb.txt		>>$@
+	catif        ../dhcpd.conf-tail		>>$@
 
 dhcpnetinfo.txt: ../hostdb.txt
 	catif	../dhcpnetinfo.txt-head		>$@
 	mkzones -d -n < ../hostdb.txt		>>$@
+	catif	../dhcpnetinfo.txt-tail		>>$@
 
 #
 # Things related to destinations.mk

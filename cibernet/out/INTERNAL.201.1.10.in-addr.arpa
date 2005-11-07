@@ -16,12 +16,9 @@ $TTL 1h
                    IN NS      oduk01.cibernet.com.
                    IN NS      oduk02.cibernet.com.
 0                  IN PTR     njlan-net.cibernet.com.
-1                  IN PTR     pie-1.cibernet.com.
 2                  IN PTR     pixnj-lan.cibernet.com.
 3                  IN PTR     hp7100nj.cibernet.com.
-4                  IN PTR     pie-4.cibernet.com.
-5                  IN PTR     pie-5.cibernet.com.
-6                  IN PTR     pie-6.cibernet.com.
+4                  IN PTR     pie.cibernet.com.
 7                  IN PTR     seed.cibernet.com.
 8                  IN PTR     wrt54Gnj.cibernet.com.
 9                  IN PTR     sauce.cibernet.com.
@@ -54,6 +51,8 @@ $TTL 1h
 40                 IN PTR     solar.cibernet.com.
 41                 IN PTR     syehmac.cibernet.com.
 42                 IN PTR     syehmac-wifi.cibernet.com.
+43                 IN PTR     cairn-wifi.cibernet.com.
+44                 IN PTR     cairn.cibernet.com.
 66                 IN PTR     p10-1-201-66.cibernet.com.
 67                 IN PTR     p10-1-201-67.cibernet.com.
 68                 IN PTR     p10-1-201-68.cibernet.com.

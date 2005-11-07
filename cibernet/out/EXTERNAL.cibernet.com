@@ -14,6 +14,11 @@ $TTL 1h
                    IN NS      NS2.CIBERNET.COM.
                    IN NS      ns0.lt.nostrum.com.
                    IN NS      ny2.streambolt.com.
+
+; this is from the INC file
+in.cibernet.com.	IN MX 10   cluster5.us.messagelabs.com.
+			IN MX 20   cluster5a.us.messagelabs.com.
+
 auto               IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -41,15 +46,16 @@ gb                 IN A       66.80.151.139
 gbc                IN A       193.195.87.251
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+in                 IN A       59.163.119.120
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 mail               IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm-failover       IN A       66.80.151.141
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-mtm-test           IN A       212.113.16.122
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
+mtm-test           IN CNAME   tart
 mtm                IN A       212.113.16.123
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -63,15 +69,11 @@ ocdemo             IN A       212.113.16.126
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 one1clear-beta     IN CNAME   tart
-one1clear-uat      IN A       212.113.16.124
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
+one1clear-uat      IN CNAME   tree
 one1clear          IN A       212.113.6.66
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-oneclear-uat       IN A       212.113.16.124
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
+oneclear-uat       IN CNAME   tree
 support            IN A       66.80.151.142
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -149,14 +151,6 @@ pixnj-paetec       IN A       66.155.166.179
                    IN MX 20   cluster5a.us.messagelabs.com.
 ; pixnj-paetec.cibernet.com is part of multihomed host pixnj.cibernet.com
 pixnj              IN A       66.155.166.179
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-
-pie-paetec         IN A       66.155.166.180
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-; pie-paetec.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       66.155.166.180
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 
@@ -932,6 +926,7 @@ h66-155-166-174    IN A       66.155.166.174
 h66-155-166-175    IN A       66.155.166.175
 h66-155-166-176    IN A       66.155.166.176
 h66-155-166-177    IN A       66.155.166.177
+h66-155-166-180    IN A       66.155.166.180
 h66-155-166-181    IN A       66.155.166.181
 h66-155-166-182    IN A       66.155.166.182
 h66-155-166-183    IN A       66.155.166.183

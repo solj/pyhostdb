@@ -3,6 +3,7 @@
 # 212.113.16.112/28	Allocated to us by Level3
 # 10.1.240.0/24		Maryland
 # 10.1.201.0/24		NJ
+# 10.91.40.0/24		India
 # 192.168.1.0/24	UK Office
 
 # Note:
@@ -28,22 +29,22 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 # Gateway: 10.1.201.2
 # DNS: 10.1.201.20 10.1.240.6
 # Our ISPs are:
-#  Comcast:
 #  Paetec:
+#  Comcast:
 # RANGES:
 # .1-.62 -- Static Assignments:
-# .66-.94 -- served by the PIX
+# .66-.94 -- served by the PIX DHCP
 # .100-.150 -- served by the Linksys during outages
-# .162-.190 -- 
+# .162-.190 --  pie
 # .194-.249 -- OpenDir servers
 
 10.1.201.0	njlan-net.cibernet.com
-10.1.201.1	pie-1.cibernet.com  ISMULTIHOMED=pie.cibernet.com
+#10.1.201.1	pie-1.cibernet.com  ISMULTIHOMED=pie.cibernet.com
 10.1.201.2	pixnj-lan.cibernet.com ISROUTER=pixnj.cibernet.com
 10.1.201.3	hp7100nj.cibernet.com
-10.1.201.4	pie-4.cibernet.com ISMULTIHOMED=pie.cibernet.com
-10.1.201.5	pie-5.cibernet.com ISMULTIHOMED=pie.cibernet.com
-10.1.201.6	pie-6.cibernet.com ISMULTIHOMED=pie.cibernet.com
+10.1.201.4	pie.cibernet.com MAC=00:0a:95:ac:d0:2e
+#10.1.201.5	pie-5.cibernet.com ISMULTIHOMED=pie.cibernet.com
+#10.1.201.6	pie-6.cibernet.com ISMULTIHOMED=pie.cibernet.com
 10.1.201.7	seed.cibernet.com
 10.1.201.8	wrt54Gnj.cibernet.com
 10.1.201.9	sauce.cibernet.com ANAMES=svnweb.cibernet.com
@@ -69,7 +70,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 10.1.201.29	gimel.cibernet.com	MAC=0:d:93:ee:f9:ee
 10.1.201.30	betty.cibernet.com	MAC=0:d:93:ef:7:5f 
 10.1.201.31	farebrother.cibernet.com	MAC=0:d:93:87:31:f9
-10.1.201.32	mlrmac.cibernet.com	MAC=0:11:24:22:28:7f
+10.1.201.32	mlrmac.cibernet.com	MAC=00:11:24:22:28:7f
 10.1.201.33	gesmac.cibernet.com	MAC=0:a:95:da:79:f6
 10.1.201.34	gesmac-wifi.cibernet.com	MAC=0:a:95:f2:8c:ce
 10.1.201.35	killmermac.cibernet.com	MAC=0:d:93:78:24:80
@@ -80,8 +81,8 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 10.1.201.40	solar.cibernet.com
 10.1.201.41	syehmac.cibernet.com	MAC=0:11:24:84:36:cc
 10.1.201.42	syehmac-wifi.cibernet.com	MAC=00:11:24:9b:cf:eb
-#10.1.201.43	UNUSED10120143.cibernet.com
-#10.1.201.44	UNUSED10120144.cibernet.com
+10.1.201.43	cairn-wifi.cibernet.com	MAC=0:11:24:c1:ea:4b
+10.1.201.44	cairn.cibernet.com	MAC=0:14:51:e:32:90
 #10.1.201.45	UNUSED10120145.cibernet.com
 #10.1.201.46	UNUSED10120146.cibernet.com
 #10.1.201.47	UNUSED10120147.cibernet.com
@@ -303,7 +304,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 # netmask: 255.255.255.0
 # dns: 10.1.240.1
 10.1.240.0	mdlan-net.cibernet.com
-10.1.240.1	juice-mdlan.cibernet.com ISMAILSERVERI ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com:cibernet.com:www.cibernet.com:mail.cibernet.com:careof.cibernet.com:auto.cibernet.com:gb.cibernet.com:us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com:xserve.cibernet.com CNAMES=cal.cibernet.com
+10.1.240.1	juice-mdlan.cibernet.com ANAMES=mail.cibernet.com ISMAILSERVERI  ANAMES=bugzilla.cibernet.com:inside.cibernet.com:labs.cibernet.com:cibernet.com:www.cibernet.com:careof.cibernet.com:auto.cibernet.com:gb.cibernet.com:us.cibernet.com:www-test.cibernet.com:demoreports.cibernet.com:xserve.cibernet.com CNAMES=cal.cibernet.com
 10.1.240.2	pixmd-mdlan.cibernet.com ISROUTER=pixmd.cibernet.com ANAMES=pixmd-lan.cibernet.com
 10.1.240.3	cycmd.cibernet.com
 10.1.240.4	vpnmd-in.cibernet.com CNAME=vpn-in.cibernet.com
@@ -324,7 +325,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 #10.1.240.19	UNUSED10124019.cibernet.com
 10.1.240.20	brumd.cibernet.com
 10.1.240.21	exabytemd.cibernet.com
-10.1.240.22	robotron.cibernet.com ANAMES=support.cibernet.com
+10.1.240.22	robotron.cibernet.com ISMAILSERVERI ANAMES=support.cibernet.com
 #10.1.240.23	test555.cibernet.com
 #10.1.240.24	test556.cibernet.com
 #10.1.240.25	test557.cibernet.com
@@ -558,7 +559,264 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 #10.1.240.253	UNUSED101240253.cibernet.com
 10.1.240.254	mdlan-bcast.cibernet.com
 
-
+## India's office LAN
+#10.91.40.0	india0A5B2800.in.cibernet.com
+#10.91.40.1	india0A5B2801.in.cibernet.com
+#10.91.40.2	india0A5B2802.in.cibernet.com
+#10.91.40.3	india0A5B2803.in.cibernet.com
+#10.91.40.4	cibernet-sws.in.cibernet.com
+#10.91.40.5	in.cibernet.com	ISMAILSERVERI ANAME=cibernet-ex.in.cibernet.com:tci.in.cibernet.com
+#10.91.40.6	india0A5B2806.in.cibernet.com
+#10.91.40.7	india0A5B2807.in.cibernet.com
+#10.91.40.8	india0A5B2808.in.cibernet.com
+#10.91.40.9	india0A5B2809.in.cibernet.com
+#10.91.40.10	cibernet-dc.in.cibernet.com
+#10.91.40.11	cibernet104.in.cibernet.com
+#10.91.40.12	india0A5B280C.in.cibernet.com
+#10.91.40.13	india0A5B280D.in.cibernet.com
+#10.91.40.14	india0A5B280E.in.cibernet.com
+#10.91.40.15	india0A5B280F.in.cibernet.com
+#10.91.40.16	india0A5B2810.in.cibernet.com
+#10.91.40.17	india0A5B2811.in.cibernet.com
+#10.91.40.18	india0A5B2812.in.cibernet.com
+#10.91.40.19	india0A5B2813.in.cibernet.com
+#10.91.40.20	india0A5B2814.in.cibernet.com
+#10.91.40.21	india0A5B2815.in.cibernet.com
+#10.91.40.22	india0A5B2816.in.cibernet.com
+#10.91.40.23	india0A5B2817.in.cibernet.com
+#10.91.40.24	india0A5B2818.in.cibernet.com
+#10.91.40.25	india0A5B2819.in.cibernet.com
+#10.91.40.26	india0A5B281A.in.cibernet.com
+#10.91.40.27	india0A5B281B.in.cibernet.com
+#10.91.40.28	india0A5B281C.in.cibernet.com
+#10.91.40.29	india0A5B281D.in.cibernet.com
+#10.91.40.30	india0A5B281E.in.cibernet.com
+#10.91.40.31	india0A5B281F.in.cibernet.com
+#10.91.40.32	india0A5B2820.in.cibernet.com
+#10.91.40.33	india0A5B2821.in.cibernet.com
+#10.91.40.34	india0A5B2822.in.cibernet.com
+#10.91.40.35	india0A5B2823.in.cibernet.com
+#10.91.40.36	india0A5B2824.in.cibernet.com
+#10.91.40.37	india0A5B2825.in.cibernet.com
+#10.91.40.38	india0A5B2826.in.cibernet.com
+#10.91.40.39	india0A5B2827.in.cibernet.com
+#10.91.40.40	india0A5B2828.in.cibernet.com
+#10.91.40.41	india0A5B2829.in.cibernet.com
+#10.91.40.42	india0A5B282A.in.cibernet.com
+#10.91.40.43	india0A5B282B.in.cibernet.com
+#10.91.40.44	india0A5B282C.in.cibernet.com
+#10.91.40.45	india0A5B282D.in.cibernet.com
+#10.91.40.46	india0A5B282E.in.cibernet.com
+#10.91.40.47	india0A5B282F.in.cibernet.com
+#10.91.40.48	india0A5B2830.in.cibernet.com
+#10.91.40.49	india0A5B2831.in.cibernet.com
+#10.91.40.50	india0A5B2832.in.cibernet.com
+#10.91.40.51	india0A5B2833.in.cibernet.com
+#10.91.40.52	india0A5B2834.in.cibernet.com
+#10.91.40.53	india0A5B2835.in.cibernet.com
+#10.91.40.54	india0A5B2836.in.cibernet.com
+#10.91.40.55	india0A5B2837.in.cibernet.com
+#10.91.40.56	india0A5B2838.in.cibernet.com
+#10.91.40.57	india0A5B2839.in.cibernet.com
+#10.91.40.58	india0A5B283A.in.cibernet.com
+#10.91.40.59	india0A5B283B.in.cibernet.com
+#10.91.40.60	india0A5B283C.in.cibernet.com
+#10.91.40.61	india0A5B283D.in.cibernet.com
+#10.91.40.62	india0A5B283E.in.cibernet.com
+#10.91.40.63	india0A5B283F.in.cibernet.com
+#10.91.40.64	india0A5B2840.in.cibernet.com
+#10.91.40.65	india0A5B2841.in.cibernet.com
+#10.91.40.66	india0A5B2842.in.cibernet.com
+#10.91.40.67	india0A5B2843.in.cibernet.com
+#10.91.40.68	india0A5B2844.in.cibernet.com
+#10.91.40.69	india0A5B2845.in.cibernet.com
+#10.91.40.70	india0A5B2846.in.cibernet.com
+#10.91.40.71	india0A5B2847.in.cibernet.com
+#10.91.40.72	india0A5B2848.in.cibernet.com
+#10.91.40.73	india0A5B2849.in.cibernet.com
+#10.91.40.74	india0A5B284A.in.cibernet.com
+#10.91.40.75	india0A5B284B.in.cibernet.com
+#10.91.40.76	india0A5B284C.in.cibernet.com
+#10.91.40.77	india0A5B284D.in.cibernet.com
+#10.91.40.78	india0A5B284E.in.cibernet.com
+#10.91.40.79	india0A5B284F.in.cibernet.com
+#10.91.40.80	india0A5B2850.in.cibernet.com
+#10.91.40.81	india0A5B2851.in.cibernet.com
+#10.91.40.82	india0A5B2852.in.cibernet.com
+#10.91.40.83	india0A5B2853.in.cibernet.com
+#10.91.40.84	india0A5B2854.in.cibernet.com
+#10.91.40.85	india0A5B2855.in.cibernet.com
+#10.91.40.86	india0A5B2856.in.cibernet.com
+#10.91.40.87	india0A5B2857.in.cibernet.com
+#10.91.40.88	india0A5B2858.in.cibernet.com
+#10.91.40.89	india0A5B2859.in.cibernet.com
+#10.91.40.90	india0A5B285A.in.cibernet.com
+#10.91.40.91	india0A5B285B.in.cibernet.com
+#10.91.40.92	india0A5B285C.in.cibernet.com
+#10.91.40.93	india0A5B285D.in.cibernet.com
+#10.91.40.94	india0A5B285E.in.cibernet.com
+#10.91.40.95	india0A5B285F.in.cibernet.com
+#10.91.40.96	india0A5B2860.in.cibernet.com
+#10.91.40.97	india0A5B2861.in.cibernet.com
+#10.91.40.98	india0A5B2862.in.cibernet.com
+#10.91.40.99	india0A5B2863.in.cibernet.com
+#10.91.40.100	pixin-lan.in.cibernet.com ISROUTER=pixin.in.cibernet.com
+#10.91.40.101	india0A5B2865.in.cibernet.com
+#10.91.40.102	india0A5B2866.in.cibernet.com
+#10.91.40.103	india0A5B2867.in.cibernet.com
+#10.91.40.104	india0A5B2868.in.cibernet.com
+#10.91.40.105	india0A5B2869.in.cibernet.com
+#10.91.40.106	india0A5B286A.in.cibernet.com
+#10.91.40.107	india0A5B286B.in.cibernet.com
+#10.91.40.108	india0A5B286C.in.cibernet.com
+#10.91.40.109	india0A5B286D.in.cibernet.com
+#10.91.40.110	india0A5B286E.in.cibernet.com
+#10.91.40.111	india0A5B286F.in.cibernet.com
+#10.91.40.112	india0A5B2870.in.cibernet.com
+#10.91.40.113	india0A5B2871.in.cibernet.com
+#10.91.40.114	india0A5B2872.in.cibernet.com
+#10.91.40.115	india0A5B2873.in.cibernet.com
+#10.91.40.116	india0A5B2874.in.cibernet.com
+#10.91.40.117	india0A5B2875.in.cibernet.com
+#10.91.40.118	india0A5B2876.in.cibernet.com
+#10.91.40.119	india0A5B2877.in.cibernet.com
+#10.91.40.120	india0A5B2878.in.cibernet.com
+#10.91.40.121	india0A5B2879.in.cibernet.com
+#10.91.40.122	india0A5B287A.in.cibernet.com
+#10.91.40.123	india0A5B287B.in.cibernet.com
+#10.91.40.124	india0A5B287C.in.cibernet.com
+#10.91.40.125	india0A5B287D.in.cibernet.com
+#10.91.40.126	india0A5B287E.in.cibernet.com
+#10.91.40.127	india0A5B287F.in.cibernet.com
+#10.91.40.128	india0A5B2880.in.cibernet.com
+#10.91.40.129	india0A5B2881.in.cibernet.com
+#10.91.40.130	india0A5B2882.in.cibernet.com
+#10.91.40.131	india0A5B2883.in.cibernet.com
+#10.91.40.132	india0A5B2884.in.cibernet.com
+#10.91.40.133	india0A5B2885.in.cibernet.com
+#10.91.40.134	india0A5B2886.in.cibernet.com
+#10.91.40.135	india0A5B2887.in.cibernet.com
+#10.91.40.136	india0A5B2888.in.cibernet.com
+#10.91.40.137	india0A5B2889.in.cibernet.com
+#10.91.40.138	india0A5B288A.in.cibernet.com
+#10.91.40.139	india0A5B288B.in.cibernet.com
+#10.91.40.140	india0A5B288C.in.cibernet.com
+#10.91.40.141	india0A5B288D.in.cibernet.com
+#10.91.40.142	india0A5B288E.in.cibernet.com
+#10.91.40.143	india0A5B288F.in.cibernet.com
+#10.91.40.144	india0A5B2890.in.cibernet.com
+#10.91.40.145	india0A5B2891.in.cibernet.com
+#10.91.40.146	india0A5B2892.in.cibernet.com
+#10.91.40.147	india0A5B2893.in.cibernet.com
+#10.91.40.148	india0A5B2894.in.cibernet.com
+#10.91.40.149	india0A5B2895.in.cibernet.com
+#10.91.40.150	india0A5B2896.in.cibernet.com
+#10.91.40.151	india0A5B2897.in.cibernet.com
+#10.91.40.152	india0A5B2898.in.cibernet.com
+#10.91.40.153	india0A5B2899.in.cibernet.com
+#10.91.40.154	india0A5B289A.in.cibernet.com
+#10.91.40.155	india0A5B289B.in.cibernet.com
+#10.91.40.156	india0A5B289C.in.cibernet.com
+#10.91.40.157	india0A5B289D.in.cibernet.com
+#10.91.40.158	india0A5B289E.in.cibernet.com
+#10.91.40.159	india0A5B289F.in.cibernet.com
+#10.91.40.160	india0A5B28A0.in.cibernet.com
+#10.91.40.161	india0A5B28A1.in.cibernet.com
+#10.91.40.162	india0A5B28A2.in.cibernet.com
+#10.91.40.163	india0A5B28A3.in.cibernet.com
+#10.91.40.164	india0A5B28A4.in.cibernet.com
+#10.91.40.165	india0A5B28A5.in.cibernet.com
+#10.91.40.166	india0A5B28A6.in.cibernet.com
+#10.91.40.167	india0A5B28A7.in.cibernet.com
+#10.91.40.168	india0A5B28A8.in.cibernet.com
+#10.91.40.169	india0A5B28A9.in.cibernet.com
+#10.91.40.170	india0A5B28AA.in.cibernet.com
+#10.91.40.171	india0A5B28AB.in.cibernet.com
+#10.91.40.172	india0A5B28AC.in.cibernet.com
+#10.91.40.173	india0A5B28AD.in.cibernet.com
+#10.91.40.174	india0A5B28AE.in.cibernet.com
+#10.91.40.175	india0A5B28AF.in.cibernet.com
+#10.91.40.176	india0A5B28B0.in.cibernet.com
+#10.91.40.177	india0A5B28B1.in.cibernet.com
+#10.91.40.178	india0A5B28B2.in.cibernet.com
+#10.91.40.179	india0A5B28B3.in.cibernet.com
+#10.91.40.180	india0A5B28B4.in.cibernet.com
+#10.91.40.181	india0A5B28B5.in.cibernet.com
+#10.91.40.182	india0A5B28B6.in.cibernet.com
+#10.91.40.183	india0A5B28B7.in.cibernet.com
+#10.91.40.184	india0A5B28B8.in.cibernet.com
+#10.91.40.185	india0A5B28B9.in.cibernet.com
+#10.91.40.186	india0A5B28BA.in.cibernet.com
+#10.91.40.187	india0A5B28BB.in.cibernet.com
+#10.91.40.188	india0A5B28BC.in.cibernet.com
+#10.91.40.189	india0A5B28BD.in.cibernet.com
+#10.91.40.190	india0A5B28BE.in.cibernet.com
+#10.91.40.191	india0A5B28BF.in.cibernet.com
+#10.91.40.192	india0A5B28C0.in.cibernet.com
+#10.91.40.193	india0A5B28C1.in.cibernet.com
+#10.91.40.194	india0A5B28C2.in.cibernet.com
+#10.91.40.195	india0A5B28C3.in.cibernet.com
+#10.91.40.196	india0A5B28C4.in.cibernet.com
+#10.91.40.197	india0A5B28C5.in.cibernet.com
+#10.91.40.198	india0A5B28C6.in.cibernet.com
+#10.91.40.199	india0A5B28C7.in.cibernet.com
+#10.91.40.200	india0A5B28C8.in.cibernet.com
+#10.91.40.201	india0A5B28C9.in.cibernet.com
+#10.91.40.202	india0A5B28CA.in.cibernet.com
+#10.91.40.203	india0A5B28CB.in.cibernet.com
+#10.91.40.204	india0A5B28CC.in.cibernet.com
+#10.91.40.205	india0A5B28CD.in.cibernet.com
+#10.91.40.206	india0A5B28CE.in.cibernet.com
+#10.91.40.207	india0A5B28CF.in.cibernet.com
+#10.91.40.208	india0A5B28D0.in.cibernet.com
+#10.91.40.209	india0A5B28D1.in.cibernet.com
+#10.91.40.210	india0A5B28D2.in.cibernet.com
+#10.91.40.211	india0A5B28D3.in.cibernet.com
+#10.91.40.212	india0A5B28D4.in.cibernet.com
+#10.91.40.213	india0A5B28D5.in.cibernet.com
+#10.91.40.214	india0A5B28D6.in.cibernet.com
+#10.91.40.215	india0A5B28D7.in.cibernet.com
+#10.91.40.216	india0A5B28D8.in.cibernet.com
+#10.91.40.217	india0A5B28D9.in.cibernet.com
+#10.91.40.218	india0A5B28DA.in.cibernet.com
+#10.91.40.219	india0A5B28DB.in.cibernet.com
+#10.91.40.220	india0A5B28DC.in.cibernet.com
+#10.91.40.221	india0A5B28DD.in.cibernet.com
+#10.91.40.222	india0A5B28DE.in.cibernet.com
+#10.91.40.223	india0A5B28DF.in.cibernet.com
+#10.91.40.224	india0A5B28E0.in.cibernet.com
+#10.91.40.225	india0A5B28E1.in.cibernet.com
+#10.91.40.226	india0A5B28E2.in.cibernet.com
+#10.91.40.227	india0A5B28E3.in.cibernet.com
+#10.91.40.228	india0A5B28E4.in.cibernet.com
+#10.91.40.229	india0A5B28E5.in.cibernet.com
+#10.91.40.230	india0A5B28E6.in.cibernet.com
+#10.91.40.231	india0A5B28E7.in.cibernet.com
+#10.91.40.232	india0A5B28E8.in.cibernet.com
+#10.91.40.233	india0A5B28E9.in.cibernet.com
+#10.91.40.234	india0A5B28EA.in.cibernet.com
+#10.91.40.235	india0A5B28EB.in.cibernet.com
+#10.91.40.236	india0A5B28EC.in.cibernet.com
+#10.91.40.237	india0A5B28ED.in.cibernet.com
+#10.91.40.238	india0A5B28EE.in.cibernet.com
+#10.91.40.239	india0A5B28EF.in.cibernet.com
+#10.91.40.240	india0A5B28F0.in.cibernet.com
+#10.91.40.241	india0A5B28F1.in.cibernet.com
+#10.91.40.242	india0A5B28F2.in.cibernet.com
+#10.91.40.243	india0A5B28F3.in.cibernet.com
+#10.91.40.244	india0A5B28F4.in.cibernet.com
+#10.91.40.245	india0A5B28F5.in.cibernet.com
+#10.91.40.246	india0A5B28F6.in.cibernet.com
+#10.91.40.247	india0A5B28F7.in.cibernet.com
+#10.91.40.248	india0A5B28F8.in.cibernet.com
+#10.91.40.249	india0A5B28F9.in.cibernet.com
+#10.91.40.250	india0A5B28FA.in.cibernet.com
+#10.91.40.251	india0A5B28FB.in.cibernet.com
+#10.91.40.252	india0A5B28FC.in.cibernet.com
+#10.91.40.253	india0A5B28FD.in.cibernet.com
+#10.91.40.254	india0A5B28FE.in.cibernet.com
+#10.91.40.255	india0A5B28FF.in.cibernet.com
+#
 # HOME NETWORKS:
 #10.1.253.0/24	jck's home network
 #10.1.254.0/24	tal's home network
@@ -570,7 +828,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 66.80.151.136	mdmega-net.cibernet.com@EXTERNAL
 66.80.151.137	mdmegartr-mdmega.cibernet.com@EXTERNAL ISROUTER=mdmegartr.cibernet.com
 66.80.151.138	pixmd-megapath.cibernet.com@EXTERNAL ISROUTER=pixmd.cibernet.com
-66.80.151.139	juice-139.cibernet.com ISMAILSERVERI ANAMES=ns.cibernet.com@EXTERNAL:ns2.cibernet.com@EXTERNAL:us.cibernet.com@INBOUNDNAT:cibernet.com@INBOUNDNAT:www.cibernet.com@INBOUNDNAT:mail.cibernet.com@INBOUNDNAT:careof.cibernet.com@INBOUNDNAT:auto.cibernet.com@INBOUNDNAT:gb.cibernet.com@INBOUNDNAT:us.cibernet.com@INBOUNDNAT:demoreports.cibernet.com@INBOUNDNAT
+66.80.151.139	juice-139.cibernet.com ANAMES=mail.cibernet.com@INBOUNDNAT ISMAILSERVERI ANAMES=ns.cibernet.com@EXTERNAL:ns2.cibernet.com@EXTERNAL:us.cibernet.com@INBOUNDNAT:cibernet.com@INBOUNDNAT:www.cibernet.com@INBOUNDNAT:careof.cibernet.com@INBOUNDNAT:auto.cibernet.com@INBOUNDNAT:gb.cibernet.com@INBOUNDNAT:us.cibernet.com@INBOUNDNAT:demoreports.cibernet.com@INBOUNDNAT
 66.80.151.140	vpnmd.cibernet.com@EXTERNAL ANAMES=vpngb.cibernet.com@EXTERNAL:vpnnj.cibernet.com@EXTERNAL:vpn.cibernet.com@EXTERNAL
 66.80.151.141	granny.cibernet.com@INBOUNDNAT ANAMES=mtm-failover.cibernet.com@INBOUNDNAT
 66.80.151.142	robotron.cibernet.com@INBOUNDNAT ANAMES=support.cibernet.com@INBOUNDNAT
@@ -583,7 +841,8 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 66.134.100.72	mdcov-net.cibernet.com@EXTERNAL
 66.134.100.73	gw-mdcov.cibernet.com@EXTERNAL ISROUTER=gw.cibernet.com
 66.134.100.74	robotron-mdcovad.cibernet.com
-66.134.100.75	juice.cibernet.com@EXTERNAL ISMAILSERVERI ANAMES=www-test.cibernet.com
+66.134.100.75	juice.cibernet.com@EXTERNAL ANAMES=www-test.cibernet.com
+#	Note: the MX record for juice is in ../INTERNAL.cibernet.com.inc
 #66.134.100.76	UNUSED6613410076.cibernet.com
 #66.134.100.77	UNUSED6613410077.cibernet.com
 #66.134.100.78	UNUSED6613410078.cibernet.com
@@ -596,7 +855,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 66.155.166.177	paetecrtr-ceo.cibernet.com ISROUTER=paetecrtr.cibernet.com
 66.155.166.178	sonicwall-ceo.cibernet.com@EXTERNAL
 66.155.166.179	pixnj-paetec.cibernet.com@EXTERNAL ISROUTER=pixnj.cibernet.com
-66.155.166.180	pie-paetec.cibernet.com@EXTERNALONLY ISMULTIHOMED=pie.cibernet.com
+#66.155.166.180	pie-paetec.cibernet.com@EXTERNALONLY ISMULTIHOMED=pie.cibernet.com
 66.155.166.181	UNUSED66155166181.cibernet.com	# was mtm-dev.cibernet.com
 66.155.166.182	UNUSED66155166182.cibernet.com	# was devcvs.cibernet.com
 
@@ -914,8 +1173,8 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 212.113.6.77	DHCP_POOL
 212.113.6.78	DHCP_POOL
 212.113.6.79	DHCP_POOL
-#212.113.6.80	don't use this.  it will be a broadcast someday
-#212.113.6.81	don't use this.  it will be a broadcast someday
+#212.113.6.80	don't use this.  it may be a broadcast someday
+#212.113.6.81	don't use this.  it may be a broadcast someday
 #212.113.6.82	.cibernet.com@EXTERNAL
 #212.113.6.83	.cibernet.com@EXTERNAL
 #212.113.6.84	.cibernet.com@EXTERNAL
@@ -978,9 +1237,9 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 # 212.113.16.120/29 ukclan The internal UK Colo LAN
 212.113.16.120	ukclan-net.cibernet.com@EXTERNAL
 212.113.16.121	pix-ukclan.cibernet.com@EXTERNAL ISROUTER=pixukc.cibernet.com
-212.113.16.122	tart.cibernet.com@EXTERNAL ANAMES=mtm-test.cibernet.com@EXTERNAL CNAMES=one1clear-beta.cibernet.com@EXTERNAL
+212.113.16.122	tart.cibernet.com@EXTERNAL CNAMES=mtm-test.cibernet.com@EXTERNAL:one1clear-beta.cibernet.com@EXTERNAL
 212.113.16.123	baked.cibernet.com@EXTERNAL ANAMES=mtm.cibernet.com@EXTERNAL
-212.113.16.124	tree.cibernet.com@EXTERNAL ANAMES=one1clear-uat.cibernet.com@EXTERNAL:oneclear-uat.cibernet.com@EXTERNAL
+212.113.16.124	tree.cibernet.com@EXTERNAL CNAMES=one1clear-uat.cibernet.com@EXTERNAL:oneclear-uat.cibernet.com@EXTERNAL
 212.113.16.125	juke.cibernet.com@EXTERNAL
 212.113.16.126	cider.cibernet.com@EXTERNAL ANAMES=ocdemo.cibernet.com@EXTERNAL:clientftp.cibernet.com@EXTERNAL
 212.113.16.127	ukclan-bcast.cibernet.com@EXTERNAL
@@ -991,11 +1250,9 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 # 210.210.1.65	their external FTP server
 
 # India new office:
-#10.91.40.0
-10.91.40.5	tci.cibernet.com ISMAILSERVERI
-59.163.119.120	tci.cibernet.com@INBOUNDNAT ISMAILSERVERI
-10.91.40.100	pixin-lan.cibernet.com ISROUTER=pixin.cibernet.com
-
+# India's ISP connection:
+59.163.119.120	tci.cibernet.com@INBOUNDNAT ANAME=in.cibernet.com@INBOUNDNAT
 # India2's IPS:
 #59.163.119.115 ISP router
 #59.163.119.120 
+

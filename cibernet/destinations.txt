@@ -30,17 +30,21 @@ localhost.zone named.local					\
 INTERNAL.1.168.192.in-addr.arpa					\
 INTERNAL.201.1.10.in-addr.arpa					\
 INTERNAL.240.1.10.in-addr.arpa					\
+INTERNAL.40.91.10.in-addr.arpa					\
 	->							\
+		/var/named/.					\
 		adam.cibernet.com:/var/named/.			\
-		odnj01.cibernet.com:/var/named/.		\
 		oduk01.cibernet.com:/var/named/.		\
-		oduk02.cibernet.com:/var/named/.
+		oduk02.cibernet.com:/var/named/.		\
+#		odnj01.cibernet.com:/var/named/.
+
 
 INTERNAL.named.root -> 						\
 		adam.cibernet.com:/var/named/named.ca		\
-		odnj01.cibernet.com:/var/named/named.ca		\
 		oduk01.cibernet.com:/var/named/named.ca		\
-		oduk02.cibernet.com:/var/named/named.ca
+		oduk02.cibernet.com:/var/named/named.ca		\
+#		odnj01.cibernet.com:/var/named/named.ca
+
 
 #
 # DHCP stuff for Mac OS X Server DHCP servers

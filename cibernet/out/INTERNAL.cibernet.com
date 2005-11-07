@@ -15,6 +15,17 @@ $TTL 1h
                    IN NS      odnj01
                    IN NS      oduk01
                    IN NS      oduk02
+
+; this is from the INC file
+juice.cibernet.com.		IN MX 0   us.cibernet.com.
+juice.cibernet.com.		IN A	10.1.240.1
+
+in.cibernet.com.		IN NS ciber.in.cibernet.com.
+in.cibernet.com.		IN NS exchange.in.cibernet.com.
+
+ciber.in.cibernet.com.		IN A 10.91.40.4
+exchange.in.cibernet.com.	IN A 10.91.40.5
+
 auto               IN A       10.1.240.1
                    IN MX 0    auto
                    IN MX 10   crumb
@@ -65,15 +76,12 @@ labs               IN A       10.1.240.1
                    IN MX 10   crumb
                    IN MX 20   us
 mail               IN A       10.1.240.1
-                   IN MX 0    mail
                    IN MX 10   crumb
                    IN MX 20   us
 mtm-failover       IN A       10.1.240.11
                    IN MX 10   crumb
                    IN MX 20   us
-mtm-test           IN A       212.113.16.122
-                   IN MX 10   crumb
-                   IN MX 20   us
+mtm-test           IN CNAME   tart
 mtm                IN A       212.113.16.123
                    IN MX 10   crumb
                    IN MX 20   us
@@ -89,9 +97,7 @@ ocdemo             IN A       212.113.16.126
                    IN MX 10   crumb
                    IN MX 20   us
 one1clear-beta     IN CNAME   tart
-one1clear-uat      IN A       212.113.16.124
-                   IN MX 10   crumb
-                   IN MX 20   us
+one1clear-uat      IN CNAME   tree
 one1clear          IN A       212.113.6.66
                    IN MX 10   crumb
                    IN MX 20   us
@@ -101,13 +107,12 @@ oneclear-dev       IN A       10.1.201.13
 oneclear-test      IN A       10.1.201.11
                    IN MX 10   crumb
                    IN MX 20   us
-oneclear-uat       IN A       212.113.16.124
-                   IN MX 10   crumb
-                   IN MX 20   us
+oneclear-uat       IN CNAME   tree
 pixmd-lan          IN A       10.1.240.2
                    IN MX 10   crumb
                    IN MX 20   us
 support            IN A       10.1.240.22
+                   IN MX 0    support
                    IN MX 10   crumb
                    IN MX 20   us
 svnweb             IN A       10.1.201.9
@@ -141,14 +146,6 @@ xserve             IN A       10.1.240.1
 njlan-net          IN A       10.1.201.0
                    IN MX 10   crumb
                    IN MX 20   us
-pie-1              IN A       10.1.201.1
-                   IN MX 10   crumb
-                   IN MX 20   us
-; pie-1.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       10.1.201.1
-                   IN MX 10   crumb
-                   IN MX 20   us
-
 pixnj-lan          IN A       10.1.201.2
                    IN MX 10   crumb
                    IN MX 20   us
@@ -160,24 +157,9 @@ pixnj              IN A       10.1.201.2
 hp7100nj           IN A       10.1.201.3
                    IN MX 10   crumb
                    IN MX 20   us
-pie-4              IN A       10.1.201.4
-                   IN MX 10   crumb
-                   IN MX 20   us
-; pie-4.cibernet.com is part of multihomed host pie.cibernet.com
 pie                IN A       10.1.201.4
-
-pie-5              IN A       10.1.201.5
                    IN MX 10   crumb
                    IN MX 20   us
-; pie-5.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       10.1.201.5
-
-pie-6              IN A       10.1.201.6
-                   IN MX 10   crumb
-                   IN MX 20   us
-; pie-6.cibernet.com is part of multihomed host pie.cibernet.com
-pie                IN A       10.1.201.6
-
 seed               IN A       10.1.201.7
                    IN MX 10   crumb
                    IN MX 20   us
@@ -272,6 +254,12 @@ syehmac            IN A       10.1.201.41
                    IN MX 10   crumb
                    IN MX 20   us
 syehmac-wifi       IN A       10.1.201.42
+                   IN MX 10   crumb
+                   IN MX 20   us
+cairn-wifi         IN A       10.1.201.43
+                   IN MX 10   crumb
+                   IN MX 20   us
+cairn              IN A       10.1.201.44
                    IN MX 10   crumb
                    IN MX 20   us
 p10-1-201-66       IN A       10.1.201.66
@@ -921,18 +909,6 @@ d10-1-240-126      IN A       10.1.240.126
 mdlan-bcast        IN A       10.1.240.254
                    IN MX 10   crumb
                    IN MX 20   us
-pixin-lan          IN A       10.91.40.100
-                   IN MX 10   crumb
-                   IN MX 20   us
-; pixin-lan.cibernet.com is part of multihomed host pixin.cibernet.com
-pixin              IN A       10.91.40.100
-                   IN MX 10   crumb
-                   IN MX 20   us
-
-tci                IN A       10.91.40.5
-                   IN MX 0    tci
-                   IN MX 10   crumb
-                   IN MX 20   us
 mdmega-net         IN A       66.80.151.136
                    IN MX 10   crumb
                    IN MX 20   us
@@ -961,6 +937,7 @@ granny             IN A       10.1.240.11
                    IN MX 10   crumb
                    IN MX 20   us
 robotron           IN A       10.1.240.22
+                   IN MX 0    robotron
                    IN MX 10   crumb
                    IN MX 20   us
 mdmega-bcast       IN A       66.80.151.143
@@ -981,7 +958,6 @@ robotron-mdcovad   IN A       66.134.100.74
                    IN MX 10   crumb
                    IN MX 20   us
 juice              IN A       66.134.100.75
-                   IN MX 0    juice
                    IN MX 10   crumb
                    IN MX 20   us
 mdcov-bcast        IN A       66.134.100.79
@@ -1508,7 +1484,6 @@ cider              IN A       212.113.16.126
 ukclan-bcast       IN A       212.113.16.127
                    IN MX 10   crumb
                    IN MX 20   us
-
 
 
 

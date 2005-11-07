@@ -241,13 +241,7 @@ sub setzone {
 
 		#print "STORE \$zoneservers{ $scope:$zone } = $zoneservers{$scope}\n";
 		$zoneservers{"$scope:$zone"} = $zoneservers{$scope};
-# [RAM] Manually patched zone file header 5/15/2003
-#		print ZF "\t\tIN NS\t$master.\n\n";
 		rrns($scope, $zone, $zone);
-#		print ZF "\t\tIN MX\t10\t$master.\n";
-#		print ZF "\t\tIN MX\t20\tingw1.lumeta.com.\n";
-#		print ZF "\t\tIN MX\t20\tingw2.lumeta.com.\n";
-#		print ZF "\t\tIN A\t65.198.68.68\n\n";
 	
 		if ( -f $incfn ) {
 			print "# Including $incfn\n";
@@ -340,7 +334,9 @@ sub extractzone {
 	my $zonere = $zone;
 	my $sn;
 	$zonere =~ s/\./\\./g;
-	my $zonere2 = "$zonere|\.$zonere";
+	my $zonere2 = '^' . $zonere . '$|\.' . $zonere . '$';
+	#print "ZONERE: $zonere\n";
+	print "ZONERE2: $zonere2\n";
 	foreach my $name ( sort byip keys %db ) {
 		# Skip if it isn't in this zone.
 		#print "NAME: ", $name, "\n";
@@ -566,6 +562,7 @@ sub do_dns {
 		} elsif ($cmd eq "ZONESERVERS") {
 			my $scope = shift @opt;
 			$zoneservers{ $scope } = join(" ", @opt);
+#print "ZONESERVERS $scope SET TO: X", $zoneservers{ $scope }, "X\n";
 		} elsif ($cmd eq "ALLOW-UPDATE") {
 			my $scope = shift @opt;
 			$allowupdate{ $scope } = join(" ", @opt);

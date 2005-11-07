@@ -13,7 +13,7 @@ given you access to run the 'rndc reload' command from sudo. Preferred
 DNS server name is ns0.lt.nostrum.com. Below is contact information.
 Philip Kizer also has root on the machine if I am unreachable.
 
-Me:
+Dave Duchscher:
 
   Phone: (979) 574-3779 (SMS messages are fine.)
   Email: dave@duchscher.com
