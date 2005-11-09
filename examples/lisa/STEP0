@@ -1,0 +1,11 @@
+
+
+GOAL: Create an initial configuration for this network:
+
+10.1.1.0   - 10.1.1.139   Static hosts
+10.1.1.140 - 10.1.1.250   DHCP pool
+10.1.1.250 - 10.1.1.255   Static hosts
+64.32.179.0/24		  External Static hosts
+
+We have some data already in legacy.txt
+

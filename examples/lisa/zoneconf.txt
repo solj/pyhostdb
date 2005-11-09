@@ -1,0 +1,19 @@
+
+TEMPLATEDIR ..
+OBSCUREZONE example.com
+SOA INTERNAL hostmaster.example.com 3h 1h 1w 1h
+SOA EXTERNAL hostmaster.example.com 3h 1h 1w 1h
+MX INTERNAL 10 mailserver.example.com
+MX EXTERNAL 10 mailqueue.example.com ; 20 s1.isp.com
+ZONESERVERS INTERNAL fileserver.example.com mailserver.example.com
+ZONESERVERS EXTERNAL mailqueue.example.com exweb.example.com
+ALLOW-UPDATE   INTERNAL 	done
+ALLOW-UPDATE   INTERNAL 	none
+ALLOW-UPDATE   SLAVES   	none
+ALLOW-UPDATE   EXTERNAL		none
+
+
+DOMAIN example.com		INTERNAL EXTERNAL	
+REVDOMAIN CLASSC 10.1.1.0	INTERNAL
+REVDOMAIN CLASSC 64.32.179.0	INTERNAL EXTERNAL
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+OUT=hostdb-base.txt
+
+(
+genrange -d example.com   10.1.1.0     10.1.1.139    '#$ip	UNUSED$hex.$DOMAIN'
+genrange -d example.com   10.1.1.140   10.1.1.250    '$ip	DHCP_POOL'
+genrange -d example.com   10.1.1.250   10.1.1.255    '#$ip	UNUSED$hex.$DOMAIN'
+genrange -d example.com   64.32.179.0  64.32.179.255 '#$ip	ex$hex.$DOMAIN\@EXTERNAL'
+) >$OUT

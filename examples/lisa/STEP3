@@ -1,0 +1,4 @@
+
+
+mergeiplists hostdb-legacy.txt hostdb-base.txt >hostdb.txt
+

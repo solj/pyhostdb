@@ -1,0 +1,9 @@
+
+
+hmake 
+
+ls
+
+hmake  push
+
+grep -i serial MS/*.com MS/*.arpa

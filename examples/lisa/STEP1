@@ -1,0 +1,12 @@
+
+
+
+PATH=~tal/svnthings/hostdb/bin:~tal/svnthings/fools/bin:~tal/bin:/usr/local/teTeX/bin/powerpc-apple-darwin6.8:~tal/Sites/njlgcsite2/bin:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/Developer/Tools
+export PATH
+
+cd ~tal/svnthings/hostdb/examples/lisa
+
+alias hmake='cd ~tal/svnthings/hostdb/examples/lisa/out && make -f ../Makefile'
+
+rmdir /tmp/named ; rm -f /tmp/named
+mkdir -p /tmp/named

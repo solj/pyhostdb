@@ -1,0 +1,22 @@
+
+EXTERNAL.179.32.64.in-addr.arpa -> /tmp/named/.
+
+EXTERNAL.example.com -> /tmp/named/.
+
+EXTERNAL.named.conf -> /tmp/named/.
+
+EXTERNAL.named.root -> /tmp/named/.
+
+EXTERNAL.named.root.new -> /tmp/named/.
+
+INTERNAL.1.1.10.in-addr.arpa -> /tmp/named/.
+
+INTERNAL.179.32.64.in-addr.arpa -> /tmp/named/.
+
+INTERNAL.example.com -> /tmp/named/.
+
+INTERNAL.named.conf -> /tmp/named/.
+
+dhcpd.conf -> /tmp/named/.
+
+RELOAD local	echo Just a demo.
