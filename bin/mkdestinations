@@ -107,7 +107,7 @@ while (defined($line = <>) ) {
 		print "\n";
 		print "# Compare $src against the MS version:\n";
 		print "diff-$src:\n";
-		print "\tdiff \$(DIFFOPT) MP/$src $src\n";
+		print "\t-diff \$(DIFFOPT) MP/$src $src\n";
 		push @diffitems, "diff-$src";
 		push @syncupitems, "MS/$src";
 
