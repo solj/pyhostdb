@@ -11,7 +11,7 @@ $TTL 1h
 			1h	;minimum TTL
 		)
 
-                   IN NS      NS2.CIBERNET.COM.
+                   IN NS      NS2
                    IN NS      ns0.lt.nostrum.com.
                    IN NS      ny2.streambolt.com.
 

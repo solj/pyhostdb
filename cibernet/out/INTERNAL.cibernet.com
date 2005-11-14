@@ -190,6 +190,11 @@ nj-airport-express IN A       10.1.201.15
 odnj01             IN A       10.1.201.20
                    IN MX 10   crumb
                    IN MX 20   us
+; odnj01.cibernet.com is part of multihomed host ldap.cibernet.com
+ldap               IN A       10.1.201.20
+                   IN MX 10   crumb
+                   IN MX 20   us
+
 shawnmac           IN A       10.1.201.21
                    IN MX 10   crumb
                    IN MX 20   us
@@ -510,172 +515,313 @@ l10-1-201-149      IN A       10.1.201.149
 l10-1-201-150      IN A       10.1.201.150
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-194     IN A       10.1.201.194
+nj10-1-201-151     IN A       10.1.201.151
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-195     IN A       10.1.201.195
+nj10-1-201-152     IN A       10.1.201.152
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-196     IN A       10.1.201.196
+nj10-1-201-153     IN A       10.1.201.153
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-197     IN A       10.1.201.197
+nj10-1-201-154     IN A       10.1.201.154
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-198     IN A       10.1.201.198
+nj10-1-201-155     IN A       10.1.201.155
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-199     IN A       10.1.201.199
+nj10-1-201-156     IN A       10.1.201.156
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-200     IN A       10.1.201.200
+nj10-1-201-157     IN A       10.1.201.157
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-201     IN A       10.1.201.201
+nj10-1-201-158     IN A       10.1.201.158
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-202     IN A       10.1.201.202
+nj10-1-201-159     IN A       10.1.201.159
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-203     IN A       10.1.201.203
+nj10-1-201-160     IN A       10.1.201.160
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-204     IN A       10.1.201.204
+nj10-1-201-161     IN A       10.1.201.161
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-205     IN A       10.1.201.205
+nj10-1-201-162     IN A       10.1.201.162
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-206     IN A       10.1.201.206
+nj10-1-201-163     IN A       10.1.201.163
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-207     IN A       10.1.201.207
+nj10-1-201-164     IN A       10.1.201.164
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-208     IN A       10.1.201.208
+nj10-1-201-165     IN A       10.1.201.165
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-209     IN A       10.1.201.209
+nj10-1-201-166     IN A       10.1.201.166
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-210     IN A       10.1.201.210
+nj10-1-201-167     IN A       10.1.201.167
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-211     IN A       10.1.201.211
+nj10-1-201-168     IN A       10.1.201.168
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-212     IN A       10.1.201.212
+nj10-1-201-169     IN A       10.1.201.169
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-213     IN A       10.1.201.213
+nj10-1-201-170     IN A       10.1.201.170
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-214     IN A       10.1.201.214
+nj10-1-201-171     IN A       10.1.201.171
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-215     IN A       10.1.201.215
+nj10-1-201-172     IN A       10.1.201.172
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-216     IN A       10.1.201.216
+nj10-1-201-173     IN A       10.1.201.173
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-217     IN A       10.1.201.217
+nj10-1-201-174     IN A       10.1.201.174
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-218     IN A       10.1.201.218
+nj10-1-201-175     IN A       10.1.201.175
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-219     IN A       10.1.201.219
+nj10-1-201-176     IN A       10.1.201.176
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-220     IN A       10.1.201.220
+nj10-1-201-177     IN A       10.1.201.177
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-221     IN A       10.1.201.221
+nj10-1-201-178     IN A       10.1.201.178
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-222     IN A       10.1.201.222
+nj10-1-201-179     IN A       10.1.201.179
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-223     IN A       10.1.201.223
+nj10-1-201-180     IN A       10.1.201.180
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-224     IN A       10.1.201.224
+nj10-1-201-181     IN A       10.1.201.181
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-225     IN A       10.1.201.225
+nj10-1-201-182     IN A       10.1.201.182
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-226     IN A       10.1.201.226
+nj10-1-201-183     IN A       10.1.201.183
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-227     IN A       10.1.201.227
+nj10-1-201-184     IN A       10.1.201.184
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-228     IN A       10.1.201.228
+nj10-1-201-185     IN A       10.1.201.185
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-229     IN A       10.1.201.229
+nj10-1-201-186     IN A       10.1.201.186
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-230     IN A       10.1.201.230
+nj10-1-201-187     IN A       10.1.201.187
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-231     IN A       10.1.201.231
+nj10-1-201-188     IN A       10.1.201.188
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-232     IN A       10.1.201.232
+nj10-1-201-189     IN A       10.1.201.189
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-233     IN A       10.1.201.233
+nj10-1-201-190     IN A       10.1.201.190
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-234     IN A       10.1.201.234
+nj10-1-201-191     IN A       10.1.201.191
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-235     IN A       10.1.201.235
+pi10-1-201-192     IN A       10.1.201.192
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-236     IN A       10.1.201.236
+pi10-1-201-193     IN A       10.1.201.193
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-237     IN A       10.1.201.237
+pi10-1-201-194     IN A       10.1.201.194
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-238     IN A       10.1.201.238
+pi10-1-201-195     IN A       10.1.201.195
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-239     IN A       10.1.201.239
+pi10-1-201-196     IN A       10.1.201.196
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-240     IN A       10.1.201.240
+pi10-1-201-197     IN A       10.1.201.197
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-241     IN A       10.1.201.241
+pi10-1-201-198     IN A       10.1.201.198
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-242     IN A       10.1.201.242
+pi10-1-201-199     IN A       10.1.201.199
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-243     IN A       10.1.201.243
+pi10-1-201-200     IN A       10.1.201.200
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-244     IN A       10.1.201.244
+pi10-1-201-201     IN A       10.1.201.201
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-245     IN A       10.1.201.245
+pi10-1-201-202     IN A       10.1.201.202
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-246     IN A       10.1.201.246
+pi10-1-201-203     IN A       10.1.201.203
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-247     IN A       10.1.201.247
+pi10-1-201-204     IN A       10.1.201.204
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-248     IN A       10.1.201.248
+pi10-1-201-205     IN A       10.1.201.205
                    IN MX 10   crumb
                    IN MX 20   us
-nj10-1-201-249     IN A       10.1.201.249
+pi10-1-201-206     IN A       10.1.201.206
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-207     IN A       10.1.201.207
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-208     IN A       10.1.201.208
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-209     IN A       10.1.201.209
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-210     IN A       10.1.201.210
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-211     IN A       10.1.201.211
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-212     IN A       10.1.201.212
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-213     IN A       10.1.201.213
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-214     IN A       10.1.201.214
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-215     IN A       10.1.201.215
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-216     IN A       10.1.201.216
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-217     IN A       10.1.201.217
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-218     IN A       10.1.201.218
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-219     IN A       10.1.201.219
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-220     IN A       10.1.201.220
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-221     IN A       10.1.201.221
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-222     IN A       10.1.201.222
+                   IN MX 10   crumb
+                   IN MX 20   us
+pi10-1-201-223     IN A       10.1.201.223
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-224     IN A       10.1.201.224
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-225     IN A       10.1.201.225
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-226     IN A       10.1.201.226
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-227     IN A       10.1.201.227
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-228     IN A       10.1.201.228
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-229     IN A       10.1.201.229
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-230     IN A       10.1.201.230
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-231     IN A       10.1.201.231
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-232     IN A       10.1.201.232
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-233     IN A       10.1.201.233
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-234     IN A       10.1.201.234
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-235     IN A       10.1.201.235
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-236     IN A       10.1.201.236
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-237     IN A       10.1.201.237
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-238     IN A       10.1.201.238
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-239     IN A       10.1.201.239
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-240     IN A       10.1.201.240
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-241     IN A       10.1.201.241
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-242     IN A       10.1.201.242
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-243     IN A       10.1.201.243
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-244     IN A       10.1.201.244
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-245     IN A       10.1.201.245
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-246     IN A       10.1.201.246
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-247     IN A       10.1.201.247
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-248     IN A       10.1.201.248
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-249     IN A       10.1.201.249
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-250     IN A       10.1.201.250
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-251     IN A       10.1.201.251
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-252     IN A       10.1.201.252
+                   IN MX 10   crumb
+                   IN MX 20   us
+pe10-1-201-253     IN A       10.1.201.253
                    IN MX 10   crumb
                    IN MX 20   us
 njlan-bcast        IN A       10.1.201.255
@@ -708,6 +854,9 @@ green              IN A       10.1.240.5
 adam               IN A       10.1.240.6
                    IN MX 10   crumb
                    IN MX 20   us
+; adam.cibernet.com is part of multihomed host ldap.cibernet.com
+ldap               IN A       10.1.240.6
+
 jumbotron          IN A       10.1.240.10
                    IN MX 10   crumb
                    IN MX 20   us
@@ -1021,9 +1170,15 @@ babel              IN A       192.168.1.19
 oduk01             IN A       192.168.1.20
                    IN MX 10   crumb
                    IN MX 20   us
+; oduk01.cibernet.com is part of multihomed host ldap.cibernet.com
+ldap               IN A       192.168.1.20
+
 oduk02             IN A       192.168.1.21
                    IN MX 10   crumb
                    IN MX 20   us
+; oduk02.cibernet.com is part of multihomed host ldap.cibernet.com
+ldap               IN A       192.168.1.21
+
 d192-168-1-57      IN A       192.168.1.57
                    IN MX 10   crumb
                    IN MX 20   us

@@ -147,6 +147,11 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com: MS/INTERNAL.cibe
 	scp MS/INTERNAL.cibernet.com oduk02.cibernet.com:/var/named/.
 	@cp MS/INTERNAL.cibernet.com DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com
 
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com: MS/INTERNAL.cibernet.com
+	scp MS/INTERNAL.cibernet.com odnj01.cibernet.com:/var/named/.
+	@cp MS/INTERNAL.cibernet.com DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com
+
 # If localhost.zone is new, update the MS and MP version:
 MS/localhost.zone: localhost.zone
 	@if [ ! -r MP/localhost.zone ] ; \
@@ -190,6 +195,11 @@ DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone: MS/localhost.zone
 DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone: MS/localhost.zone
 	scp MS/localhost.zone oduk02.cibernet.com:/var/named/.
 	@cp MS/localhost.zone DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone
+
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone: MS/localhost.zone
+	scp MS/localhost.zone odnj01.cibernet.com:/var/named/.
+	@cp MS/localhost.zone DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone
 
 # If named.local is new, update the MS and MP version:
 MS/named.local: named.local
@@ -235,6 +245,11 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--named.local: MS/named.local
 	scp MS/named.local oduk02.cibernet.com:/var/named/.
 	@cp MS/named.local DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--named.local
 
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--named.local: MS/named.local
+	scp MS/named.local odnj01.cibernet.com:/var/named/.
+	@cp MS/named.local DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--named.local
+
 # If INTERNAL.1.168.192.in-addr.arpa is new, update the MS and MP version:
 MS/INTERNAL.1.168.192.in-addr.arpa: INTERNAL.1.168.192.in-addr.arpa
 	@if [ ! -r MP/INTERNAL.1.168.192.in-addr.arpa ] ; \
@@ -278,6 +293,11 @@ DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa: MS/INT
 DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa: MS/INTERNAL.1.168.192.in-addr.arpa
 	scp MS/INTERNAL.1.168.192.in-addr.arpa oduk02.cibernet.com:/var/named/.
 	@cp MS/INTERNAL.1.168.192.in-addr.arpa DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa
+
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa: MS/INTERNAL.1.168.192.in-addr.arpa
+	scp MS/INTERNAL.1.168.192.in-addr.arpa odnj01.cibernet.com:/var/named/.
+	@cp MS/INTERNAL.1.168.192.in-addr.arpa DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa
 
 # If INTERNAL.201.1.10.in-addr.arpa is new, update the MS and MP version:
 MS/INTERNAL.201.1.10.in-addr.arpa: INTERNAL.201.1.10.in-addr.arpa
@@ -323,6 +343,11 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa: MS/INTE
 	scp MS/INTERNAL.201.1.10.in-addr.arpa oduk02.cibernet.com:/var/named/.
 	@cp MS/INTERNAL.201.1.10.in-addr.arpa DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa
 
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa: MS/INTERNAL.201.1.10.in-addr.arpa
+	scp MS/INTERNAL.201.1.10.in-addr.arpa odnj01.cibernet.com:/var/named/.
+	@cp MS/INTERNAL.201.1.10.in-addr.arpa DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa
+
 # If INTERNAL.240.1.10.in-addr.arpa is new, update the MS and MP version:
 MS/INTERNAL.240.1.10.in-addr.arpa: INTERNAL.240.1.10.in-addr.arpa
 	@if [ ! -r MP/INTERNAL.240.1.10.in-addr.arpa ] ; \
@@ -367,49 +392,10 @@ DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa: MS/INTE
 	scp MS/INTERNAL.240.1.10.in-addr.arpa oduk02.cibernet.com:/var/named/.
 	@cp MS/INTERNAL.240.1.10.in-addr.arpa DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa
 
-# If INTERNAL.40.91.10.in-addr.arpa is new, update the MS and MP version:
-MS/INTERNAL.40.91.10.in-addr.arpa: INTERNAL.40.91.10.in-addr.arpa
-	@if [ ! -r MP/INTERNAL.40.91.10.in-addr.arpa ] ; \
-	then \
-		echo CREATING MP/INTERNAL.40.91.10.in-addr.arpa ; \
-		cp INTERNAL.40.91.10.in-addr.arpa MP/INTERNAL.40.91.10.in-addr.arpa ; \
-	fi
-	@if [ ! -r MS/INTERNAL.40.91.10.in-addr.arpa ] ; \
-	then \
-		echo CREATING MS/INTERNAL.40.91.10.in-addr.arpa ; \
-		sed 's/:serial:/'`cat serial`'/g' <INTERNAL.40.91.10.in-addr.arpa >MS/INTERNAL.40.91.10.in-addr.arpa ; \
-	fi
-	@if ! cmp INTERNAL.40.91.10.in-addr.arpa MP/INTERNAL.40.91.10.in-addr.arpa  > /dev/null ; \
-	then \
-		echo UPDATE MP/INTERNAL.40.91.10.in-addr.arpa ; \
-		cp INTERNAL.40.91.10.in-addr.arpa MP/INTERNAL.40.91.10.in-addr.arpa ;\
-		echo UPDATE MS/INTERNAL.40.91.10.in-addr.arpa ;\
-		sed 's/:serial:/'`cat serial`'/g' <INTERNAL.40.91.10.in-addr.arpa >MS/INTERNAL.40.91.10.in-addr.arpa ; \
-	fi
-
-# Compare INTERNAL.40.91.10.in-addr.arpa against the MS version:
-diff-INTERNAL.40.91.10.in-addr.arpa:
-	diff $(DIFFOPT) MP/INTERNAL.40.91.10.in-addr.arpa INTERNAL.40.91.10.in-addr.arpa
-
-# If file needs to be copied to /var/named/....
-DS/_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa: MS/INTERNAL.40.91.10.in-addr.arpa
-	cp MS/INTERNAL.40.91.10.in-addr.arpa /var/named/.
-	@cp MS/INTERNAL.40.91.10.in-addr.arpa DS/_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa
-
-# If file needs to be copied to adam.cibernet.com:/var/named/....
-DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa: MS/INTERNAL.40.91.10.in-addr.arpa
-	scp MS/INTERNAL.40.91.10.in-addr.arpa adam.cibernet.com:/var/named/.
-	@cp MS/INTERNAL.40.91.10.in-addr.arpa DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa
-
-# If file needs to be copied to oduk01.cibernet.com:/var/named/....
-DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa: MS/INTERNAL.40.91.10.in-addr.arpa
-	scp MS/INTERNAL.40.91.10.in-addr.arpa oduk01.cibernet.com:/var/named/.
-	@cp MS/INTERNAL.40.91.10.in-addr.arpa DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa
-
-# If file needs to be copied to oduk02.cibernet.com:/var/named/....
-DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa: MS/INTERNAL.40.91.10.in-addr.arpa
-	scp MS/INTERNAL.40.91.10.in-addr.arpa oduk02.cibernet.com:/var/named/.
-	@cp MS/INTERNAL.40.91.10.in-addr.arpa DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa
+# If file needs to be copied to odnj01.cibernet.com:/var/named/....
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa: MS/INTERNAL.240.1.10.in-addr.arpa
+	scp MS/INTERNAL.240.1.10.in-addr.arpa odnj01.cibernet.com:/var/named/.
+	@cp MS/INTERNAL.240.1.10.in-addr.arpa DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa
 
 # If INTERNAL.named.root is new, update the MS and MP version:
 MS/INTERNAL.named.root: INTERNAL.named.root
@@ -449,6 +435,11 @@ DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL
 DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
 	scp MS/INTERNAL.named.root oduk02.cibernet.com:/var/named/named.ca
 	@cp MS/INTERNAL.named.root DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
+
+# If file needs to be copied to odnj01.cibernet.com:/var/named/named.ca...
+DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
+	scp MS/INTERNAL.named.root odnj01.cibernet.com:/var/named/named.ca
+	@cp MS/INTERNAL.named.root DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 # If dhcpnetinfo.txt is new, update the MS and MP version:
 MS/dhcpnetinfo.txt: dhcpnetinfo.txt
@@ -492,7 +483,6 @@ syncup:\
 	MS/INTERNAL.1.168.192.in-addr.arpa\
 	MS/INTERNAL.201.1.10.in-addr.arpa\
 	MS/INTERNAL.240.1.10.in-addr.arpa\
-	MS/INTERNAL.40.91.10.in-addr.arpa\
 	MS/INTERNAL.named.root\
 	MS/dhcpnetinfo.txt
 
@@ -509,7 +499,6 @@ diff:\
 	diff-INTERNAL.1.168.192.in-addr.arpa\
 	diff-INTERNAL.201.1.10.in-addr.arpa\
 	diff-INTERNAL.240.1.10.in-addr.arpa\
-	diff-INTERNAL.40.91.10.in-addr.arpa\
 	diff-INTERNAL.named.root\
 	diff-dhcpnetinfo.txt
 
@@ -528,7 +517,6 @@ push-local:\
 	DS/_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa \
 	DS/_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa \
 	DS/_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
-	DS/_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa \
 	DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt
 
 push-remote:\
@@ -538,27 +526,31 @@ push-remote:\
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--named.local \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--named.local \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--named.local \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--named.local \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
 	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
-	DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa \
-	DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa \
-	DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa \
 	DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
 	DS/oduk01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
-	DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
+	DS/oduk02.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root \
+	DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
 
 
 # Recipes to force reloads:
@@ -598,7 +590,6 @@ DS/reload-adam.cibernet.com:\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa\
-		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/adam.cibernet.com_C_Lvar_Lnamed_L.--named.local\
@@ -617,7 +608,6 @@ DS/reload-local:\
 		DS/_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa\
 		DS/_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa\
 		DS/_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa\
-		DS/_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa\
 		DS/_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/_Lvar_Lnamed_L.--localhost.zone\
 		DS/_Lvar_Lnamed_L.--named.local\
@@ -628,11 +618,21 @@ DS/reload-local:\
 	cd /etc && make hostdb
 	@touch DS/reload-local
 
+DS/reload-odnj01.cibernet.com:\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_L.--named.local\
+		DS/odnj01.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root
+	ssh odnj01.cibernet.com 'kill -1 `cat /var/run/named.pid`'
+	@touch DS/reload-odnj01.cibernet.com
+
 DS/reload-oduk01.cibernet.com:\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa\
-		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/oduk01.cibernet.com_C_Lvar_Lnamed_L.--named.local\
@@ -644,7 +644,6 @@ DS/reload-oduk02.cibernet.com:\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa\
-		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.40.91.10.in-addr.arpa\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--INTERNAL.cibernet.com\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--localhost.zone\
 		DS/oduk02.cibernet.com_C_Lvar_Lnamed_L.--named.local\
@@ -660,6 +659,7 @@ reloadif-local: DS/reload-local
 reloadif-remote:\
 	DS/reload-adam.cibernet.com \
 	DS/reload-cibernetcorp_2ns0.lt.nostrum.com \
+	DS/reload-odnj01.cibernet.com \
 	DS/reload-oduk01.cibernet.com \
 	DS/reload-oduk02.cibernet.com
 
