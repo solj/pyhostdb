@@ -113,9 +113,9 @@ sub shortname {
 	my ($zone, $name) = @_;
 	my ($shortname, $zonere);
 	$zonere = $zone;
-	$zonere =~ s/\./\\./g;
+	$zonere =~ s/\./\\./ig;
 	$shortname = $name . ".";
-	$shortname =~ s/\.$zonere\.$//;
+	$shortname =~ s/\.$zonere\.$//i;
 #	print "# SHORTNAME $zone $name $shortname\n";
 	return $shortname;
 }
@@ -173,13 +173,37 @@ sub rrblank {
 	$rrblank = 1;
 }
 
+sub issubzone {
+	my ($longer,  $shorter) = @_;
+	$longer = "\L$longer";
+	$shorter = "\L$shorter";
+
+	$shorter = "." . $shorter;
+	#print ZF "DEBUG: SHORTER=$shorter LONGER=$longer\n";
+	#print ZF "DEBUG: clip: ", substr($longer, - length($shorter)), "\n";
+	return substr($longer, - length($shorter)) eq $shorter;
+}
+
 sub rrns {
 	my ($scope, $curzone, $destzone) = @_;
+	my ($token);
 	#print "rrns( $scope, $curzone, $destzone)\n";
 	#print "\t", $zoneservers{"$scope"}, "\n";
 	#print "\t", $zoneservers{"$scope:$destzone"}, "\n";
 	foreach my $ns ( split(' ', $zoneservers{"$scope:$destzone"}) ) {
 		rr( $curzone, $destzone, "NS", shortname($curzone, $ns) );
+
+		# output "glue records" only if needed.
+		#print ZF "DEBUG: $ns $destzone $curzone\n";
+		$token = 'AI' if $scope eq 'INTERNAL';
+		$token = 'AX' if $scope eq 'EXTERNAL';
+		if ( issubzone($ns, $destzone) and issubzone($destzone, $curzone) and defined $db{$ns}{$token} ) {
+			#print ZF "DEBUG x $curzone x $destzone x $ns\n";
+			my $ipaddr;
+			$num = $db{$ns}{$token};
+			$ipaddr = num2ip($num);
+			rr( $curzone, $ns, "A", $ipaddr );
+		}
 	}
 }
 
@@ -203,7 +227,7 @@ sub rrmx {
 # --
 
 sub setzone {
-	my ($scope, $zone) = @_;
+	my ($scope, $zone, $isdelegated) = @_;
 	close ZF;
 	$prevname = $zone;
 	my $headerfn = "$TEMPLATEDIR/$scope.$zone.header";
@@ -211,8 +235,17 @@ sub setzone {
 	my $outputfn = "$scope.$zone";
 	# If this is the first use of the filename, make sure it is zapped
 	unlink $outputfn unless $zoneseen{$outputfn}++;
+
+	# If this is a delegated zone, we don't want to create the zonefile
+	# data, but we want all the other side-effects.  Thus, we'll direct
+	# the file output to /dev/null.
+	if ($isdelegated) {
+		# Send all future output for this zone to the bit-bucket:
+		$outputfn = '/dev/null';
+	}
+
 	# If the output file doesn't exist, copy the header to start it out:
-	if ( ! -f $outputfn ) {
+	if ( $isdelegated or (! -f $outputfn) ) {
 
 		#print "# Creating $outputfn\n";
 		open(ZF, ">$outputfn") || die "Can't create $outputfn: $!";
@@ -333,14 +366,14 @@ sub extractzone {
 	my ($scope, $zone) = @_;
 	my $zonere = $zone;
 	my $sn;
-	$zonere =~ s/\./\\./g;
+	$zonere =~ s/\./\\./ig;
 	my $zonere2 = '^' . $zonere . '$|\.' . $zonere . '$';
 	#print "ZONERE: $zonere\n";
-	print "ZONERE2: $zonere2\n";
+	#print "ZONERE2: $zonere2\n";
 	foreach my $name ( sort byip keys %db ) {
 		# Skip if it isn't in this zone.
 		#print "NAME: ", $name, "\n";
-		next unless $name =~ m/$zonere2/;
+		next unless $name =~ m/$zonere2/i;
 		#print "NAME: ", $name, "\n";
 
 		# If this is a subzone, generate NS records:
@@ -590,7 +623,7 @@ sub do_dns {
 			foreach my $scope ( 'INTERNAL', 'EXTERNAL' ) {
 				if ($info{$scope}) {
 					# start writing the zone:
-					setzone($scope, $dom);
+					setzone($scope, $dom, 0);
 					# Extract out data for this zone: (should only be NS's)
 					extractzone($scope, $dom);
 					# Extract out the reverse DNS data for this zone:
@@ -599,14 +632,14 @@ sub do_dns {
 					$db{$dom}{"$scope DELEGATION"} = $zoneservers{$scope};
 
 					# Append to the obscuredzone:
-					setzone($scope, $OBSCUREZONE);
+					setzone($scope, $OBSCUREZONE, 0);
 					rrblank();
 					# Write out the obscured data:
 					extractobscure($scope, $OBSCUREZONE, $class, $startip);
 
 				}
 			}
-		} elsif ($cmd eq "DOMAIN" or $cmd eq "CUSTOMDOMAIN") {
+		} elsif ($cmd eq "DOMAIN" or $cmd eq "CUSTOMDOMAIN" or $cmd eq "DELEGATE") {
 			my %info = ();
 			my ($key, $value);
 			my $dom = shift @opt;
@@ -619,7 +652,7 @@ sub do_dns {
 			foreach my $scope ( 'INTERNAL', 'EXTERNAL' ) {
 				if ($info{$scope}) {
 					# start writing the zone:
-					setzone($scope, $dom);
+					setzone($scope, $dom, ($cmd eq "DELEGATE"));
 					# Extract out data for this zone:
 					extractzone($scope, $dom);
 					# Leave behind the delegation stuff
