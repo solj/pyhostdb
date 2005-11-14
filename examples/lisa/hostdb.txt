@@ -11,7 +11,7 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.example.com
 #10.1.1.9	UNUSED0A010109.example.com
 10.1.1.10	staffpc1.example.com MAC=00:b0:d0:a6:cf:f1
 10.1.1.11	staffpc2.example.com MAC=00:b0:d1:a7:c0:d1
-10.1.1.12	stuffpc3.example.com MAC=00:b0:d1:a7:c0:d2
+10.1.1.12	mypc.example.com
 #10.1.1.13	UNUSED0A01010D.example.com
 #10.1.1.14	UNUSED0A01010E.example.com
 #10.1.1.15	UNUSED0A01010F.example.com

@@ -4,5 +4,6 @@ export PATH=`pwd`/bin:$PATH
 alias snap='make -f ../Makefile all;make -f destinations.mk MS/INTERNAL.cibernet.com MS/EXTERNAL.cibernet.com'
 alias diffh='make -f ../Makefile all;diff MP/INTERNAL.cibernet.com INTERNAL.cibernet.com ; diff MP/EXTERNAL.cibernet.com EXTERNAL.cibernet.com'
 
-alias makeh='cd ~/svnthings/hostdb/cibernet/out && make -f ../Makefile'
-alias makee='cd ~/svnthings/hostdb/cibernet/out && make -f ../Makefile'
+alias h='cd ~/svnthings/hostdb/cibernet/out && make -f ../Makefile'
+alias hm='cd ~/svnthings/hostdb/cibernet/out && make -f ../Makefile'
+alias hmake='cd ~/svnthings/hostdb/cibernet/out && make -f ../Makefile'

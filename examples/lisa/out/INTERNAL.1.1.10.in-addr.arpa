@@ -20,7 +20,7 @@ $TTL 1h
 4                  IN PTR     vector.example.com.
 10                 IN PTR     staffpc1.example.com.
 11                 IN PTR     staffpc2.example.com.
-12                 IN PTR     stuffpc3.example.com.
+12                 IN PTR     mypc.example.com.
 140                IN PTR     dhcp-10-1-1-140.example.com.
 141                IN PTR     dhcp-10-1-1-141.example.com.
 142                IN PTR     dhcp-10-1-1-142.example.com.

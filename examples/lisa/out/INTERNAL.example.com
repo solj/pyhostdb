@@ -31,7 +31,7 @@ staffpc1           IN A       10.1.1.10
                    IN MX 10   mailserver
 staffpc2           IN A       10.1.1.11
                    IN MX 10   mailserver
-stuffpc3           IN A       10.1.1.12
+mypc               IN A       10.1.1.12
                    IN MX 10   mailserver
 dhcp-10-1-1-140    IN A       10.1.1.140
                    IN MX 10   mailserver
