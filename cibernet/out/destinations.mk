@@ -23,7 +23,7 @@ MS/EXTERNAL.cibernet.com: EXTERNAL.cibernet.com
 
 # Compare EXTERNAL.cibernet.com against the MS version:
 diff-EXTERNAL.cibernet.com:
-	diff $(DIFFOPT) MP/EXTERNAL.cibernet.com EXTERNAL.cibernet.com
+	-diff $(DIFFOPT) MP/EXTERNAL.cibernet.com EXTERNAL.cibernet.com
 
 # If file needs to be copied to cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/....
 DS/cibernetcorp_2ns0.lt.nostrum.com_C_tcibernetcorp_Lzones_L.--EXTERNAL.cibernet.com: MS/EXTERNAL.cibernet.com
@@ -57,7 +57,7 @@ MS/EXTERNAL.6.113.212.in-addr.arpa: EXTERNAL.6.113.212.in-addr.arpa
 
 # Compare EXTERNAL.6.113.212.in-addr.arpa against the MS version:
 diff-EXTERNAL.6.113.212.in-addr.arpa:
-	diff $(DIFFOPT) MP/EXTERNAL.6.113.212.in-addr.arpa EXTERNAL.6.113.212.in-addr.arpa
+	-diff $(DIFFOPT) MP/EXTERNAL.6.113.212.in-addr.arpa EXTERNAL.6.113.212.in-addr.arpa
 
 # If file needs to be copied to cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/EXTERNAL.64-127.6.113.212.in-addr.arpa...
 DS/cibernetcorp_2ns0.lt.nostrum.com_C_tcibernetcorp_Lzones_LEXTERNAL.64-127.6.113.212.in-addr.arpa--EXTERNAL.6.113.212.in-addr.arpa: MS/EXTERNAL.6.113.212.in-addr.arpa
@@ -91,7 +91,7 @@ MS/EXTERNAL.16.113.212.in-addr.arpa: EXTERNAL.16.113.212.in-addr.arpa
 
 # Compare EXTERNAL.16.113.212.in-addr.arpa against the MS version:
 diff-EXTERNAL.16.113.212.in-addr.arpa:
-	diff $(DIFFOPT) MP/EXTERNAL.16.113.212.in-addr.arpa EXTERNAL.16.113.212.in-addr.arpa
+	-diff $(DIFFOPT) MP/EXTERNAL.16.113.212.in-addr.arpa EXTERNAL.16.113.212.in-addr.arpa
 
 # If file needs to be copied to cibernetcorp@ns0.lt.nostrum.com:~cibernetcorp/zones/EXTERNAL.112-127.16.113.212.in-addr.arpa...
 DS/cibernetcorp_2ns0.lt.nostrum.com_C_tcibernetcorp_Lzones_LEXTERNAL.112-127.16.113.212.in-addr.arpa--EXTERNAL.16.113.212.in-addr.arpa: MS/EXTERNAL.16.113.212.in-addr.arpa
@@ -125,7 +125,7 @@ MS/INTERNAL.cibernet.com: INTERNAL.cibernet.com
 
 # Compare INTERNAL.cibernet.com against the MS version:
 diff-INTERNAL.cibernet.com:
-	diff $(DIFFOPT) MP/INTERNAL.cibernet.com INTERNAL.cibernet.com
+	-diff $(DIFFOPT) MP/INTERNAL.cibernet.com INTERNAL.cibernet.com
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--INTERNAL.cibernet.com: MS/INTERNAL.cibernet.com
@@ -174,7 +174,7 @@ MS/localhost.zone: localhost.zone
 
 # Compare localhost.zone against the MS version:
 diff-localhost.zone:
-	diff $(DIFFOPT) MP/localhost.zone localhost.zone
+	-diff $(DIFFOPT) MP/localhost.zone localhost.zone
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--localhost.zone: MS/localhost.zone
@@ -223,7 +223,7 @@ MS/named.local: named.local
 
 # Compare named.local against the MS version:
 diff-named.local:
-	diff $(DIFFOPT) MP/named.local named.local
+	-diff $(DIFFOPT) MP/named.local named.local
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--named.local: MS/named.local
@@ -272,7 +272,7 @@ MS/INTERNAL.1.168.192.in-addr.arpa: INTERNAL.1.168.192.in-addr.arpa
 
 # Compare INTERNAL.1.168.192.in-addr.arpa against the MS version:
 diff-INTERNAL.1.168.192.in-addr.arpa:
-	diff $(DIFFOPT) MP/INTERNAL.1.168.192.in-addr.arpa INTERNAL.1.168.192.in-addr.arpa
+	-diff $(DIFFOPT) MP/INTERNAL.1.168.192.in-addr.arpa INTERNAL.1.168.192.in-addr.arpa
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--INTERNAL.1.168.192.in-addr.arpa: MS/INTERNAL.1.168.192.in-addr.arpa
@@ -321,7 +321,7 @@ MS/INTERNAL.201.1.10.in-addr.arpa: INTERNAL.201.1.10.in-addr.arpa
 
 # Compare INTERNAL.201.1.10.in-addr.arpa against the MS version:
 diff-INTERNAL.201.1.10.in-addr.arpa:
-	diff $(DIFFOPT) MP/INTERNAL.201.1.10.in-addr.arpa INTERNAL.201.1.10.in-addr.arpa
+	-diff $(DIFFOPT) MP/INTERNAL.201.1.10.in-addr.arpa INTERNAL.201.1.10.in-addr.arpa
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--INTERNAL.201.1.10.in-addr.arpa: MS/INTERNAL.201.1.10.in-addr.arpa
@@ -370,7 +370,7 @@ MS/INTERNAL.240.1.10.in-addr.arpa: INTERNAL.240.1.10.in-addr.arpa
 
 # Compare INTERNAL.240.1.10.in-addr.arpa against the MS version:
 diff-INTERNAL.240.1.10.in-addr.arpa:
-	diff $(DIFFOPT) MP/INTERNAL.240.1.10.in-addr.arpa INTERNAL.240.1.10.in-addr.arpa
+	-diff $(DIFFOPT) MP/INTERNAL.240.1.10.in-addr.arpa INTERNAL.240.1.10.in-addr.arpa
 
 # If file needs to be copied to /var/named/....
 DS/_Lvar_Lnamed_L.--INTERNAL.240.1.10.in-addr.arpa: MS/INTERNAL.240.1.10.in-addr.arpa
@@ -419,7 +419,7 @@ MS/INTERNAL.named.root: INTERNAL.named.root
 
 # Compare INTERNAL.named.root against the MS version:
 diff-INTERNAL.named.root:
-	diff $(DIFFOPT) MP/INTERNAL.named.root INTERNAL.named.root
+	-diff $(DIFFOPT) MP/INTERNAL.named.root INTERNAL.named.root
 
 # If file needs to be copied to adam.cibernet.com:/var/named/named.ca...
 DS/adam.cibernet.com_C_Lvar_Lnamed_Lnamed.ca--INTERNAL.named.root: MS/INTERNAL.named.root
@@ -463,7 +463,7 @@ MS/dhcpnetinfo.txt: dhcpnetinfo.txt
 
 # Compare dhcpnetinfo.txt against the MS version:
 diff-dhcpnetinfo.txt:
-	diff $(DIFFOPT) MP/dhcpnetinfo.txt dhcpnetinfo.txt
+	-diff $(DIFFOPT) MP/dhcpnetinfo.txt dhcpnetinfo.txt
 
 # If file needs to be copied to /var/named/dhcpnetinfo.txt...
 DS/_Lvar_Lnamed_Ldhcpnetinfo.txt--dhcpnetinfo.txt: MS/dhcpnetinfo.txt

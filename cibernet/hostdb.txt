@@ -312,7 +312,7 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 10.1.240.3	cycmd.cibernet.com
 10.1.240.4	vpnmd-in.cibernet.com CNAME=vpn-in.cibernet.com
 10.1.240.5	green.cibernet.com
-10.1.240.6	adam.cibernet.com CNAMES=change.cibernet.com ISMULTIHOMED=ldap.cibernet.com
+10.1.240.6	adam.cibernet.com CNAME=change.cibernet.com ISMULTIHOMED=ldap.cibernet.com
 #10.1.240.7	UNUSED1012407.cibernet.com
 #10.1.240.8	UNUSED1012408.cibernet.com
 #10.1.240.9	UNUSED1012409.cibernet.com
@@ -567,8 +567,8 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 #10.91.40.1	india0A5B2801.in.cibernet.com
 #10.91.40.2	india0A5B2802.in.cibernet.com
 #10.91.40.3	india0A5B2803.in.cibernet.com
-#10.91.40.4	cibernet-sws.in.cibernet.com
-#10.91.40.5	in.cibernet.com	ISMAILSERVERI ANAME=cibernet-ex.in.cibernet.com:tci.in.cibernet.com
+10.91.40.4	ciber.in.cibernet.com
+10.91.40.5	exchange.in.cibernet.com
 #10.91.40.6	india0A5B2806.in.cibernet.com
 #10.91.40.7	india0A5B2807.in.cibernet.com
 #10.91.40.8	india0A5B2808.in.cibernet.com
@@ -1254,8 +1254,44 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 
 # India new office:
 # India's ISP connection:
-59.163.119.120	tci.cibernet.com@INBOUNDNAT ANAME=in.cibernet.com@INBOUNDNAT
+59.163.119.120	in.cibernet.com@INBOUNDNAT
 # India2's IPS:
 #59.163.119.115 ISP router
 #59.163.119.120 
 
+# Speakeasy T1 for Maryland:
+# Size /27
+# mask: 255.255.255.224
+# DNS: 
+69.17.68.192	mdext-net.cibernet.com@EXTERNAL
+69.17.68.193	mdnetopia-mdext.cibernet.com@EXTERNAL ISROUTER=mdnetopia.cibernet.com
+#69.17.68.194	pixmd-mdext.cibernet.com@EXTERNAL ISROUTER=pixmd.cibernet.com
+#69.17.68.195	UNUSED451144C3.cibernet.com@EXTERNAL
+#69.17.68.196	UNUSED451144C4.cibernet.com@EXTERNAL
+#69.17.68.197	UNUSED451144C5.cibernet.com@EXTERNAL
+#69.17.68.198	UNUSED451144C6.cibernet.com@EXTERNAL
+#69.17.68.199	juice-199.cibernet.com@EXTERNAL
+#69.17.68.200	vpnmd.cibernet.com@EXTERNAL ANAMES=vpngb.cibernet.com@EXTERNAL:vpnnj.cibernet.com@EXTERNAL:vpn.cibernet.com@EXTERNAL.cibernet.com@EXTERNAL
+#69.17.68.201	granny.cibernet.com@INBOUNDNAT ANAMES=mtm-failover.cibernet.com@INBOUNDNAT
+#69.17.68.202	robotron.cibernet.com@INBOUNDNAT ANAMES=support.cibernet.com@INBOUNDNAT
+#69.17.68.203	UNUSED451144CB.cibernet.com@EXTERNAL
+#69.17.68.204	UNUSED451144CC.cibernet.com@EXTERNAL
+#69.17.68.205	UNUSED451144CD.cibernet.com@EXTERNAL
+#69.17.68.206	UNUSED451144CE.cibernet.com@EXTERNAL
+#69.17.68.207	UNUSED451144CF.cibernet.com@EXTERNAL
+#69.17.68.208	UNUSED451144D0.cibernet.com@EXTERNAL
+#69.17.68.209	UNUSED451144D1.cibernet.com@EXTERNAL
+#69.17.68.210	UNUSED451144D2.cibernet.com@EXTERNAL
+#69.17.68.211	UNUSED451144D3.cibernet.com@EXTERNAL
+#69.17.68.212	UNUSED451144D4.cibernet.com@EXTERNAL
+#69.17.68.213	UNUSED451144D5.cibernet.com@EXTERNAL
+#69.17.68.214	UNUSED451144D6.cibernet.com@EXTERNAL
+#69.17.68.215	UNUSED451144D7.cibernet.com@EXTERNAL
+#69.17.68.216	UNUSED451144D8.cibernet.com@EXTERNAL
+#69.17.68.217	UNUSED451144D9.cibernet.com@EXTERNAL
+#69.17.68.218	UNUSED451144DA.cibernet.com@EXTERNAL
+#69.17.68.219	UNUSED451144DB.cibernet.com@EXTERNAL
+#69.17.68.220	UNUSED451144DC.cibernet.com@EXTERNAL
+#69.17.68.221	UNUSED451144DD.cibernet.com@EXTERNAL
+69.17.68.222	m5.cibernet.com@EXTERNAL
+69.17.68.223	mdext-bcast.cibernet.com@EXTERNAL

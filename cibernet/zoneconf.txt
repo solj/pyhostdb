@@ -13,7 +13,7 @@ OBSCUREZONE cibernet.com
 
 # Set the SOA values to be used for internal and external zones:
 SOA INTERNAL hostmaster.cibernet.com. 3h 1h 1w 1h
-SOA EXTERNAL hostmaster.cibernet.com. 3h 1h 1w 1h
+SOA EXTERNAL hostmaster.cibernet.com. 10m 1h 4w 1h
 
 # Set the default MX records to be added to all hosts:
 MX EXTERNAL 10 cluster5.us.messagelabs.com ; 20 cluster5a.us.messagelabs.com
@@ -83,17 +83,13 @@ ZONESERVERS INTERNAL adam.cibernet.com odnj01.cibernet.com oduk01.cibernet.com o
 # Step 4: Define all zones and reverse zones
 #####################################################################
 
-# Subzones go first.  (in.cibernet.com before cibernet.com)
+# Temporarily set the ZONE info for zones delegated to India:
+ZONESERVERS INTERNAL exchange.in.cibernet.com ciber.in.cibernet.com
+DELEGATE in.cibernet.com		INTERNAL 
+# Note: there is no "DELEGATE for 40.91.10.in-addr.arpa".  That is done in named.conf (same as
+# all fake reverse zones.)
 
-# Set the NS records for the next DOMAIN and REVDOMAIN commands:
-#ZONESERVERS EXTERNAL NS2.CIBERNET.COM ns0.lt.nostrum.com ny2.streambolt.com
-#ZONESERVERS INTERNAL cibernet-dc.cibernet.com cibernet-ex.cibernet.com
-
-# India:
-#DOMAIN in.cibernet.com		INTERNAL 
-#REVDOMAIN CLASSC 10.91.40.0	INTERNAL
-
-# Set the NS records for the next DOMAIN and REVDOMAIN commands:
+# Set the NS records for the remaining domains
 ZONESERVERS EXTERNAL NS2.CIBERNET.COM ns0.lt.nostrum.com ny2.streambolt.com
 ZONESERVERS INTERNAL adam.cibernet.com odnj01.cibernet.com oduk01.cibernet.com oduk02.cibernet.com
 

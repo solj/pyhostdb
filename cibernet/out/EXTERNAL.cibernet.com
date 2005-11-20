@@ -5,20 +5,15 @@ $TTL 1h
 
 @	IN SOA	NS2.CIBERNET.COM. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			3h	;refresh period
+			10m	;refresh period
 			1h	;retry refresh this often
-			1w	;expiration period
+			4w	;expiration period
 			1h	;minimum TTL
 		)
 
                    IN NS      NS2
                    IN NS      ns0.lt.nostrum.com.
                    IN NS      ny2.streambolt.com.
-
-; this is from the INC file
-in.cibernet.com.	IN MX 10   cluster5.us.messagelabs.com.
-			IN MX 20   cluster5a.us.messagelabs.com.
-
 auto               IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -44,9 +39,6 @@ gb                 IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 gbc                IN A       193.195.87.251
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-in                 IN A       59.163.119.120
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mail               IN A       66.80.151.139
@@ -92,7 +84,7 @@ vpnnj              IN A       66.80.151.140
 www                IN A       66.80.151.139
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-tci                IN A       59.163.119.120
+in                 IN A       59.163.119.120
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mdmega-net         IN A       66.80.151.136
@@ -154,6 +146,23 @@ pixnj              IN A       66.155.166.179
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 
+mdext-net          IN A       69.17.68.192
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdnetopia-mdext    IN A       69.17.68.193
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; mdnetopia-mdext.cibernet.com is part of multihomed host mdnetopia.cibernet.com
+mdnetopia          IN A       69.17.68.193
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+m5                 IN A       69.17.68.222
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+mdext-bcast        IN A       69.17.68.223
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 pixuk-ukext1       IN A       193.195.87.250
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.

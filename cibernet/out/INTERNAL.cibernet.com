@@ -16,15 +16,15 @@ $TTL 1h
                    IN NS      oduk01
                    IN NS      oduk02
 
-; this is from the INC file
+;;; START OF INTERNAL.cibernet.com.inc
+
+; This is required to deal with the funny IP address on juice.
+; Email from most machines fails when sending to juice.cibernet.com.
+; This gives a better priority MX record that won't fail, namedly us.cibernet.com.
 juice.cibernet.com.		IN MX 0   us.cibernet.com.
 juice.cibernet.com.		IN A	10.1.240.1
 
-in.cibernet.com.		IN NS ciber.in.cibernet.com.
-in.cibernet.com.		IN NS exchange.in.cibernet.com.
-
-ciber.in.cibernet.com.		IN A 10.91.40.4
-exchange.in.cibernet.com.	IN A 10.91.40.5
+;;; END OF INTERNAL.cibernet.com.inc
 
 auto               IN A       10.1.240.1
                    IN MX 0    auto
@@ -1058,6 +1058,12 @@ d10-1-240-126      IN A       10.1.240.126
 mdlan-bcast        IN A       10.1.240.254
                    IN MX 10   crumb
                    IN MX 20   us
+
+in                 IN NS      exchange.in
+exchange.in        IN A       10.91.40.5
+in                 IN NS      ciber.in
+ciber.in           IN A       10.91.40.4
+
 mdmega-net         IN A       66.80.151.136
                    IN MX 10   crumb
                    IN MX 20   us
@@ -1133,6 +1139,23 @@ UNUSED66155166181  IN A       66.155.166.181
                    IN MX 10   crumb
                    IN MX 20   us
 UNUSED66155166182  IN A       66.155.166.182
+                   IN MX 10   crumb
+                   IN MX 20   us
+mdext-net          IN A       69.17.68.192
+                   IN MX 10   crumb
+                   IN MX 20   us
+mdnetopia-mdext    IN A       69.17.68.193
+                   IN MX 10   crumb
+                   IN MX 20   us
+; mdnetopia-mdext.cibernet.com is part of multihomed host mdnetopia.cibernet.com
+mdnetopia          IN A       69.17.68.193
+                   IN MX 10   crumb
+                   IN MX 20   us
+
+m5                 IN A       69.17.68.222
+                   IN MX 10   crumb
+                   IN MX 20   us
+mdext-bcast        IN A       69.17.68.223
                    IN MX 10   crumb
                    IN MX 20   us
 uklan-net          IN A       192.168.1.0
