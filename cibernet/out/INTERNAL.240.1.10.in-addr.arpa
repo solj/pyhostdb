@@ -5,9 +5,9 @@ $TTL 1h
 
 @	IN SOA	adam.cibernet.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			3h	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			1w	;expiration period
+			15w	;expiration period
 			1h	;minimum TTL
 		)
 
@@ -22,11 +22,18 @@ $TTL 1h
 4                  IN PTR     vpnmd-in.cibernet.com.
 5                  IN PTR     green.cibernet.com.
 6                  IN PTR     adam.cibernet.com.
+7                  IN PTR     seed.cibernet.com.
+8                  IN PTR     candy.cibernet.com.
+9                  IN PTR     sauce.cibernet.com.
 10                 IN PTR     jumbotron.cibernet.com.
 11                 IN PTR     granny.cibernet.com.
+12                 IN PTR     skin.cibernet.com.
+14                 IN PTR     pie.cibernet.com.
 20                 IN PTR     brumd.cibernet.com.
 21                 IN PTR     exabytemd.cibernet.com.
 22                 IN PTR     robotron.cibernet.com.
+26                 IN PTR     blossom.cibernet.com.
+27                 IN PTR     m5.cibernet.com.
 40                 IN PTR     ocean.cibernet.com.
 41                 IN PTR     ocean-wired.cibernet.com.
 66                 IN PTR     d10-1-240-66.cibernet.com.

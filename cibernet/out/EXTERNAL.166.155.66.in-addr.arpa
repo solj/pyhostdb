@@ -1,14 +1,14 @@
 
 ;
 
-$TTL 1h
+$TTL 15m
 
 @	IN SOA	NS2.CIBERNET.COM. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			10m	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			4w	;expiration period
-			1h	;minimum TTL
+			15w	;expiration period
+			15m	;minimum TTL
 		)
 
                    IN NS      NS2.CIBERNET.COM.

@@ -1,14 +1,14 @@
 
 ;
 
-$TTL 1h
+$TTL 15m
 
 @	IN SOA	NS2.CIBERNET.COM. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			10m	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			4w	;expiration period
-			1h	;minimum TTL
+			15w	;expiration period
+			15m	;minimum TTL
 		)
 
                    IN NS      NS2.CIBERNET.COM.
@@ -152,11 +152,11 @@ $TTL 1h
 135                IN PTR     h66-80-151-135.cibernet.com.
 136                IN PTR     mdmega-net.cibernet.com.
 137                IN PTR     mdmegartr-mdmega.cibernet.com.
-138                IN PTR     pixmd-megapath.cibernet.com.
+138                IN PTR     h66-80-151-138.cibernet.com.
 139                IN PTR     h66-80-151-139.cibernet.com.
-140                IN PTR     vpnmd.cibernet.com.
-141                IN PTR     granny.cibernet.com.
-142                IN PTR     robotron.cibernet.com.
+140                IN PTR     h66-80-151-140.cibernet.com.
+141                IN PTR     h66-80-151-141.cibernet.com.
+142                IN PTR     h66-80-151-142.cibernet.com.
 143                IN PTR     mdmega-bcast.cibernet.com.
 144                IN PTR     h66-80-151-144.cibernet.com.
 145                IN PTR     h66-80-151-145.cibernet.com.

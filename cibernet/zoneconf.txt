@@ -12,8 +12,8 @@ TEMPLATEDIR ..
 OBSCUREZONE cibernet.com
 
 # Set the SOA values to be used for internal and external zones:
-SOA INTERNAL hostmaster.cibernet.com. 3h 1h 1w 1h
-SOA EXTERNAL hostmaster.cibernet.com. 10m 1h 4w 1h
+SOA INTERNAL hostmaster.cibernet.com. 6h 1h 15w 1h
+SOA EXTERNAL hostmaster.cibernet.com. 6h 1h 15w 15m
 
 # Set the default MX records to be added to all hosts:
 MX EXTERNAL 10 cluster5.us.messagelabs.com ; 20 cluster5a.us.messagelabs.com

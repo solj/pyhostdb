@@ -5,9 +5,9 @@ $TTL 1h
 
 @	IN SOA	adam.cibernet.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			3h	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			1w	;expiration period
+			15w	;expiration period
 			1h	;minimum TTL
 		)
 
@@ -22,7 +22,7 @@ $TTL 1h
 ; Email from most machines fails when sending to juice.cibernet.com.
 ; This gives a better priority MX record that won't fail, namedly us.cibernet.com.
 juice.cibernet.com.		IN MX 0   us.cibernet.com.
-juice.cibernet.com.		IN A	10.1.240.1
+;juice.cibernet.com.		IN A	10.1.240.1
 
 ;;; END OF INTERNAL.cibernet.com.inc
 
@@ -51,6 +51,9 @@ cibernet.com.      IN A       10.1.240.1
                    IN MX 10   crumb
                    IN MX 20   us
 clientftp          IN A       212.113.16.126
+                   IN MX 10   crumb
+                   IN MX 20   us
+cps                IN A       69.17.68.203
                    IN MX 10   crumb
                    IN MX 20   us
 crumbx             IN A       193.195.87.251
@@ -85,12 +88,12 @@ mtm-test           IN CNAME   tart
 mtm                IN A       212.113.16.123
                    IN MX 10   crumb
                    IN MX 20   us
-ns                 IN A       66.80.151.139
+ns                 IN A       69.17.68.199
                    IN MX 0    ns
                    IN MX 10   crumb
                    IN MX 20   us
-ns2                IN A       66.80.151.139
-                   IN MX 0    ns2
+ns3                IN A       69.17.68.199
+                   IN MX 0    ns3
                    IN MX 10   crumb
                    IN MX 20   us
 ocdemo             IN A       212.113.16.126
@@ -101,10 +104,7 @@ one1clear-uat      IN CNAME   tree
 one1clear          IN A       212.113.6.66
                    IN MX 10   crumb
                    IN MX 20   us
-oneclear-dev       IN A       10.1.201.13
-                   IN MX 10   crumb
-                   IN MX 20   us
-oneclear-test      IN A       10.1.201.11
+oneclear-test      IN A       10.1.240.8
                    IN MX 10   crumb
                    IN MX 20   us
 oneclear-uat       IN CNAME   tree
@@ -115,20 +115,20 @@ support            IN A       10.1.240.22
                    IN MX 0    support
                    IN MX 10   crumb
                    IN MX 20   us
-svnweb             IN A       10.1.201.9
+svnweb             IN A       10.1.240.9
                    IN MX 10   crumb
                    IN MX 20   us
 us                 IN A       10.1.240.1
                    IN MX 0    us
                    IN MX 10   crumb
 vpn-in             IN CNAME   vpnmd-in
-vpn                IN A       66.80.151.140
+vpn                IN A       69.17.68.200
                    IN MX 10   crumb
                    IN MX 20   us
-vpngb              IN A       66.80.151.140
+vpngb              IN A       69.17.68.200
                    IN MX 10   crumb
                    IN MX 20   us
-vpnnj              IN A       66.80.151.140
+vpnnj              IN A       69.17.68.200
                    IN MX 10   crumb
                    IN MX 20   us
 www-test           IN A       66.134.100.75
@@ -157,28 +157,10 @@ pixnj              IN A       10.1.201.2
 hp7100nj           IN A       10.1.201.3
                    IN MX 10   crumb
                    IN MX 20   us
-pie                IN A       10.1.201.4
-                   IN MX 10   crumb
-                   IN MX 20   us
-seed               IN A       10.1.201.7
-                   IN MX 10   crumb
-                   IN MX 20   us
 wrt54Gnj           IN A       10.1.201.8
                    IN MX 10   crumb
                    IN MX 20   us
-sauce              IN A       10.1.201.9
-                   IN MX 10   crumb
-                   IN MX 20   us
 hp2300nj           IN A       10.1.201.10
-                   IN MX 10   crumb
-                   IN MX 20   us
-candy              IN A       10.1.201.11
-                   IN MX 10   crumb
-                   IN MX 20   us
-skin               IN A       10.1.201.12
-                   IN MX 10   crumb
-                   IN MX 20   us
-core               IN A       10.1.201.13
                    IN MX 10   crumb
                    IN MX 20   us
 nj-airport-basestation IN A       10.1.201.14
@@ -857,13 +839,31 @@ adam               IN A       10.1.240.6
 ; adam.cibernet.com is part of multihomed host ldap.cibernet.com
 ldap               IN A       10.1.240.6
 
+seed               IN A       10.1.240.7
+                   IN MX 10   crumb
+                   IN MX 20   us
+candy              IN A       10.1.240.8
+                   IN MX 10   crumb
+                   IN MX 20   us
+sauce              IN A       10.1.240.9
+                   IN MX 10   crumb
+                   IN MX 20   us
 jumbotron          IN A       10.1.240.10
+                   IN MX 10   crumb
+                   IN MX 20   us
+skin               IN A       10.1.240.12
+                   IN MX 10   crumb
+                   IN MX 20   us
+pie                IN A       10.1.240.14
                    IN MX 10   crumb
                    IN MX 20   us
 brumd              IN A       10.1.240.20
                    IN MX 10   crumb
                    IN MX 20   us
 exabytemd          IN A       10.1.240.21
+                   IN MX 10   crumb
+                   IN MX 20   us
+blossom            IN A       10.1.240.26
                    IN MX 10   crumb
                    IN MX 20   us
 ocean              IN A       10.1.240.40
@@ -1075,26 +1075,6 @@ mdmegartr          IN A       66.80.151.137
                    IN MX 10   crumb
                    IN MX 20   us
 
-pixmd-megapath     IN A       66.80.151.138
-                   IN MX 10   crumb
-                   IN MX 20   us
-; pixmd-megapath.cibernet.com is part of multihomed host pixmd.cibernet.com
-pixmd              IN A       66.80.151.138
-
-juice-139          IN A       66.80.151.139
-                   IN MX 0    juice-139
-                   IN MX 10   crumb
-                   IN MX 20   us
-vpnmd              IN A       66.80.151.140
-                   IN MX 10   crumb
-                   IN MX 20   us
-granny             IN A       10.1.240.11
-                   IN MX 10   crumb
-                   IN MX 20   us
-robotron           IN A       10.1.240.22
-                   IN MX 0    robotron
-                   IN MX 10   crumb
-                   IN MX 20   us
 mdmega-bcast       IN A       66.80.151.143
                    IN MX 10   crumb
                    IN MX 20   us
@@ -1152,7 +1132,30 @@ mdnetopia          IN A       69.17.68.193
                    IN MX 10   crumb
                    IN MX 20   us
 
-m5                 IN A       69.17.68.222
+pixmd-mdext        IN A       69.17.68.194
+                   IN MX 10   crumb
+                   IN MX 20   us
+; pixmd-mdext.cibernet.com is part of multihomed host pixmd.cibernet.com
+pixmd              IN A       69.17.68.194
+
+juice-199          IN A       69.17.68.199
+                   IN MX 0    juice-199
+                   IN MX 10   crumb
+                   IN MX 20   us
+vpnmd              IN A       69.17.68.200
+                   IN MX 10   crumb
+                   IN MX 20   us
+granny             IN A       10.1.240.11
+                   IN MX 10   crumb
+                   IN MX 20   us
+robotron           IN A       10.1.240.22
+                   IN MX 0    robotron
+                   IN MX 10   crumb
+                   IN MX 20   us
+core               IN A       69.17.68.203
+                   IN MX 10   crumb
+                   IN MX 20   us
+m5                 IN A       10.1.240.27
                    IN MX 10   crumb
                    IN MX 20   us
 mdext-bcast        IN A       69.17.68.223
@@ -1520,15 +1523,18 @@ uklan-bcast        IN A       192.168.1.255
 ukdser-net         IN A       193.195.87.240
                    IN MX 10   crumb
                    IN MX 20   us
-uknok-gw           IN A       193.195.87.241
+demon-gw           IN A       193.195.87.241
                    IN MX 10   crumb
                    IN MX 20   us
-; uknok-gw.cibernet.com is part of multihomed host uknokgw.cibernet.com
+; demon-gw.cibernet.com is part of multihomed host uknokgw.cibernet.com
 uknokgw            IN A       193.195.87.241
                    IN MX 10   crumb
                    IN MX 20   us
 
 ukdser-bcast       IN A       193.195.87.247
+                   IN MX 10   crumb
+                   IN MX 20   us
+ukext1-net         IN A       193.195.87.248
                    IN MX 10   crumb
                    IN MX 20   us
 pixuk-ukext1       IN A       193.195.87.250

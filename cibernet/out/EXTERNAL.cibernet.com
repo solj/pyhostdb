@@ -1,60 +1,63 @@
 
 ;
 
-$TTL 1h
+$TTL 15m
 
 @	IN SOA	NS2.CIBERNET.COM. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			10m	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			4w	;expiration period
-			1h	;minimum TTL
+			15w	;expiration period
+			15m	;minimum TTL
 		)
 
                    IN NS      NS2
                    IN NS      ns0.lt.nostrum.com.
                    IN NS      ny2.streambolt.com.
-auto               IN A       66.80.151.139
+auto               IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 bruukc             IN A       212.113.6.67
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-careof             IN A       66.80.151.139
+careof             IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-cibernet.com.      IN A       66.80.151.139
+cibernet.com.      IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 clientftp          IN A       212.113.16.126
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+cps                IN A       69.17.68.203
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 crumbx             IN A       193.195.87.251
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-demoreports        IN A       66.80.151.139
+demoreports        IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-gb                 IN A       66.80.151.139
+gb                 IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 gbc                IN A       193.195.87.251
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-mail               IN A       66.80.151.139
+mail               IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-mtm-failover       IN A       66.80.151.141
+mtm-failover       IN A       69.17.68.201
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mtm-test           IN CNAME   tart
 mtm                IN A       212.113.16.123
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-ns                 IN A       66.80.151.139
+ns                 IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-ns2                IN A       66.80.151.139
+ns3                IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ocdemo             IN A       212.113.16.126
@@ -66,22 +69,22 @@ one1clear          IN A       212.113.6.66
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 oneclear-uat       IN CNAME   tree
-support            IN A       66.80.151.142
+support            IN A       69.17.68.202
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-us                 IN A       66.80.151.139
+us                 IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-vpn                IN A       66.80.151.140
+vpn                IN A       69.17.68.200
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-vpngb              IN A       66.80.151.140
+vpngb              IN A       69.17.68.200
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-vpnnj              IN A       66.80.151.140
+vpnnj              IN A       69.17.68.200
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
-www                IN A       66.80.151.139
+www                IN A       69.17.68.199
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 in                 IN A       59.163.119.120
@@ -98,23 +101,6 @@ mdmegartr          IN A       66.80.151.137
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 
-pixmd-megapath     IN A       66.80.151.138
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-; pixmd-megapath.cibernet.com is part of multihomed host pixmd.cibernet.com
-pixmd              IN A       66.80.151.138
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-
-vpnmd              IN A       66.80.151.140
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-granny             IN A       66.80.151.141
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
-robotron           IN A       66.80.151.142
-                   IN MX 10   cluster5.us.messagelabs.com.
-                   IN MX 20   cluster5a.us.messagelabs.com.
 mdmega-bcast       IN A       66.80.151.143
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
@@ -157,10 +143,47 @@ mdnetopia          IN A       69.17.68.193
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 
+pixmd-mdext        IN A       69.17.68.194
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; pixmd-mdext.cibernet.com is part of multihomed host pixmd.cibernet.com
+pixmd              IN A       69.17.68.194
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+vpnmd              IN A       69.17.68.200
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+granny             IN A       69.17.68.201
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+robotron           IN A       69.17.68.202
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+core               IN A       69.17.68.203
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 m5                 IN A       69.17.68.222
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 mdext-bcast        IN A       69.17.68.223
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukdser-net         IN A       193.195.87.240
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+demon-gw           IN A       193.195.87.241
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+; demon-gw.cibernet.com is part of multihomed host uknokgw.cibernet.com
+uknokgw            IN A       193.195.87.241
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+
+ukdser-bcast       IN A       193.195.87.247
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukext1-net         IN A       193.195.87.248
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 pixuk-ukext1       IN A       193.195.87.250
@@ -175,6 +198,9 @@ crumb              IN A       193.195.87.251
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 cbnts03            IN A       193.195.87.253
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+ukext1-bcast       IN A       193.195.87.255
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-net        IN A       212.113.6.64
@@ -390,7 +416,11 @@ h66-80-151-132     IN A       66.80.151.132
 h66-80-151-133     IN A       66.80.151.133
 h66-80-151-134     IN A       66.80.151.134
 h66-80-151-135     IN A       66.80.151.135
+h66-80-151-138     IN A       66.80.151.138
 h66-80-151-139     IN A       66.80.151.139
+h66-80-151-140     IN A       66.80.151.140
+h66-80-151-141     IN A       66.80.151.141
+h66-80-151-142     IN A       66.80.151.142
 h66-80-151-144     IN A       66.80.151.144
 h66-80-151-145     IN A       66.80.151.145
 h66-80-151-146     IN A       66.80.151.146
@@ -1252,19 +1282,14 @@ h193-195-87-236    IN A       193.195.87.236
 h193-195-87-237    IN A       193.195.87.237
 h193-195-87-238    IN A       193.195.87.238
 h193-195-87-239    IN A       193.195.87.239
-h193-195-87-240    IN A       193.195.87.240
-h193-195-87-241    IN A       193.195.87.241
 h193-195-87-242    IN A       193.195.87.242
 h193-195-87-243    IN A       193.195.87.243
 h193-195-87-244    IN A       193.195.87.244
 h193-195-87-245    IN A       193.195.87.245
 h193-195-87-246    IN A       193.195.87.246
-h193-195-87-247    IN A       193.195.87.247
-h193-195-87-248    IN A       193.195.87.248
 h193-195-87-249    IN A       193.195.87.249
 h193-195-87-252    IN A       193.195.87.252
 h193-195-87-254    IN A       193.195.87.254
-h193-195-87-255    IN A       193.195.87.255
 
 h212-113-6-0       IN A       212.113.6.0
 h212-113-6-1       IN A       212.113.6.1

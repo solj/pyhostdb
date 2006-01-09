@@ -1,14 +1,14 @@
 
 ;
 
-$TTL 1h
+$TTL 15m
 
 @	IN SOA	NS2.CIBERNET.COM. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			10m	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			4w	;expiration period
-			1h	;minimum TTL
+			15w	;expiration period
+			15m	;minimum TTL
 		)
 
                    IN NS      NS2.CIBERNET.COM.
@@ -254,19 +254,19 @@ $TTL 1h
 237                IN PTR     h193-195-87-237.cibernet.com.
 238                IN PTR     h193-195-87-238.cibernet.com.
 239                IN PTR     h193-195-87-239.cibernet.com.
-240                IN PTR     h193-195-87-240.cibernet.com.
-241                IN PTR     h193-195-87-241.cibernet.com.
+240                IN PTR     ukdser-net.cibernet.com.
+241                IN PTR     demon-gw.cibernet.com.
 242                IN PTR     h193-195-87-242.cibernet.com.
 243                IN PTR     h193-195-87-243.cibernet.com.
 244                IN PTR     h193-195-87-244.cibernet.com.
 245                IN PTR     h193-195-87-245.cibernet.com.
 246                IN PTR     h193-195-87-246.cibernet.com.
-247                IN PTR     h193-195-87-247.cibernet.com.
-248                IN PTR     h193-195-87-248.cibernet.com.
+247                IN PTR     ukdser-bcast.cibernet.com.
+248                IN PTR     ukext1-net.cibernet.com.
 249                IN PTR     h193-195-87-249.cibernet.com.
 250                IN PTR     pixuk-ukext1.cibernet.com.
 251                IN PTR     crumb.cibernet.com.
 252                IN PTR     h193-195-87-252.cibernet.com.
 253                IN PTR     cbnts03.cibernet.com.
 254                IN PTR     h193-195-87-254.cibernet.com.
-255                IN PTR     h193-195-87-255.cibernet.com.
+255                IN PTR     ukext1-bcast.cibernet.com.

@@ -5,9 +5,9 @@ $TTL 1h
 
 @	IN SOA	adam.cibernet.com. hostmaster.cibernet.com. (
 			:serial:	;serial (version)
-			3h	;refresh period
+			6h	;refresh period
 			1h	;retry refresh this often
-			1w	;expiration period
+			15w	;expiration period
 			1h	;minimum TTL
 		)
 
@@ -18,14 +18,8 @@ $TTL 1h
 0                  IN PTR     njlan-net.cibernet.com.
 2                  IN PTR     pixnj-lan.cibernet.com.
 3                  IN PTR     hp7100nj.cibernet.com.
-4                  IN PTR     pie.cibernet.com.
-7                  IN PTR     seed.cibernet.com.
 8                  IN PTR     wrt54Gnj.cibernet.com.
-9                  IN PTR     sauce.cibernet.com.
 10                 IN PTR     hp2300nj.cibernet.com.
-11                 IN PTR     candy.cibernet.com.
-12                 IN PTR     skin.cibernet.com.
-13                 IN PTR     core.cibernet.com.
 14                 IN PTR     nj-airport-basestation.cibernet.com.
 15                 IN PTR     nj-airport-express.cibernet.com.
 20                 IN PTR     odnj01.cibernet.com.
