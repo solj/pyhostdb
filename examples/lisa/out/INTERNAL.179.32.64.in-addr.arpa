@@ -19,4 +19,5 @@ $TTL 1h
 3                  IN PTR     mailqueue.example.com.
 4                  IN PTR     vector.example.com.
 5                  IN PTR     exweb.example.com.
+253                IN PTR     webfarm3.example.com.
 255                IN PTR     ext-bcast.example.com.

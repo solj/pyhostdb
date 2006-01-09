@@ -27,11 +27,11 @@ fileserver         IN A       10.1.1.2
                    IN MX 10   mailserver
 mailserver         IN A       10.1.1.3
                    IN MX 0    mailserver
+newguy             IN A       10.1.1.7
+                   IN MX 10   mailserver
 staffpc1           IN A       10.1.1.10
                    IN MX 10   mailserver
 staffpc2           IN A       10.1.1.11
-                   IN MX 10   mailserver
-mypc               IN A       10.1.1.12
                    IN MX 10   mailserver
 dhcp-10-1-1-140    IN A       10.1.1.140
                    IN MX 10   mailserver
@@ -272,6 +272,8 @@ mailqueue          IN A       64.32.179.3
 vector             IN A       10.1.1.4
                    IN MX 10   mailserver
 exweb              IN A       64.32.179.5
+                   IN MX 10   mailserver
+webfarm3           IN A       64.32.179.253
                    IN MX 10   mailserver
 ext-bcast          IN A       64.32.179.255
                    IN MX 10   mailserver

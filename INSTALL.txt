@@ -1,0 +1,79 @@
+
+HOW TO INSTALL HOSTDB
+
+
+Copyright 2005 Thomas A. Limoncelli
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+
+
+
+INSTALLATION
+
+1.  Untar someplace (um, you've already done that if you are reading
+this file)
+
+2.  Put the "bin" files someplace useful (BINDIR).  If you have a central
+repository of tools, put the "bin" directory there (i.e. if you
+have /home/adm/bin, make a /home/adm/hostdb/bin and put the files
+there).  For testing, you can put the "bin" directory anywhere,
+even leave it where you untarred things initially.
+
+3.  Add the "bin" directory to your PATH.
+
+3.  Read the paper in docs/lisa2005-paper.pdf to understand the
+configuration files.
+
+4.  Create a directory called anything you want for storing your
+data (DATADIR). Your data can live anywhere you want.  I call mine
+/home/adm/hostdb/data and when I want to do testing I copy things
+into a directory called ~/hostdb-test and do the tests I want right
+there.
+
+5.  Create a subdirectory in DATADIR called "out"
+
+	mkdir $DATADIR/out
+for example:
+	mkdir /home/adm/hostdb/data/out
+
+6.  In your shell, make an alias to make everything easier to work with.
+
+sh-relatives:
+	alias hmake='cd /home/adm/hostdb/data/out && make -f ../Makefile'
+
+csh-relatives:
+	alias hmake 'cd /home/adm/hostdb/data/out && make -f ../Makefile'
+
+7.  Create the initial 4 files needed for hostdb to operate:
+
+	zoneconf.txt destinations.txt and Makefile (plus some others):
+		cp examples/goodstart/* DATADIR/.
+
+	hostdb.txt:
+		create from a BIND zone file using zone2hostdb,
+			or your /etc/hosts file
+			or your imagination.
+
+8.  Create the files:
+
+	cd $DATADIR
+	hmake
+
+9.  Review the data:
+
+	cd $DATADIR/out
+	ls
+
+

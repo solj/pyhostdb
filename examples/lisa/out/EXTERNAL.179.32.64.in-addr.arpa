@@ -266,6 +266,6 @@ $TTL 1h
 250                IN PTR     h64-32-179-250.example.com.
 251                IN PTR     h64-32-179-251.example.com.
 252                IN PTR     h64-32-179-252.example.com.
-253                IN PTR     h64-32-179-253.example.com.
+253                IN PTR     webfarm3.example.com.
 254                IN PTR     h64-32-179-254.example.com.
 255                IN PTR     ext-bcast.example.com.

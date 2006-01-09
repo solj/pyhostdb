@@ -1,9 +1,4 @@
-#!/bin/bash
 
-# Takes a zonefile and converts it to a rough estimate
-# of what hostdb.txt should be.
-
-# Look at zone2hostdbhelper for more info
 
 # Copyright 2005 Thomas A. Limoncelli
 # 
@@ -21,5 +16,28 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
-cat $* | canonzone -n  | zone2hostdbhelper | sortbyip
 
+# Note:
+# Release process:
+# 1.  Make sure you have the files ready.
+#	a. check everything into SubVersion
+#	b. make sure "svn update" outputs nothing
+
+PACKAGE = hostdb
+VERSION = 1.000
+distdir = $(PACKAGE)-$(VERSION)
+
+all:
+	@echo Nothing to do.
+
+
+dist: MANIFEST
+	-rm -rf $(distdir)
+	mkdir $(distdir) && tar cf - `cat MANIFEST` | ( cd $(distdir) && tar xpvf - )
+	cd $(distdir) && find . -type d -name .svn -print0 | xargs -0 rm -rf 
+	tar zcf $(distdir).tgz $(distdir)
+	-rm -rf $(distdir)
+
+push:
+	scp $(distdir).tgz www.everythingsysadmin.com:/home/web/data/everythingsysadmin.com/mt/hostdb/releases/new
+	ssh www.everythingsysadmin.com "cd /home/web/data/everythingsysadmin.com/mt/hostdb/releases && mv -n new $(distdir).tgz"

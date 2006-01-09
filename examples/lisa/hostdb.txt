@@ -6,12 +6,12 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.example.com
 10.1.1.4	vector.example.com
 #10.1.1.5	UNUSED0A010105.example.com
 #10.1.1.6	UNUSED0A010106.example.com
-#10.1.1.7	UNUSED0A010107.example.com
+10.1.1.7	newguy.example.com
 #10.1.1.8	UNUSED0A010108.example.com
 #10.1.1.9	UNUSED0A010109.example.com
 10.1.1.10	staffpc1.example.com MAC=00:b0:d0:a6:cf:f1
 10.1.1.11	staffpc2.example.com MAC=00:b0:d1:a7:c0:d1
-10.1.1.12	mypc.example.com
+#10.1.1.12	UNUSED0A01010C.example.com
 #10.1.1.13	UNUSED0A01010D.example.com
 #10.1.1.14	UNUSED0A01010E.example.com
 #10.1.1.15	UNUSED0A01010F.example.com
@@ -508,6 +508,6 @@ DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.example.com
 #64.32.179.250	ex4020B3FA.example.com@EXTERNAL
 #64.32.179.251	ex4020B3FB.example.com@EXTERNAL
 #64.32.179.252	ex4020B3FC.example.com@EXTERNAL
-#64.32.179.253	ex4020B3FD.example.com@EXTERNAL
+64.32.179.253	webfarm3.example.com@EXTERNAL
 #64.32.179.254	ex4020B3FE.example.com@EXTERNAL
 64.32.179.255	ext-bcast.example.com@EXTERNAL

@@ -18,9 +18,9 @@ $TTL 1h
 2                  IN PTR     fileserver.example.com.
 3                  IN PTR     mailserver.example.com.
 4                  IN PTR     vector.example.com.
+7                  IN PTR     newguy.example.com.
 10                 IN PTR     staffpc1.example.com.
 11                 IN PTR     staffpc2.example.com.
-12                 IN PTR     mypc.example.com.
 140                IN PTR     dhcp-10-1-1-140.example.com.
 141                IN PTR     dhcp-10-1-1-141.example.com.
 142                IN PTR     dhcp-10-1-1-142.example.com.

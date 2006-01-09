@@ -39,6 +39,9 @@ mailqueue          IN A       64.32.179.3
 vector             IN A       64.32.179.4
                    IN MX 10   mailqueue
                    IN MX 20   s1.isp.com.
+webfarm3           IN A       64.32.179.253
+                   IN MX 10   mailqueue
+                   IN MX 20   s1.isp.com.
 ext-bcast          IN A       64.32.179.255
                    IN MX 10   mailqueue
                    IN MX 20   s1.isp.com.
@@ -291,5 +294,4 @@ h64-32-179-249     IN A       64.32.179.249
 h64-32-179-250     IN A       64.32.179.250
 h64-32-179-251     IN A       64.32.179.251
 h64-32-179-252     IN A       64.32.179.252
-h64-32-179-253     IN A       64.32.179.253
 h64-32-179-254     IN A       64.32.179.254
