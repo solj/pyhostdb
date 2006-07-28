@@ -203,6 +203,12 @@ cbnts03            IN A       193.195.87.253
 ukext1-bcast       IN A       193.195.87.255
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.
+jonathan           IN A       210.210.1.72
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
+gala               IN A       210.210.1.73
+                   IN MX 10   cluster5.us.messagelabs.com.
+                   IN MX 20   cluster5a.us.messagelabs.com.
 ukclan2-net        IN A       212.113.6.64
                    IN MX 10   cluster5.us.messagelabs.com.
                    IN MX 20   cluster5a.us.messagelabs.com.

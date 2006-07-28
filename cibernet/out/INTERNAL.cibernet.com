@@ -1058,6 +1058,12 @@ d10-1-240-126      IN A       10.1.240.126
 mdlan-bcast        IN A       10.1.240.254
                    IN MX 10   crumb
                    IN MX 20   us
+rome               IN A       10.91.40.24
+                   IN MX 10   crumb
+                   IN MX 20   us
+winesap            IN A       10.91.40.25
+                   IN MX 10   crumb
+                   IN MX 20   us
 
 in                 IN NS      exchange.in
 exchange.in        IN A       10.91.40.5
@@ -1550,6 +1556,12 @@ cbnts03            IN A       192.168.1.56
                    IN MX 10   crumb
                    IN MX 20   us
 ukext1-bcast       IN A       193.195.87.255
+                   IN MX 10   crumb
+                   IN MX 20   us
+jonathan           IN A       210.210.1.72
+                   IN MX 10   crumb
+                   IN MX 20   us
+gala               IN A       210.210.1.73
                    IN MX 10   crumb
                    IN MX 20   us
 ukclan2-net        IN A       212.113.6.64

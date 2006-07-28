@@ -24,7 +24,7 @@
 #	b. make sure "svn update" outputs nothing
 
 PACKAGE = hostdb
-VERSION = 1.000
+VERSION = 1.001
 distdir = $(PACKAGE)-$(VERSION)
 
 all:

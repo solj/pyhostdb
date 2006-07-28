@@ -34,3 +34,14 @@ RELEASE HISTORY:
 pre-1.0 -- many internal releases
 1.0 -- Licensed under GPL and released externally
 
+
+TODO:
+
+Better host-down handling:
+	If a host is down, the system waits too long to time out.
+We could add a "ping host &&" to the front of the statement but we
+have to do it in a way such that the datestamp files aren't touched.
+Otherwise, when the host comes back up, it will not get the update.
+
+
+

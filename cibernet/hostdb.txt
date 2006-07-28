@@ -1298,3 +1298,9 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 #69.17.68.221	UNUSED451144DD.cibernet.com@EXTERNAL
 69.17.68.222	m5.cibernet.com@INBOUNDNAT
 69.17.68.223	mdext-bcast.cibernet.com@EXTERNAL
+
+10.91.40.24 rome.cibernet.com ANAMES=rome.im2pay.com
+10.91.40.25 winesap.cibernet.com ANAMES=winesap.im2pay.com
+## This section is for India Collocation IP's where im2pay servers are hosted
+210.210.1.72 jonathan.cibernet.com@EXTERNAL ANAMES=www.im2pay.com@EXTERNAL:sprint.im2pay.com@EXTERNAL:www.sprint.im2pay.com@EXTERNAL:jonathan.im2pay.com@EXTERNAL:im2pay.com@EXTERNAL
+210.210.1.73 gala.cibernet.com@EXTERNAL ANAMES=gala.im2pay.com@EXTERNAL

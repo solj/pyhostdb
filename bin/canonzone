@@ -36,6 +36,14 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+
+#
+# TODO:
+#   Handle $GENERATE better.  Include an option that expands the hosts.
+#
+
+
+
 if ($ARGV[0] =~ /-n/) {
 	shift @ARGV;
 	$nostripend = 1;
@@ -75,6 +83,10 @@ sub doit {
 #			$noprevioushost = 1;
 			die "ORIGIN $origin does not end in ." unless $origin =~ /\.$/;
 			chomp;
+			next;
+		} elsif (/^\$GENERATE\s+/) {	# handle the $GENERATE statement
+			s/\s+/ /g;	# change whitespace to a single space
+			print; print "\n";
 			next;
 		} elsif (/^\$TTL\s+/) {	# handle the $TTL statement
 			# do nothing
