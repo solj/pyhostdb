@@ -44,7 +44,7 @@ my $prevname = '-1';
 my $didsomething = 0;
 my $CONTROLFILE;
 my $rrblank;
-my (%zoneservers, %defmx, %name2num);
+my (%zoneservers, %defmx, %name2num, %showmaster);
 my (%allowupdate, %allowtransfer);
 my ($mac, $type, $rootpath, $server, $filename, $ntname, @junk);
 my %hostmx;
@@ -203,11 +203,13 @@ sub issubzone {
 sub rrns {
 	my ($scope, $curzone, $destzone) = @_;
 	my ($token);
+	my ($skippedfirst);
 	#print "rrns( $scope, $curzone, $destzone)\n";
 	#print "\t", $zoneservers{"$scope"}, "\n";
 	#print "\t", $zoneservers{"$scope:$destzone"}, "\n";
+	$skippedfirst = $showmaster{ $scope } ? 1 : 0;
 	foreach my $ns ( split(' ', $zoneservers{"$scope:$destzone"}) ) {
-		rr( $curzone, $destzone, "NS", shortname($curzone, $ns) );
+		rr( $curzone, $destzone, "NS", shortname($curzone, $ns) ) if $skippedfirst++;
 
 		# output "glue records" only if needed.
 		#print ZF "DEBUG: $ns $destzone $curzone\n";
@@ -610,8 +612,12 @@ sub do_dns {
 			$OBSCUREZONE = shift @opt;
 		} elsif ($cmd eq "ZONESERVERS") {
 			my $scope = shift @opt;
+			$showmaster{ $scope } = 1;
 			$zoneservers{ $scope } = join(" ", @opt);
-#print "ZONESERVERS $scope SET TO: X", $zoneservers{ $scope }, "X\n";
+		} elsif ($cmd eq "ZONESERVERS2") {
+			my $scope = shift @opt;
+			$showmaster{ $scope } = 0;
+			$zoneservers{ $scope } = join(" ", @opt);
 		} elsif ($cmd eq "ALLOW-UPDATE") {
 			my $scope = shift @opt;
 			$allowupdate{ $scope } = join(" ", @opt);

@@ -29,7 +29,7 @@ my $DOMAIN  = 'cibernet.com';
 # Process command line info::
 use Getopt::Std;
 my %opts;
-getopts("hd:12", \%opts);
+getopts("hd:12D", \%opts);
 sub usage {
         print <<HERE
 
@@ -50,6 +50,7 @@ which is expressed by the format string: $FORMATS[0]
     -d domain    The domain to use. Default is $DOMAIN
     -1           Set format to $FORMATS[1]
     -2           Set format to $FORMATS[2]
+    -D           Use - instead of . in IP addresses (1-2-3-4 instead of 1.2.3.4)
 
     startip      The starting IP address.
     count        How many IP following to print.
@@ -76,6 +77,7 @@ my $COUNT=shift @ARGV; #print "COUNT=$COUNT\n";
 
 # Domain:
 $DOMAIN = $opts{'d'} if $opts{'d'};
+my $IPSEPARATOR = $opts{'D'} ? '-' : '.';
 
 # Select the format string:
 my $FORMAT = $FORMATS[0];		# default
@@ -121,9 +123,9 @@ sub ip2num {
 sub num2ip {
 	my ($num) = @_;
 	return	         ($num >> 24)
-		. "." . (($num >> 16) % 256)
-		. "." . (($num >>  8) % 256)
-		. "." .  ($num % 256);
+		. $IPSEPARATOR . (($num >> 16) % 256)
+		. $IPSEPARATOR . (($num >>  8) % 256)
+		. $IPSEPARATOR .  ($num % 256);
 }
 
 sub num2hex {
