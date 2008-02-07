@@ -29,7 +29,7 @@ my $DOMAIN  = 'cibernet.com';
 # Process command line info::
 use Getopt::Std;
 my %opts;
-getopts("hd:12D", \%opts);
+getopts("hd:12s:", \%opts);
 sub usage {
         print <<HERE
 
@@ -39,28 +39,27 @@ $0 [-h] [-d domain] startip endip [format]
 
 Prints a range of IP addresses in a specifed format.
 
+  startip      The starting IP address.
+  count        How many IP following to print.
+  endip        Last IP address to list.
+  format       The format to use (defaults to $FORMATS[0])
+
 The default format looks like:
-	#10.1.100.4     UNUSEDA016404.cibernet.com
-	#10.1.100.5     UNUSEDA016405.cibernet.com
-	#10.1.100.6     UNUSEDA016406.cibernet.com
+  #10.1.100.4     UNUSEDA016404.cibernet.com
+  #10.1.100.5     UNUSEDA016405.cibernet.com
+  #10.1.100.6     UNUSEDA016406.cibernet.com
 
 which is expressed by the format string: $FORMATS[0]
 
-    -h           This help menu.
-    -d domain    The domain to use. Default is $DOMAIN
-    -1           Set format to $FORMATS[1]
-    -2           Set format to $FORMATS[2]
-    -D           Use - instead of . in IP addresses (1-2-3-4 instead of 1.2.3.4)
-
-    startip      The starting IP address.
-    count        How many IP following to print.
-    endip        Last IP address to list.
-    format       The format to use (defaults to $FORMATS[0])
+  -h          This help menu.
+  -d domain   The domain to use. Default is $DOMAIN
+  -1          Set format to $FORMATS[1]
+  -2          Set format to $FORMATS[2]
+  -s str      Use str instead of . in IP addresses (1-2-3-4 instead of 1.2.3.4)
 
 Format string:
-	\$ip	include the ip address in 1.2.3.4 format
-	\$hex	include the ip address as a hex string: A016406
-
+  \$ip	include the ip address in 1.2.3.4 format
+  \$hex	include the ip address as a hex string: A016406
 HERE
 ;
         exit 1;
@@ -77,7 +76,7 @@ my $COUNT=shift @ARGV; #print "COUNT=$COUNT\n";
 
 # Domain:
 $DOMAIN = $opts{'d'} if $opts{'d'};
-my $IPSEPARATOR = $opts{'D'} ? '-' : '.';
+my $IPSEPARATOR = $opts{'s'} || '.';
 
 # Select the format string:
 my $FORMAT = $FORMATS[0];		# default
