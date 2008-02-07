@@ -44,14 +44,22 @@ canonzone now handles very simple "GENERATE" statements.
 
 1.002 --  2008-02-06
 
-Added "ZONESERVER2" option for zoneconf.txt.  This is just like
-ZONESERVER, but no NS record will be generated for the master.
+Added "HIDEMASTER" option for zoneconf.txt.  This instructs mkzones
+to not generate an NS record for the DNS master.  This is useful
+for sites that don't want their masters to be used for anything but
+zone transfers.
 (requested by Sebastian Heidl)
 
-Added -D option to genrange which outputs IP addresses with hyphens
-instead of periods. (1-2-3-4 instead of 1.2.3.4).  (requested by
-Sebastian Heidl)
+Added -s option to bin/genrange which outputs IP addresses with the
+string of your choice instead of periods. Thus you can output 1-2-3-4
+instead of 1.2.3.4.
+(requested by Sebastian Heidl)
 
+Integrated patch from Sebastian Heidl that adds DOMAINMX option for
+zoneconf.txt.  This generates an MX record for the domain, without
+having to have any other records. (Previously the trick was to
+assign an A record, which would trigger the MX record to be generated.)
+Thanks, Sebastian!
 
 
 TODO:
