@@ -44,7 +44,7 @@ my $prevname = '-1';
 my $didsomething = 0;
 my $CONTROLFILE;
 my $rrblank;
-my (%zoneservers, %defmx, %name2num, %showmaster);
+my (%zoneservers, %defmx, %name2num, %hidemaster);
 my (%allowupdate, %allowtransfer);
 my ($mac, $type, $rootpath, $server, $filename, $ntname, @junk);
 my %hostmx;
@@ -207,7 +207,7 @@ sub rrns {
 	#print "rrns( $scope, $curzone, $destzone)\n";
 	#print "\t", $zoneservers{"$scope"}, "\n";
 	#print "\t", $zoneservers{"$scope:$destzone"}, "\n";
-	$skippedfirst = $showmaster{ $scope } ? 1 : 0;
+	$skippedfirst = defined $hidemaster{$scope} ? 0 : 1;
 	foreach my $ns ( split(' ', $zoneservers{"$scope:$destzone"}) ) {
 		rr( $curzone, $destzone, "NS", shortname($curzone, $ns) ) if $skippedfirst++;
 
@@ -302,6 +302,8 @@ sub setzone {
 		} else {
 			#print "\tNo include file $headerfn exists\n";
 		}
+
+		rrmx($zone, "$scope.$zone", $zone);
 
 	} else {
 #		print "# Appending to $outputfn\n";
@@ -612,12 +614,14 @@ sub do_dns {
 			$OBSCUREZONE = shift @opt;
 		} elsif ($cmd eq "ZONESERVERS") {
 			my $scope = shift @opt;
-			$showmaster{ $scope } = 1;
 			$zoneservers{ $scope } = join(" ", @opt);
-		} elsif ($cmd eq "ZONESERVERS2") {
+		} elsif ($cmd eq "HIDEMASTER") {
 			my $scope = shift @opt;
-			$showmaster{ $scope } = 0;
-			$zoneservers{ $scope } = join(" ", @opt);
+			$hidemaster{ $scope } = 1;
+		} elsif ($cmd eq "DOMAINMX") {
+			my $scope = shift @opt;
+			my $dom = shift @opt;
+			$defmx{ "$scope.$dom" } = join(" ", @opt);
 		} elsif ($cmd eq "ALLOW-UPDATE") {
 			my $scope = shift @opt;
 			$allowupdate{ $scope } = join(" ", @opt);

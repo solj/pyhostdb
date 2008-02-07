@@ -29,6 +29,10 @@ MX INTERNAL 10 juice.cibernet.com ; 20 crumb.cibernet.com
 
 #ZONESERVERS INTERNAL dns1.cibernet.com dns2.cibernet.com
 
+# If you don't want to generate NS records for the DNS master, uncomment as needed:
+#HIDEMASTER INTERNAL
+#HIDEMASTER EXTERNAL
+
 #ALLOW-UPDATE   INTERNAL 	"domain-controllers"
 #ALLOW-UPDATE   INTERNAL 	none
 #ALLOW-UPDATE   SLAVES   	none
@@ -43,7 +47,7 @@ MX INTERNAL 10 juice.cibernet.com ; 20 crumb.cibernet.com
 # isn't added to the named.conf files.  You have to insert it
 # yourself in the EXTERNAL.named.conf-header, EXTERNAL.named.conf-header,
 # SLAVE.named.conf-header files.
-# This lets you create a highly customized zone definition.
+# This lets you create a customized name.conf configuration for that zone.
 
 # Now that all the defaults are set, we generate the files
 # for these domains:
