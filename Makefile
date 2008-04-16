@@ -39,5 +39,5 @@ dist: MANIFEST
 	-rm -rf $(distdir)
 
 push:
-	scp $(distdir).tgz www.everythingsysadmin.com:/home/web/data/everythingsysadmin.com/mt/hostdb/releases/new
-	ssh www.everythingsysadmin.com "cd /home/web/data/everythingsysadmin.com/mt/hostdb/releases && mv -n new $(distdir).tgz"
+	scp $(distdir).tgz www.everythingsysadmin.com:/home/web/data/everythingsysadmin.com/mt/hostdb/releases/$(distdir).tgz
+	#ssh www.everythingsysadmin.com "cd /home/web/data/everythingsysadmin.com/mt/hostdb/releases && mv -n new $(distdir).tgz"

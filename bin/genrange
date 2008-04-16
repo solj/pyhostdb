@@ -23,43 +23,59 @@ my @FORMATS = (
 		'#$ip\tUNUSED$hex.$DOMAIN',
 		'$ip\tUNUSED$hex.$DOMAIN',
 		'$ip\tUNUSED-$hex.$DOMAIN',
+		'$ip\th-$ipsep.$DOMAIN',
+		'$ip\tdyn-$ip.$DOMAIN\@EXTERNAL',
 		);
-my $DOMAIN  = 'cibernet.com';
+my $DOMAIN  = 'domain.com';
+my $DEFAULT_IPSEPARATOR = '-';
 
 # Process command line info::
 use Getopt::Std;
 my %opts;
-getopts("hd:12s:", \%opts);
+getopts("hd:1234s:", \%opts);
 sub usage {
         print <<HERE
 
-$0 [-h] [-d domain] startip count [format]
-   or
-$0 [-h] [-d domain] startip endip [format]
-
 Prints a range of IP addresses in a specifed format.
+
+$0 [-h] [-1234] [-d domain] [-s str] startip count [format]
+   or
+$0 [-h] [-1234] [-d domain] [-s str] startip endip [format]
 
   startip      The starting IP address.
   count        How many IP following to print.
   endip        Last IP address to list.
   format       The format to use (defaults to $FORMATS[0])
-
-The default format looks like:
-  #10.1.100.4     UNUSEDA016404.cibernet.com
-  #10.1.100.5     UNUSEDA016405.cibernet.com
-  #10.1.100.6     UNUSEDA016406.cibernet.com
-
-which is expressed by the format string: $FORMATS[0]
+  Format strings may include:
+                \$ip     ip address in 1.2.3.4 format
+                \$ipsep  ip address in 1x2x3x4 format where "x" is defined by -s
+                \$hex    ip address as a hex string: A016406
 
   -h          This help menu.
   -d domain   The domain to use. Default is $DOMAIN
-  -1          Set format to $FORMATS[1]
-  -2          Set format to $FORMATS[2]
-  -s str      Use str instead of . in IP addresses (1-2-3-4 instead of 1.2.3.4)
+  -s str      Use str instead of "." in \$ipsep addresses (default $DEFAULT_IPSEPARATOR)
 
-Format string:
-  \$ip	include the ip address in 1.2.3.4 format
-  \$hex	include the ip address as a hex string: A016406
+Pre-defined formats:
+Default  $FORMATS[0]
+         #10.1.100.4	UNUSED0A016404.domain.com
+     -1  $FORMATS[1]
+         10.1.100.4	UNUSED0A016404.domain.com
+     -2  $FORMATS[2]
+         10.1.100.4	UNUSED-0A016404.domain.com
+     -3  $FORMATS[3]
+         10.1.100.4	h-10-1-100-4.domain.com
+     -4  $FORMATS[4]
+         10.1.100.4	dyn-10.1.100.4.domain.com\@EXTERNAL
+
+Examples:
+	Generate a Class C sized set of hosts:
+		$0    10.1.100.0 256
+	Generate a range of external addresses:
+		$0 -4 64.32.179.65 64.32.179.68
+	Generate using a very serious custom format:
+		$0    64.32.179.65 4 '\$ip\thost\$hex.mydomain.com'
+	Generate using a very silly custom format:
+		$0    64.32.179.65 1 '\$ip is \$hex in hex'
 HERE
 ;
         exit 1;
@@ -76,12 +92,14 @@ my $COUNT=shift @ARGV; #print "COUNT=$COUNT\n";
 
 # Domain:
 $DOMAIN = $opts{'d'} if $opts{'d'};
-my $IPSEPARATOR = $opts{'s'} || '.';
+my $IPSEPARATOR = $opts{'s'} || $DEFAULT_IPSEPARATOR;
 
 # Select the format string:
 my $FORMAT = $FORMATS[0];		# default
 $FORMAT = $FORMATS[1] if $opts{'1'};	# preset #1
 $FORMAT = $FORMATS[2] if $opts{'2'};	# preset #2
+$FORMAT = $FORMATS[3] if $opts{'3'};	# preset #3
+$FORMAT = $FORMATS[4] if $opts{'4'};	# preset #4
 $FORMAT=shift @ARGV if $#ARGV > -1;	# on the command line
 #print "FORMAT=$FORMAT\n";
 
@@ -98,10 +116,10 @@ if ($COUNT =~ /\./) {		# does value include a "."?
 	$endnum = 0xffffffff if $endnum > 0xffffffff;
 }
 
-my $ip;
-my $hex;
+my($ip, $ipsep, $hex);
 for (my $i = $startnum; $i <= $endnum; $i++ ) {
 	$ip = num2ip($i);
+	$ipsep = num2ipsep($i, $IPSEPARATOR);
 	$hex = num2hex($i);
 	#print "#", $ip, "\tUNUSED", $hex, ".", $DOMAIN, "\n";
 	eval print eval qq{"$FORMAT\n";};
@@ -122,9 +140,17 @@ sub ip2num {
 sub num2ip {
 	my ($num) = @_;
 	return	         ($num >> 24)
-		. $IPSEPARATOR . (($num >> 16) % 256)
-		. $IPSEPARATOR . (($num >>  8) % 256)
-		. $IPSEPARATOR .  ($num % 256);
+		. '.' . (($num >> 16) % 256)
+		. '.' . (($num >>  8) % 256)
+		. '.' .  ($num        % 256);
+}
+
+sub num2ipsep {
+	my ($num, $sep) = @_;
+	return	          ($num >> 24)
+		. $sep . (($num >> 16) % 256)
+		. $sep . (($num >>  8) % 256)
+		. $sep .  ($num        % 256);
 }
 
 sub num2hex {

@@ -1,0 +1,142 @@
+=== hostdb.txt format
+
+
+The format is similar to /etc/hosts with the ability to add flags to each line.
+
+NOTE: All host names must be FQDNs.
+
+10.1.1.1	myhost.example.com
+10.1.1.2	yourhost.example.com MAC=00:e0:81:51:ef:78
+64.32.179.56	www.example.com@EXTERNAL  ANAME=my.example.com
+
+
+=== DHCP_POOL_TEMPLATE and DHCP_POOL
+
+DHCP_POOL instead of a hostname inserts a generic hostname.  For example:
+
+DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.example.com
+10.10.0.1	DHCP_POOL
+10.10.0.2	DHCP_POOL
+10.10.0.3	DHCP_POOL
+10.10.0.4	DHCP_POOL
+
+Is the same as:
+10.10.0.1	dhcp-10-10-10-1.example.com
+10.10.0.2	dhcp-10-10-10-2.example.com
+10.10.0.3	dhcp-10-10-10-3.example.com
+10.10.0.4	dhcp-10-10-10-4.example.com
+
+
+=== ANAME= or ANAMES=
+
+Generates additional A records for a IP address.
+
+Example #1:
+10.10.10.10	foo.example.com ANAME=bar.example.com
+
+Generates:
+foo.example.com.   IN A 10.10.10.10
+bar.example.com.   IN A 10.10.10.10
+
+Example #2:
+
+To specify many ANAMEs, separate them with colons.
+
+10.10.10.10	foo.example.com ANAME=bar.example.com:fling.example.com
+
+"ANAME" and "ANAMES" are the same.  Both are used just to be cute.
+
+
+=== CNAME= or CNAMES=
+
+Generates CNAMEs to a particular host label.  To specify many CNAMEs, separate them with colons (similar to ANAME).
+
+Example:
+10.10.10.10	foo.example.com CNAME=bar.example.com
+
+Generates:
+foo.example.com.   IN A 10.10.10.10
+bar.example.com.   IN CNAME foo.example.com
+
+"CNAME" and "CNAMES" are the same.  Both are used just to be like ANAME.
+
+
+==== MAC=
+
+Specify the MAC (Media Access Control) or hardware address of a host.  This is only used
+by the DHCP system.
+
+Example:
+10.10.10.10	foo.example.com MAC=00:e0:81:51:ef:78
+
+
+=== ISROUTER= or ISMULTIHOMED=
+
+Specify that this host is one of many IP addresses on a router or
+multihomed hosts.  (Currently they do the same thing, though ISROUTER=
+should be used to indicate that something is a router.  Maybe some
+day we'll do something special with that.)
+
+Suppose you have a router with the following 3 IP addresses:
+
+10.10.0.1	zathras-main.example.com ISROUTER=zathras.example.com
+10.20.0.1	zathras-net20.example.com ISROUTER=zathras.example.com
+10.30.0.1	zathras-net30.example.com ISROUTER=zathras.example.com
+
+Reverse lookups with be to the ISROUTER name (zathras).  Forward
+lookups of "zathras.example.com" will return three A records (one
+for each interface).  Forward lookups of an individual interface
+(zathras-main.example.com for example) will return just one IP
+address (10.10.0.1).  This lets you specify "zathras.example.com"
+when you mean "any interface" and "zathras-main.example.com" when
+you want "that particular interface".  For example, to telnet to
+the machine to do maintenance, you would specify zathras.example.com.
+However, monitoring systems should refer to the particular IP
+addresses.
+
+
+=== ISMAILSERVER or ISMAILSERVERI
+
+Indicate that this IP address is a email server, and should have special MX records.
+In particular:
+1.  generate a low numbered (0) MX record pointing to itself
+2.  do not generate any duplicate MX records at higher numbers if this host is listed in the default MXs
+
+
+=== @EXTERNAL
+
+Normally hosts appear in the internal DNS view but the external DNS view offuscates the name.  This
+is called "host hiding".  In some cases we want external users to be able to "see" the host's real
+name.  We mark those hosts with @EXTERNAL
+
+64.32.179.253	webfarm3.example.com@EXTERNAL
+
+@EXTERNAL can be applied to the host's name, individual ANAMEs, and individual CNAMEs.
+
+
+=== @EXTERNALONLY
+
+Ok, this one is a little weird.  It is like @EXTERNAL, but the name
+will not appear in the internal view of DNS.  Why would you want
+this?  Never.  Well, except the one time I needed a host name that
+worked outside the company but not within the company.
+
+What was the situation?  Our VPN server was vpn.example.com and I
+wanted the VPN client to fail when someone tried using it from
+inside the company.  This just made support difficult.  Don't do it.
+
+
+=== @INBOUNDNAT
+
+When an internal host is accessible from the outside by another IP address (thanks to in-bound NAT or PAT
+tricks), the external version of the host should be marked @INBOUNDNAT.
+
+Example:
+
+10.1.1.4        vector.example.com
+64.32.179.4     vector.example.com@INBOUNDNAT
+
+This will do the right thing when generating the internal and external zones.  The difference between @INBOUNDNAT and @EXTERNAL is that @EXTERNAL considers it an error if the same name appears twice in hostdb.txt
+
+@INBOUNDNAT can be applied to the host's name, individual ANAMEs, and individual CNAMEs.
+
