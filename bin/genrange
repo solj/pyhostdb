@@ -50,6 +50,7 @@ $0 [-h] [-1234] [-d domain] [-s str] startip endip [format]
                 \$ip     ip address in 1.2.3.4 format
                 \$ipsep  ip address in 1x2x3x4 format where "x" is defined by -s
                 \$hex    ip address as a hex string: A016406
+                \$a \$b \$c \$d    the a.b.c.d of the IP address
 
   -h          This help menu.
   -d domain   The domain to use. Default is $DOMAIN
@@ -72,8 +73,10 @@ Examples:
 		$0    10.1.100.0 256
 	Generate a range of external addresses:
 		$0 -4 64.32.179.65 64.32.179.68
+	Generate a custom format to make hostnames ending with the 4th octet:
+		$0    64.32.179.65 4 \$ip\\thost\$d.mydomain.com'
 	Generate using a very serious custom format:
-		$0    64.32.179.65 4 '\$ip\thost\$hex.mydomain.com'
+		$0    64.32.179.65 4 '\$ip\\thost\$hex.mydomain.com'
 	Generate using a very silly custom format:
 		$0    64.32.179.65 1 '\$ip is \$hex in hex'
 HERE
@@ -117,8 +120,10 @@ if ($COUNT =~ /\./) {		# does value include a "."?
 }
 
 my($ip, $ipsep, $hex);
+my($a, $b, $c, $d);
 for (my $i = $startnum; $i <= $endnum; $i++ ) {
 	$ip = num2ip($i);
+	($a, $b, $c, $d) = split(/\./, $ip);
 	$ipsep = num2ipsep($i, $IPSEPARATOR);
 	$hex = num2hex($i);
 	#print "#", $ip, "\tUNUSED", $hex, ".", $DOMAIN, "\n";
