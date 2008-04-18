@@ -5,9 +5,9 @@ The format is similar to /etc/hosts with the ability to add flags to each line.
 
 NOTE: All host names must be FQDNs.
 
-10.1.1.1	myhost.example.com
-10.1.1.2	yourhost.example.com MAC=00:e0:81:51:ef:78
-64.32.179.56	www.example.com@EXTERNAL  ANAME=my.example.com
+10.1.1.1        myhost.example.com
+10.1.1.2        yourhost.example.com MAC=00:e0:81:51:ef:78
+64.32.179.56    www.example.com@EXTERNAL  ANAME=my.example.com
 
 
 === DHCP_POOL_TEMPLATE and DHCP_POOL
@@ -139,4 +139,25 @@ Example:
 This will do the right thing when generating the internal and external zones.  The difference between @INBOUNDNAT and @EXTERNAL is that @EXTERNAL considers it an error if the same name appears twice in hostdb.txt
 
 @INBOUNDNAT can be applied to the host's name, individual ANAMEs, and individual CNAMEs.
+
+
+=== HINFO=
+
+Generate a HINFO DNS record for this host.  Quotes are required if you want to include
+spaces (nearly always).  However, individual quotes will be turned into the word "QUOTE"
+
+Note: HINFO records are only generated for INTERNAL zones.  Why you
+would want to expose this kind of information to the outside world
+is beyond me.
+
+10.1.1.4        test1.example.com HINFO=foo
+10.1.1.5        test2.example.com HINFO="foo bar"
+64.32.179.4     test3.example.com@INBOUNDNAT  HINFO="This is a \"very\" interesting test"
+
+test1.example.com.    IN A       10.1.1.4
+                      IN HINFO   "foo"
+test2.example.com.    IN A       10.1.1.5
+                      IN HINFO   "foo bar"
+test3.example.com.    IN A       64.32.179.4
+                      IN HINFO   "This is a QUOTEveryQUOTE interesting test"
 

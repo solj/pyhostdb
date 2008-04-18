@@ -18,6 +18,8 @@
 
 use strict;
 
+use Text::ParseWords;	# needed for the &parse_line() function
+
 use Getopt::Std;
 my %opts;
 getopts("z:dn", \%opts);
@@ -242,6 +244,13 @@ sub rrmx {
 	}
 }
 
+sub rrhinfo {
+	my($zone, $scope, $name) = @_;
+	if ($scope eq 'INTERNAL' and $db{$name}{'HINFO'}) {
+		rr( $zone, $name, 'HINFO', '"' . $db{$name}{'HINFO'} . '"' );
+	}
+}
+
 # --
 
 sub setzone {
@@ -442,6 +451,7 @@ sub extractzone {
 
 			rr( $zone, $name, "A", $ipaddr );
 			rrmx( $zone, $scope, $name );
+			rrhinfo( $zone, $scope, $name );
 
 			# Is this multihomed?
 			if ($db{$name}{'MULTIHOMED'}) {
@@ -529,7 +539,7 @@ sub parsehostlist {
 		next if /^#/;
 		next if /^$/;
 
-		($cmd, @opt) = split;
+		($cmd, @opt) = &parse_line('\s+', 0, $_);
 		if ($cmd eq "NETWORK") {
 			#($name, $base, @opt) = @_;
 			#print "# $_\n";
@@ -584,6 +594,9 @@ sub parsehostlist {
 					$db{$name}{'ISMAILSERVER'}  = ( $value ? $value : 1 );
 				} elsif ($key eq   'ISMAILSERVERI') {
 					$db{$name}{'ISMAILSERVERI'} = ( $value ? $value : 1 );
+				} elsif ($key eq   'HINFO') {
+					$db{$name}{'HINFO'} = ( $value ? $value : 1 );
+					$db{$name}{'HINFO'} =~ s/"/QUOTE/g;
 				} else {
 					$dhcp{$num}{$key} = ( $value ? $value : 1 );
 				}
@@ -751,10 +764,12 @@ sub do_dhcp {
 #  NOTE: Does not print closing "}"
 sub do_generic {
 	my ($num, $name, $mac) = @_;
+	my $comment;
 	my $ipaddr = num2ip($num);
 	($ntname, @junk) = split(/\./, $name);
+	$comment = ''; $comment = "\t# " . $db{$name}{'HINFO'} if defined $db{$name}{'HINFO'};
         print qq#
-	host $name {
+	host $name {$comment
 		hardware ethernet $mac;
 		fixed-address $ipaddr;
 		option host-name "$name";

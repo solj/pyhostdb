@@ -887,10 +887,10 @@ DHCP_POOL_TEMPLATE d$a-$b-$c-$d.cibernet.com
 #192.168.1.14	postroom-4300.cibernet.com
 192.168.1.15	cbnts04.cibernet.com		MAC=0:8:2:c:f3:88
 #192.168.1.16	UNUSED192168116.cibernet.com	MAC=0:e:7f:e9:29:54
-192.168.1.17	kairos.cibernet.com		MAC=0:11:43:f0:22:f0
+192.168.1.17	kairos.cibernet.com		MAC=0:11:43:f0:22:f0	HINFO=test
 #192.168.1.18	UNUSED192168118.cibernet.com
-192.168.1.19	babel.cibernet.com		MAC=0:12:3f:ec:ca:34
-192.168.1.20	oduk01.cibernet.com		MAC=0:d:93:7a:c4:12 ISMULTIHOMED=ldap.cibernet.com
+192.168.1.19	babel.cibernet.com		MAC=0:12:3f:ec:ca:34	HINFO="wow, this is a big test"
+192.168.1.20	oduk01.cibernet.com		MAC=0:d:93:7a:c4:12 ISMULTIHOMED=ldap.cibernet.com HINFO="test\"test"
 192.168.1.21	oduk02.cibernet.com		MAC=0:11:24:3e:5e:de ISMULTIHOMED=ldap.cibernet.com
 #192.168.1.22	UNUSED192168122.cibernet.com
 #192.168.1.23	UNUSED192168123.cibernet.com
