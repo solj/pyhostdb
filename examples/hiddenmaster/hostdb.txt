@@ -1,0 +1,6 @@
+
+198.65.112.9   normal.example.com 
+198.65.112.10   msexchange.example.com   ISMAILSERVER
+198.65.112.11   mta1.example.com         ISMAILSERVER
+198.65.112.12   mta2.example.com         ISMAILSERVER
+
