@@ -164,8 +164,18 @@ print "diff:\\\n\t", join("\\\n\t", @diffitems), "\n\n";
 
 print "\n# Recipes to push files to appropriate servers:\n\n";
 print "push-all: push-local push-remote\n\n";
-print "push-local:\\\n\t",  join(" \\\n\t", @srcitems, @localitems), "\n\n";
-print "push-remote:\\\n\t", join(" \\\n\t", @srcitems, @remoteitems), "\n\n";
+print "push-local:";
+	if (@srcitems || @localitems) {
+		print "\\\n\t";
+		print join(" \\\n\t", @srcitems, @localitems);
+	}
+	print "\n\n";
+print "push-remote:";
+	if (@srcitems || @remoteitems) {
+		print "\\\n\t";
+		print join(" \\\n\t", @srcitems, @remoteitems);
+	}
+	print "\n\n";
 
 # Output the plain reloads
 print "\n# Recipes to force reloads:\n\n";
@@ -188,14 +198,27 @@ foreach my $host ( @reloadhosts ) {
 		push @reloadItemsRemote, "reload-$host";
 	}
 }
-print "reload-all: ";
-	print "reload-local " if @reloadItemsLocal;
-	print "reload-remote\n\n";
-print "reload-remote: @reloadItemsRemote\n\n";
+
+print "reload-all: reload-local reload-remote\n\n";
+print "reload-local:";
+	if (@reloadItemsLocal) {
+		print "\\\n\t";
+		print join(" \\\n\t", @reloadItemsLocal);
+	}
+	print "\n\n";
+print "reload-remote:";
+	if (@reloadItemsRemote) {
+		print "\\\n\t";
+		print join(" \\\n\t", @reloadItemsRemote);
+	}
+	print "\n\n";
+
+
 
 # "reloadif" receipes:
 print "\n# Recipes to reload 'named' only if it is needed:\n\n";
 foreach my $host ( sort keys %reloadif ) {
+#print STDERR "DEBUGreloadif: X" . $host, "X\n";
 	$safe = safename($host);
 		#print "reloadif-$host:";
 		print "DS/reload-$safe:";
@@ -205,7 +228,7 @@ foreach my $host ( sort keys %reloadif ) {
 		print "\n";
 
 	if ($host eq "local") {
-		print "\t", $reloads{$host}, "\n";
+		print "\t", $reloads{$host}, "\n" if defined($reloads{$host});
 		print "\t\@touch DS/reload-$safe\n";
 		print "\n";
 		push @reloadifItemsLocal, "DS/reload-$safe";
@@ -218,10 +241,19 @@ foreach my $host ( sort keys %reloadif ) {
 		push @reloadifItemsRemote, "DS/reload-$safe";
 	}
 }
-print "# Reload (only if needed) all servers:\n";
-print "reloadif-all: ";
-	print "reloadif-local " if @reloadifItemsLocal;
-	print "reloadif-remote\n\n";
-print "reloadif-local: DS/reload-local\n\n" if @reloadifItemsLocal;
-print "reloadif-remote:\\\n\t", join(" \\\n\t", @reloadifItemsRemote), "\n\n";
+
+
+print "reloadif-all: reloadif-local reloadif-remote\n\n";
+print "reloadif-local:";
+	if (@reloadifItemsLocal) {
+		print "\\\n\t";
+		print join(" \\\n\t", @reloadifItemsLocal);
+	}
+	print "\n\n";
+print "reloadif-remote:";
+	if (@reloadifItemsRemote) {
+		print "\\\n\t";
+		print join(" \\\n\t", @reloadifItemsRemote);
+	}
+	print "\n\n";
 
