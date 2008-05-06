@@ -61,12 +61,45 @@ having to have any other records. (Previously the trick was to
 assign an A record, which would trigger the MX record to be generated.)
 Thanks, Sebastian!
 
+1.003 --
+Not released.
 
-TODO:
+1.004 -- 2008-05-06
+
+New documentation!
+-- Added docs/hostdb-options.txt which documents the hostdb.txt format!
+bin/mkzones:
+-- new feature: TXT and HINFO support added.
+-- new feature: dhcpd.conf now includes comment for each host (uses TXT record data)
+-- bug fixed: SOA's last parameter is now listed as "Negative caching TTL"
+-- bug fixed: MX records for FQDN now generated properly
+-- new requirement: mkzones now uses Text::ParseWords to parse the lines of hosts.txt
+bin/genrange:
+-- new feature: added two new built-in formats: -3 and -4
+-- bug fixed: improved -h message to be more complete
+-- bug fixed: default domain is now "domain.com"
+bin/mkdestinations:
+-- bug fixed: cleaned up generation of {push,reload,reloadif}-{all,local,remote} recipes.
+examples:
+-- New file: examples/hiddenmaster to test the HIDEMASTER feature
+-- New file: examples/goodstart/hostdb.txt: place-holder for people getting started
+-- Bug fix: examples/goodstart/Makefile's "dhcp.conf" recipe improved
+
+
+
+TODO / Wishlist:
 
 Better host-down handling:
-	If a host is down, the system waits too long to time out.
+If a host is down, the system waits too long to time out.
 We could add a "ping host &&" to the front of the statement but we
 have to do it in a way such that the datestamp files aren't touched.
 Otherwise, when the host comes back up, it will not get the update.
+
+Better HINFO handling:
+The ability to specify two fields, or assume the first word is the first field.
+
+Unit-testing:
+It would be great if there was a directory of configurations and a
+makefile that would generate all of them and compare them against
+"known good" outputs.
 

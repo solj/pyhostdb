@@ -8,7 +8,7 @@ $TTL 1h
 			6h	;refresh period
 			1h	;retry refresh this often
 			15w	;expiration period
-			1h	;minimum TTL
+			1h	;Negative caching TTL
 		)
 
                    IN NS      adam
@@ -1196,15 +1196,15 @@ cbnts04            IN A       192.168.1.15
 kairos             IN A       192.168.1.17
                    IN MX 10   crumb
                    IN MX 20   us
-                   IN HINFO   "test"
+                   IN HINFO   "test" ""
 babel              IN A       192.168.1.19
                    IN MX 10   crumb
                    IN MX 20   us
-                   IN HINFO   "wow, this is a big test"
+                   IN HINFO   "wow, this is a big test" ""
 oduk01             IN A       192.168.1.20
                    IN MX 10   crumb
                    IN MX 20   us
-                   IN HINFO   "testQUOTEtest"
+                   IN HINFO   "testQUOTEtest" ""
 ; oduk01.cibernet.com is part of multihomed host ldap.cibernet.com
 ldap               IN A       192.168.1.20
 

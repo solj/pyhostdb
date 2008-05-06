@@ -177,7 +177,9 @@ print "push-remote:";
 	}
 	print "\n\n";
 
+
 # Output the plain reloads
+
 print "\n# Recipes to force reloads:\n\n";
 foreach my $host ( @reloadhosts ) {
 	$safe = safename("reload-" . $host);
@@ -200,12 +202,7 @@ foreach my $host ( @reloadhosts ) {
 }
 
 print "reload-all: reload-local reload-remote\n\n";
-print "reload-local:";
-	if (@reloadItemsLocal) {
-		print "\\\n\t";
-		print join(" \\\n\t", @reloadItemsLocal);
-	}
-	print "\n\n";
+print "reload-local:\n\n" unless @reloadItemsLocal;	# Already output a reload-local?
 print "reload-remote:";
 	if (@reloadItemsRemote) {
 		print "\\\n\t";

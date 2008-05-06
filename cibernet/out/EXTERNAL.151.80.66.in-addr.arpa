@@ -8,7 +8,7 @@ $TTL 15m
 			6h	;refresh period
 			1h	;retry refresh this often
 			15w	;expiration period
-			15m	;minimum TTL
+			15m	;Negative caching TTL
 		)
 
                    IN NS      NS2.CIBERNET.COM.

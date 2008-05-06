@@ -581,7 +581,12 @@ reload-cibernetcorp@ns0.lt.nostrum.com:
 
 reload-all: reload-local reload-remote
 
-reload-remote: reload-adam.cibernet.com reload-odnj01.cibernet.com reload-oduk01.cibernet.com reload-oduk02.cibernet.com reload-cibernetcorp@ns0.lt.nostrum.com
+reload-remote:\
+	reload-adam.cibernet.com \
+	reload-odnj01.cibernet.com \
+	reload-oduk01.cibernet.com \
+	reload-oduk02.cibernet.com \
+	reload-cibernetcorp@ns0.lt.nostrum.com
 
 
 # Recipes to reload 'named' only if it is needed:
@@ -651,10 +656,10 @@ DS/reload-oduk02.cibernet.com:\
 	ssh oduk02.cibernet.com 'kill -1 `cat /var/run/named.pid`'
 	@touch DS/reload-oduk02.cibernet.com
 
-# Reload (only if needed) all servers:
 reloadif-all: reloadif-local reloadif-remote
 
-reloadif-local: DS/reload-local
+reloadif-local:\
+	DS/reload-local
 
 reloadif-remote:\
 	DS/reload-adam.cibernet.com \
