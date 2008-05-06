@@ -247,7 +247,7 @@ sub rrmx {
 sub rrhinfo {
 	my($zone, $scope, $name) = @_;
 	if ($scope eq 'INTERNAL' and $db{$name}{'HINFO'}) {
-		rr( $zone, $name, 'HINFO', '"' . $db{$name}{'HINFO'} . '"' );
+		rr( $zone, $name, 'HINFO', '"' . $db{$name}{'HINFO'} . '" ""' );
 	}
 }
 
@@ -296,7 +296,7 @@ sub setzone {
 		print ZF "\t\t\t$refresh\t;refresh period\n";
 		print ZF "\t\t\t$retry\t;retry refresh this often\n";
 		print ZF "\t\t\t$expire\t;expiration period\n";
-		print ZF "\t\t\t$ttl\t;minimum TTL\n";
+		print ZF "\t\t\t$ttl\t;Negative caching TTL\n";
 		print ZF "\t\t)\n\n";
 
 		#print "STORE \$zoneservers{ $scope:$zone } = $zoneservers{$scope}\n";
