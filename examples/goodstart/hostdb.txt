@@ -1,0 +1,41 @@
+#
+# hostdb.txt -- list of all hosts in the organization
+#
+# Template for "DHCP_POOL" hosts
+DHCP_POOL_TEMPLATE dhcp-$a-$b-$c-$d.example.com
+#
+# Note: genrange can be used to generate templates for new subnets.
+#
+10.1.1.0	main-net.example.com
+10.1.1.1	router-main.example.com ISROUTER=router.example.com
+#10.1.1.2	UNUSED0A010102.example.com
+#10.1.1.3	UNUSED0A010103.example.com
+10.1.1.4	server4.example.com
+10.1.1.5	server5.example.com
+#10.1.1.6	UNUSED0A010106.example.com
+#10.1.1.7	UNUSED0A010107.example.com
+#10.1.1.8	UNUSED0A010108.example.com
+#10.1.1.9	UNUSED0A010109.example.com
+10.1.1.10	DHCP_POOL
+10.1.1.11	DHCP_POOL
+10.1.1.12	DHCP_POOL
+10.1.1.13	DHCP_POOL
+10.1.1.14	DHCP_POOL
+10.1.1.15	DHCP_POOL
+#10.1.1.16	UNUSED0A010110.example.com
+#10.1.1.17	UNUSED0A010111.example.com
+#10.1.1.18	UNUSED0A010112.example.com
+#10.1.1.19	UNUSED0A010113.example.com
+#10.1.1.20	UNUSED0A010114.example.com
+#10.1.1.21	UNUSED0A010115.example.com
+#10.1.1.22	UNUSED0A010116.example.com
+#10.1.1.23	UNUSED0A010117.example.com
+#10.1.1.24	UNUSED0A010118.example.com
+#10.1.1.25	UNUSED0A010119.example.com
+#10.1.1.26	UNUSED0A01011A.example.com
+#10.1.1.27	UNUSED0A01011B.example.com
+#10.1.1.28	UNUSED0A01011C.example.com
+#10.1.1.29	UNUSED0A01011D.example.com
+#10.1.1.30	UNUSED0A01011E.example.com
+#10.1.1.31	UNUSED0A01011F.example.com
+#10.1.1.32	UNUSED0A010120.example.com
