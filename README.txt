@@ -85,6 +85,11 @@ examples:
 -- New file: examples/goodstart/hostdb.txt: place-holder for people getting started
 -- Bug fix: examples/goodstart/Makefile's "dhcp.conf" recipe improved
 
+1.005 -- INSERT DATE
+
+New features:
+-- mkzones now has "-o" option to specify output directory (Thanks Tim Bell and Geoff Crompton of Trinity College, The University of Melbourne)
+
 
 
 TODO / Wishlist:

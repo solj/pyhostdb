@@ -22,7 +22,7 @@ use Text::ParseWords;	# needed for the &parse_line() function
 
 use Getopt::Std;
 my %opts;
-getopts("z:dn", \%opts);
+getopts("z:o:dn", \%opts);
 
 $| = 1;
 
@@ -40,6 +40,7 @@ if ( $#ARGV >= 1) {
 
 my ($name, $num, %db, %dhcp, %num2name, %soa, %ttl, %zoneseen, %rangeseen, %isobscured);
 my $TEMPLATEDIR=".";
+my $OUTPUTDIR=".";
 my $OBSCUREZONE;
 my $DHCP_POOL_TEMPLATE;
 my $prevname = '-1';
@@ -58,6 +59,9 @@ my $opt_netinfo = 1 if $opts{'n'};	# output DHCP info as a table for the netinfo
 
 parsehostlist();
 
+if ($opts{'o'}) {
+	$OUTPUTDIR=$opts{'o'};
+}
 if ($opts{'z'}) {
 	$CONTROLFILE=$opts{'z'};
 	#print "# Control file: $CONTROLFILE\n";
@@ -68,7 +72,8 @@ do_dhcp() if $opts{'d'};	# generate DHCP configuration
 exit 0;
 
 sub usage {
-	die "Usage: mkzones [-z zoneconf.txt] [-d] <hostlist.txt
+	die "Usage: mkzones [-z zoneconf.txt] [-o dir] [-d] <hostlist.txt
+		-o dir           -- Output into directory dir
 		-z zoneconf.txt  -- output zones based on zoneconf.txt
 		-d               -- output DHCP config to stdout.
 		-n               -- output DHCP info as a table\n";
@@ -259,7 +264,7 @@ sub setzone {
 	$prevname = $zone;
 	my $headerfn = "$TEMPLATEDIR/$scope.$zone.header";
 	my $incfn =    "$TEMPLATEDIR/$scope.$zone.inc";
-	my $outputfn = "$scope.$zone";
+	my $outputfn = "$OUTPUTDIR/$scope.$zone";
 	# If this is the first use of the filename, make sure it is zapped
 	unlink $outputfn unless $zoneseen{$outputfn}++;
 
