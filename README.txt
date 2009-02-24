@@ -89,7 +89,7 @@ examples:
 
 New features:
 -- mkzones now has "-o" option to specify output directory (Thanks Tim Bell and Geoff Crompton of Trinity College, The University of Melbourne)
-
+-- bin/checkrootcache now uses "wget" instead of "ftp".  (Thanks Geoff Crompton of Trinity College, The University of Melbourne)
 
 
 TODO / Wishlist:

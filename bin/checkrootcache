@@ -19,18 +19,8 @@
 PATH=/usr/bin:/bin:/usr/bsd
 export PATH
 
-# 198.41.0.7 is FTP.RS.INTERNIC.
 
-#
-# Get the file:
-#
-
-ftp -n 198.41.0.6 <<HERE && diff -cw EXTERNAL.named.root.new EXTERNAL.named.root
-user anonymous root@
-cd /domain
-get named.root EXTERNAL.named.root.new
-quit
-HERE
+wget -O EXTERNAL.named.root.new http://www.internic.net/zones/named.root && diff -cw EXTERNAL.named.root.new EXTERNAL.named.root
 
 # If the original didn't exist, replace it
 if [ ! -f EXTERNAL.named.root ];
