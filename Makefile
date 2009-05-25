@@ -41,3 +41,7 @@ dist: MANIFEST
 push:
 	scp $(distdir).tgz www.everythingsysadmin.com:/home/web/data/everythingsysadmin.com/mt/hostdb/releases/$(distdir).tgz
 	#ssh www.everythingsysadmin.com "cd /home/web/data/everythingsysadmin.com/mt/hostdb/releases && mv -n new $(distdir).tgz"
+
+test:
+	cd tests/test1/out && make -f ../Makefile clean all compare
+

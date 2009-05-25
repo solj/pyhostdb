@@ -90,7 +90,8 @@ examples:
 New features:
 -- mkzones now has "-o" option to specify output directory (Thanks Tim Bell and Geoff Crompton of Trinity College, The University of Melbourne)
 -- bin/checkrootcache now uses "wget" instead of "ftp".  (Thanks Geoff Crompton of Trinity College, The University of Melbourne)
-
+-- zoneinfo.txt now has a "TTL" command to set the default TTL for a zone.  (Thanks Geoff Crompton of Trinity College, The University of Melbourne) 
+-- Added smoke-test:  "make test" runs a simple configuration and compares it to a "known good".
 
 TODO / Wishlist:
 
