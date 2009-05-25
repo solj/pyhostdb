@@ -653,6 +653,9 @@ sub do_dns {
 			my $scope = shift @opt;
 			$soa{ $scope } = join(" ", @opt);
 			$ttl{ $scope } = $opt[4];
+		} elsif ($cmd eq "TTL") {
+            my $scope = shift @opt;
+            $ttl{ $scope } = $opt[0];
 		} elsif ($cmd eq "REVDOMAIN") {
 			my %info = ();
 			my ($class, $startip, $key, $value, $dom);

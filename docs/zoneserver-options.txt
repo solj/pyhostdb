@@ -1,0 +1,6 @@
+=== zoneserver.txt format
+
+=== TTL
+
+TTL = value, sets a default Time to Live value. Without this option hostdb
+uses the final field of the SOA line
