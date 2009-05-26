@@ -152,9 +152,9 @@ reloadif-remote:
 #
 # compare
 #
-compare:
-	( diff -r ../out ../out.good )
+compare: destinations.mk
+	( cd ../out && find . -name .svn -prune -o -type f \( -exec diff -cw '{}' ../out.good/. \; -o -ls \) )
 
 compare-reset:
-	rm -rf ../out.good
-	cp -R ../out ../out.good
+	mkdir -p ../out.good
+	for i in . DS MP MS ; do mkdir ../out/$i ;  cp ../out/$i/* ../out.good/$i/. ; done

@@ -1,17 +1,4 @@
 #!/usr/bin/perl -w
-
-# Convert a DNS zonefile into a hostdb.txt file.
-#  It doesn't do 100% of the work, but certainly does the error-prone parts.
-#  It strips out all MX records except for hosts with MX records pointing to
-#	themself. Those become "ISMAILSERVER" hosts.
-#  It makes a reasonable guess about what are ANAMEs.  The first time it
-#	sees an A record for an IP address, it assumes this is the real name.
-#	This could be improved by analyzing the PTR records too.
-
-# TODO:
-# o  If the in-addr.arpa files are included, use that information to
-#	determine which hostname is canonical our of a set of ANAMEs.
-
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -28,6 +15,17 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+# Convert a DNS zonefile into a hostdb.txt file.
+#  It doesn't do 100% of the work, but certainly does the error-prone parts.
+#  It strips out all MX records except for hosts with MX records pointing to
+#	themself. Those become "ISMAILSERVER" hosts.
+#  It makes a reasonable guess about what are ANAMEs.  The first time it
+#	sees an A record for an IP address, it assumes this is the real name.
+#	This could be improved by analyzing the PTR records too.
+
+# TODO:
+# o  If the in-addr.arpa files are included, use that information to
+#	determine which hostname is canonical our of a set of ANAMEs.
 
 use strict;
 

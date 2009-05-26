@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -15,6 +14,9 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+
+# mkdestinations -- Given a destinations.txt file, create a Makefile that
+#     implements the rules.
 
 use strict;
 
@@ -79,29 +81,24 @@ sub safename {
 	return $_;
 }
 
-print "\nall: push-local\n";
+# process_line -- This subroutine is called once for every full
+#     line of the destinations.txt file.  A "full line" means the
+#     continuations have been gathered into one string.
 
-my $copycmd;
-my $line;
-my $junk;
-
-while (defined($line = <>) ) {
-	$line =~ s/#.*//;		# toss comments
-	chomp $line;
-	if ($line =~ s/\\\s*$//) {
-		$line .= <>;
-        	redo unless eof;
-    	}
+sub process_line {
+	my $line = shift;
+	my $copycmd;
+	my $junk;
 
 	$_ = $line;
-	next if /^\s*$/;	# skip blank lines
+	return if /^\s*$/;	# skip blank lines
 
 	# Parse the line:
 	if (/^\s*RELOAD/) {
 		my ($host, $cmd) = m/^RELOAD\s+(\S+)\s+(.*)$/;
 		push @reloadhosts, $host;	# record the order they appear in destinations.txt
 		$reloads{ $host } = $cmd;	# record what command to run for that host
-		next;
+		return;
 	}
 	s/\s+/ /;		# unify whitespace
 	($left, $right) = split( /\s+->\s*/, $_, 2 );
@@ -137,6 +134,7 @@ while (defined($line = <>) ) {
 				if ($dst =~ /:/) {
 					$copycmd = "scp";
 					push @remoteitems, "DS/$safe";
+					print "($host, $junk, $dst)\n";
 					($host, $junk) = split(':', $dst);
 				} else {
 					$copycmd = "cp";
@@ -154,6 +152,58 @@ while (defined($line = <>) ) {
 		}
 	}
 }
+
+# process_file_with_continuations: read a file and call "processref" on each
+#     flattened line of the file.  A "flattened line" is one where all
+#     continuations have been gathered into a string.
+sub process_file_with_continuations {
+  my $processref = shift;
+
+  my $nextline;
+  my $line = <>;
+  $line = '' unless (defined($line));
+  chomp $line;
+
+  while (defined($nextline = <>)) {
+    chomp $nextline;
+    next if $nextline =~ /^\s*#/;     # skip comments 
+    $nextline =~ s/\s+$//g; # delete trailing whitespace
+    if (eof()) {
+  #print "EOF\n";
+      $nextline =~ s/^\s+/ /; # strip indent 
+      if ($nextline =~ /^\s+/) {
+        $processref->( $line . $nextline);
+        $line = '';             
+      } else {          
+        $processref->( $line);  
+        $processref->( $nextline) if $nextline ne '';
+        $line = '';             
+      }                 
+    } elsif ($nextline eq '') { # if nextline is blank
+  #print "BLANK\n";
+      $processref->( $line);
+      $line = "";       
+    } elsif ($nextline =~ /^\s+/ ) {  # if line starts with blanks
+  #print "INDENTED\n";
+      $nextline =~ s/^\s+/ /; # strip indent 
+      $line .= $nextline; # append to buffer    
+    } else {      # must be start-of-new-segment
+  #print "PLAIN\n";
+      $processref->( $line) unless $line eq '';
+      $line = $nextline;
+    }           
+  }     
+  $processref->( $line) unless $line eq '';
+}
+
+print "\nall: push-local\n";
+
+my $copycmd;
+my $line;
+my $junk;
+
+process_file_with_continuations( \&process_line );
+
 print "\n";
 
 print "\n# Sync up the MS/MP directories:\n\n";
@@ -200,6 +250,8 @@ foreach my $host ( @reloadhosts ) {
 		push @reloadItemsRemote, "reload-$host";
 	}
 }
+
+process_file_with_continuations( \&process_line );
 
 print "reload-all: reload-local reload-remote\n\n";
 print "reload-local:\n\n" unless @reloadItemsLocal;	# Already output a reload-local?

@@ -24,9 +24,10 @@ Copyright 2005 Thomas A. Limoncelli
 
 CONTACT INFORMATION:
 
-	The author and maintainer: Thomas "Tom" A. Limoncelli <tal+hostdb@whatexit.org>
-	http://www.everythingsysadmin.com/hostdb
-	Join the mailing list: http://whatexit.org/mailman/listinfo/hostdb-fans
+	The author and maintainer: Thomas A. Limoncelli <tal+hostdb@whatexit.org>
+	Join the mailing list: http://lists.everythingsysadmin.com/mailman/listinfo/hostdb-fans
+	New homepage: http://code.google.com/p/hostdb/
+	Old homepage: http://www.everythingsysadmin.com/hostdb
 
 
 RELEASE HISTORY:
@@ -88,10 +89,13 @@ examples:
 1.005 -- INSERT DATE
 
 New features:
+-- BIG CHANGE: Continuation character is NO LONGER "\".  destinations.txt and hostdb.txt now have continuation lines like a "Makefile" i.e. if the next line is indented, is is part of the previous line. (tal@whatexit.org)
+-- Added smoke-test:  "make test" runs a simple configuration and compares it to a "known good". (tal@whatexit.org)
 -- mkzones now has "-o" option to specify output directory (Thanks Tim Bell and Geoff Crompton of Trinity College, The University of Melbourne)
 -- bin/checkrootcache now uses "wget" instead of "ftp".  (Thanks Geoff Crompton of Trinity College, The University of Melbourne)
 -- zoneinfo.txt now has a "TTL" command to set the default TTL for a zone.  (Thanks Geoff Crompton of Trinity College, The University of Melbourne) 
--- Added smoke-test:  "make test" runs a simple configuration and compares it to a "known good".
+-- Consistantly use "bash" (not /bin/sh) in shell scripts, move Copyright to be next to shebang line (tal@whatexit.org)
+-- HINFO records are now RFC-compliant (Thanks to Pancho Horrillo <pancho@pancho.name>)
 
 TODO / Wishlist:
 
@@ -101,11 +105,12 @@ We could add a "ping host &&" to the front of the statement but we
 have to do it in a way such that the datestamp files aren't touched.
 Otherwise, when the host comes back up, it will not get the update.
 
-Better HINFO handling:
-The ability to specify two fields, or assume the first word is the first field.
-
 Unit-testing:
-It would be great if there was a directory of configurations and a
-makefile that would generate all of them and compare them against
-"known good" outputs.
+Now that we have test/test1, it would be great if we had individual tests
+for individual features.  (i.e. unit tests).
+
+Python:
+I'd like to port this all the python.  The code is very messy and
+needs to be cleaned up.  This would be a good time to rewrite it
+in Python.
 

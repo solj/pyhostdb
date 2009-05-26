@@ -4,37 +4,37 @@
 #  Note: as a safety measure, the examples write to /tmp
 #
 
-EXTERNAL.example.com -> 							\
+EXTERNAL.example.com ->
 		/tmp/var/named/example.com.zone
 
-EXTERNAL.10.10.10.in-addr.arpa -> 						\
+EXTERNAL.10.10.10.in-addr.arpa -> 
 	/tmp/var/named/EXTERNAL.10.10.10.in-addr.arpa.zone
 
-EXTERNAL.99.99.99.99.in-addr.arpa ->						\
-	/tmp/var/named/EXTERNAL.99.99.99.in-addr.arpa.zone
+EXTERNAL.99.99.99.99.in-addr.arpa -> 
+	/tmp/var/named/EXTERNAL.99.99.99.in-addr.arpa.zone 
 #	externalhost.example.com:/tmp/var/named/EXTERNAL.99.99.99.99.in-addr.arpa
 
 #
 # Internal zones:
 #  Note: as a safety measure, the examples write to /tmp
 
-INTERNAL.example.com -> 							\
+INTERNAL.example.com -> 
 		/tmp/var/named/example.com.zone
 
-INTERNAL.10.10.10.in-addr.arpa -> 						\
+INTERNAL.10.10.10.in-addr.arpa -> 
 	/tmp/var/named/INTERNAL.10.10.10.in-addr.arpa.zone
 
-INTERNAL.99.99.99.99.in-addr.arpa ->						\
+INTERNAL.99.99.99.99.in-addr.arpa -> 
 	/tmp/var/named/INTERNAL.99.99.99.in-addr.arpa.zone
 #	internalhost.example.com:/tmp/var/named/INTERNAL.99.99.99.99.in-addr.arpa
 
-localhost.zone named.local					\
-	->							\
-		/tmp/var/named/.				
+localhost.zone named.local 
+	-> 
+		/tmp/var/named/.				 
 #		internalhost.example.com:/tmp/var/named/.
 
-INTERNAL.named.root -> 						\
-		/tmp/var/named/named.ca		
+INTERNAL.named.root -> 
+		/tmp/var/named/named.ca		 
 #		internalhost.example.com:/var/named/named.ca
 
 #
@@ -51,4 +51,3 @@ dhcpnetinfo.txt -> /var/named/dhcpnetinfo.txt
 RELOAD local				cd /etc && make hostdb
 RELOAD internalhost.example.com		kill -1 `cat /var/run/named.pid`
 RELOAD externalhost.example.com		sudo rndc reload
-

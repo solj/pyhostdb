@@ -1,11 +1,4 @@
-#!/bin/sh
-
-#
-# mergeiplist -- Print the first line to mention an IP
-# address when fed a /etc/hosts-style list.
-# The output is sorted by IP address.
-
-
+#!/bin/bash
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -21,6 +14,10 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+
+# mergeiplist -- Print the first line to mention an IP
+# address when fed a /etc/hosts-style list.
+# The output is sorted by IP address.
 
 cat $* | perl -ne '
 	chomp;
@@ -45,22 +42,23 @@ cat $* | perl -ne '
 # you can include an entire perl program right on the command line.
 # In shell, a ' or " can start a string that continues for multiple
 # lines.
-# The problem is that since we use a single quote, the entire program
-# can't use the single quote... unless we escape it with a backlash.
+# The problem is that since we use a single quote, there can be no single
+# quotes in the rest of the program... unless we escape it with a backlash.
 # This makes it difficult to read, which limits this to only be usable
 # for short perl programs.
 # This is a better technique for awk programs, since awk rarely
 # uses the single quote.  (Most likely to make this technique work
 # so well.)
 
-# The perl code ---  This files the first IP address on a line, and
-# appends it to the start of the line followed by a "tab" then the
+# The perl code ---  This finds the first IP address on a line, and
+# prepends it to the start of the line followed by a "tab" then the
 # original line.
 # If there is no IP address on the line, it prepends the entire line.
-# We aren't really finding the "first IP address".  We're a bit
-# sloppy and just skipping over any comments, then if the next chars
-# are a sequence of digits and periods we assume that's an IP address
-# (no matter how long the sequence is.)
+# We aren't really finding the "first IP address", just anything that
+# looks similar to one.  We're a bit sloppy and just skipp over any
+# comments, then if the next chars are a sequence of digits and periods
+# we assume that's an IP address (no matter how long the sequence
+# is.)
 
 # sort -t"\t" -u -k1,1   --- This sets the separator to TAB, uniques
 # the input (removes any duplicate lines), and sets the key to be
@@ -69,13 +67,12 @@ cat $* | perl -ne '
 # Note that "-u" defines "unique" as a comparison of fields being
 # compared for the rest of the sort.  Thus is doesn't matter if the
 # rest of the line is different, only the first field is looked at
-# for determining uniqueness.  Many software systems have had major
-# bugs because someone didn't know this.  (Imagine sorting a list
-# based on the third field and being surprised when half of your
-# lines disappeared!)
+# for determining uniqueness.  I've seen major bugs as a result
+# of programemrs not knowing about this feature.  Here we use it
+# on purpose.  (Imagine sorting a list based on the third field and
+# being surprised when half of your lines disappeared!)
 
 # sortbyip  --- now sort the list by IP address.
 
 # cut -f2-  --- removes the bit of info we attached to the
 # front of each line.
-

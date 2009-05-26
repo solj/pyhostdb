@@ -1,6 +1,4 @@
-#! /bin/bash
-
-
+#!/bin/bash
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -17,6 +15,7 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+# NIdhcpupdate -- Update Mac OS X Server DHCP records in NetInfo.
 
 function usage
 {
@@ -96,7 +95,6 @@ if $DEBUG ; then
 	echo NIUPDATECMD=$NIUPDATECMD
 fi
 
-
 TEMP=/tmp
 NEWHOSTS=$TEMP/nidu.new.txt
 OLDHOSTS=$TEMP/nidu.cur.txt
@@ -129,7 +127,6 @@ awk -F'\t' <$DELLIST '
 		}
 ' | $NIUPDATECMD
 
-
 # Add items:
 awk -F'\t' <$ADDLIST '
 	NF == 3  {
@@ -138,5 +135,3 @@ awk -F'\t' <$ADDLIST '
 		print "merge /machines/name=" $3 " en_address " $2 ;
 		}
 ' | $NIUPDATECMD
-
-

@@ -141,7 +141,7 @@ This will do the right thing when generating the internal and external zones.  T
 @INBOUNDNAT can be applied to the host's name, individual ANAMEs, and individual CNAMEs.
 
 
-=== HINFO=
+=== HINFO
 
 Generate a HINFO DNS record for this host.  Quotes are required if you want to include
 spaces (nearly always).  However, individual quotes will be turned into the word "QUOTE"
@@ -150,14 +150,47 @@ Note: HINFO records are only generated for INTERNAL zones.  Why you
 would want to expose this kind of information to the outside world
 is beyond me.
 
-10.1.1.4        test1.example.com HINFO=foo
-10.1.1.5        test2.example.com HINFO="foo bar"
-64.32.179.4     test3.example.com@INBOUNDNAT  HINFO="This is a \"very\" interesting test"
+<IP>    <FQDN>  MAC=00:de:ad:be:ef   HINFO="Apple Mac Mini G4":"NetBSD 5.0"
+<IP>    <FQDN>  MAC=00:de:ad:be:ef   HINFO="Supermicro PDSMU"
+<IP>    <FQDN>  MAC=00:de:ad:be:ef   HINFO=VAX:UNIX
 
-test1.example.com.    IN A       10.1.1.4
-                      IN HINFO   "foo"
-test2.example.com.    IN A       10.1.1.5
-                      IN HINFO   "foo bar"
-test3.example.com.    IN A       64.32.179.4
-                      IN HINFO   "This is a QUOTEveryQUOTE interesting test"
+It will be rendered as:
+<DN>    IN A   <IP>
+        IN HINFO   "Apple Mac Mini G4" "NetBSD 5.0"
 
+<DN>    IN A   <IP>
+        IN HINFO   "Supermicro PDSMU" ""
+
+<DN>    IN A   <IP>
+        IN HINFO   "VAX" "UNIX"
+
+From RFC 1035 p.14:
+
+   3.3.2. HINFO RDATA format
+
+       +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+       /                      CPU                      /
+       +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+       /                       OS                      /
+       +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+
+   where:
+
+   CPU             A <character-string> which specifies the CPU type.
+
+   OS              A <character-string> which specifies the operating
+                   system type.
+
+   Standard values for CPU and OS can be found in [RFC-1010].
+
+   HINFO records are used to acquire general information about a host.  The
+   main use is for protocols such as FTP that can use special procedures
+   when talking between machines or operating systems of the same type.
+
+
+From RFC 1010 p.23:
+
+   A system name may be up to 40 characters taken from the set of
+   uppercase letters, digits, and the two punctuation characters hyphen
+   and slash.  It must start with a letter, and end with a letter or
+   digit.

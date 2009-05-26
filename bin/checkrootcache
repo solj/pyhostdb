@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/bash
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -16,9 +15,10 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+# checkrootcache -- Check the internic's named.root file to see if there are updates.
+
 PATH=/usr/bin:/bin:/usr/bsd
 export PATH
-
 
 wget -O EXTERNAL.named.root.new http://www.internic.net/zones/named.root && diff -cw EXTERNAL.named.root.new EXTERNAL.named.root
 

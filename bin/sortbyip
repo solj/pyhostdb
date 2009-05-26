@@ -1,9 +1,4 @@
 #!/bin/bash
-
-# Sort by IP address.  Assume IP address is at front of line.
-# Options:
-# -u  remove duplicates (its fairly random which line is kept if text follows IP)
-
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -20,6 +15,10 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+# Sort by IP address.  Assume IP address is at front of line.
+# Options:
+# -u  remove duplicates (its fairly random which line is kept if text follows IP)
+
 otheroptions=""
 uniqcmd="cat"
 while [ -n "$1" ]
@@ -34,4 +33,3 @@ do
 done
             
 sort -t. -k1,1n -k2,2n -k3,3n -k4,4n $otheroptions | $uniqcmd
-

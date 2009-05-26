@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-
 # Copyright 2005 Thomas A. Limoncelli
 # 
 #     This program is free software; you can redistribute it and/or modify
@@ -16,9 +15,13 @@
 #     along with this program; if not, write to the Free Software
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
+# mkzones -- Depending on options either generate a zonefile or a
+#            DHCP server configuration file.
+
 use strict;
 
 use Text::ParseWords;	# needed for the &parse_line() function
+# use Data::Dumper;
 
 use Getopt::Std;
 my %opts;
@@ -31,7 +34,7 @@ $| = 1;
 
 # Notes:
 # $db is a Hash of Hashes:
-# http://www.perldoc.com/perl5.6/pod/perldsc.html#HASHES-OF-HASHES
+# http://perldoc.perl.org/perldsc.html#HASHES-OF-HASHES
 
 if ( $#ARGV >= 1) {
 	usage();
@@ -58,6 +61,7 @@ usage() if $opts{'n'} and ! $opts{'d'};
 my $opt_netinfo = 1 if $opts{'n'};	# output DHCP info as a table for the netinfo system
 
 parsehostlist();
+# print STDERR Dumper(%db);
 
 if ($opts{'o'}) {
 	$OUTPUTDIR=$opts{'o'};
@@ -251,8 +255,11 @@ sub rrmx {
 
 sub rrhinfo {
 	my($zone, $scope, $name) = @_;
-	if ($scope eq 'INTERNAL' and $db{$name}{'HINFO'}) {
-		rr( $zone, $name, 'HINFO', '"' . $db{$name}{'HINFO'} . '" ""' );
+	if ($scope eq 'INTERNAL' and $db{$name}{'HINFO'}{'cpu'}) {
+		no warnings;    # Uninitialized strings not a problem here.
+		rr( $zone, $name, 'HINFO',
+			qq#"$db{$name}{'HINFO'}{'cpu'}" "$db{$name}{'HINFO'}{'os'}"#
+			);
 	}
 }
 
@@ -532,19 +539,62 @@ sub processname {
 	print "HUH???\n";
 }
 
-sub parsehostlist {
-	# Parse the hostlist.txt
-	my ($cmd, @opt);
-	my ($name, $num, $isint, $isext, $dupok);
-	while (<>) {
-		chomp;
-		s/^\s+//g;
-		s/\s+$//g;
-	
-		next if /^#/;
-		next if /^$/;
+# process_file_with_continuations: read a file and call "processref" on each
+#     flattened line of the file.  A "flattened line" is one where all
+#     continuations have been gathered into a string.
+sub process_file_with_continuations {
+  my $processref = shift;
 
-		($cmd, @opt) = &parse_line('\s+', 0, $_);
+  my $nextline;
+  my $line = <>;
+  $line = '' unless (defined($line));
+  chomp $line;
+
+  while (defined($nextline = <>)) {
+    chomp $nextline;
+    next if $nextline =~ /^\s*#/;     # skip comments 
+    $nextline =~ s/\s+$//g; # delete trailing whitespace
+    if (eof()) {
+  #print "EOF\n";
+      $nextline =~ s/^\s+/ /; # strip indent 
+      if ($nextline =~ /^\s+/) {
+        $processref->( $line . $nextline);
+        $line = '';             
+      } else {          
+        $processref->( $line);  
+        $processref->( $nextline) if $nextline ne '';
+        $line = '';             
+      }                 
+    } elsif ($nextline eq '') { # if nextline is blank
+  #print "BLANK\n";
+      $processref->( $line);
+      $line = "";       
+    } elsif ($nextline =~ /^\s+/ ) {  # if line starts with blanks
+  #print "INDENTED\n";
+      $nextline =~ s/^\s+/ /; # strip indent 
+      $line .= $nextline; # append to buffer    
+    } else {      # must be start-of-new-segment
+  #print "PLAIN\n";
+      $processref->( $line) unless $line eq '';
+      $line = $nextline;
+    }           
+  }     
+  $processref->( $line) unless $line eq '';
+}
+
+sub parsehostlist {
+  process_file_with_continuations( \&process_one_line );
+}
+
+sub process_one_line {
+	#my ($name, $num, $isint, $isext, $dupok);
+	# Parse the hostlist.txt
+	$_ = shift;
+	s/^\s+//g;
+	s/\s+$//g;
+	return if /^#/;
+
+		my ($cmd, @opt) = &parse_line('\s+', 0, $_);
 		if ($cmd eq "NETWORK") {
 			#($name, $base, @opt) = @_;
 			#print "# $_\n";
@@ -554,7 +604,7 @@ sub parsehostlist {
 		} elsif ($cmd =~ /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) {
 			$num = ip2num( $cmd );
 			$opt[0] = dhcptemplate( $num ) if $opt[0] and $opt[0] eq "DHCP_POOL";
-			($isint, $isext, $dupok, $name) = processname( shift @opt );
+			my ($isint, $isext, $dupok, $name) = processname( shift @opt );
 #print "DEBUG: $isint $isext $name\n";
 			# Check for duplicates:
 			warn "duplicate entry for $cmd" if defined( $num2name{$num} );
@@ -600,8 +650,9 @@ sub parsehostlist {
 				} elsif ($key eq   'ISMAILSERVERI') {
 					$db{$name}{'ISMAILSERVERI'} = ( $value ? $value : 1 );
 				} elsif ($key eq   'HINFO') {
-					$db{$name}{'HINFO'} = ( $value ? $value : 1 );
-					$db{$name}{'HINFO'} =~ s/"/QUOTE/g;
+					$value =~ s/"/QUOTE/g;
+					($db{$name}{'HINFO'}{'cpu'}, $db{$name}{'HINFO'}{'os'})
+						= split(/:/, $value, 2);
 				} else {
 					$dhcp{$num}{$key} = ( $value ? $value : 1 );
 				}
@@ -610,7 +661,6 @@ sub parsehostlist {
 			die "I don't understand: $_\n";
 		}
 	}
-}
 
 sub do_dns {
 	my ($cmd, @opt);
@@ -775,7 +825,8 @@ sub do_generic {
 	my $comment;
 	my $ipaddr = num2ip($num);
 	($ntname, @junk) = split(/\./, $name);
-	$comment = ''; $comment = "\t# " . $db{$name}{'HINFO'} if defined $db{$name}{'HINFO'};
+	$comment = '';
+	$comment = "\t# " . $db{$name}{'HINFO'}{'cpu'} if defined $db{$name}{'HINFO'}{'cpu'};
         print qq#
 	host $name {$comment
 		hardware ethernet $mac;
@@ -819,4 +870,3 @@ sub do_netboot {
 	print qq#		filename "$filename";\n# if ($filename and not $rootpath);
 	print qq#	}\n#;
 };
-

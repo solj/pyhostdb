@@ -8,7 +8,7 @@ $TTL 1h
 			3h	;refresh period
 			1h	;retry refresh this often
 			1w	;expiration period
-			1h	;minimum TTL
+			1h	;Negative caching TTL
 		)
 
                    IN NS      shell
